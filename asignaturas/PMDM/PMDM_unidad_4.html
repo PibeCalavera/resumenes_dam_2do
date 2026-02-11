@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+Multimedia y Dispositivos Móviles – Unidad 4
+– Análisis de motores de juegos</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+Multimedia y Dispositivos Móviles – Unidad 4
+– Análisis de motores de juegos</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc2675_3807639648">1. Arquitectura general de un motor de videojuegos</a></p>
+<p><a href="#__RefHeading___Toc2677_3807639648">1.1 Game loop / Ciclo del videojuego</a></p>
+<p><a href="#__RefHeading___Toc2679_3807639648">1.2 Subsistema de actualización (Update System)</a></p>
+<p><a href="#__RefHeading___Toc2681_3807639648">1.3 Otros subsistemas principales</a></p>
+<p><a href="#__RefHeading___Toc2683_3807639648">1.4 Componentes específicos del motor</a></p>
+<p><a href="#__RefHeading___Toc2685_3807639648">2. Clasificación y tipos de motores de juegos</a></p>
+<p><a href="#__RefHeading___Toc2687_3807639648">2.1 Motores destacados</a></p>
+<p><a href="#__RefHeading___Toc2689_3807639648">2.2 Especialización de motores</a></p>
+<p><a href="#__RefHeading___Toc2691_3807639648">3. Herramientas y edición en Unity</a></p>
+<p><a href="#__RefHeading___Toc2693_3807639648">3.1 Jerarquía y contenedores</a></p>
+<p><a href="#__RefHeading___Toc2695_3807639648">3.2 Paneles del editor</a></p>
+<p><a href="#__RefHeading___Toc2697_3807639648">3.3 Transformaciones y herramientas</a></p>
+<p><a href="#__RefHeading___Toc2699_3807639648">3.4 Orden de dibujo de sprites 2D</a></p>
+<p><a href="#__RefHeading___Toc2701_3807639648">4. Gráficos y renderizado</a></p>
+<p><a href="#__RefHeading___Toc2703_3807639648">4.1 APIs gráficas 3D</a></p>
+<p><a href="#__RefHeading___Toc2705_3807639648">4.2 Renderizado (Rendering)</a></p>
+<p><a href="#__RefHeading___Toc2707_3807639648">4.3 Animación</a></p>
+<p><a href="#__RefHeading___Toc2709_3807639648">5. Ciclos y tipos de juego</a></p>
+<p><a href="#__RefHeading___Toc2711_3807639648">5.1 Juegos en tiempo real</a></p>
+<p><a href="#__RefHeading___Toc2713_3807639648">5.2 Juegos por turnos</a></p>
+<p><a href="#__RefHeading___Toc2715_3807639648">Resumen compacto – Unidad 04: Análisis de motores de juegos</a></p>
+<p><a href="#__RefHeading___Toc2717_3807639648">1. Arquitectura general de un motor de videojuegos</a></p>
+<p><a href="#__RefHeading___Toc2719_3807639648">2. Clasificación y tipos de motores de juegos</a></p>
+<p><a href="#__RefHeading___Toc2721_3807639648">3. Herramientas y edición en Unity</a></p>
+<p><a href="#__RefHeading___Toc2723_3807639648">4. Gráficos y renderizado</a></p>
+<p><a href="#__RefHeading___Toc2725_3807639648">5. Ciclos y tipos de juego</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc2675_3807639648" lang="es">
+<strong>1. Arquitectura general de un motor de videojuegos</strong></h1>
+<h2 id="__RefHeading___Toc2677_3807639648" lang="es">
+<strong>1.1 Game loop / Ciclo del videojuego</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+El <strong>ciclo
+	del videojuego</strong>  es el bucle central que se repite
+	continuamente durante la ejecución del juego, típicamente entre 30
+	y 60 fps. Su función es <strong>coordinar y secuenciar la ejecución
+	de todos los subsistemas</strong>, asegurando consistencia temporal
+	y correcta interacción entre entrada, lógica, físicas,
+	renderizado y audio.</p></li>
+<li><p><strong>Funciones principales:</strong></p>
+<ul>
+<li><p>Ejecutar los subsistemas en orden: entrada →
+		red → actualización → renderizado → audio.</p></li>
+<li><p>Mantener la <strong>coherencia temporal</strong> 
+		de la partida.</p></li>
+<li><p>Gestionar la ejecución continua de juegos en
+		tiempo real, como endless runners.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico:</strong>
+En un
+	endless runner, cada iteración del bucle:</p>
+<ul>
+<li><p>Detecta la pulsación de salto del jugador.</p></li>
+<li><p>Actualiza posiciones de personaje y obstáculos.</p></li>
+<li><p>Calcula colisiones y aplica físicas.</p></li>
+<li><p>Renderiza el frame siguiente.</p></li>
+<li><p>Reproduce sonidos correspondientes.</p></li>
+</ul>
+<li><p><strong>Aclaración clave:</strong></p>
+<ul>
+<li><p><strong>Ciclo del juego ≠ subsistema de
+		actualización.</strong></p>
+<ul>
+<li><p>El ciclo <strong>coordina</strong>.</p></li>
+<li><p>La actualización <strong>aplica reglas y
+			controla el estado del juego</strong>.</p></li>
+</ul>
+</li></ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2679_3807639648" lang="es">
+<strong>1.2 Subsistema de actualización (Update System)</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+El <strong>subsistema
+	de actualización</strong>  es el <strong>cerebro del juego</strong>.
+	Gestiona el estado de todos los objetos, aplica reglas y garantiza
+	que la lógica del juego se cumpla en cada frame.</p></li>
+<li><p><strong>Funciones principales:</strong></p>
+<ul>
+<li><p>Gestionar <strong>estado del jugador y enemigos</strong>.</p></li>
+<li><p>Aplicar <strong>física básica</strong>:
+		gravedad, aceleraciones, fricción, detección de colisiones.</p></li>
+<li><p>Ejecutar la <strong>IA básica</strong>  de NPCs:
+		movimientos, ataques o defensas simples.</p></li>
+<li><p>Interpretar las <strong>entradas del jugador</strong> 
+		recibidas por el subsistema de entrada.</p></li>
+<li><p>Validar condiciones y límites del juego,
+		calcular daños y efectos de interacciones.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico:</strong></p>
+<ul>
+<li><p>En un juego de plataformas: al presionar la tecla
+		de salto, el subsistema de actualización calcula el desplazamiento
+		vertical según la gravedad, verifica colisión con el suelo y
+		aplica el cambio de estado.</p></li>
+<li><p>En un endless runner, mantiene la
+		posición de obstáculos en movimiento, detecta colisiones con el
+		jugador y actualiza la puntuación.</p></li>
+</ul>
+<li><p><strong>Notas adicionales:</strong></p>
+<ul>
+<li><p>Otros subsistemas (input, vídeo, audio, red)
+		<strong>actúan como interfaces</strong>  para este subsistema.</p></li>
+<li><p>Diferencia con ciclo del juego: <strong>actualización
+		ejecuta la lógica</strong>, ciclo <strong>coordina cuándo se
+		ejecuta</strong>.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2681_3807639648" lang="es">
+<strong>1.3 Otros subsistemas principales</strong></h2>
+<ul>
+<li><p><strong>Entrada (Input):</strong></p>
+<ul>
+<li><p>Captura las acciones del jugador: teclado, ratón,
+		gamepad, pantalla táctil.</p></li>
+<li><p>Traduce estas acciones a <strong>comandos
+		internos</strong>  para el subsistema de actualización.</p></li>
+</ul>
+<li><p><strong>Vídeo / Renderizado:</strong></p>
+<ul>
+<li><p>Convierte los <strong>modelos 2D o 3D</strong>  en
+		imágenes visibles en pantalla.</p></li>
+<li><p>Usa <strong>triángulos texturizados</strong> 
+		como base de todos los modelos 3D.</p></li>
+<li><p>Interactúa con APIs gráficas (OpenGL, DirectX,
+		Vulkan).</p></li>
+</ul>
+<li><p><strong>Audio / Sonido:</strong></p>
+<ul>
+<li><p>Reproduce música y efectos.</p></li>
+<li><p>Gestiona mezcla, volumen y espacialización del
+		sonido.</p></li>
+</ul>
+<li><p><strong>Física / Colisiones / Animación:</strong></p>
+<ul>
+<li><p>Aplica leyes físicas para <strong>realismo</strong>.</p></li>
+<li><p>Detecta y resuelve colisiones.</p></li>
+<li><p><strong>Animación 2D:</strong> movimiento de
+		sprites, interpolación de frames.</p></li>
+<li><p><strong>Animación 3D:</strong> rigging,
+		keyframes, blendshapes.</p></li>
+</ul>
+<li><p><strong>IA / Lógica de juego:</strong></p>
+<ul>
+<li><p>Controla comportamiento de NPCs y enemigos.</p></li>
+<li><p>Define reglas y decisiones automáticas.</p></li>
+<li><p>Puede integrarse dentro del subsistema de
+		actualización.</p></li>
+</ul>
+<li><p><strong>Red / Networking:</strong></p>
+<ul>
+<li><p>Sincroniza información entre clientes y
+		servidores en juegos multijugador.</p></li>
+<li><p>Gestiona latencia, replicación de objetos y
+		estado del juego remoto.</p></li>
+</ul>
+<li><p><strong>Gestión de recursos / Assets:</strong></p>
+<ul>
+<li><p>Maneja modelos, texturas, sonidos, niveles,
+		prefabs y otros ficheros necesarios.</p></li>
+<li><p>Permite cargar, reutilizar y optimizar recursos.</p></li>
+</ul>
+</li></li></li></li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2683_3807639648" lang="es">
+<strong>1.4 Componentes específicos del motor</strong></h2>
+<ul>
+<li><p><strong>Motores internos típicos:</strong></p>
+<ul>
+<li><p><strong>Motor gráfico</strong>: renderizado,
+		shaders, efectos visuales.</p></li>
+<li><p><strong>Motor de audio</strong>: reproducción,
+		mezcla y efectos de sonido.</p></li>
+<li><p><strong>Motor de físicas / animación</strong>:
+		cálculo de colisiones, fuerzas, movimientos.</p></li>
+</ul>
+<li><p><strong>Notas sobre errores comunes o trampas de
+	examen:</strong></p>
+<ul>
+<li><p>No existen términos como “motor actividad” o
+		“kernel” según el temario; estos no son componentes reales del
+		motor.</p></li>
+<li><p>Algunas preguntas de examen pueden mencionar solo
+		un subconjunto de motores internos, pero la lógica real incluye
+		todos los listados.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico:</strong></p>
+<ul>
+<li><p>Unity: motor gráfico (Render Pipeline), motor de
+		audio (AudioSource, AudioMixer), motor de físicas (Rigidbody,
+		Colliders).</p></li>
+<li><p>Unreal: motor gráfico (Renderer), motor de audio
+		(Sound System), motor de físicas (PhysX o Chaos).</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2685_3807639648" lang="es">
+<strong>2. Clasificación y tipos de motores de juegos</strong></h1>
+<h2 id="__RefHeading___Toc2687_3807639648" lang="es">
+<strong>2.1 Motores destacados</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+Un <strong>motor
+	de videojuegos</strong>  es un conjunto de herramientas, librerías y
+	subsistemas que permite desarrollar y ejecutar videojuegos,
+	proporcionando funciones básicas como renderizado, físicas, audio
+	y gestión de recursos. Los motores destacados son aquellos
+	ampliamente usados o que ofrecen características avanzadas para
+	distintos tipos de juegos.</p></li>
+<li><p><strong>Motores principales:</strong></p>
+<ul>
+<li><p><strong>Unity:</strong></p>
+<ul>
+<li><p>Multiplataforma (PC, móviles, consolas, Web).</p></li>
+<li><p>Lenguaje principal: <strong>C#</strong>.</p></li>
+<li><p>Editor visual con <strong>Hierarchy</strong> 
+			(objetos de la escena) e <strong>Inspector</strong>  (componentes y
+			propiedades).</p></li>
+<li><p>Soporte completo para <strong>2D y 3D</strong>,
+			físicas, audio, animación y scripting visual limitado mediante
+			paquetes.</p></li>
+<li><p>Sistema de prefabs y gestión de escenas.</p></li>
+</ul>
+<li><p><strong>Unreal Engine:</strong></p>
+<ul>
+<li><p>Núcleo en <strong>C++</strong>, open source
+			(Epic Games License).</p></li>
+<li><p><strong>Blueprints:</strong> sistema de
+			scripting visual muy potente.</p></li>
+<li><p>Fuerte enfoque en gráficos de alta calidad y
+			renderizado 3D avanzado.</p></li>
+</ul>
+<li><p><strong>Godot:</strong></p>
+<ul>
+<li><p>Open source y multiplataforma.</p></li>
+<li><p>Lenguaje principal: <strong>GDScript</strong> 
+			(similar a Python).</p></li>
+<li><p>Nodo base: <strong>Node</strong>, que funciona
+			como contenedor jerárquico de otros nodos.</p></li>
+<li><p>Soporta 2D y 3D, físicas, audio, animación y
+			scripting.</p></li>
+</ul>
+<li><p><strong>Otros motores y frameworks importantes:</strong></p>
+<ul>
+<li><p><strong>CryEngine:</strong> potente en gráficos,
+			C++ core, uso en AAA.</p></li>
+<li><p><strong>GameMaker Studio:</strong> enfoque 2D,
+			scripting simplificado.</p></li>
+<li><p><strong>Defold:</strong> ligero,
+			multiplataforma, enfocado a 2D.</p></li>
+<li><p><strong>StencylWorks:</strong> desarrollo visual
+			de juegos 2D.</p></li>
+<li><p><strong>LibGDX:</strong> framework Java,
+			multiplataforma, más limitado que un motor completo.</p></li>
+</ul>
+</li></li></li></li></ul>
+<li><p><strong>Nota importante:</strong></p>
+<ul>
+<li><p>No todos los “motores” listados en opciones
+		de examen son motores reales (trampa habitual).</p></li>
+<li><p>La elección depende del tipo de juego,
+		plataforma y lenguaje preferido.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2689_3807639648" lang="es">
+<strong>2.2 Especialización de motores</strong></h2>
+<ul>
+<li><p><strong>Por plataforma:</strong></p>
+<ul>
+<li><p>Algunos motores están optimizados para <strong>móviles</strong>,
+		otros para <strong>consolas o PC</strong>, y algunos permiten
+		multiplataforma.</p></li>
+<li><p>Ejemplo: Unity puede exportar a iOS, Android, PC
+		y WebGL sin cambiar código base.</p></li>
+</ul>
+<li><p><strong>Por tipo de juego:</strong></p>
+<ul>
+<li><p>FPS, RTS, endless runner, juegos de puzzle,
+		simuladores, RPG.</p></li>
+<li><p>Algunos motores incluyen herramientas específicas
+		para géneros particulares (pathfinding, tilemaps, físicas
+		avanzadas).</p></li>
+</ul>
+<li><p><strong>Por lenguaje de programación:</strong></p>
+<ul>
+<li><p>C# (Unity), C++ (Unreal, CryEngine), GDScript
+		(Godot), Java (LibGDX).</p></li>
+</ul>
+<li><p><strong>Nota metodológica:</strong></p>
+<ul>
+<li><p>No se especializan por edad del usuario final;
+		este es un criterio <strong>no técnico</strong>  y suele ser usado
+		solo en preguntas trampa.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico de especialización:</strong></p>
+<ul>
+<li><p><strong>Unity</strong>  es generalista y
+		multiplataforma, útil para juegos 2D, 3D, móviles o PC.</p></li>
+<li><p><strong>Unreal Engine</strong>  se centra en
+		gráficos 3D avanzados y proyectos AAA de alto detalle.</p></li>
+<li><p><strong>Godot</strong>  es ligero, open source,
+		ideal para juegos indie y educativos.</p></li>
+</ul>
+</li></li></li></li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2691_3807639648" lang="es">
+<strong>3. Herramientas y edición en Unity</strong></h1>
+<h2 id="__RefHeading___Toc2693_3807639648" lang="es">
+<strong>3.1 Jerarquía y contenedores</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+En Unity, los
+	objetos del juego se organizan <strong>jerárquicamente</strong> 
+	dentro de la <strong>escena</strong>  (Scene). Esta jerarquía
+	permite estructurar niveles, agrupar elementos relacionados y
+	gestionar su activación, posición y transformación de manera
+	colectiva.</p></li>
+<li><p><strong>Componentes clave:</strong></p>
+<ul>
+<li><p><strong>Scene:</strong> contenedor global de
+		todos los objetos de un nivel.</p></li>
+<li><p><strong>GameObjects específicos:</strong></p>
+<ul>
+<li><p>Ejemplo: CompleteLevelArt 
+			→ contenedor de todos los elementos de nivel como piedras, dunas
+			o terrenos.</p></li>
+<li><p>Permite mover, activar/desactivar o manipular
+			todo el conjunto sin alterar cada objeto individualmente.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Notas:</strong></p>
+<ul>
+<li><p>La Scene no es un objeto de juego en sí mismo,
+		sino un contenedor global que mantiene la estructura del nivel.</p></li>
+<li><p>El uso de contenedores como CompleteLevelArt 
+		facilita la organización y edición de niveles complejos.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2695_3807639648" lang="es">
+<strong>3.2 Paneles del editor</strong></h2>
+<ul>
+<li><p><strong>Hierarchy:</strong></p>
+<ul>
+<li><p>Muestra todos los <strong>GameObjects</strong> 
+		presentes en la escena.</p></li>
+<li><p>Permite seleccionar, organizar y anidar objetos
+		en jerarquías padres-hijos.</p></li>
+</ul>
+<li><p><strong>Inspector:</strong></p>
+<ul>
+<li><p>Muestra los <strong>componentes y propiedades</strong> 
+		del GameObject seleccionado.</p></li>
+<li><p>Permite modificar scripts, materiales,
+		transformaciones, físicas y más.</p></li>
+</ul>
+<li><p><strong>Notas adicionales:</strong></p>
+<ul>
+<li><p>La combinación de Hierarchy e Inspector es clave
+		para <strong>editar y configurar objetos de la escena</strong>  sin
+		necesidad de programar.</p></li>
+<li><p>Otros paneles incluyen Project (gestión de
+		assets), Scene (vista visual de la escena) y Game (vista de juego
+		en ejecución).</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2697_3807639648" lang="es">
+<strong>3.3 Transformaciones y herramientas</strong></h2>
+<ul>
+<li><p><strong>Herramientas por defecto:</strong></p>
+<ul>
+<li><p><strong>Mover:</strong> desplaza el objeto en X,
+		Y, Z.</p></li>
+<li><p><strong>Rotar:</strong> rota el objeto sobre los
+		ejes.</p></li>
+<li><p><strong>Escalar:</strong> cambia el tamaño
+		relativo del objeto.</p></li>
+</ul>
+<li><p><strong>Gizmos / flechas:</strong></p>
+<ul>
+<li><p>Indican los ejes activos de manipulación.</p></li>
+<li><p>Dependen del tipo de proyecto:</p>
+<ul>
+<li><p>2D → 2 flechas (X, Y).</p></li>
+<li><p>3D → 3 flechas (X, Y, Z).</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Simetría y duplicación:</strong></p>
+<ul>
+<li><p>Para duplicar un objeto a lo largo del eje X en
+		2D: Scale X = -1.</p></li>
+<li><p>Esta técnica invierte el objeto horizontalmente,
+		manteniendo posición y rotación.</p></li>
+</ul>
+<li><p><strong>Notas:</strong></p>
+<ul>
+<li><p>No existen flechas que dependan de la profundidad
+		en la jerarquía ni del número de transformaciones.</p></li>
+<li><p>Herramientas adicionales pueden ser añadidas
+		mediante paquetes de Unity (por ejemplo, ProBuilder para modelado
+		en editor).</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2699_3807639648" lang="es">
+<strong>3.4 Orden de dibujo de sprites 2D</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+En proyectos
+	2D, los sprites pueden superponerse. Unity determina <strong>qué
+	sprite se dibuja encima de otro</strong>  mediante:</p>
+<ul>
+<li><p><strong>Sorting Layer:</strong> define la capa
+		general de dibujo.</p></li>
+<li><p><strong>Order in Layer:</strong> define la
+		prioridad dentro de la capa.</p></li>
+</ul>
+<li><p><strong>Notas adicionales:</strong></p>
+<ul>
+<li><p>La posición Y puede influir solo en sistemas
+		específicos (tilemaps o Pixel Perfect).</p></li>
+<li><p>Otros factores como nombre del objeto o fecha de
+		creación <strong>no afectan</strong>  al orden de dibujo.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico:</strong></p>
+<ul>
+<li><p>Si un jugador debe aparecer delante de un fondo:</p>
+<ul>
+<li><p>Fondo → Sorting Layer “Background”, Order
+			0.</p></li>
+<li><p>Jugador → Sorting Layer “Characters”,
+			Order 1.</p></li>
+</ul>
+</li></ul>
+</li></li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2701_3807639648" lang="es">
+<strong>4. Gráficos y renderizado</strong></h1>
+<h2 id="__RefHeading___Toc2703_3807639648" lang="es">
+<strong>4.1 APIs gráficas 3D</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+Una <strong>API
+	gráfica</strong>  es un conjunto de librerías y funciones que
+	permite a los motores de juego interactuar con la GPU para dibujar
+	gráficos 3D o 2D de manera eficiente. Facilita la renderización de
+	modelos, texturas, luces y efectos visuales sin tener que programar
+	directamente en hardware.</p></li>
+<li><p><strong>APIs destacadas:</strong></p>
+<ul>
+<li><p><strong>OpenGL:</strong> multiplataforma,
+		ampliamente usado para gráficos 2D y 3D.</p></li>
+<li><p><strong>DirectX:</strong> exclusivo de Windows,
+		potente para videojuegos en PC y consolas Xbox.</p></li>
+<li><p><strong>Vulkan:</strong> multiplataforma moderna,
+		permite control avanzado sobre GPU y rendimiento.</p></li>
+</ul>
+<li><p><strong>Trampas de examen:</strong></p>
+<ul>
+<li><p>Nombres como “3DPower” o “Sound3D” <strong>no
+		son APIs gráficas reales</strong>.</p></li>
+<li><p>Siempre distinguir entre APIs gráficas y
+		librerías de audio o físicas.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico:</strong></p>
+<ul>
+<li><p>Unity puede usar OpenGL o DirectX según la
+		plataforma.</p></li>
+<li><p>Unreal Engine usa DirectX en Windows y Metal en
+		macOS/iOS.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2705_3807639648" lang="es">
+<strong>4.2 Renderizado (Rendering)</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+El <strong>renderizado</strong> 
+	es el proceso de generar una imagen visible en pantalla a partir de
+	modelos 2D o 3D, aplicando transformaciones matemáticas,
+	iluminación, texturas y materiales. Es la traducción de los datos
+	internos del motor a gráficos que percibe el jugador.</p></li>
+<li><p><strong>Conceptos clave:</strong></p>
+<ul>
+<li><p><strong>Polígono base:</strong> triángulos,
+		usados para modelar superficies.</p></li>
+<li><p><strong>Texturizado:</strong> aplicar imágenes
+		sobre triángulos para dar color, detalles y realismo.</p></li>
+<li><p><strong>Shaders:</strong> programas que calculan
+		efectos visuales, iluminación y sombreado.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico:</strong></p>
+<ul>
+<li><p>Un modelo 3D de un árbol está formado por
+		triángulos, cada uno con texturas de hojas y corteza, y
+		renderizado por la GPU en tiempo real.</p></li>
+</ul>
+<li><p><strong>Notas adicionales:</strong></p>
+<ul>
+<li><p>Renderizado incluye tanto gráficos 3D como 2D
+		(sprites).</p></li>
+<li><p>No depende exclusivamente de una API o hardware,
+		aunque estas afectan rendimiento y compatibilidad.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2707_3807639648" lang="es">
+<strong>4.3 Animación</strong></h2>
+<ul>
+<li><p><strong>Animación 2D:</strong></p>
+<ul>
+<li><p>Técnica de mover o transformar imágenes
+		bidimensionales para crear ilusión de movimiento.</p></li>
+<li><p>Incluye <strong>spritesheets</strong>,
+		interpolación de frames y movimiento de objetos 2D.</p></li>
+<li><p>Ejemplo: caminar de un personaje en un juego de
+		plataformas 2D.</p></li>
+</ul>
+<li><p><strong>Animación 3D:</strong></p>
+<ul>
+<li><p>Movimiento de modelos tridimensionales mediante
+		<strong>rigging</strong>  (esqueleto), <strong>keyframes</strong>  y
+		<strong>blendshapes</strong>.</p></li>
+<li><p>Permite animar personajes complejos, vehículos o
+		entornos.</p></li>
+<li><p>Ejemplo: animación de un enemigo atacando en un
+		juego 3D.</p></li>
+</ul>
+<li><p><strong>Notas adicionales:</strong></p>
+<ul>
+<li><p>La animación está íntimamente ligada al
+		subsistema de actualización para sincronizar posiciones y eventos.</p></li>
+<li><p>Renderizado y animación trabajan juntos: los
+		frames calculados por animación se dibujan en pantalla mediante
+		renderizado.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2709_3807639648" lang="es">
+<strong>5. Ciclos y tipos de juego</strong></h1>
+<h2 id="__RefHeading___Toc2711_3807639648" lang="es">
+<strong>5.1 Juegos en tiempo real</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+Los <strong>juegos
+	en tiempo real</strong>  son aquellos en los que la acción ocurre de
+	manera continua y simultánea, sin esperar a turnos del jugador.
+	Todos los objetos del juego se actualizan constantemente según la
+	lógica y las entradas del jugador.</p></li>
+<li><p><strong>Subsistema clave:</strong></p>
+<ul>
+<li><p><strong>Subsistema de actualización:</strong>
+		mantiene posiciones de personajes, enemigos, obstáculos y otros
+		objetos en tiempo real.</p></li>
+<li><p><strong>Subsistema de entrada:</strong> detecta
+		acciones del jugador (teclado, ratón, gamepad o táctil).</p></li>
+<li><p><strong>Ciclo del juego:</strong> coordina la
+		ejecución de los subsistemas en cada frame.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico:</strong></p>
+<ul>
+<li><p>Endless runner:</p>
+<ul>
+<li><p>El jugador se mueve automáticamente.</p></li>
+<li><p>Obstáculos y enemigos se actualizan
+			constantemente.</p></li>
+<li><p>La detección de salto se realiza mediante input
+			y la actualización calcula nueva posición y colisiones.</p></li>
+<li><p>El renderizado dibuja los frames en tiempo real
+			mientras el audio reproduce efectos.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Notas adicionales:</strong></p>
+<ul>
+<li><p>Los juegos en tiempo real requieren bucles con
+		frecuencia suficiente para que el jugador perciba continuidad
+		(30–60 fps).</p></li>
+<li><p>La coordinación de ciclo y actualización es
+		crítica para evitar <strong>desincronización de físicas o
+		animaciones</strong>.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2713_3807639648" lang="es">
+<strong>5.2 Juegos por turnos</strong></h2>
+<ul>
+<li><p><strong>Definición:</strong>
+Los <strong>juegos
+	por turnos</strong>  son aquellos en los que la acción ocurre de
+	manera discreta: cada jugador o unidad realiza acciones secuenciales
+	según reglas establecidas, en vez de en tiempo real.</p></li>
+<li><p><strong>Subsistema clave:</strong></p>
+<ul>
+<li><p>Aunque pueden usar un ciclo de juego, este se
+		adapta para <strong>procesar eventos por turno</strong>, no por
+		frame.</p></li>
+<li><p>La actualización controla el estado de objetos y
+		aplica reglas solo cuando es el turno correspondiente.</p></li>
+</ul>
+<li><p><strong>Ejemplo práctico:</strong></p>
+<ul>
+<li><p>Ajedrez digital:</p>
+<ul>
+<li><p>Cada jugador mueve una pieza por turno.</p></li>
+<li><p>El ciclo del juego no itera constantemente sobre
+			todas las piezas, sino que espera la acción del jugador.</p></li>
+<li><p>La lógica de reglas (movimientos permitidos,
+			detección de jaque) se gestiona en la actualización.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Notas adicionales:</strong></p>
+<ul>
+<li><p>Juegos por turnos pueden ser implementados en
+		motores de tiempo real, pero la ejecución de la lógica se adapta
+		a eventos discretos.</p></li>
+<li><p>Algunos juegos combinan modos por turnos y tiempo
+		real (ej. Final Fantasy Tactics ), mostrando la
+		flexibilidad del motor y los subsistemas.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2715_3807639648" lang="es">
+<strong>Resumen compacto – Unidad 04: Análisis de motores de
+juegos</strong></h1>
+<h2 id="__RefHeading___Toc2717_3807639648" lang="es">
+<strong>1. Arquitectura general de un motor de videojuegos</strong></h2>
+<ul>
+<li><p><strong>Ciclo del juego (Game Loop):</strong></p>
+<ul>
+<li><p>Bucle principal que coordina todos los
+		subsistemas (entrada → red → actualización → renderizado →
+		audio).</p></li>
+<li><p>Mantiene coherencia temporal, frecuencia típica
+		30–60 fps.</p></li>
+<li><p>Diferencia clave: ciclo coordina, <strong>actualización
+		ejecuta la lógica</strong>.</p></li>
+</ul>
+<li><p><strong>Subsistema de actualización:</strong></p>
+<ul>
+<li><p>Cerebro del juego: gestiona estado de jugador,
+		enemigos y objetos.</p></li>
+<li><p>Aplica reglas, físicas, colisiones, IA y efectos
+		de interacciones.</p></li>
+<li><p>Recibe input y envía datos a otros subsistemas.</p></li>
+</ul>
+<li><p><strong>Otros subsistemas:</strong></p>
+<ul>
+<li><p>Entrada (input), vídeo/renderizado, audio,
+		físicas/colisiones/animación, IA, red, gestión de recursos.</p></li>
+<li><p>Cada subsistema tiene función específica y
+		comunica datos al subsistema de actualización o ciclo del juego.</p></li>
+</ul>
+<li><p><strong>Componentes del motor:</strong></p>
+<ul>
+<li><p>Motor gráfico, motor de audio, motor de
+		físicas/animación.</p></li>
+<li><p>Evitar términos inventados como “motor
+		actividad”.</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2719_3807639648" lang="es">
+<strong>2. Clasificación y tipos de motores de juegos</strong></h2>
+<ul>
+<li><p><strong>Motores destacados:</strong></p>
+<ul>
+<li><p>Unity (C#, 2D/3D, Hierarchy + Inspector).</p></li>
+<li><p>Unreal Engine (C++ core, Blueprints, gráficos
+		AAA).</p></li>
+<li><p>Godot (GDScript, Node base, open source).</p></li>
+<li><p>Otros: CryEngine, GameMaker Studio, Defold,
+		StencylWorks, LibGDX.</p></li>
+</ul>
+<li><p><strong>Especialización de motores:</strong></p>
+<ul>
+<li><p>Por plataforma: móvil, PC, consola, web.</p></li>
+<li><p>Por tipo de juego: FPS, RTS, endless runner,
+		puzzle.</p></li>
+<li><p>Por lenguaje: C#, C++, GDScript, Java.</p></li>
+<li><p>Nota: no se especializan por edad del usuario.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2721_3807639648" lang="es">
+<strong>3. Herramientas y edición en Unity</strong></h2>
+<ul>
+<li><p><strong>Jerarquía y contenedores:</strong></p>
+<ul>
+<li><p>Scene = contenedor global.</p></li>
+<li><p>Contenedores internos (p.ej. CompleteLevelArt )
+		agrupan elementos de nivel.</p></li>
+</ul>
+<li><p><strong>Paneles del editor:</strong></p>
+<ul>
+<li><p>Hierarchy → objetos de la escena.</p></li>
+<li><p>Inspector → componentes y propiedades del
+		objeto.</p></li>
+</ul>
+<li><p><strong>Transformaciones y herramientas:</strong></p>
+<ul>
+<li><p>Mover, Rotar, Escalar.</p></li>
+<li><p>Gizmos/flechas: 2D → 2 flechas, 3D → 3
+		flechas.</p></li>
+<li><p>Simetría 2D: Scale X = -1.</p></li>
+</ul>
+<li><p><strong>Orden de dibujo sprites 2D:</strong></p>
+<ul>
+<li><p>Sorting Layer + Order in Layer determinan
+		prioridad.</p></li>
+<li><p>Posición Y solo influye en casos específicos.</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2723_3807639648" lang="es">
+<strong>4. Gráficos y renderizado</strong></h2>
+<ul>
+<li><p><strong>APIs gráficas:</strong> OpenGL, DirectX,
+	Vulkan.</p>
+<ul>
+<li><p>Trampas de examen: 3DPower o Sound3D no son APIs
+		gráficas.</p></li>
+</ul>
+<li><p><strong>Renderizado:</strong></p>
+<ul>
+<li><p>Proceso de generar imágenes a partir de modelos
+		2D/3D.</p></li>
+<li><p>Polígono base: <strong>triángulos</strong>,
+		texturizados, procesados por shaders.</p></li>
+</ul>
+<li><p><strong>Animación:</strong></p>
+<ul>
+<li><p>2D → spritesheets, interpolación de frames.</p></li>
+<li><p>3D → rigging, keyframes, blendshapes.</p></li>
+<li><p>Sincronizada con subsistema de actualización
+		para consistencia de movimiento.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2725_3807639648" lang="es">
+<strong>5. Ciclos y tipos de juego</strong></h2>
+<ul>
+<li><p><strong>Juegos en tiempo real:</strong></p>
+<ul>
+<li><p>Acción continua, todos los objetos se actualizan
+		constantemente.</p></li>
+<li><p>Ejemplo: endless runner  → input
+		detecta saltos, actualización mueve jugador y obstáculos, ciclo
+		coordina ejecución.</p></li>
+</ul>
+<li><p><strong>Juegos por turnos:</strong></p>
+<ul>
+<li><p>Acción discreta, cada jugador actúa
+		secuencialmente.</p></li>
+<li><p>Ejemplo: ajedrez digital → lógica se procesa
+		por turno, ciclo adapta bucle para eventos discretos.</p></li>
+<li><p>Juegos híbridos combinan ambos sistemas.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+Multimedia y Dispositivos Móviles – Unidad 1
+– Análisis de tecnologías para
+aplicaciones en dispositivos móviles</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+Multimedia y Dispositivos Móviles – Unidad 1
+– Análisis de tecnologías para
+aplicaciones en dispositivos móviles</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1769_825933148">1. Limitaciones y características de los dispositivos móviles</a></p>
+<p><a href="#__RefHeading___Toc4148_825933148">1.1 Limitaciones físicas y energéticas</a></p>
+<p><a href="#__RefHeading___Toc4150_825933148">1.2 Limitaciones de memoria y almacenamiento</a></p>
+<p><a href="#__RefHeading___Toc4152_825933148">1.3 Limitaciones de interacción y usabilidad</a></p>
+<p><a href="#__RefHeading___Toc4154_825933148">1.4 Limitaciones de conectividad y latencia</a></p>
+<p><a href="#__RefHeading___Toc4156_825933148">1.5 Propósitos y ventajas</a></p>
+<p><a href="#__RefHeading___Toc1771_825933148">2. Sistemas operativos móviles</a></p>
+<p><a href="#__RefHeading___Toc4158_825933148">2.1 Principales sistemas operativos móviles</a></p>
+<p><a href="#__RefHeading___Toc4160_825933148">2.2 Características y enfoque de los SO móviles</a></p>
+<p><a href="#__RefHeading___Toc4162_825933148">2.3 Estado de los sistemas operativos</a></p>
+<p><a href="#__RefHeading___Toc4164_825933148">2.4 Versiones de Android importantes</a></p>
+<p><a href="#__RefHeading___Toc1773_825933148">3. Enfoques de desarrollo para móviles</a></p>
+<p><a href="#__RefHeading___Toc4166_825933148">3.1 Desarrollo nativo</a></p>
+<p><a href="#__RefHeading___Toc4168_825933148">3.2 Desarrollo multiplataforma</a></p>
+<p><a href="#__RefHeading___Toc4170_825933148">3.3 Multiplataforma basada en HTML5 / híbrida</a></p>
+<p><a href="#__RefHeading___Toc4172_825933148">3.4 Elección del enfoque</a></p>
+<p><a href="#__RefHeading___Toc1775_825933148">4. Entornos de desarrollo (IDEs) y SDK</a></p>
+<p><a href="#__RefHeading___Toc4174_825933148">4.1 Características mínimas de un IDE para desarrollo móvil</a></p>
+<p><a href="#__RefHeading___Toc4176_825933148">4.2 Android Studio</a></p>
+<p><a href="#__RefHeading___Toc4178_825933148">4.3 Gradle</a></p>
+<p><a href="#__RefHeading___Toc4180_825933148">4.4 Directorios principales de un proyecto Android</a></p>
+<p><a href="#__RefHeading___Toc4182_825933148">4.5 SDK de Android</a></p>
+<p><a href="#__RefHeading___Toc4184_825933148">4.6 Integración con control de versiones (Git/GitHub)</a></p>
+<p><a href="#__RefHeading___Toc1777_825933148">5. AndroidManifest y configuración de la app</a></p>
+<p><a href="#__RefHeading___Toc4186_825933148">5.1 Función del AndroidManifest.xml</a></p>
+<p><a href="#__RefHeading___Toc4188_825933148">5.2 Declaración de permisos y features</a></p>
+<p><a href="#__RefHeading___Toc4190_825933148">5.3 Restricción de disponibilidad de la app</a></p>
+<p><a href="#__RefHeading___Toc4192_825933148">5.4 Compatibilidad de versiones</a></p>
+<p><a href="#__RefHeading___Toc1779_825933148">6. Emuladores y ejecución en dispositivos</a></p>
+<p><a href="#__RefHeading___Toc4194_825933148">6.1 Android Virtual Device (AVD)</a></p>
+<p><a href="#__RefHeading___Toc4196_825933148">6.2 Ejecución en emulador</a></p>
+<p><a href="#__RefHeading___Toc4198_825933148">6.3 Ejecución en dispositivo real</a></p>
+<p><a href="#__RefHeading___Toc4200_825933148">6.4 Compatibilidad de versiones</a></p>
+<p><a href="#__RefHeading___Toc4202_825933148">6.5 Resumen de buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1781_825933148">7. Recursos de la app</a></p>
+<p><a href="#__RefHeading___Toc4204_825933148">7.1 Directorios principales de recursos</a></p>
+<p><a href="#__RefHeading___Toc4206_825933148">7.2 Acceso a recursos desde código</a></p>
+<p><a href="#__RefHeading___Toc4208_825933148">7.3 Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1783_825933148">8. Distribución y publicación</a></p>
+<p><a href="#__RefHeading___Toc4210_825933148">8.1 Google Play</a></p>
+<p><a href="#__RefHeading___Toc4212_825933148">8.2 Control de disponibilidad de la aplicación</a></p>
+<p><a href="#__RefHeading___Toc4214_825933148">8.3 Publicación</a></p>
+<p><a href="#__RefHeading___Toc4216_825933148">8.4 Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1785_825933148">9. Otros conceptos complementarios</a></p>
+<p><a href="#__RefHeading___Toc4218_825933148">9.1 Seguridad y firma de aplicaciones</a></p>
+<p><a href="#__RefHeading___Toc4220_825933148">9.2 Versiones y compatibilidad de apps</a></p>
+<p><a href="#__RefHeading___Toc4222_825933148">9.3 Depuración y monitoreo</a></p>
+<p><a href="#__RefHeading___Toc4224_825933148">9.4 Relación entre SDK, IDE, Gradle y Manifest</a></p>
+<p><a href="#__RefHeading___Toc1787_825933148">Resumen compacto – Unidad 1 – Análisis de tecnologías para aplicaciones en dispositivos móviles</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1769_825933148" lang="es">
+<strong>1. Limitaciones y características de los dispositivos
+móviles</strong></h1>
+<h2 id="__RefHeading___Toc4148_825933148" lang="es">
+1.1 Limitaciones físicas y energéticas</h2>
+<ul>
+<li><p><strong>Batería</strong>: los dispositivos
+	móviles funcionan con baterías de capacidad limitada. La duración
+	depende del uso de CPU, GPU, pantalla y conectividad.</p></li>
+<li><p><strong>Throttling del procesador</strong>: los
+	CPUs móviles reducen su frecuencia para ahorrar energía cuando la
+	carga es alta.</p></li>
+<li><p><strong>Ventilación</strong>: generalmente <strong>no
+	tienen ventilación activa</strong>, por lo que la disipación de
+	calor depende de la carcasa y el diseño térmico.</p></li>
+<li><p><strong>Conectividad</strong>: no siempre están
+	permanentemente conectados a la red eléctrica, lo que impone
+	restricciones en la ejecución continua.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4150_825933148" lang="es">
+1.2 Limitaciones de memoria y almacenamiento</h2>
+<ul>
+<li><p><strong>Memoria RAM limitada</strong>: no permite
+	ejecutar aplicaciones pesadas simultáneamente sin afectar
+	rendimiento.</p></li>
+<li><p><strong>Almacenamiento</strong>: limitado por la
+	capacidad interna o microSD; no se dispone de almacenamiento
+	“ilimitado” como en PCs.</p></li>
+<li><p>Implica <strong>optimización del uso de recursos</strong>,
+	especialmente para aplicaciones multimedia.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4152_825933148" lang="es">
+1.3 Limitaciones de interacción y usabilidad</h2>
+<ul>
+<li><p><strong>Pantalla táctil</strong>: el diseño de
+	la interfaz debe adaptarse a la manipulación con dedos, evitando
+	elementos demasiado pequeños.</p></li>
+<li><p><strong>Tamaño reducido</strong>: limita la
+	cantidad de información visible simultáneamente.</p></li>
+<li><p><strong>Entorno de uso</strong>: posibles reflejos
+	en exteriores afectan la visibilidad.</p></li>
+<li><p><strong>Entrada limitada</strong>: normalmente no
+	disponen de ratón físico ni teclado completo.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4154_825933148" lang="es">
+1.4 Limitaciones de conectividad y latencia</h2>
+<ul>
+<li><p>Transferencias de datos pueden experimentar
+	<strong>latencias</strong>  o interrupciones.</p></li>
+<li><p>Consumo de datos y batería debe ser controlado en
+	aplicaciones que dependen de la red.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4156_825933148" lang="es">
+1.5 Propósitos y ventajas</h2>
+<ul>
+<li><p>Los móviles permiten:
+• <strong>Movilidad</strong>:
+	portabilidad y uso en cualquier lugar.
+• <strong>Comunicaciones</strong>:
+	llamadas, mensajería, video.
+• <strong>Trabajo</strong>:
+	productividad, gestión de información.
+• <strong>Entretenimiento</strong>:
+	multimedia, juegos, redes sociales.</p></li>
+<li><p><strong>No son principalmente servidores de datos</strong>,
+	aunque pueden cumplir tareas limitadas.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1771_825933148" lang="es">
+<strong>2. Sistemas operativos móviles</strong></h1>
+<h2 id="__RefHeading___Toc4158_825933148" lang="es">
+2.1 Principales sistemas operativos móviles</h2>
+<ul>
+<li><p><strong>Android</strong> 
+• Desarrollado
+	inicialmente por <strong>Android Inc.</strong>, adquirido por Google
+	en 2005.
+• Sistema operativo basado en <strong>Linux Kernel</strong>,
+	diseñado para dispositivos con pantalla táctil y recursos
+	limitados.
+• Código abierto parcialmente (AOSP), permite
+	personalización por fabricantes.
+• Orientado a <strong>smartphones,
+	tablets, TV, wearables</strong>  y otros dispositivos.</p></li>
+<li><p><strong>iOS</strong> 
+• Desarrollado por
+	<strong>Apple</strong>  para <strong>iPhone, iPad y iPod Touch</strong>.
+•
+	Sistema cerrado, con <strong>estricto control de hardware y
+	distribución de apps</strong>  a través de App Store.
+•
+	Basado en <strong>Darwin (UNIX)</strong>, con frameworks como Cocoa
+	Touch para desarrollo de apps.</p></li>
+<li><p><strong>Windows Mobile / Windows Phone</strong> 
+•
+	Windows Mobile: SO anterior de Microsoft para PDAs y smartphones.
+•
+	Windows Phone: sucesor (2010), con <strong>interfaz Metro</strong>,
+	integración con servicios Microsoft y soporte limitado tras 2017.</p></li>
+<li><p><strong>BlackBerry OS</strong> 
+•
+	Desarrollado por BlackBerry Ltd.
+• Orientado a <strong>comunicaciones
+	seguras y correo electrónico corporativo</strong>.
+•
+	Actualmente obsoleto, reemplazado por BlackBerry 10 y sistemas
+	Android en dispositivos nuevos.</p></li>
+<li><p><strong>WebOS</strong> 
+• Inicialmente
+	desarrollado por Palm, adquirido por HP.
+• Sistema multitarea
+	basado en Linux, con <strong>interfaz por tarjetas</strong>.
+•
+	Abandonado en 2011 para smartphones, pero usado posteriormente en
+	Smart TV.</p></li>
+<li><p><strong>Tizen</strong> 
+• Desarrollado por
+	<strong>Samsung y Linux Foundation</strong>.
+• Basado en
+	Linux, usado en <strong>wearables, TV y algunos smartphones</strong>.</p></li>
+<li><p><strong>Symbian</strong> 
+• Desarrollado por
+	Symbian Ltd., usado en Nokia y otros fabricantes.
+• Fue
+	dominante antes de iOS y Android, actualmente obsoleto.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4160_825933148" lang="es">
+2.2 Características y enfoque de los SO móviles</h2>
+<ul>
+<li><p><strong>Kernel</strong>: base del sistema,
+	gestiona memoria, procesos, seguridad, drivers.</p></li>
+<li><p><strong>Framework de aplicaciones</strong>:
+	proporciona APIs de alto nivel para el desarrollo (Activities,
+	Services, Views).</p></li>
+<li><p><strong>Librerías nativas</strong>: C/C++ para
+	multimedia, gráficos, bases de datos, etc.</p></li>
+<li><p><strong>Capa de aplicaciones</strong>: apps del
+	sistema y de usuario.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4162_825933148" lang="es">
+2.3 Estado de los sistemas operativos</h2>
+<ul>
+<li><p><strong>Activos</strong>: Android, iOS, Tizen (en
+	wearables y TV).</p></li>
+<li><p><strong>Legado/Obsoletos</strong>: Windows Mobile,
+	Windows Phone, WebOS, Symbian, BlackBerry OS.</p></li>
+<li><p>Importancia académica: las preguntas de examen
+	pueden referirse a SO obsoletos por <strong>historia, evolución o
+	comparación de características</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4164_825933148" lang="es">
+2.4 Versiones de Android importantes</h2>
+<ul>
+<li><p>Cada versión de Android tiene un <strong>SDK</strong> 
+	y un <strong>API Level</strong>  asociado.</p></li>
+<li><p>Cambios destacados en versiones relevantes:
+•
+	<strong>Android 6 (Marshmallow)</strong>: modelo de permisos
+	dinámico.
+• <strong>Android 8 (Oreo)</strong>: restricciones
+	en ejecución en segundo plano y ahorro de energía.
+•
+	<strong>Android 10+</strong>: mejoras en privacidad, seguridad y
+	compatibilidad con nuevos sensores y cámaras.
+• <strong>Versiones
+	antiguas (Lollipop, KitKat, Jelly Bean)</strong>: cambios en diseño
+	de UI y soporte multiventana.</p></li>
+<li><p>Compatibilidad app/emulador: el emulador debe
+	tener <strong>API igual o superior</strong>  a la minSdkVersion 
+	de la aplicación.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1773_825933148" lang="es">
+<strong>3. Enfoques de desarrollo para móviles</strong></h1>
+<h2 id="__RefHeading___Toc4166_825933148" lang="es">
+3.1 Desarrollo nativo</h2>
+<ul>
+<li><p><strong>Definición</strong>: programar
+	directamente usando <strong>las herramientas y APIs propias del
+	sistema operativo</strong>.</p></li>
+<li><p><strong>Lenguajes y herramientas</strong>:
+•
+	Android: Java o Kotlin + Android SDK + Android Studio.
+• iOS:
+	Swift o Objective-C + Xcode + iOS SDK.</p></li>
+<li><p><strong>Ventajas</strong>:
+• Rendimiento
+	óptimo y acceso completo a las APIs del dispositivo.
+• Mejor
+	integración con hardware y características nativas.</p></li>
+<li><p><strong>Desventajas</strong>:
+• Código
+	específico por plataforma → duplicación de esfuerzo si se quiere
+	soportar múltiples SO.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4168_825933148" lang="es">
+3.2 Desarrollo multiplataforma</h2>
+<ul>
+<li><p><strong>Definición</strong>: escribir una sola
+	base de código que se <strong>compila o interpreta para varias
+	plataformas</strong>.</p></li>
+<li><p><strong>Plataformas / frameworks</strong>:
+•
+	<strong>Xamarin</strong>: C#, compila a nativo.
+• <strong>Flutter</strong>:
+	Dart, compilación a código nativo ARM.
+• <strong>React
+	Native</strong>: JavaScript, componentes nativos; parcialmente
+	compilado a nativo.</p></li>
+<li><p><strong>Ventajas</strong>:
+• Reutilización
+	de código, menor coste de desarrollo.
+• Distribución
+	simultánea para Android e iOS.</p></li>
+<li><p><strong>Desventajas</strong>:
+•
+	Limitaciones en acceso a algunas APIs nativas avanzadas.
+•
+	Posible sobrecarga de rendimiento frente a desarrollo 100% nativo.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4170_825933148" lang="es">
+3.3 Multiplataforma basada en HTML5 / híbrida</h2>
+<ul>
+<li><p><strong>Definición</strong>: apps construidas con
+	<strong>HTML, CSS y JavaScript</strong>  y empaquetadas en un
+	contenedor nativo (WebView) usando frameworks como <strong>Cordova/PhoneGap,
+	Ionic</strong>.</p></li>
+<li><p>Ventajas:
+• Desarrollo rápido,
+	reutilización de habilidades web.
+• Distribución
+	multiplataforma con un solo código base.</p></li>
+<li><p>Desventajas:
+• Rendimiento inferior
+	frente a apps nativas.
+• Acceso limitado o indirecto a APIs
+	nativas → requiere plugins.</p></li>
+<li><p>Ejemplo de uso: apps simples de contenido
+	dinámico, formularios, juegos ligeros.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4172_825933148" lang="es">
+3.4 Elección del enfoque</h2>
+<ul>
+<li><p>Depende de:
+• Objetivos del proyecto
+	(performance vs rapidez de desarrollo).
+• Recursos
+	disponibles (equipo especializado por SO o un equipo
+	multidisciplinario).
+• Requerimientos de hardware/software
+	específico del dispositivo.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1775_825933148" lang="es">
+<strong>4. Entornos de desarrollo (IDEs) y SDK</strong></h1>
+<h2 id="__RefHeading___Toc4174_825933148" lang="es">
+4.1 Características mínimas de un IDE para desarrollo móvil</h2>
+<p>Un IDE moderno debe incluir:</p>
+<ul>
+<li><p><strong>Editor de código avanzado</strong> 
+•
+	Resaltado de sintaxis, autocompletado, refactorización, navegación
+	entre clases y funciones.</p></li>
+<li><p><strong>Compilador y empaquetador (build/deploy)</strong> 
+•
+	Genera el archivo ejecutable final (APK/AAB en Android), incluyendo
+	firma y optimización.</p></li>
+<li><p><strong>Depurador</strong> 
+• Permite
+	ejecutar la app paso a paso, inspeccionar variables, detectar
+	errores y analizar logs.</p></li>
+<li><p><strong>Emulador o capacidad de ejecución en
+	dispositivos reales</strong> 
+• Para probar apps sin necesidad
+	de múltiples dispositivos físicos.</p></li>
+<li><p><strong>Editor de recursos</strong> 
+•
+	Gestión de layouts, strings, traducciones, imágenes básicas.</p></li>
+<li><p><strong>Integración con sistemas de control de
+	versiones (VCS)</strong> 
+• Git, GitHub, SVN, CVS para gestión
+	de cambios y colaboración.</p></li>
+</ul>
+<p>⚠️ Nota: herramientas como “analizador de
+archivos” no son indispensables ni específicas para desarrollo
+móvil.</p>
+<hr/>
+<h2 id="__RefHeading___Toc4176_825933148" lang="es">
+4.2 Android Studio</h2>
+<ul>
+<li><p><strong>IDE oficial para Android</strong>, basado
+	en IntelliJ IDEA.</p></li>
+<li><p><strong>Funcionalidades clave</strong>:
+•
+	Editor de código, depuración, emulación de dispositivos (AVD),
+	Gradle build, integración con Git.
+• Acceso directo a SDK,
+	herramientas de testing, emuladores externos (Genymotion) y
+	dispositivos reales.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4178_825933148" lang="es">
+4.3 Gradle</h2>
+<ul>
+<li><p>Sistema de <strong>automatización de builds</strong> 
+	usado por Android Studio.</p></li>
+<li><p>Archivos importantes:
+• build.gradle
+	(Module: app): define dependencias, plugins, configuración
+	de build específica del módulo.
+• build.gradle
+	(Project): configuraciones generales del proyecto.</p></li>
+<li><p>Funciones:
+• Gestionar <strong>dependencias
+	externas</strong>.
+• Configurar <strong>tipos de build</strong>,
+	versiones de SDK y firmas de apps.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4180_825933148" lang="es">
+4.4 Directorios principales de un proyecto Android</h2>
+<ul>
+<li><p>app/src/main/java:
+	código fuente Java/Kotlin.</p></li>
+<li><p>app/src/main/res:
+	recursos compilables accesibles vía R 
+	(layouts, drawables, strings, styles).</p></li>
+<li><p>app/src/main/assets:
+	archivos <strong>sin procesar</strong>, leídos en ejecución (JSON,
+	fuentes, datos estáticos).</p></li>
+<li><p>app/build: directorio
+	de <strong>compilación</strong>, generado automáticamente.</p></li>
+<li><p>Otros archivos importantes:
+•
+	settings.gradle: configuración del
+	proyecto y módulos.
+• gradle-wrapper.properties:
+	versión de Gradle utilizada.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4182_825933148" lang="es">
+4.5 SDK de Android</h2>
+<ul>
+<li><p>Conjunto de <strong>herramientas, librerías y
+	utilidades</strong>  para desarrollar aplicaciones.</p></li>
+<li><p>Incluye:
+• Librerías nativas en C/C++ para
+	multimedia, gráficos, base de datos.
+• Herramientas de línea
+	de comandos: adb  (Android Debug
+	Bridge), avdmanager  (gestión de
+	emuladores).</p></li>
+<li><p>Cada versión de Android tiene <strong>un SDK
+	asociado</strong>  identificado por su <strong>API Level</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4184_825933148" lang="es">
+4.6 Integración con control de versiones (Git/GitHub)</h2>
+<ul>
+<li><p><strong>Clonación de proyectos</strong>: File
+	&gt; New &gt; Project from Version Control.</p></li>
+<li><p>.gitignore: indica
+	archivos/directorios que <strong>no deben subirse</strong>  al
+	repositorio ( build/, .gradle/,
+	local.properties ).</p></li>
+<li><p>Permite colaboración y <strong>historial de
+	cambios</strong>, fundamental en proyectos profesionales.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1777_825933148" lang="es">
+<strong>5. AndroidManifest y configuración de la app</strong></h1>
+<h2 id="__RefHeading___Toc4186_825933148" lang="es">
+5.1 Función del AndroidManifest.xml</h2>
+<ul>
+<li><p>Archivo <strong>central de configuración</strong> 
+	de la aplicación Android.</p></li>
+<li><p>Contiene información esencial que el sistema
+	necesita para ejecutar la app:
+• <strong>Nombre del paquete</strong> 
+	de la aplicación.
+• <strong>Componentes</strong>:
+	Activities, Services, Broadcast Receivers, Content Providers.
+•
+	<strong>Permisos</strong>  que la app requiere ( &lt;uses-permission&gt; ).
+•
+	<strong>Características del hardware/software</strong>  requeridas
+	( &lt;uses-feature&gt; ).
+•
+	Versiones mínimas y máximas de Android soportadas ( &lt;uses-sdk&gt; ).</p></li>
+</ul>
+<p>⚠️ No se declara el <strong>tamaño final del APK</strong>,
+ni claves de firma en el manifiesto.</p>
+<hr/>
+<h2 id="__RefHeading___Toc4188_825933148" lang="es">
+5.2 Declaración de permisos y features</h2>
+<ul>
+<li><p><strong>Permisos (</strong><strong>&lt;uses-permission&gt;</strong><strong>)</strong> 
+•
+	Permiten que la app acceda a recursos sensibles (cámara,
+	almacenamiento, contactos).
+• No garantizan la existencia del
+	hardware; solo autorización para usarlo.</p></li>
+<li><p><strong>Features (</strong><strong>&lt;uses-feature&gt;</strong><strong>)</strong> 
+•
+	Indican <strong>requisitos hardware/software</strong>  del
+	dispositivo (cámara, GPS, Bluetooth).
+• Ejemplo:</p>
+<pre><code>&lt;uses-feature android:name="android.hardware.camera" android:required="true"/&gt;</code></pre><p>
+	• Permite <strong>filtrado de disponibilidad</strong>  en Google
+	Play y evita instalación en dispositivos sin la función.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4190_825933148" lang="es">
+5.3 Restricción de disponibilidad de la app</h2>
+<ul>
+<li><p>Métodos válidos:
+• Según <strong>hardware
+	o software requerido</strong>  ( &lt;uses-feature&gt; ).
+•
+	Según <strong>configuración de pantalla, densidad, orientación</strong>.
+•
+	Según <strong>versiones de plataforma</strong>  ( minSdkVersion,
+	maxSdkVersion ).</p></li>
+<li><p>No se puede restringir por <strong>propósito del
+	dispositivo</strong>  (trabajo, entretenimiento, etc.).</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4192_825933148" lang="es">
+5.4 Compatibilidad de versiones</h2>
+<ul>
+<li><p><strong>minSdkVersion</strong>:
+	API mínima requerida; impide instalación en dispositivos con
+	versión inferior.</p></li>
+<li><p><strong>targetSdkVersion</strong>:
+	indica la versión de Android para la que la app está optimizada.</p></li>
+<li><p>Recomendación: el <strong>emulador o dispositivo</strong> 
+	debe tener <strong>API igual o superior a minSdkVersion</strong> 
+	para ejecutar correctamente la app.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1779_825933148" lang="es">
+<strong>6. Emuladores y ejecución en dispositivos</strong></h1>
+<h2 id="__RefHeading___Toc4194_825933148" lang="es">
+6.1 Android Virtual Device (AVD)</h2>
+<ul>
+<li><p><strong>Definición</strong>: gestor oficial de
+	emuladores de Android.</p></li>
+<li><p>Permite <strong>simular dispositivos móviles</strong> 
+	con diferentes configuraciones de hardware y software.</p></li>
+<li><p>Cada AVD incluye:
+• <strong>Perfil de
+	hardware</strong>  ( hardware-profile.xml ):
+	pantalla, CPU, RAM, sensores, cámara, almacenamiento.
+•
+	<strong>Imagen del sistema</strong>: versión específica de Android
+	(API Level).</p></li>
+<li><p>Se pueden crear <strong>tantos AVDs como se
+	necesite</strong>, permitiendo probar diferentes resoluciones,
+	versiones de Android y capacidades hardware.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4196_825933148" lang="es">
+6.2 Ejecución en emulador</h2>
+<ul>
+<li><p>Opciones de ejecución:
+• <strong>Emulador
+	de Android Studio</strong>  (oficial).
+• <strong>Emuladores
+	externos</strong>  como Genymotion.</p></li>
+<li><p>Ventajas del emulador:
+• Pruebas rápidas
+	sin necesidad de dispositivo físico.
+• Configuración de
+	diversos escenarios (pantalla, sensores, red).</p></li>
+<li><p>Recomendación: el emulador debe tener <strong>API
+	igual o superior</strong>  a la minSdkVersion 
+	de la app.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4198_825933148" lang="es">
+6.3 Ejecución en dispositivo real</h2>
+<ul>
+<li><p>Para ejecutar apps desde Android Studio en un
+	dispositivo físico:
+• <strong>Activar Depuración USB</strong> 
+	en el dispositivo.
+• Conectar mediante cable USB.
+•
+	Seleccionar el dispositivo en Android Studio como target.</p></li>
+<li><p>Permite pruebas reales de <strong>rendimiento,
+	sensores y conectividad</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4200_825933148" lang="es">
+6.4 Compatibilidad de versiones</h2>
+<ul>
+<li><p><strong>Versión de app vs versión de
+	emulador/dispositivo</strong>:
+• La app no puede ejecutarse
+	en un sistema con <strong>API inferior a </strong><strong>minSdkVersion</strong>.
+•
+	targetSdkVersion  indica la versión
+	para la que la app está optimizada, no bloquea la instalación.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4202_825933148" lang="es">
+6.5 Resumen de buenas prácticas</h2>
+<ul>
+<li><p>Crear AVDs que reflejen los <strong>dispositivos
+	más comunes</strong>  de los usuarios.</p></li>
+<li><p>Mantener múltiples perfiles para <strong>pruebas
+	de compatibilidad</strong>.</p></li>
+<li><p>Complementar pruebas en emulador con <strong>dispositivos
+	reales</strong>, especialmente para multimedia, sensores y
+	rendimiento.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1781_825933148" lang="es">
+<strong>7. Recursos de la app</strong></h1>
+<h2 id="__RefHeading___Toc4204_825933148" lang="es">
+7.1 Directorios principales de recursos</h2>
+<ul>
+<li><p><strong>res/</strong><strong>
+	(resources)</strong> 
+• Contiene recursos <strong>estructurados
+	y compilables</strong>  accesibles vía R.
+•
+	Subdirectorios típicos:</p>
+<ul>
+<li><p>drawable/: imágenes
+		y gráficos (PNG, SVG, XML).</p></li>
+<li><p>layout/: archivos
+		XML que definen la interfaz de usuario.</p></li>
+<li><p>values/: cadenas
+		( strings.xml ), colores, estilos,
+		dimensiones.</p></li>
+<li><p>mipmap/: iconos de
+		la aplicación.
+• Los recursos en res/ 
+		se <strong>compilan automáticamente</strong>  y se accede mediante
+		R.id  o R.layout.</p></li>
+</ul>
+<li><p><strong>assets/</strong> 
+•
+	Contiene <strong>archivos sin procesar</strong>  que la app lee en
+	ejecución.
+• Ejemplos: JSON, fuentes personalizadas,
+	archivos de datos, música o videos no optimizados.
+• No se
+	generan IDs en R; se accede mediante
+	AssetManager.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4206_825933148" lang="es">
+7.2 Acceso a recursos desde código</h2>
+<ul>
+<li><p><strong>Recursos compilados (</strong><strong>res/</strong><strong>)</strong>:
+•
+	findViewById(R.id.elemento)  para
+	elementos de UI.
+•
+	getResources().getString(R.string.mi_cadena) 
+	para strings.</p></li>
+<li><p><strong>Recursos sin procesar (</strong><strong>assets/</strong><strong>)</strong>:
+•
+	AssetManager.open("archivo.json") 
+	para lectura de datos en ejecución.
+• Útil para <strong>archivos
+	grandes o binarios</strong>, que no necesitan ser compilados.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4208_825933148" lang="es">
+7.3 Buenas prácticas</h2>
+<ul>
+<li><p>Separar <strong>recursos por tipo</strong>  y
+	<strong>densidad de pantalla</strong>  (mdpi, hdpi, xhdpi).</p></li>
+<li><p>Evitar duplicación de recursos; usar <strong>directivas
+	de valores</strong>  ( values/ ) para
+	mantener consistencia.</p></li>
+<li><p>Guardar en assets/ 
+	solo archivos que no requieren compilación ni acceso mediante R.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1783_825933148" lang="es">
+<strong>8. Distribución y publicación</strong></h1>
+<h2 id="__RefHeading___Toc4210_825933148" lang="es">
+8.1 Google Play</h2>
+<ul>
+<li><p><strong>Definición</strong>: tienda oficial de
+	aplicaciones para Android.</p></li>
+<li><p>Funciones principales:
+• Distribución de
+	aplicaciones a usuarios finales.
+• Gestión de
+	<strong>actualizaciones automáticas</strong>.
+• Integración
+	con pagos y suscripciones.
+• Filtrado de dispositivos según:</p>
+<ul>
+<li><p>Hardware requerido ( &lt;uses-feature&gt; ).</p></li>
+<li><p>Versión mínima de Android ( minSdkVersion ).</p></li>
+<li><p>Región o país del usuario.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4212_825933148" lang="es">
+8.2 Control de disponibilidad de la aplicación</h2>
+<ul>
+<li><p><strong>Restricciones que se pueden aplicar</strong>:
+•
+	<strong>Hardware y software requerido</strong>: sensores, cámara,
+	GPS, Bluetooth.
+• <strong>Configuración de pantalla</strong>:
+	tamaño, densidad y orientación.
+• <strong>Versiones de
+	plataforma</strong>: minSdkVersion  y
+	targetSdkVersion.</p></li>
+<li><p><strong>No es posible restringir</strong>  según
+	el <strong>propósito del dispositivo</strong>  (trabajo,
+	entretenimiento, comunicación).</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4214_825933148" lang="es">
+8.3 Publicación</h2>
+<ul>
+<li><p>Pasos principales:
+• Generación de <strong>APK
+	o AAB firmado</strong>  con clave privada.
+• Pruebas de
+	compatibilidad en <strong>emulador y dispositivos reales</strong>.
+•
+	Subida a Google Play con información de la app, imágenes,
+	descripción y categorización.
+• Configuración de
+	<strong>restricciones de compatibilidad</strong>  para filtrar
+	dispositivos no soportados.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4216_825933148" lang="es">
+8.4 Buenas prácticas</h2>
+<ul>
+<li><p>Probar en <strong>múltiples versiones de Android
+	y perfiles de dispositivo</strong>  antes de publicar.</p></li>
+<li><p>Mantener <strong>consistencia en permisos y
+	features</strong>  entre manifiesto y Google Play.</p></li>
+<li><p>Usar control de versiones y herramientas de
+	integración continua para <strong>gestionar releases</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1785_825933148" lang="es">
+<strong>9. Otros conceptos complementarios</strong></h1>
+<h2 id="__RefHeading___Toc4218_825933148" lang="es">
+9.1 Seguridad y firma de aplicaciones</h2>
+<ul>
+<li><p><strong>Claves y keystore</strong>:
+• Cada
+	app Android debe ser <strong>firmada digitalmente</strong>  con una
+	clave privada ( keystore ) antes de la
+	distribución.
+• Permite verificar la <strong>integridad y
+	autenticidad</strong>  de la app.</p></li>
+<li><p><strong>Buenas prácticas</strong>:
+•
+	Mantener el keystore seguro y respaldado.
+• Evitar usar
+	claves de prueba para apps publicadas en Google Play.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4220_825933148" lang="es">
+9.2 Versiones y compatibilidad de apps</h2>
+<ul>
+<li><p>Cada app define en su <strong>AndroidManifest y
+	Gradle</strong>:
+• minSdkVersion:
+	versión mínima de Android requerida.
+• targetSdkVersion:
+	versión para la que la app está optimizada.</p></li>
+<li><p>La app puede ejecutarse en emuladores o
+	dispositivos con <strong>API igual o superior a minSdkVersion</strong>.</p></li>
+<li><p>Cambios de versión: usar control de versiones en
+	Gradle ( versionCode  y versionName )
+	para actualizaciones en Google Play.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4222_825933148" lang="es">
+9.3 Depuración y monitoreo</h2>
+<ul>
+<li><p><strong>Herramientas disponibles en Android
+	Studio</strong>:
+• <strong>Depurador</strong>: inspección de
+	variables, breakpoints, análisis de logs.
+• <strong>Logcat</strong>:
+	seguimiento de mensajes de sistema y errores de la app.
+•
+	<strong>Profiler</strong>: análisis de CPU, memoria, red y consumo
+	energético.</p></li>
+<li><p>Permite <strong>detectar errores y optimizar el
+	rendimiento</strong>  antes de publicar.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4224_825933148" lang="es">
+9.4 Relación entre SDK, IDE, Gradle y Manifest</h2>
+<ul>
+<li><p><strong>IDE (Android Studio)</strong>: entorno
+	completo para escribir código, depurar y desplegar apps.</p></li>
+<li><p><strong>SDK</strong>: conjunto de herramientas y
+	librerías necesarias para compilar y ejecutar apps.</p></li>
+<li><p><strong>Gradle</strong>: automatiza compilación,
+	gestión de dependencias y generación de APK/AAB.</p></li>
+<li><p><strong>AndroidManifest</strong>: configura
+	permisos, features y compatibilidad con versiones.</p></li>
+<li><p>La coordinación entre estas capas asegura que la
+	<strong>app se compile correctamente, cumpla requisitos del
+	dispositivo y se ejecute sin errores</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1787_825933148" lang="es">
+<strong>Resumen compacto –</strong><strong> Unidad 1 – Análisis
+de tecnologías para aplicaciones en dispositivos móviles</strong></h1>
+<h2 id="__RefHeading___Toc1789_825933148" lang="es">
+1. Dispositivos móviles: limitaciones y características</h2>
+<ul>
+<li><p>Energía y hardware</p>
+<ul>
+<li><p>Batería
+		limitada →  CPU/GPU throttling.</p></li>
+<li><p>No hay ventilación activa, movilidad restringida
+		por energía.</p></li>
+</ul>
+<li><p>Memoria y almacenamiento</p>
+<ul>
+<li><p>RAM y disco limitados → optimizar recursos.</p></li>
+</ul>
+<li><p>Interacción y usabilidad</p>
+<ul>
+<li><p>Touch, pantallas pequeñas, reflejos exteriores,
+		sin ratón físico.</p></li>
+</ul>
+<li><p>Conectividad</p>
+<ul>
+<li><p>Latencias de red, consumo de datos.</p></li>
+</ul>
+<li><p>Propósitos</p>
+<ul>
+<li><p>Movilidad, comunicación, trabajo,
+		entretenimiento.</p></li>
+<li><p>No como servidor principal.</p></li>
+</ul>
+</li></li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1791_825933148" lang="es">
+2. Sistemas operativos móviles</h2>
+<ul>
+<li><p>Principales SO</p>
+<ul>
+<li><p>Android (Google), iOS (Apple), Windows
+		Mobile/Phone, BlackBerry OS, WebOS, Tizen, Symbian.</p></li>
+<li><p>Activos: Android, iOS, Tizen; obsoletos: Windows
+		Mobile/Phone, WebOS, Symbian, BlackBerry.</p></li>
+</ul>
+<li><p>Arquitectura general</p></li>
+</li></ul>
+<ul>
+<ul>
+<li><p>Kernel Linux → memoria, procesos, seguridad,
+		drivers.</p></li>
+<li><p>Librerías nativas C/C++.</p></li>
+<li><p>Framework de apps → APIs de alto nivel.</p></li>
+<li><p>Capa de aplicaciones.</p></li>
+</ul>
+</ul>
+<ul>
+<li><p>Versiones Android</p></li>
+</ul>
+<ul>
+<ul>
+<li><p>Cada versión → SDK + API Level.</p></li>
+<li><p>Cambios importantes: Marshmallow (permisos), Oreo
+		(background/ahorro energía), Android 10+ (privacidad/sensores).</p></li>
+</ul>
+</ul>
+<hr/>
+<h2 lang="es">3. Enfoques de desarrollo</h2>
+<ul>
+<li><p>Nativo</p>
+<ul>
+<li><p>Android → Java/Kotlin + SDK + Studio; iOS →
+		Swift/Objective-C + Xcode.</p></li>
+<li><p>Ventaja: rendimiento y acceso completo.</p></li>
+<li><p>Desventaja: código específico por SO.</p></li>
+</ul>
+<li><p>Multiplataforma</p>
+<ul>
+<li><p>Xamarin, Flutter, React Native.</p></li>
+<li><p>Ventaja: código único, distribución múltiple.</p></li>
+<li><p>Desventaja: acceso limitado a APIs avanzadas,
+		posible menor rendimiento.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1795_825933148" lang="es">
+4. IDEs y SDK</h2>
+<ul>
+<li><p>IDE mínimo</p>
+<ul>
+<li><p>Editor avanzado, compilador/deploy, depurador,
+		emulador, editor de recursos, VCS.</p></li>
+</ul>
+<li><p>Android Studio</p>
+<ul>
+<li><p>Oficial, IntelliJ base, integración SDK,
+		emuladores, Git.</p></li>
+</ul>
+<li><p>Gradle</p>
+<ul>
+<li><p>Automatiza build, dependencias, plugins,
+		versiones.</p></li>
+<li><p>build.gradle (app)  →
+		dependencias y build module.
+4.4 Directorios</p></li>
+<li><p>java/  → código,
+		res/  → recursos compilados, assets/ 
+		→ archivos sin procesar, build/  →
+		compilación.</p></li>
+</ul>
+<li><p>SDK</p>
+<ul>
+<li><p>Herramientas, librerías nativas, comandos: adb,
+		avdmanager.</p></li>
+<li><p>1 SDK por versión (API Level).</p></li>
+</ul>
+</li></li></li></li></ul>
+<ul>
+<li><p>GitHub</p></li>
+</ul>
+<ul>
+<ul>
+<li><p>Clonar: File &gt; New &gt; Project from Version
+		Control.</p></li>
+<li><p>.gitignore  →
+		archivos/directorios que no subir.</p></li>
+</ul>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1797_825933148" lang="es">
+5. AndroidManifest y configuración</h2>
+<ul>
+<li><p>Función</p>
+<ul>
+<li><p>Paquete, componentes, permisos, features,
+		versiones SDK.</p></li>
+</ul>
+<li><p>Permisos y features</p>
+<ul>
+<li><p>&lt;uses-permission&gt; 
+		→ autorización.</p></li>
+<li><p>&lt;uses-feature&gt; 
+		→ requisito hardware/software y filtrado Google Play.</p></li>
+</ul>
+<li><p>Restricciones de disponibilidad</p>
+<ul>
+<li><p>Por hardware, configuración de pantalla, versión
+		de plataforma.</p></li>
+<li><p>No por propósito de dispositivo.</p></li>
+</ul>
+<li><p>Versiones</p>
+<ul>
+<li><p>minSdkVersion  →
+		mínima, impide instalación en API inferior.</p></li>
+<li><p>targetSdkVersion  →
+		optimización de versión.</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1799_825933148" lang="es">
+6. Emuladores y ejecución</h2>
+<ul>
+<li><p>AVD</p>
+<ul>
+<li><p>Gestor de emuladores, perfiles de hardware,
+		imagen sistema.</p></li>
+<li><p>Crear tantos como se necesiten.</p></li>
+</ul>
+<li><p>Ejecución</p>
+<ul>
+<li><p>Emulador Studio o externo (Genymotion),
+		dispositivo real con <strong>depuración USB</strong>.</p></li>
+</ul>
+<li><p>Compatibilidad</p>
+<ul>
+<li><p>API emulador ≥ minSdkVersion app.</p></li>
+<li><p>targetSdkVersion indica optimización.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1801_825933148" lang="es">
+7. Recursos de la app</h2>
+<ul>
+<li><p>Directorios</p>
+<ul>
+<li><p>res/  → compilables
+		(layouts, drawables, values, mipmap).</p></li>
+<li><p>assets/  → archivos
+		sin procesar, accesibles con AssetManager.</p></li>
+</ul>
+<li><p>Acceso</p>
+<ul>
+<li><p>res/  → R.id,
+		R.string.</p></li>
+<li><p>assets/  →
+		AssetManager.open().</p></li>
+</ul>
+<li><p>Buenas prácticas</p>
+<ul>
+<li><p>Separar por tipo y densidad, evitar duplicación,
+		solo usar assets para datos no compilables.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1803_825933148" lang="es">
+8. Distribución y publicación</h2>
+<ul>
+<li><p>Google Play</p>
+<ul>
+<li><p>Distribución, actualizaciones, pagos, filtrado
+		por hardware, API, región.</p></li>
+</ul>
+<li><p>Control disponibilidad</p>
+<ul>
+<li><p>Hardware/software, pantalla, versiones.</p></li>
+<li><p>No por propósito del dispositivo.</p></li>
+</ul>
+<li><p>Publicación</p>
+<ul>
+<li><p>APK/AAB firmado → pruebas → subir con
+		metadata y restricciones.</p></li>
+</ul>
+<li><p>Buenas prácticas</p>
+<ul>
+<li><p>Test en múltiples dispositivos, mantener
+		consistencia permisos/features, control de versiones y CI.</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1805_825933148" lang="es">
+9. Otros conceptos complementarios</h2>
+<ul>
+<li><p>Seguridad y firma</p>
+<ul>
+<li><p>Keystore, firma digital, integridad y
+		autenticidad.</p></li>
+</ul>
+<li><p>Versiones y compatibilidad</p>
+<ul>
+<li><p>versionCode  y
+		versionName  en Gradle.</p></li>
+<li><p>Emulador/dispositivo ≥ minSdkVersion.</p></li>
+</ul>
+<li><p>Depuración y monitoreo</p>
+<ul>
+<li><p>Debugger, Logcat, Profiler → CPU, memoria, red,
+		energía.</p></li>
+</ul>
+<li><p>Relación IDE-SDK-Gradle-Manifest</p>
+<ul>
+<li><p>IDE → código y pruebas.</p></li>
+<li><p>SDK → librerías y herramientas.</p></li>
+<li><p>Gradle → build y dependencias.</p></li>
+<li><p>Manifest → permisos, features, compatibilidad.</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

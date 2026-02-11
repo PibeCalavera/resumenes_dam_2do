@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+de Servicios y Procesos – Unidad 4
+– Aplicaciones de servicios en
+red</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+de Servicios y Procesos – Unidad 4
+– Aplicaciones de servicios en
+red</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1615_841065197">1. Conceptos generales de comunicación y protocolos</a></p>
+<p><a href="#__RefHeading___Toc1617_841065197">1.1 Protocolo de comunicación</a></p>
+<p><a href="#__RefHeading___Toc1619_841065197">1.2 Historia de las redes y protocolos</a></p>
+<p><a href="#__RefHeading___Toc1621_841065197">1.3 Modelo en capas</a></p>
+<p><a href="#__RefHeading___Toc1623_841065197">1.4 Protocolos de aplicación más relevantes</a></p>
+<p><a href="#__RefHeading___Toc1625_841065197">1.5 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc1627_841065197">2. Servicios Web y tecnologías relacionadas</a></p>
+<p><a href="#__RefHeading___Toc1629_841065197">2.1 Concepto y componentes de los Servicios Web</a></p>
+<p><a href="#__RefHeading___Toc1631_841065197">2.2 Representaciones de datos en transmisión</a></p>
+<p><a href="#__RefHeading___Toc1633_841065197">2.3 Seguridad en Servicios Web</a></p>
+<p><a href="#__RefHeading___Toc1635_841065197">2.4 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc1637_841065197">3. JMS y MOM</a></p>
+<p><a href="#__RefHeading___Toc1639_841065197">3.1 Java Message Service (JMS)</a></p>
+<p><a href="#__RefHeading___Toc1641_841065197">3.2 Message-Oriented Middleware (MOM)</a></p>
+<p><a href="#__RefHeading___Toc1643_841065197">3.3 Comparación de tecnologías de mensajería</a></p>
+<p><a href="#__RefHeading___Toc1645_841065197">3.4 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc1647_841065197">4. Flujos de entrada/salida (E/S) y compresión</a></p>
+<p><a href="#__RefHeading___Toc1649_841065197">4.1 Concepto de E/S</a></p>
+<p><a href="#__RefHeading___Toc1651_841065197">4.2 IO vs NIO (punto conflictivo)</a></p>
+<p><a href="#__RefHeading___Toc1653_841065197">4.3 Clases para compresión y descompresión</a></p>
+<p><a href="#__RefHeading___Toc1655_841065197">4.4 Representaciones de datos en la transferencia</a></p>
+<p><a href="#__RefHeading___Toc1657_841065197">4.5 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc1659_841065197">5. Conexión a servicios web desde Java</a></p>
+<p><a href="#__RefHeading___Toc1661_841065197">5.1 Concepto de cliente y servidor</a></p>
+<p><a href="#__RefHeading___Toc1663_841065197">5.2 Propiedades y configuración de conexión</a></p>
+<p><a href="#__RefHeading___Toc1665_841065197">5.3 Servidores para pruebas y despliegue</a></p>
+<p><a href="#__RefHeading___Toc1667_841065197">5.4 Creación de proyectos en NetBeans</a></p>
+<p><a href="#__RefHeading___Toc1669_841065197">5.5 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc1671_841065197">6. Pruebas de rendimiento y profiling</a></p>
+<p><a href="#__RefHeading___Toc1673_841065197">6.1 Concepto de profiling</a></p>
+<p><a href="#__RefHeading___Toc1675_841065197">6.2 Herramientas de pruebas y análisis</a></p>
+<p><a href="#__RefHeading___Toc1677_841065197">6.3 Comparación y diferencias</a></p>
+<p><a href="#__RefHeading___Toc1679_841065197">6.4 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc1681_841065197">Puntos conflictivos y clave de examen:</a></p>
+<p><a href="#__RefHeading___Toc1683_841065197">Resumen compacto – Unidad 04 – Aplicaciones de servicios en red</a></p>
+<p><a href="#__RefHeading___Toc1685_841065197">1. Conceptos generales de comunicación y protocolos</a></p>
+<p><a href="#__RefHeading___Toc1687_841065197">2. Servicios Web y tecnologías relacionadas</a></p>
+<p><a href="#__RefHeading___Toc1689_841065197">3. JMS y MOM</a></p>
+<p><a href="#__RefHeading___Toc1691_841065197">4. Flujos de E/S y compresión</a></p>
+<p><a href="#__RefHeading___Toc1693_841065197">5. Conexión a servicios web desde Java</a></p>
+<p><a href="#__RefHeading___Toc1695_841065197">6. Pruebas de rendimiento y profiling</a></p>
+<p><a href="#__RefHeading___Toc1697_841065197">✅ Puntos conflictivos generales</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1615_841065197" lang="es">
+<strong>1. Conceptos generales de comunicación y protocolos</strong></h1>
+<h2 id="__RefHeading___Toc1617_841065197" lang="es">
+1.1 Protocolo de comunicación</h2>
+<ul>
+<li><p><strong>Definición:</strong> conjunto de normas
+	que define cómo se intercambian mensajes entre sistemas o
+	aplicaciones.</p></li>
+<li><p><strong>Objetivos principales:</strong></p>
+<ol>
+<li><p>Garantizar interoperabilidad entre sistemas
+		diferentes.</p></li>
+<li><p>Definir el formato y la estructura de los
+		mensajes.</p></li>
+<li><p>Establecer reglas de orden, sincronización y
+		control de errores.</p></li>
+<li><p>Determinar mecanismos de transmisión y
+		recepción, incluyendo fiabilidad y retransmisión.</p></li>
+</ol>
+<li><p><strong>Ventajas:</strong></p>
+<ol>
+<li><p><strong>Modularidad:</strong> cada capa puede
+		evolucionar sin afectar al resto del sistema.</p></li>
+<li><p><strong>Escalabilidad:</strong> permite añadir
+		servicios o nodos sin romper compatibilidad.</p></li>
+<li><p><strong>Fiabilidad:</strong> posibilidad de
+		definir mecanismos de control de errores y confirmación de
+		entrega.</p></li>
+</ol>
+<li><p><strong>Ejemplos de protocolos:</strong> HTTP,
+	HTTPS, FTP, SMTP, POP3, Telnet, SSH, SNMP.</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1619_841065197" lang="es">
+1.2 Historia de las redes y protocolos</h2>
+<ul>
+<li><p><strong>ARPANET (1969-1974):</strong> primera red
+	que permitió la interconexión de redes heterogéneas. Cada nodo
+	asumía responsabilidad de la fiabilidad de transmisión.</p></li>
+<li><p><strong>TCP/IP (1973-1983):</strong> conjunto de
+	protocolos para transmisión de datos entre hosts. Desarrollado por
+	Vinton Cerf y Robert Kahn.</p>
+<ul>
+<li><p><strong>TCP:</strong> garantiza entrega fiable,
+		ordenada y control de errores.</p></li>
+<li><p><strong>IP:</strong> direccionamiento y
+		enrutamiento de paquetes.</p></li>
+</ul>
+<li><p><strong>Evolución hacia la internet moderna:</strong>
+	sobre TCP/IP se construyen protocolos de aplicación como
+	HTTP/HTTPS, FTP, SMTP, POP3, Telnet y SSH.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1621_841065197" lang="es">
+1.3 Modelo en capas</h2>
+<ul>
+<li><p>Inspirado en <strong>OSI</strong>  y adaptado al
+	<strong>modelo TCP/IP</strong>.</p></li>
+<li><p>Separación jerárquica de funciones:</p></li>
+</ul>
+<ol>
+<li><p><strong>Capa física:</strong> transmisión de
+	bits a través del medio (cable, fibra, radio).</p></li>
+<li><p><strong>Capa de enlace de datos:</strong>
+	transmisión confiable de tramas entre nodos; ejemplo: Ethernet,
+	Wi-Fi (MAC).</p></li>
+<li><p><strong>Capa de red:</strong> enrutamiento de
+	paquetes; protocolos IP, ICMP.</p></li>
+<li><p><strong>Capa de transporte:</strong> entrega
+	fiable entre hosts; TCP (fiable, orientado a conexión) y UDP
+	(rápido, no fiable, sin conexión).</p></li>
+<li><p><strong>Capa de sesión:</strong> controla
+	sesiones y diálogos entre sistemas (ej.: NetBIOS, RPC).</p></li>
+<li><p><strong>Capa de presentación:</strong> traducción
+	de datos, compresión y cifrado (ej.: ASCII, JPEG, TLS/SSL).</p></li>
+<li><p><strong>Capa de aplicación:</strong> interacción
+	directa con el usuario; protocolos de alto nivel: HTTP, HTTPS, FTP,
+	SMTP, POP3, Telnet, SSH, SNMP.</p></li>
+</ol>
+<ul>
+<li><p><strong>Puntos clave:</strong></p>
+<ul>
+<li><p>Cada capa interactúa solo con su inmediata
+		superior e inferior.</p></li>
+<li><p>Permite modularidad, escalabilidad y sustitución
+		de protocolos sin afectar al sistema global.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1623_841065197" lang="es">
+1.4 Protocolos de aplicación más relevantes</h2>
+<ul>
+<li><p><strong>HTTP / HTTPS:</strong></p>
+<ul>
+<li><p>HTTP: transferencia de hipertexto; no cifrado;
+		susceptible a intercepción.</p></li>
+<li><p>HTTPS: versión segura que utiliza TLS/SSL;
+		asegura <strong>confidencialidad, integridad y autenticación</strong>.</p></li>
+<li><p>Diferencias clave: cifrado de datos y uso de
+		certificados digitales.</p></li>
+</ul>
+<li><p><strong>FTP:</strong> transferencia de archivos;
+	modos activo/pasivo; requiere autenticación; no cifrado en forma
+	básica.</p></li>
+<li><p><strong>SMTP / POP3:</strong> envío (SMTP) y
+	recepción (POP3) de correo electrónico; POP3 descarga mensajes,
+	SMTP los envía.</p></li>
+<li><p><strong>Telnet / SSH:</strong></p>
+<ul>
+<li><p>Telnet: acceso remoto a terminal, texto plano
+		(inseguro).</p></li>
+<li><p>SSH: reemplazo seguro; cifra la comunicación y
+		autentica usuarios.</p></li>
+</ul>
+<li><p><strong>SNMP:</strong> protocolo de administración
+	de red; permite monitorizar dispositivos, consultar métricas y
+	generar alertas.</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1625_841065197" lang="es">
+1.5 Resumen conceptual</h2>
+<ol>
+<li><p><strong>Protocolo:</strong> normas que regulan el
+	intercambio de mensajes.</p></li>
+<li><p><strong>Historia clave:</strong> ARPANET →
+	TCP/IP → Internet moderna.</p></li>
+<li><p><strong>Modelo en capas:</strong> OSI/TCP-IP;
+	funciones separadas y jerarquizadas.</p></li>
+<li><p><strong>Protocolos de aplicación:</strong>
+	HTTP/HTTPS, FTP, SMTP/POP3, Telnet/SSH, SNMP.</p></li>
+<li><p><strong>Puntos críticos para examen:</strong></p>
+<ul>
+<li><p>Diferencias entre HTTP y HTTPS.</p></li>
+<li><p>SSH vs Telnet (seguridad, cifrado).</p></li>
+<li><p>Función de SNMP como protocolo de
+		administración.</p></li>
+</ul>
+</li></ol>
+<hr/>
+<h1 id="__RefHeading___Toc1627_841065197" lang="es">
+<strong>2. Servicios Web y tecnologías relacionadas</strong></h1>
+<h2 id="__RefHeading___Toc1629_841065197" lang="es">
+2.1 Concepto y componentes de los Servicios Web</h2>
+<ul>
+<li><p><strong>Definición:</strong> conjunto de métodos
+	y servicios accesibles a través de la web que permiten la
+	interoperabilidad entre aplicaciones heterogéneas.</p></li>
+<li><p><strong>Componentes principales:</strong></p>
+<ul>
+<li><p><strong>SOAP (Simple Object Access Protocol):</strong>
+		protocolo basado en XML para el intercambio de mensajes entre
+		aplicaciones.</p></li>
+<li><p><strong>WSDL (Web Services Description Language):</strong>
+		describe la interfaz del servicio web:</p>
+<ul>
+<li><p>Métodos disponibles.</p></li>
+<li><p>Parámetros y tipos de datos de entrada y
+			salida.</p></li>
+</ul>
+<li><p><strong>JAXR (Java API for XML Registries):</strong>
+		API para acceder a registros de servicios web.</p>
+<ul>
+<li><p>Roles: cliente JAXR, servidor JAXR,
+			registradores (UDDI).</p></li>
+</ul>
+<li><p><strong>UDDI (Universal Description, Discovery
+		and Integration):</strong> directorio de servicios web; permite
+		descubrir y registrar servicios disponibles.</p></li>
+</li></li></ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1631_841065197" lang="es">
+2.2 Representaciones de datos en transmisión</h2>
+<ul>
+<li><p>Formatos que aseguran interpretación correcta en
+	distintos sistemas:</p>
+<ul>
+<li><p><strong>ASCII:</strong> caracteres de texto
+		estándar.</p></li>
+<li><p><strong>Imagen:</strong> datos binarios de
+		imágenes.</p></li>
+<li><p><strong>EBCDIC:</strong> codificación de IBM
+		para texto.</p></li>
+<li><p><strong>Local:</strong> representación
+		dependiente de la máquina o sistema operativo.</p></li>
+</ul>
+<li><p><strong>Importancia:</strong> evitar errores de
+	interpretación o corrupción de datos entre plataformas
+	heterogéneas.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1633_841065197" lang="es">
+2.3 Seguridad en Servicios Web</h2>
+<ul>
+<li><p><strong>SAML (Security Assertion Markup Language):</strong></p>
+<ul>
+<li><p>Estándar XML para representar información de
+		autenticación y autorización.</p></li>
+<li><p>Componentes:</p>
+<ol>
+<li><p><strong>Assertions:</strong> hechos sobre un
+			sujeto principal (roles, permisos).</p></li>
+<li><p><strong>Request/Response:</strong> protocolos de
+			intercambio de información.</p></li>
+<li><p><strong>Bindings:</strong> especifica transporte
+			(SOAP, HTTP).</p></li>
+<li><p><strong>Profiles:</strong> directrices de
+			implementación.</p></li>
+</ol>
+<li><p>Uso: <strong>Single Sign-On (SSO)</strong>  y
+		federación de identidad.</p></li>
+</li></ul>
+<li><p><strong>XACML (XML Access Control Markup
+	Language):</strong></p>
+<ul>
+<li><p>Complemento de SAML.</p></li>
+<li><p>Define políticas de control de acceso a recursos
+		XML.</p></li>
+<li><p>Considera identidad, grupo, autenticación y
+		protocolo.</p></li>
+</ul>
+<li><p><strong>SSO (Single Sign-On):</strong></p>
+<ul>
+<li><p>Permite autenticarse una sola vez y acceder a
+		múltiples servicios web.</p></li>
+<li><p>Mejora experiencia de usuario y gestión de
+		credenciales.</p></li>
+</ul>
+<li><p><strong>WS-Security:</strong></p>
+<ul>
+<li><p>Añade seguridad a mensajes SOAP.</p></li>
+<li><p>Soporta cifrado, firma digital y tokens de
+		autenticación.</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1635_841065197" lang="es">
+2.4 Resumen conceptual</h2>
+<ol>
+<li><p><strong>SOAP / WSDL / UDDI / JAXR:</strong> forman
+	la base de los servicios web, permitiendo interoperabilidad y
+	descubrimiento de servicios.</p></li>
+<li><p><strong>Representaciones de datos:</strong> ASCII,
+	Imagen, EBCDIC y Local aseguran correcta interpretación entre
+	sistemas heterogéneos.</p></li>
+<li><p><strong>Seguridad:</strong></p>
+<ul>
+<li><p>SAML → assertions y autenticación federada.</p></li>
+<li><p>XACML → control de acceso a recursos XML.</p></li>
+<li><p>SSO → un solo login para múltiples servicios.</p></li>
+<li><p>WS-Security → cifrado y firma en mensajes SOAP.</p></li>
+</ul>
+<li><p><strong>Puntos críticos de examen:</strong></p>
+<ul>
+<li><p>Diferenciar roles de JAXR y función de UDDI.</p></li>
+<li><p>Comprender qué problemas de seguridad resuelven
+		SAML, XACML y WS-Security.</p></li>
+<li><p>Conocer ventajas de SSO frente a autenticación
+		individual por servicio.</p></li>
+</ul>
+</li></li></ol>
+<hr/>
+<h1 id="__RefHeading___Toc1637_841065197" lang="es">
+<strong>3. JMS y MOM</strong></h1>
+<h2 id="__RefHeading___Toc1639_841065197" lang="es">
+3.1 Java Message Service (JMS)</h2>
+<ul>
+<li><p><strong>Definición:</strong> API de Java que
+	permite enviar, recibir y procesar mensajes entre aplicaciones de
+	manera <strong>asíncrona</strong>.</p></li>
+<li><p><strong>Usos principales:</strong></p>
+<ul>
+<li><p>Comunicación entre componentes de software sin
+		interacción directa.</p></li>
+<li><p>Integración de sistemas heterogéneos.</p></li>
+<li><p>Aplicaciones <strong>B2B (Business to Business)</strong>.</p></li>
+</ul>
+<li><p><strong>Características:</strong></p>
+<ul>
+<li><p>Modelo orientado a mensajes, separado de la
+		lógica de negocio.</p></li>
+<li><p>Soporta colas (queues) y topics para envío y
+		recepción.</p></li>
+<li><p>Permite desacoplar productores y consumidores de
+		mensajes.</p></li>
+</ul>
+<li><p><strong>Punto conflictivo:</strong></p>
+<ul>
+<li><p>JMS <strong>no administra CPU ni hardware</strong>,
+		ni es un lenguaje de programación; gestiona <strong>mensajes de
+		software</strong>.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1641_841065197" lang="es">
+3.2 Message-Oriented Middleware (MOM)</h2>
+<ul>
+<li><p><strong>Definición:</strong> infraestructura
+	(software o hardware) que permite enviar y recibir mensajes de
+	manera fiable entre aplicaciones distribuidas.</p></li>
+<li><p><strong>Función principal:</strong></p>
+<ul>
+<li><p>Actúa como intermediario entre aplicaciones,
+		<strong>desacoplándolas</strong>.</p></li>
+<li><p>Gestiona colas de mensajes, asegurando entrega y
+		orden.</p></li>
+</ul>
+<li><p><strong>Relación con JMS:</strong></p>
+<ul>
+<li><p>JMS puede usar MOM como plataforma de transporte
+		de mensajes.</p></li>
+<li><p>MOM asegura escalabilidad y confiabilidad del
+		sistema.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1643_841065197" lang="es">
+3.3 Comparación de tecnologías de mensajería</h2>
+<table>
+<thead>
+<tr>
+<th>Tecnología
+</th>
+<th>Función
+</th>
+<th>Nota
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JMS
+</td>
+<td>Procesamiento
+				de mensajes dentro de Java
+</td>
+<td>API,
+				integración entre aplicaciones, B2B
+</td>
+</tr>
+<tr>
+<td>MOM
+</td>
+<td>Middleware
+				para intercambio de mensajes
+</td>
+<td>Puede ser
+				software o hardware, comunicación desacoplada
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc1645_841065197" lang="es">
+3.4 Resumen conceptual</h2>
+<ol>
+<li><p><strong>JMS:</strong> API de Java para
+	comunicación asincrónica y procesamiento de mensajes; se usa en
+	integración de sistemas y B2B.</p></li>
+<li><p><strong>MOM:</strong> infraestructura que asegura
+	entrega fiable y orden de mensajes; puede soportar JMS.</p></li>
+<li><p><strong>Diferencia clave:</strong> JMS es una
+	<strong>API/librería</strong>, MOM es la <strong>infraestructura
+	subyacente</strong>.</p></li>
+<li><p><strong>Puntos críticos de examen:</strong></p>
+<ul>
+<li><p>No confundir JMS con lenguaje o herramienta de
+		bajo nivel.</p></li>
+<li><p>Comprender que JMS depende de un MOM para
+		funcionar en entornos distribuidos.</p></li>
+<li><p>Recordar usos típicos: mensajería asincrónica,
+		integración y desacoplamiento de aplicaciones.</p></li>
+</ul>
+</li></ol>
+<hr/>
+<h1 id="__RefHeading___Toc1647_841065197" lang="es">
+<strong>4. Flujos de entrada/salida (E/S) y compresión</strong></h1>
+<h2 id="__RefHeading___Toc1649_841065197" lang="es">
+4.1 Concepto de E/S</h2>
+<ul>
+<li><p><strong>Definición:</strong> Entrada/Salida (E/S)
+	se refiere al intercambio de datos entre un programa y un recurso
+	externo, como archivos, red o dispositivos.</p></li>
+<li><p><strong>Función:</strong> Permite que una
+	aplicación <strong>lea</strong>  datos (entrada) o <strong>escriba</strong> 
+	datos (salida).</p></li>
+<li><p><strong>Paquetes principales en Java:</strong></p>
+<ul>
+<li><p><strong>java.io</strong> 
+		→ estándar clásico, basado en flujos:</p>
+<ul>
+<li><p><strong>Bytes:</strong> InputStream 
+			/ OutputStream</p></li>
+<li><p><strong>Caracteres:</strong> Reader 
+			/ Writer</p></li>
+</ul>
+<li><p><strong>java.nio</strong> 
+		→ Non-blocking I/O (NIO), basado en <strong>canales y buffers</strong>:</p>
+<ul>
+<li><p>Permite operaciones <strong>no bloqueantes</strong>,
+			útil en aplicaciones con gran volumen de datos.</p></li>
+</ul>
+</li></li></ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1651_841065197" lang="es">
+4.2 IO vs NIO (punto conflictivo)</h2>
+<ul>
+<li><p><strong>IO (</strong><strong>java.io</strong><strong>)</strong></p>
+<ul>
+<li><p>Operaciones <strong>bloqueantes</strong>, flujo
+		continuo de bytes o caracteres.</p></li>
+<li><p>Requiere hilos para concurrencia en escenarios
+		con múltiples clientes o flujos de datos grandes.</p></li>
+<li><p>Se suele usar <strong>flujos de bytes</strong> 
+		para compresión a bajo nivel.</p></li>
+</ul>
+<li><p><strong>NIO (</strong><strong>java.nio</strong><strong>)</strong></p>
+<ul>
+<li><p>Operaciones <strong>no bloqueantes</strong>, se
+		usan <strong>Buffers</strong>  para leer/escribir desde <strong>Channels</strong>.</p></li>
+<li><p>Más eficiente para grandes volúmenes de datos y
+		operaciones concurrentes.</p></li>
+<li><p><strong>No trabaja directamente con flujos de
+		bytes o caracteres</strong>; confusión frecuente en examen.</p></li>
+</ul>
+</li></li></ul>
+<p><strong>Resumen conflictivo:</strong></p>
+<ul>
+<li><p>Preguntas sobre “clases basadas en flujos de
+	bytes vs caracteres” pueden ser <strong>trampa</strong>:</p>
+<ul>
+<li><p>Para IO: se usan <strong>flujos de bytes</strong>.</p></li>
+<li><p>Para NIO: se usan <strong>Buffers/Channels</strong>,
+		no flujos directos.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1653_841065197" lang="es">
+4.3 Clases para compresión y descompresión</h2>
+<ul>
+<li><p><strong>Compresión ZIP:</strong>
+DeflaterOutputStream</p></li>
+<li><p><strong>Compresión GZIP:</strong>
+GZIPOutputStream  / GZIPInputStream</p></li>
+<li><p><strong>Descompresión ZIP:</strong>
+ZipInputStream</p></li>
+<li><p><strong>Verificación de integridad:</strong>
+CheckedInputStream  /
+	CheckedOutputStream</p></li>
+<li><p><strong>Punto conflictivo:</strong></p>
+<ul>
+<li><p>La opción “todas son válidas” puede ser
+		<strong>incorrecta</strong>, depende del <strong>formato de
+		compresión</strong>  y del <strong>tipo de flujo</strong>.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1655_841065197" lang="es">
+4.4 Representaciones de datos en la transferencia</h2>
+<ul>
+<li><p><strong>ASCII:</strong> texto plano estándar.</p></li>
+<li><p><strong>Imagen:</strong> datos binarios de
+	imágenes.</p></li>
+<li><p><strong>EBCDIC:</strong> codificación usada en
+	sistemas IBM.</p></li>
+<li><p><strong>Modo Local:</strong> representación
+	específica de la máquina, dependiente del sistema operativo.</p></li>
+</ul>
+<blockquote>Aunque no
+siempre aparece en preguntas, es útil conocerlo para
+interoperabilidad.</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1657_841065197" lang="es">
+4.5 Resumen conceptual</h2>
+<ol>
+<li><p><strong>E/S:</strong> comunicación entre programa
+	y recursos externos.</p></li>
+<li><p><strong>IO:</strong> bloqueante, flujos de
+	bytes/caracteres; requiere hilos para concurrencia.</p></li>
+<li><p><strong>NIO:</strong> no bloqueante, buffers y
+	canales; más eficiente en operaciones concurrentes.</p></li>
+<li><p><strong>Compresión:</strong> usar la clase
+	correcta según ZIP o GZIP; verificar integridad si es necesario.</p></li>
+<li><p><strong>Representaciones de datos:</strong> ASCII,
+	Imagen, EBCDIC, Modo Local.</p></li>
+<li><p><strong>Puntos conflictivos de examen:</strong>
+	diferencia IO vs NIO y elección de clases según <strong>formato y
+	nivel de E/S</strong>.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc1659_841065197" lang="es">
+<strong>5. Conexión a servicios web desde Java</strong></h1>
+<h2 id="__RefHeading___Toc1661_841065197" lang="es">
+5.1 Concepto de cliente y servidor</h2>
+<ul>
+<li><p><strong>Cliente:</strong> aplicación que <strong>solicita
+	servicios o recursos</strong>  a otra aplicación (servidor).</p></li>
+<li><p><strong>Servidor:</strong> aplicación que <strong>espera
+	y atiende</strong>  las peticiones de clientes.</p></li>
+<li><p>Las conexiones pueden ser <strong>locales</strong> 
+	o a través de Internet.</p></li>
+<li><p><strong>Clases asociadas en Java:</strong></p>
+<ul>
+<li><p>Cliente web → generado desde NetBeans al crear
+		un <strong>Web Service Client Project</strong>.</p></li>
+<li><p>Servidor web → desplegado en GlassFish u otros
+		servidores compatibles con Java EE.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1663_841065197" lang="es">
+5.2 Propiedades y configuración de conexión</h2>
+<ul>
+<li><p><strong>WSDL URL:</strong> propiedad que indica la
+	<strong>ubicación del WebService</strong>  al que se desea conectar.</p>
+<ul>
+<li><p>Contiene información de métodos, parámetros y
+		tipos de retorno.</p></li>
+<li><p>Se usa al generar <strong>clases proxy</strong> 
+		en Java que facilitan la comunicación con el servicio.</p></li>
+</ul>
+<li><p><strong>Punto conflictivo:</strong></p>
+<ul>
+<li><p>Diferenciar WSDL URL de otras opciones como “HTTP
+		WebService” o “HTTP ServiceWeb”, que pueden aparecer en
+		examen pero son incorrectas.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1665_841065197" lang="es">
+5.3 Servidores para pruebas y despliegue</h2>
+<ul>
+<li><p><strong>GlassFish:</strong> servidor de
+	aplicaciones compatible con Java EE.</p>
+<ul>
+<li><p>Permite desplegar <strong>WebServices y
+		aplicaciones empresariales</strong>.</p></li>
+<li><p>Adecuado para <strong>entornos de desarrollo y
+		pruebas</strong>.</p></li>
+</ul>
+<li><p>Otros servidores posibles: Tomcat, JBoss,
+	WebLogic, pero en el temario se enfatiza <strong>GlassFish</strong>.</p></li>
+<li><p><strong>Punto conflictivo:</strong> no confundir
+	GlassFish con servidores de FTP o Telnet.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1667_841065197" lang="es">
+5.4 Creación de proyectos en NetBeans</h2>
+<ul>
+<li><p><strong>Web Service Client Project:</strong></p>
+<ul>
+<li><p>Genera <strong>clases proxy</strong>  que se
+		conectan automáticamente con el servicio.</p></li>
+<li><p>Automatiza gran parte de la <strong>serialización
+		y deserialización</strong>  de datos, así como el manejo de
+		solicitudes/respuestas.</p></li>
+<li><p>Permite interactuar con servicios <strong>SOAP</strong> 
+		usando la definición WSDL.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1669_841065197" lang="es">
+5.5 Resumen conceptual</h2>
+<ol>
+<li><p><strong>Cliente:</strong> solicita servicios;
+	puede conectarse a servidores web o Internet.</p></li>
+<li><p><strong>Servidor:</strong> espera y atiende
+	peticiones.</p></li>
+<li><p><strong>WSDL URL:</strong> ubicación del
+	servicio; esencial para generar proxies en Java.</p></li>
+<li><p><strong>GlassFish:</strong> servidor de prueba y
+	despliegue para servicios web Java EE.</p></li>
+<li><p><strong>Proyecto cliente web en NetBeans:</strong>
+	genera clases que facilitan conexión y comunicación con el
+	WebService.</p></li>
+</ol>
+<p><strong>Puntos conflictivos y clave de examen:</strong></p>
+<ul>
+<li><p>Diferenciar claramente <strong>cliente vs servidor</strong> 
+	y sus clases correspondientes.</p></li>
+<li><p>Propiedad <strong>WSDL URL</strong>  frente a otras
+	URL incorrectas.</p></li>
+<li><p>GlassFish como <strong>servidor de pruebas</strong>,
+	no confundir con FTP/Telnet.</p></li>
+<li><p>Tipo de proyecto en NetBeans: <strong>Web Service
+	Client</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1671_841065197" lang="es">
+<strong>6. Pruebas de rendimiento y profiling</strong></h1>
+<h2 id="__RefHeading___Toc1673_841065197" lang="es">
+6.1 Concepto de profiling</h2>
+<ul>
+<li><p><strong>Profiling:</strong> análisis dinámico de
+	un programa para medir su comportamiento en ejecución.</p>
+<ul>
+<li><p>Permite conocer:</p>
+<ul>
+<li><p>Uso de <strong>CPU</strong>  y <strong>memoria</strong>.</p></li>
+<li><p>Tiempo de ejecución de funciones o módulos
+			específicos.</p></li>
+<li><p>Complejidad del programa y posibles cuellos de
+			botella.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Herramientas que usan profiling:</strong>
+	se denominan <strong>profilers</strong>.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1675_841065197" lang="es">
+6.2 Herramientas de pruebas y análisis</h2>
+<ol>
+<li><p><strong>JMeter</strong></p>
+<ul>
+<li><p>Se utiliza para <strong>pruebas de carga y
+		estrés</strong>.</p></li>
+<li><p>Evalúa el <strong>tiempo de respuesta</strong> 
+		de múltiples peticiones simultáneas.</p></li>
+<li><p><strong>Limitación:</strong> no permite analizar
+		el <strong>rendimiento por módulo interno</strong>  de la
+		aplicación.</p></li>
+</ul>
+<li><p><strong>JConsole</strong></p>
+<ul>
+<li><p>Monitoriza <strong>patrones de CPU y memoria</strong> 
+		en tiempo real.</p></li>
+<li><p>También limitado: no analiza el rendimiento de
+		<strong>cada módulo</strong>  de la aplicación.</p></li>
+</ul>
+<li><p><strong>Spring Insight</strong></p>
+<ul>
+<li><p>Soluciona las limitaciones de JMeter y JConsole.</p></li>
+<li><p>Permite:</p>
+<ul>
+<li><p>Conocer información detallada de cada <strong>módulo</strong> 
+			de la aplicación.</p></li>
+<li><p>Medir cuánto tiempo tarda cada módulo o
+			componente en procesar tareas.</p></li>
+</ul>
+<li><p>Útil para <strong>identificar cuellos de botella</strong> 
+		en arquitecturas complejas.</p></li>
+</li></ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1677_841065197" lang="es">
+6.3 Comparación y diferencias</h2>
+<table>
+<thead>
+<tr>
+<th>Herramienta
+</th>
+<th>Uso principal
+</th>
+<th>Limitación
+</th>
+<th>Información
+				por módulo
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JMeter
+</td>
+<td>Pruebas de
+				carga y estrés
+</td>
+<td>No analiza
+				rendimiento de módulos internos
+</td>
+<td>No
+</td>
+</tr>
+<tr>
+<td>JConsole
+</td>
+<td>Monitorización
+				CPU/memoria
+</td>
+<td>No analiza
+				módulos específicos
+</td>
+<td>No
+</td>
+</tr>
+<tr>
+<td>Spring
+				Insight
+</td>
+<td>Profiling
+				detallado por módulos
+</td>
+<td>Ninguna
+				destacada para módulos
+</td>
+<td>Sí
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc1679_841065197" lang="es">
+6.4 Resumen conceptual</h2>
+<ol>
+<li><p><strong>Profiling:</strong> análisis dinámico de
+	ejecución para medir CPU, memoria y tiempo de ejecución.</p></li>
+<li><p><strong>Herramientas principales:</strong></p>
+<ul>
+<li><p>JMeter → pruebas de carga.</p></li>
+<li><p>JConsole → monitorización de recursos.</p></li>
+<li><p>Spring Insight → análisis detallado por
+		módulo.</p></li>
+</ul>
+<li><p><strong>Limitaciones:</strong> JMeter y JConsole
+	no analizan módulos internos; Spring Insight sí.</p></li>
+<li><p><strong>Conceptos clave de examen:</strong></p>
+<ul>
+<li><p>Saber qué herramienta usar según el tipo de
+		análisis deseado.</p></li>
+<li><p>Comprender las limitaciones de cada herramienta y
+		cómo Spring Insight las supera.</p></li>
+</ul>
+</li></li></ol>
+<h2 id="__RefHeading___Toc1681_841065197" lang="es">
+<strong>Puntos conflictivos y clave de examen:</strong></h2>
+<ul>
+<li><p>Diferenciar claramente <strong>pruebas de carga
+	(JMeter)</strong>  de <strong>análisis por módulos (Spring
+	Insight)</strong>.</p></li>
+<li><p>Profilers vs herramientas de monitorización
+	simples.</p></li>
+<li><p>Entender por qué Spring Insight suple las
+	limitaciones de JMeter y JConsole.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1683_841065197" lang="es">
+<strong>Resumen compacto – Unidad 04 – Aplicaciones de servicios
+en red</strong></h1>
+<h2 id="__RefHeading___Toc1685_841065197" lang="es">
+<strong>1. Conceptos generales de comunicación y protocolos</strong></h2>
+<p>1.1 <strong>Protocolo de comunicación</strong></p>
+<ul>
+<li><p>Conjunto de normas que define cómo se
+	intercambian mensajes entre sistemas.</p></li>
+<li><p>Objetivos: interoperabilidad, formato de mensajes,
+	orden/sincronización, control de errores.</p></li>
+<li><p>Ventajas: modularidad, escalabilidad, fiabilidad.</p></li>
+<li><p>Ejemplos: HTTP/HTTPS, FTP, SMTP, POP3, Telnet,
+	SSH, SNMP.</p></li>
+</ul>
+<p>1.2 <strong>Historia y evolución de redes</strong></p>
+<ul>
+<li><p>ARPANET (1969-1974): primera red heterogénea.</p></li>
+<li><p>TCP/IP (1973-1983): TCP garantiza entrega fiable,
+	IP direcciona y enruta paquetes.</p></li>
+<li><p>Evolución a protocolos de aplicación: HTTP, FTP,
+	SMTP.</p></li>
+</ul>
+<p>1.3 <strong>Modelo en capas</strong></p>
+<ul>
+<li><p>7 capas OSI/TCP-IP: Física, Enlace, Red,
+	Transporte, Sesión, Presentación, Aplicación.</p></li>
+<li><p>Clave: cada capa solo interactúa con la superior
+	e inferior → modularidad y escalabilidad.</p></li>
+</ul>
+<p>1.4 <strong>Protocolos de aplicación</strong></p>
+<ul>
+<li><p><strong>HTTP vs HTTPS</strong>: HTTPS usa TLS/SSL
+	para cifrado y autenticación.</p></li>
+<li><p><strong>FTP</strong>: transferencia de archivos,
+	modos activo/pasivo.</p></li>
+<li><p><strong>SMTP/POP3</strong>: envío/recepción de
+	correo.</p></li>
+<li><p><strong>Telnet/SSH</strong>: Telnet inseguro; SSH
+	seguro y cifrado.</p></li>
+<li><p><strong>SNMP</strong>: administración y
+	monitorización de red.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1687_841065197" lang="es">
+2. Servicios Web y tecnologías relacionadas</h2>
+<p>2.1 <strong>Concepto y componentes</strong></p>
+<ul>
+<li><p>Servicios accesibles por la web que permiten
+	interoperabilidad entre aplicaciones heterogéneas.</p></li>
+<li><p>Tecnologías: SOAP (mensajes XML), WSDL
+	(definición de interfaz), JAXR (acceso a registros), UDDI
+	(directorio de servicios).</p></li>
+</ul>
+<p>2.2 <strong>Representaciones de datos</strong></p>
+<ul>
+<li><p>ASCII, Imagen, EBCDIC, Local → asegurar
+	interpretación correcta en distintos sistemas.</p></li>
+</ul>
+<p>2.3 <strong>Seguridad</strong></p>
+<ul>
+<li><p><strong>SAML</strong>: autenticación y
+	autorización (assertions, request/response, bindings, profiles).</p></li>
+<li><p><strong>XACML</strong>: políticas de acceso a
+	recursos XML.</p></li>
+<li><p><strong>SSO</strong>: un login para múltiples
+	servicios.</p></li>
+<li><p><strong>WS-Security</strong>: cifrado, firma
+	digital y tokens en mensajes SOAP.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1689_841065197" lang="es">
+3. JMS y MOM</h2>
+<p>3.1 <strong>JMS (Java Message Service)</strong></p>
+<ul>
+<li><p>API Java para comunicación asincrónica entre
+	aplicaciones; útil en B2B.</p></li>
+<li><p>Se centra en mensajes de software, no gestiona CPU
+	ni hardware.</p></li>
+</ul>
+<p>3.2 <strong>MOM (Message-Oriented Middleware)</strong></p>
+<ul>
+<li><p>Infraestructura que garantiza envío y recepción
+	fiable de mensajes.</p></li>
+<li><p>JMS puede usar MOM como base.</p></li>
+</ul>
+<p>3.3 <strong>Punto crítico de examen</strong></p>
+<ul>
+<li><p>Diferencia clave: JMS = API Java; MOM =
+	infraestructura que soporta JMS.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1691_841065197" lang="es">
+4. Flujos de E/S y compresión</h2>
+<p>4.1 <strong>Concepto</strong></p>
+<ul>
+<li><p>E/S: transferencia de datos entre programa y
+	recursos externos (archivo, red).</p></li>
+</ul>
+<p>4.2 <strong>IO vs NIO</strong>  (punto conflictivo)</p>
+<ul>
+<li><p>IO: bloqueante, flujos de bytes/caracteres, hilos
+	necesarios para concurrencia.</p></li>
+<li><p>NIO: no bloqueante, buffers y channels; eficiente
+	para grandes volúmenes.</p></li>
+<li><p>Compresión a bajo nivel: en IO se usan flujos de
+	bytes, en NIO no → se usan buffers y canales.</p></li>
+</ul>
+<p>4.3 <strong>Clases para compresión/descompresión</strong></p>
+<ul>
+<li><p>ZIP: DeflaterOutputStream,
+	CheckedInputStream/CheckedOutputStream.</p></li>
+<li><p>GZIP: GZIPOutputStream,
+	GZIPInputStream.</p></li>
+<li><p>ZIP lectura: ZipInputStream.</p></li>
+<li><p>Puntos conflictivos: elección depende del formato
+	y nivel de E/S.</p></li>
+</ul>
+<p>4.4 <strong>Representaciones de datos</strong></p>
+<ul>
+<li><p>ASCII, Imagen, EBCDIC, Local → importante aunque
+	no siempre preguntado.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1693_841065197" lang="es">
+5. Conexión a servicios web desde Java</h2>
+<p>5.1 <strong>Cliente vs Servidor</strong></p>
+<ul>
+<li><p>Cliente solicita servicios, servidor atiende.</p></li>
+<li><p>Conexión puede ser local o vía Internet.</p></li>
+</ul>
+<p>5.2 <strong>Propiedades y configuración</strong></p>
+<ul>
+<li><p>WSDL URL: ubicación
+	del servicio para generar clases proxy en Java.</p></li>
+</ul>
+<p>5.3 <strong>Servidores para pruebas</strong></p>
+<ul>
+<li><p>GlassFish: servidor para pruebas y despliegue,
+	soporta WebServices y Java EE.</p></li>
+<li><p>No confundir con FTP o Telnet.</p></li>
+</ul>
+<p>5.4 <strong>Creación de proyectos cliente en NetBeans</strong></p>
+<ul>
+<li><p>Web Service Client Project → genera proxies y
+	maneja serialización automáticamente.</p></li>
+</ul>
+<p>5.5 <strong>Puntos conflictivos</strong></p>
+<ul>
+<li><p>Diferenciar cliente vs servidor y sus clases.</p></li>
+<li><p>WSDL URL vs HTTP WebService/HTTP ServiceWeb.</p></li>
+<li><p>Servidor GlassFish como entorno de pruebas.</p></li>
+<li><p>Tipo de proyecto NetBeans → Web Service Client.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1695_841065197" lang="es">
+6. Pruebas de rendimiento y profiling</h2>
+<p>6.1 <strong>Profiling</strong></p>
+<ul>
+<li><p>Análisis dinámico de un programa para medir: uso
+	de CPU, memoria, tiempo de ejecución de módulos.</p></li>
+<li><p>Herramientas: profilers.</p></li>
+</ul>
+<p>6.2 <strong>Herramientas</strong></p>
+<ul>
+<li><p><strong>JMeter</strong>: pruebas de carga/estrés,
+	evalúa tiempo de respuesta; no analiza rendimiento por módulo.</p></li>
+<li><p><strong>JConsole</strong>: monitorización
+	CPU/memoria; limitado por módulos.</p></li>
+<li><p><strong>Spring Insight</strong>: supera limitación
+	→ información por módulo y tiempo de procesamiento.</p></li>
+</ul>
+<p>6.3 <strong>Comparación y puntos críticos</strong></p>
+<ul>
+<li><p>JMeter/JConsole → carga y monitorización
+	general.</p></li>
+<li><p>Spring Insight → análisis detallado por módulo.</p></li>
+<li><p>Clave de examen: saber qué herramienta usar según
+	objetivo y limitación.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1697_841065197" lang="es">
+✅ Puntos conflictivos generales</h2>
+<ul>
+<li><p>IO vs NIO: flujos de bytes/caracteres vs buffers y
+	channels.</p></li>
+<li><p>Compresión: clases según formato ZIP/GZIP.</p></li>
+<li><p>JMS vs MOM: API vs infraestructura.</p></li>
+<li><p>Spring Insight vs JMeter/JConsole: qué
+	información proporciona cada una.</p></li>
+<li><p>Cliente vs Servidor, WSDL URL, GlassFish, tipo de
+	proyecto NetBeans.</p></li>
+</ul>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

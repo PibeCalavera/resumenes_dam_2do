@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+Multimedia y Dispositivos Móviles – Unidad 3
+– Utilización de librerías
+multimedia integradas</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+Multimedia y Dispositivos Móviles – Unidad 3
+– Utilización de librerías
+multimedia integradas</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc2080_518905980">1. Conceptos generales de multimedia</a></p>
+<p><a href="#__RefHeading___Toc2082_518905980">1.1. Tipos de contenido multimedia</a></p>
+<p><a href="#__RefHeading___Toc2084_518905980">1.2. Fuentes de datos multimedia</a></p>
+<p><a href="#__RefHeading___Toc2086_518905980">2. Reproducción multimedia</a></p>
+<p><a href="#__RefHeading___Toc2088_518905980">2.1. Clases de reproducción</a></p>
+<p><a href="#__RefHeading___Toc2090_518905980">2.2. Control de reproducción</a></p>
+<p><a href="#__RefHeading___Toc2092_518905980">2.3. Streaming</a></p>
+<p><a href="#__RefHeading___Toc2094_518905980">3. Grabación multimedia</a></p>
+<p><a href="#__RefHeading___Toc2096_518905980">3.1. Clase principal</a></p>
+<p><a href="#__RefHeading___Toc2098_518905980">3.2. Métodos principales</a></p>
+<p><a href="#__RefHeading___Toc2100_518905980">3.3. Permisos</a></p>
+<p><a href="#__RefHeading___Toc2102_518905980">3.4. Manipulación de contenedores</a></p>
+<p><a href="#__RefHeading___Toc2104_518905980">3.5. Consideraciones y buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc2106_518905980">4. Ciclo de vida de Activities y eventos</a></p>
+<p><a href="#__RefHeading___Toc2108_518905980">4.1. Métodos principales de ciclo de vida</a></p>
+<p><a href="#__RefHeading___Toc2110_518905980">4.2. Interacción con Multimedia</a></p>
+<p><a href="#__RefHeading___Toc2112_518905980">4.3. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc2114_518905980">5. Animaciones</a></p>
+<p><a href="#__RefHeading___Toc2116_518905980">5.1. Tipos de animaciones en Android</a></p>
+<p><a href="#__RefHeading___Toc2118_518905980">5.2. Animaciones entre Activities</a></p>
+<p><a href="#__RefHeading___Toc2120_518905980">6. Formatos y codificadores</a></p>
+<p><a href="#__RefHeading___Toc2122_518905980">6.1. Formatos de audio</a></p>
+<p><a href="#__RefHeading___Toc2124_518905980">6.2. Formatos de vídeo</a></p>
+<p><a href="#__RefHeading___Toc2126_518905980">6.3. Codificadores (Encoders)</a></p>
+<p><a href="#__RefHeading___Toc2128_518905980">6.4. Contenedores y relación con codificadores</a></p>
+<p><a href="#__RefHeading___Toc2130_518905980">7. Flujos de audio y emisión en tiempo real</a></p>
+<p><a href="#__RefHeading___Toc2132_518905980">7.1. Clases principales para reproducción de audio</a></p>
+<p><a href="#__RefHeading___Toc2134_518905980">7.2. Emisión de audio y streaming</a></p>
+<p><a href="#__RefHeading___Toc2136_518905980">7.3. Consideraciones y buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc2138_518905980">8. Control y monitoreo del buffer y eventos multimedia</a></p>
+<p><a href="#__RefHeading___Toc2140_518905980">8.1. Eventos de MediaPlayer</a></p>
+<p><a href="#__RefHeading___Toc2142_518905980">8.2. Logs y depuración</a></p>
+<p><a href="#__RefHeading___Toc2144_518905980">8.3. Buenas prácticas de control</a></p>
+<p><a href="#__RefHeading___Toc2146_518905980">Resumen rápido – Unidad 03 Multimedia y Dispositivos Móviles</a></p>
+<p><a href="#__RefHeading___Toc2148_518905980">1. Fuentes de datos multimedia</a></p>
+<p><a href="#__RefHeading___Toc2150_518905980">2. Reproducción multimedia</a></p>
+<p><a href="#__RefHeading___Toc2152_518905980">3. Grabación multimedia</a></p>
+<p><a href="#__RefHeading___Toc2154_518905980">4. Ciclo de vida de Activities</a></p>
+<p><a href="#__RefHeading___Toc2156_518905980">5. Animaciones</a></p>
+<p><a href="#__RefHeading___Toc2158_518905980">6. Formatos y codificadores</a></p>
+<p><a href="#__RefHeading___Toc2160_518905980">7. Flujos de audio y streaming</a></p>
+<p><a href="#__RefHeading___Toc2162_518905980">8. Control y monitoreo</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc2080_518905980" lang="es">
+<strong>1. Conceptos generales de multimedia</strong></h1>
+<h2 id="__RefHeading___Toc2082_518905980" lang="es">
+<strong>1.1. Tipos de contenido multimedia</strong></h2>
+<ul>
+<li><p><strong>Texto / Hipertexto</strong></p>
+<ul>
+<li><p>Definición: información lineal (texto) o
+		enriquecida con enlaces, referencias y metadatos (hipertexto).</p></li>
+<li><p>Uso: presentación de información
+		acompañante, etiquetas de medios, subtítulos, menús.</p></li>
+<li><p>Ejemplo: títulos de canciones,
+		descripciones de vídeo, menús interactivos.</p></li>
+</ul>
+<li><p><strong>Imágenes</strong></p>
+<ul>
+<li><p>Definición: representaciones gráficas
+		fijas de información visual.</p></li>
+<li><p>Formatos comunes:</p>
+<ul>
+<li><p><strong>PNG</strong>: sin pérdida, soporta
+			transparencia; recomendable para iconos y gráficos.</p></li>
+<li><p><strong>JPEG</strong>: compresión con pérdida,
+			tamaño reducido; recomendable para fotografías.</p></li>
+<li><p><strong>WebP</strong>: compresión eficiente,
+			soporta transparencia y animación; útil para apps modernas
+			Android.</p></li>
+</ul>
+<li><p>Uso: fondos, iconos, ilustraciones,
+		imágenes dentro de apps multimedia.</p></li>
+</li></ul>
+<li><p><strong>Vídeos</strong></p>
+<ul>
+<li><p>Definición: secuencia de imágenes en
+		movimiento con posible audio.</p></li>
+<li><p>Contenedores y códecs comunes:</p>
+<ul>
+<li><p><strong>MP4 / 3GPP</strong>: H.264 para vídeo,
+			AAC para audio; alto soporte Android.</p></li>
+<li><p><strong>MKV / WebM</strong>: contenedores
+			flexibles, VP8/VP9 o H.264; útiles para streaming o apps con
+			multimedia avanzada.</p></li>
+</ul>
+<li><p>Uso: tutoriales, clips, animaciones
+		complejas.</p></li>
+<li><p>Notas: el contenedor define cómo se
+		empaquetan pistas; los códecs determinan la compresión y calidad.</p></li>
+</li></ul>
+<li><p><strong>Audio / Música</strong></p>
+<ul>
+<li><p>Definición: grabaciones de sonidos
+		naturales o generados por ordenador.</p></li>
+<li><p>Formatos comunes:</p>
+<ul>
+<li><p><strong>AAC</strong>: buena calidad, eficiente,
+			estándar Android/iOS.</p></li>
+<li><p><strong>AMR_NB / AMR_WB</strong>: optimizados
+			para voz; tamaño reducido.</p></li>
+<li><p><strong>MP3</strong>: ampliamente soportado,
+			compresión con pérdida.</p></li>
+<li><p><strong>FLAC / Opus</strong>: sin pérdida o
+			alta eficiencia, recomendable para apps de música de alta
+			calidad.</p></li>
+<li><p><strong>MIDI</strong>: secuencias de notas y
+			controladores, no audio real; útil para sintetizadores.</p></li>
+</ul>
+<li><p>Uso: música de fondo, efectos de sonido,
+		voz.</p></li>
+<li><p>Consideración: elegir formato según
+		<strong>calidad deseada, tamaño y compatibilidad</strong>.</p></li>
+</li></ul>
+<li><p><strong>Animaciones</strong></p>
+<ul>
+<li><p>Definición: presentaciones gráficas que
+		crean ilusión de movimiento.</p></li>
+<li><p>Tipos:</p>
+<ul>
+<li><p>Basadas en <strong>vista</strong>: movimientos
+			simples de objetos ( res/anim ).</p></li>
+<li><p>Basadas en <strong>propiedades</strong>:
+			interpolación de atributos ( translationX,
+			alpha, scale )
+			con ObjectAnimator  o
+			ViewPropertyAnimator  ( res/animator ).</p></li>
+</ul>
+<li><p>Uso: transiciones de UI, efectos visuales,
+		animación de objetos en apps interactivas.</p></li>
+</li></ul>
+</li></li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2084_518905980" lang="es">
+<strong>1.2. Fuentes de datos multimedia</strong></h2>
+<ul>
+<li><p><strong>Recursos incluidos en la app</strong></p>
+<ul>
+<li><p>Ubicación: res/raw/,
+		res/animator/, etc.</p></li>
+<li><p>Características: siempre disponibles, no
+		dependen de almacenamiento externo ni red.</p></li>
+<li><p>Uso recomendado: elementos que se usan con
+		frecuencia, como sonidos cortos o clips incluidos en la app.</p></li>
+</ul>
+<li><p><strong>Ficheros locales</strong></p>
+<ul>
+<li><p>Ubicación: almacenamiento interno o
+		externo ( getFilesDir(),
+		getExternalFilesDir() ).</p></li>
+<li><p>Características: permite archivos
+		grandes; acceso como ficheros normales.</p></li>
+<li><p>Uso recomendado: vídeos descargados,
+		grabaciones de usuario, contenido de gran tamaño.</p></li>
+</ul>
+<li><p><strong>Recursos de red / Streaming</strong></p>
+<ul>
+<li><p>Características: se accede vía internet
+		(HTTP, RTSP), depende de ancho de banda.</p></li>
+<li><p>Uso: reproducción en tiempo real sin
+		descargar el archivo completo; streaming de audio o vídeo.</p></li>
+<li><p>Consideraciones: controlar buffering,
+		manejo de errores de red, adaptar calidad según conexión.</p></li>
+</ul>
+<li><p>Nota: <strong>no todas las fuentes posibles
+	se limitan a estas</strong>; por ejemplo, APIs de terceros pueden
+	proporcionar streams en vivo o contenido dinámico.</p></li>
+</li></li></li></ul>
+<hr/>
+<p>Este bloque cubre <strong>los conceptos generales y la
+base de todo el contenido multimedia</strong>: tipos de medios y
+fuentes de datos.</p>
+<ul>
+<li><p>A partir de aquí se entenderán mejor las
+	decisiones sobre <strong>clases, métodos y formatos</strong>  en
+	reproducción y grabación.</p></li>
+<li><p>Hemos incluido <strong>ejemplos y criterios de
+	uso</strong>, no solo definiciones.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc2086_518905980" lang="es">
+<strong>2. Reproducción multimedia</strong></h1>
+<h2 id="__RefHeading___Toc2088_518905980" lang="es">
+<strong>2.1. Clases de reproducción</strong></h2>
+<ul>
+<li><p><strong>MediaPlayer</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: Clase principal
+		para reproducir audio y vídeo desde distintas fuentes en Android.</p></li>
+<li><p><strong>Fuentes soportadas</strong>: tarjeta SD,
+		memoria interna, streaming de red (http/rtsp).</p></li>
+<li><p><strong>Estados</strong>: Idle → Initialized →
+		Prepared → Started → Paused → Stopped → End</p></li>
+<li><p><strong>Métodos principales</strong>:</p>
+<ul>
+<li><p><strong>setDataSource()</strong>: define la
+			fuente del medio.</p></li>
+<li><p><strong>prepare() / prepareAsync()</strong>:
+			prepara la reproducción; Async evita bloqueo de UI.</p></li>
+<li><p><strong>start()</strong>: inicia la
+			reproducción.</p></li>
+<li><p><strong>pause()</strong>: pausa la reproducción,
+			mantiene la posición actual.</p></li>
+<li><p><strong>stop()</strong>: detiene la
+			reproducción; requiere re-preparación para reiniciar.</p></li>
+<li><p><strong>seekTo(int msec)</strong>: mueve la
+			posición a un instante específico; solo válido en estado
+			Prepared o Started.</p></li>
+<li><p><strong>release()</strong>: libera todos los
+			recursos del reproductor, evitando fugas de memoria.</p></li>
+</ul>
+<li><p><strong>Listeners importantes</strong>:</p>
+<ul>
+<li><p><strong>OnPreparedListener</strong>: se activa
+			cuando el medio está listo para reproducirse.</p></li>
+<li><p><strong>OnCompletionListener</strong>: se activa
+			al finalizar la reproducción; útil para reiniciar audio o
+			ejecutar acciones finales.</p></li>
+<li><p><strong>OnBufferingUpdateListener</strong>:
+			indica progreso del buffer en streaming.</p></li>
+<li><p><strong>OnErrorListener</strong>: captura
+			errores durante la reproducción.</p></li>
+</ul>
+</li></li></ul>
+<li><p><strong>SoundPool</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: Reproducción de
+		sonidos cortos con baja latencia.</p></li>
+<li><p><strong>Uso recomendado</strong>: efectos de
+		sonido, notificaciones, alertas cortas.</p></li>
+</ul>
+<li><p><strong>AudioTrack</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: Reproducción de
+		audio desde buffers PCM; permite streaming de audio en tiempo real.</p></li>
+<li><p><strong>Uso recomendado</strong>: audio generado
+		dinámicamente o streaming de datos binarios.</p></li>
+</ul>
+<li><p><strong>VideoView</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: Vista que
+		simplifica la reproducción de vídeo.</p></li>
+<li><p><strong>Control</strong>: se puede enlazar a un
+		<strong>MediaController</strong>  para obtener play, pause, stop y
+		seek.</p></li>
+<li><p><strong>Método clave</strong>:
+		setMediaController(MediaController
+		controller).</p></li>
+</ul>
+<li><p><strong>ExoPlayer</strong>  (ampliación
+	sugerida)</p>
+<ul>
+<li><p><strong>Definición</strong>: Reproductor
+		avanzado de código abierto, soporta HLS, DASH, MP4, streaming
+		adaptativo.</p></li>
+<li><p><strong>Ventaja</strong>: manejo eficiente de
+		buffering y formatos modernos; recomendable para apps de streaming
+		profesional.</p></li>
+</ul>
+</li></li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2090_518905980" lang="es">
+<strong>2.2. Control de reproducción</strong></h2>
+<ul>
+<li><p><strong>MediaController</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: Interfaz gráfica
+		que proporciona botones de control estándar (play, pause, stop,
+		seek).</p></li>
+<li><p><strong>Uso</strong>: asociado a VideoView 
+		o MediaPlayer  para facilitar
+		interacción con el usuario.</p></li>
+</ul>
+<li><p><strong>seekTo()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: mueve la posición de
+		reproducción a un instante específico.</p></li>
+<li><p><strong>Requisitos</strong>: solo puede invocarse
+		en estados Prepared o Started.</p></li>
+<li><p><strong>Uso práctico</strong>: reiniciar audio,
+		saltar a un punto específico en un vídeo.</p></li>
+</ul>
+<li><p><strong>OnCompletionListener</strong></p>
+<ul>
+<li><p><strong>Función</strong>: se activa al finalizar
+		la reproducción de un medio.</p></li>
+<li><p><strong>Uso práctico</strong>: reiniciar audio,
+		cambiar al siguiente elemento de una lista de reproducción.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2092_518905980" lang="es">
+<strong>2.3. Streaming</strong></h2>
+<ul>
+<li><p><strong>Definición</strong>: Reproducción de
+	audio o vídeo <strong>en tiempo real</strong>, sin descargar el
+	archivo completo.</p></li>
+<li><p><strong>Características</strong>:</p>
+<ul>
+<li><p>Requiere conectividad de red.</p></li>
+<li><p>Calidad puede adaptarse según ancho de banda.</p></li>
+<li><p>Control de buffering mediante
+		OnBufferingUpdateListener.</p></li>
+</ul>
+<li><p><strong>Uso recomendado</strong>: radio online,
+	servicios de vídeo bajo demanda, streaming de eventos en vivo.</p></li>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2094_518905980" lang="es">
+<strong>3. Grabación multimedia</strong></h1>
+<h2 id="__RefHeading___Toc2096_518905980" lang="es">
+<strong>3.1. Clase principal</strong></h2>
+<ul>
+<li><p><strong>MediaRecorder</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: Clase que permite
+		capturar audio y vídeo en Android y almacenarlo en ficheros.</p></li>
+<li><p><strong>Uso recomendado</strong>: grabación de
+		audio para notas, música, voz del usuario, o captura de vídeo con
+		la cámara.</p></li>
+<li><p><strong>Ventajas</strong>: control de fuente,
+		formato, codificador, duración y tamaño de archivo; integración
+		nativa con Android.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2098_518905980" lang="es">
+<strong>3.2. Métodos principales</strong></h2>
+<ul>
+<li><p><strong>setAudioSource(int audio_source)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define la fuente de
+		audio.</p></li>
+<li><p><strong>Valores típicos</strong>: MIC 
+		(micrófono), CAMCORDER, DEFAULT,
+		VOICE_CALL.</p></li>
+</ul>
+<li><p><strong>setVideoSource(int video_source)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define la fuente de
+		vídeo.</p></li>
+<li><p><strong>Valores típicos</strong>: CAMERA,
+		SURFACE.</p></li>
+</ul>
+<li><p><strong>setOutputFile(String file)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define el fichero
+		donde se guardará la grabación.</p></li>
+</ul>
+<li><p><strong>setOutputFormat(int format)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define el contenedor
+		del archivo de salida.</p></li>
+<li><p><strong>Valores típicos</strong>: MPEG_4,
+		THREE_GPP, AMR_NB,
+		AMR_WB, RAW_AMR.</p></li>
+</ul>
+<li><p><strong>setAudioEncoder(int encoder)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define la codificación
+		de audio.</p></li>
+<li><p><strong>Valores típicos</strong>: AAC,
+		AMR_NB, AMR_WB,
+		DEFAULT.</p></li>
+</ul>
+<li><p><strong>setVideoEncoder(int encoder)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define la codificación
+		de vídeo.</p></li>
+<li><p><strong>Valores típicos</strong>: H264,
+		H263, DEFAULT.</p></li>
+</ul>
+<li><p><strong>setAudioChannels(int channels)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define el número de
+		canales de audio.</p></li>
+<li><p><strong>Valores típicos</strong>: 1 
+		= mono, 2  = estéreo.</p></li>
+</ul>
+<li><p><strong>setAudioEncodingBitRate(int bitRate)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define los bits por
+		segundo de la codificación.</p></li>
+</ul>
+<li><p><strong>setAudioSamplingRate(int samplingRate)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define la frecuencia
+		de muestreo de audio.</p></li>
+</ul>
+<li><p><strong>setMaxDuration(int max_duration_ms)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define duración
+		máxima de grabación; se detiene automáticamente al alcanzarla.</p></li>
+</ul>
+<li><p><strong>setMaxFileSize(long max_filesize_bytes)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: define tamaño máximo
+		de archivo; se detiene automáticamente al alcanzarlo.</p></li>
+</ul>
+<li><p><strong>prepare()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: prepara el objeto para
+		comenzar la captura de datos; debe llamarse después de configurar
+		fuentes, formato y codificadores.</p></li>
+</ul>
+<li><p><strong>start()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: inicia la captura de
+		audio y/o vídeo.</p></li>
+</ul>
+<li><p><strong>stop()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: finaliza la grabación.</p></li>
+</ul>
+<li><p><strong>reset()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: reinicia el objeto
+		como si fuera nuevo; obliga a reconfigurar.</p></li>
+</ul>
+<li><p><strong>release()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: libera todos los
+		recursos inmediatamente, evitando fugas de memoria.</p></li>
+</ul>
+</li></li></li></li></li></li></li></li></li></li></li></li></li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2100_518905980" lang="es">
+<strong>3.3. Permisos</strong></h2>
+<ul>
+<li><p><strong>RECORD_AUDIO</strong>  → permite grabar
+	audio desde el micrófono.</p></li>
+<li><p><strong>WRITE_EXTERNAL_STORAGE</strong>  →
+	permite guardar la grabación en almacenamiento externo.</p></li>
+<li><p><strong>READ_EXTERNAL_STORAGE</strong>  → permite
+	acceder a archivos existentes en almacenamiento externo.</p></li>
+<li><p><strong>Nota</strong>: desde <strong>API 23</strong> 
+	(Android 6 – Marshmallow) los permisos peligrosos deben
+	solicitarse <strong>en tiempo de ejecución</strong>, no solo en el
+	AndroidManifest.xml.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2102_518905980" lang="es">
+<strong>3.4. Manipulación de contenedores</strong></h2>
+<ul>
+<li><p><strong>MediaExtractor + MediaMuxer</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: permiten extraer
+		pistas de un contenedor y reempaquetarlas en otro formato.</p></li>
+<li><p><strong>Uso</strong>: reempaquetar audio y vídeo,
+		cambiar contenedor sin recodificar, separar pistas para edición.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2104_518905980" lang="es">
+<strong>3.5. Consideraciones y buenas prácticas</strong></h2>
+<ul>
+<li><p><strong>Liberar recursos</strong>: llamar a
+	release()  siempre que no se necesite
+	más el objeto.</p></li>
+<li><p><strong>Reset antes de reconfigurar</strong>:
+	permite reutilizar un objeto MediaRecorder.</p></li>
+<li><p><strong>Seleccionar codificador y formato según
+	uso</strong>:</p>
+<ul>
+<li><p>AAC + MPEG_4  →
+		buena compatibilidad y calidad para audio/video general.</p></li>
+<li><p>AMR  → optimizado
+		para voz, bajo tamaño.</p></li>
+<li><p>H264 + MPEG_4  →
+		vídeo de calidad estándar y buena compatibilidad.</p></li>
+</ul>
+<li><p><strong>Control de duración y tamaño</strong>:
+	evita grabaciones demasiado largas o ficheros gigantes.</p></li>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2106_518905980" lang="es">
+<strong>4. Ciclo de vida de Activities y eventos</strong></h1>
+<h2 id="__RefHeading___Toc2108_518905980" lang="es">
+<strong>4.1. Métodos principales de ciclo de vida</strong></h2>
+<ul>
+<li><p><strong>onCreate(Bundle savedInstanceState)</strong></p>
+<ul>
+<li><p><strong>Función</strong>: se activa al <strong>crear
+		la Activity por primera vez</strong>.</p></li>
+<li><p><strong>Uso típico</strong>: inicializar UI,
+		inflar layouts, inicializar variables y objetos multimedia
+		( MediaPlayer, MediaRecorder ).</p></li>
+</ul>
+<li><p><strong>onStart()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: se activa cuando la
+		Activity <strong>se hace visible para el usuario</strong>.</p></li>
+<li><p><strong>Uso típico</strong>: preparar recursos
+		que deben estar disponibles mientras la Activity es visible.</p></li>
+</ul>
+<li><p><strong>onResume()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: se activa cuando la
+		Activity <strong>pasa a primer plano y puede interactuar con el
+		usuario</strong>.</p></li>
+<li><p><strong>Uso típico</strong>: reanudar
+		reproducción de audio o vídeo, reiniciar animaciones, reactivar
+		sensores.</p></li>
+</ul>
+<li><p><strong>onPause()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: se activa cuando el
+		usuario <strong>está dejando la Activity</strong>, que puede
+		quedar parcialmente visible.</p></li>
+<li><p><strong>Uso típico</strong>: pausar reproducción
+		multimedia, guardar posición de MediaPlayer,
+		detener animaciones temporales.</p></li>
+</ul>
+<li><p><strong>onStop()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: se activa cuando la
+		Activity <strong>ya no es visible para el usuario</strong>.</p></li>
+<li><p><strong>Uso típico</strong>: liberar recursos
+		que consumen memoria o CPU (como MediaPlayer 
+		o MediaRecorder ).</p></li>
+</ul>
+<li><p><strong>onDestroy()</strong></p>
+<ul>
+<li><p><strong>Función</strong>: se activa <strong>antes
+		de que la Activity sea destruida</strong>.</p></li>
+<li><p><strong>Uso típico</strong>: liberar
+		completamente objetos multimedia y otros recursos críticos.</p></li>
+</ul>
+</li></li></li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2110_518905980" lang="es">
+<strong>4.2. Interacción con Multimedia</strong></h2>
+<ul>
+<li><p><strong>MediaPlayer y ciclo de vida</strong>:</p>
+<ul>
+<li><p>Guardar posición actual en onPause() 
+		si se desea continuar después.</p></li>
+<li><p>Llamar a release() 
+		en onStop()  o onDestroy() 
+		para liberar memoria.</p></li>
+<li><p>Eventos importantes:</p>
+<ul>
+<li><p><strong>OnPreparedListener</strong>  → medio
+			listo para reproducirse.</p></li>
+<li><p><strong>OnCompletionListener</strong>  → fin de
+			reproducción; útil para reiniciar audio o cambiar pista.</p></li>
+<li><p><strong>OnBufferingUpdateListener</strong>  →
+			progreso del buffer en streaming.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>MediaRecorder y ciclo de vida</strong>:</p>
+<ul>
+<li><p>Llamar a release() 
+		en onStop()  o onDestroy().</p></li>
+<li><p>reset()  permite
+		reutilizar el objeto antes de reconfigurar.</p></li>
+</ul>
+<li><p><strong>Cambio de orientación</strong>:</p>
+<ul>
+<li><p>Por defecto, MediaPlayer 
+		pierde posición al cambiar orientación.</p></li>
+<li><p>Guardar/restaurar posición permite <strong>continuar
+		reproducción sin interrupciones</strong>.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2112_518905980" lang="es">
+<strong>4.3. Buenas prácticas</strong></h2>
+<ul>
+<li><p><strong>Liberar recursos pesados</strong>  en
+	onStop()  o onDestroy().</p></li>
+<li><p><strong>Guardar estado de reproducción</strong> 
+	en onPause()  para restaurarlo en
+	onResume().</p></li>
+<li><p><strong>Listeners</strong>: asegurarse de
+	registrarlos/desregistrarlos para evitar fugas de memoria.</p></li>
+<li><p><strong>Permisos</strong>: verificar que los
+	permisos de almacenamiento y micrófono están disponibles antes de
+	usar objetos multimedia.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc2114_518905980" lang="es">
+<strong>5. Animaciones</strong></h1>
+<h2 id="__RefHeading___Toc2116_518905980" lang="es">
+<strong>5.1. Tipos de animaciones en Android</strong></h2>
+<ul>
+<li><p><strong>Animaciones basadas en vistas</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: modifican la
+		apariencia de un objeto ( View ) usando
+		transformaciones predefinidas (traslación, rotación, escala,
+		alfa).</p></li>
+<li><p><strong>Recursos XML</strong>: se guardan en
+		res/anim/.</p></li>
+<li><p><strong>Clases relevantes</strong>:</p>
+<ul>
+<li><p><strong>Animation</strong>: clase base para
+			animaciones tradicionales.</p></li>
+<li><p><strong>AnimationUtils</strong>: carga
+			animaciones desde XML.</p></li>
+</ul>
+<li><p><strong>Uso recomendado</strong>: movimientos
+		simples de UI, transiciones de botones, fades, rotaciones básicas.</p></li>
+</li></ul>
+<li><p><strong>Animaciones basadas en propiedades</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: interpolan
+		cualquier propiedad de un objeto (posición, opacidad, tamaño,
+		color).</p></li>
+<li><p><strong>Recursos XML</strong>: se guardan en
+		res/animator/.</p></li>
+<li><p><strong>Clases relevantes</strong>:</p>
+<ul>
+<li><p><strong>ObjectAnimator</strong>: anima una
+			propiedad específica de un objeto, ej. translationX,
+			alpha.</p></li>
+<li><p><strong>ValueAnimator</strong>: genera valores
+			numéricos interpolados; puede aplicarse a cualquier atributo
+			mediante callbacks.</p></li>
+<li><p><strong>AnimatorSet</strong>: combina varias
+			animaciones para reproducirse en secuencia o simultáneamente.</p></li>
+<li><p><strong>ViewPropertyAnimator</strong>: API
+			simplificada para animar varias propiedades de un View 
+			directamente.</p></li>
+</ul>
+<li><p><strong>Uso recomendado</strong>: animaciones
+		complejas de UI, transiciones fluidas, interacciones dinámicas.</p></li>
+</li></ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2118_518905980" lang="es">
+<strong>5.2. Animaciones entre Activities</strong></h2>
+<ul>
+<li><p><strong>ActivityOptions</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: objeto que
+		configura animaciones de transición entre Activities.</p></li>
+<li><p><strong>Uso típico</strong>: efectos de
+		entrada/salida al iniciar o cerrar Activities.</p></li>
+</ul>
+<li><p><strong>Transition</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: clase que define
+		animaciones de cambio de estado de la UI, usada junto con
+		ActivityOptions  o Scene.</p></li>
+<li><p><strong>Uso recomendado</strong>: transiciones
+		avanzadas entre layouts o Activities, animaciones de elementos
+		compartidos.</p></li>
+</ul>
+<li><p><strong>Buenas prácticas</strong>:</p>
+<ul>
+<li><p>Usar <strong>animaciones por propiedades</strong> 
+		cuando se necesite rendimiento y GPU acelerada.</p></li>
+<li><p>Evitar animaciones pesadas en bucles frecuentes o
+		listas largas para no afectar la UI.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2120_518905980" lang="es">
+<strong>6. Formatos y codificadores</strong></h1>
+<h2 id="__RefHeading___Toc2122_518905980" lang="es">
+<strong>6.1. Formatos de audio</strong></h2>
+<ul>
+<li><p><strong>AAC (Advanced Audio Coding)</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: compresión con
+		pérdida, alta eficiencia y buena calidad.</p></li>
+<li><p><strong>Uso recomendado</strong>: música, audio
+		de vídeo, streaming; estándar Android/iOS.</p></li>
+<li><p><strong>Clases relacionadas</strong>:
+		MediaRecorder.AudioEncoder.AAC.</p></li>
+</ul>
+<li><p><strong>AMR (Adaptive Multi-Rate)</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: optimizado para
+		voz; bajo tamaño de archivo.</p></li>
+<li><p><strong>Variantes</strong>: AMR_NB 
+		(narrowband) y AMR_WB  (wideband).</p></li>
+<li><p><strong>Uso recomendado</strong>: grabaciones de
+		voz, llamadas VoIP.</p></li>
+</ul>
+<li><p><strong>MP3</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: compresión con
+		pérdida ampliamente soportada.</p></li>
+<li><p><strong>Uso recomendado</strong>: música
+		general, efectos de sonido.</p></li>
+</ul>
+<li><p><strong>FLAC</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: compresión sin
+		pérdida; conserva calidad total.</p></li>
+<li><p><strong>Uso recomendado</strong>: música de alta
+		fidelidad.</p></li>
+</ul>
+<li><p><strong>MIDI</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: secuencias de notas
+		y controladores, no audio real.</p></li>
+<li><p><strong>Uso recomendado</strong>: sintetizadores,
+		instrumentos virtuales.</p></li>
+</ul>
+</li></li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2124_518905980" lang="es">
+<strong>6.2. Formatos de vídeo</strong></h2>
+<ul>
+<li><p><strong>MP4 / 3GPP</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: contenedores que
+		empaquetan vídeo y audio; comúnmente H.264 + AAC.</p></li>
+<li><p><strong>Uso recomendado</strong>: reproducción
+		general en Android, streaming, almacenamiento local.</p></li>
+</ul>
+<li><p><strong>MKV / WebM</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: contenedores
+		flexibles; soportan VP8/VP9 y H.264.</p></li>
+<li><p><strong>Uso recomendado</strong>: streaming
+		avanzado, vídeos de alta resolución, subtítulos integrados.</p></li>
+</ul>
+<li><p><strong>AVI</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: contenedor clásico;
+		soporte limitado en Android nativo.</p></li>
+<li><p><strong>Uso recomendado</strong>: conversión o
+		compatibilidad legacy.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2126_518905980" lang="es">
+<strong>6.3. Codificadores (Encoders)</strong></h2>
+<ul>
+<li><p><strong>Audio</strong></p>
+<ul>
+<li><p>MediaRecorder.AudioEncoder.AAC 
+		→ audio general de alta calidad.</p></li>
+<li><p>MediaRecorder.AudioEncoder.AMR_NB
+		/ AMR_WB  → voz, bajo tamaño.</p></li>
+<li><p>MediaRecorder.AudioEncoder.DEFAULT 
+		→ selecciona automáticamente el codec por defecto del
+		dispositivo.</p></li>
+</ul>
+<li><p><strong>Vídeo</strong></p>
+<ul>
+<li><p>MediaRecorder.VideoEncoder.H264 
+		→ estándar moderno, alta compresión y calidad.</p></li>
+<li><p>MediaRecorder.VideoEncoder.H263 
+		→ compatibilidad con dispositivos antiguos.</p></li>
+<li><p>MediaRecorder.VideoEncoder.DEFAULT 
+		→ codec predeterminado del dispositivo.</p></li>
+</ul>
+<li><p><strong>Consideraciones</strong>:</p>
+<ul>
+<li><p>Elegir codificador según <strong>compatibilidad,
+		calidad, tamaño de archivo y tipo de contenido</strong>.</p></li>
+<li><p>Evitar formatos o codificadores no soportados por
+		el dispositivo destino para garantizar reproducción.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2128_518905980" lang="es">
+<strong>6.4. Contenedores y relación con codificadores</strong></h2>
+<ul>
+<li><p><strong>Contenedor</strong>: archivo que empaqueta
+	pistas de audio y vídeo, metadatos, subtítulos y capítulos.</p></li>
+<li><p><strong>Ejemplos</strong>: MP4, 3GPP, MKV, WebM,
+	AVI.</p></li>
+<li><p><strong>Codificador vs contenedor</strong>:</p>
+<ul>
+<li><p>El codificador determina <strong>cómo se
+		comprime el contenido</strong>.</p></li>
+<li><p>El contenedor determina <strong>cómo se
+		empaquetan las pistas</strong>  y qué reproductores pueden abrirlo.</p></li>
+</ul>
+<li><p><strong>Práctica</strong>: combinar AAC + MP4,
+	H264 + MP4, VP9 + WebM según el uso esperado.</p></li>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2130_518905980" lang="es">
+<strong>7. Flujos de audio y emisión en tiempo real</strong></h1>
+<h2 id="__RefHeading___Toc2132_518905980" lang="es">
+<strong>7.1. Clases principales para reproducción de audio</strong></h2>
+<ul>
+<li><p><strong>AudioTrack</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: permite reproducir
+		audio a nivel de buffer PCM; útil para streaming o audio generado
+		dinámicamente.</p></li>
+<li><p><strong>Uso recomendado</strong>: reproducción
+		de audio en tiempo real, sonidos generados por la app, manipulación
+		avanzada de audio.</p></li>
+<li><p><strong>Métodos clave</strong>:</p>
+<ul>
+<li><p><strong>write(byte[] buffer, int offset, int
+			size)</strong>  → envía datos de audio al buffer.</p></li>
+<li><p><strong>play() / pause() / stop()</strong>  →
+			controla la reproducción.</p></li>
+<li><p><strong>flush()</strong>  → limpia el buffer de
+			audio.</p></li>
+<li><p><strong>release()</strong>  → libera recursos.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>AudioManager</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: gestiona el audio
+		del dispositivo, niveles de volumen, rutas de salida (altavoz,
+		auriculares, Bluetooth).</p></li>
+<li><p><strong>Uso recomendado</strong>: configurar
+		volumen, cambiar salida de audio, detectar cambios en hardware de
+		audio.</p></li>
+</ul>
+<li><p><strong>SoundPool</strong>  (ya mencionado en
+	reproducción)</p>
+<ul>
+<li><p><strong>Función adicional</strong>: permite
+		cargar varios clips cortos y reproducirlos simultáneamente con
+		baja latencia.</p></li>
+<li><p><strong>Uso recomendado</strong>: efectos de
+		sonido en juegos o notificaciones interactivas.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2134_518905980" lang="es">
+<strong>7.2. Emisión de audio y streaming</strong></h2>
+<ul>
+<li><p><strong>AudioGroup (API obsoleta)</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: clase que agrupaba
+		flujos de audio para comunicaciones en tiempo real.</p></li>
+<li><p><strong>Uso histórico</strong>: voz en
+		conferencias, llamadas VoIP.</p></li>
+<li><p><strong>Nota</strong>: hoy se usan APIs más
+		modernas (WebRTC, MediaCodec, AudioRecord/AudioTrack).</p></li>
+</ul>
+<li><p><strong>RTP (Real-time Transport Protocol)</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: protocolo de
+		transmisión de audio y vídeo en tiempo real.</p></li>
+<li><p><strong>Uso recomendado</strong>:
+		videoconferencias, streaming en directo.</p></li>
+<li><p><strong>Relación con Android</strong>: se
+		implementa mediante bibliotecas externas o frameworks
+		especializados (no nativo en MediaPlayer/MediaRecorder).</p></li>
+</ul>
+<li><p><strong>AudioStream / AudioRecord</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: permite capturar
+		audio desde el micrófono en tiempo real para enviar a otro sistema
+		o procesar en la app.</p></li>
+<li><p><strong>Métodos clave de AudioRecord</strong>:</p>
+<ul>
+<li><p><strong>startRecording() / stop()</strong>  →
+			control de captura.</p></li>
+<li><p><strong>read()</strong>  → obtiene datos PCM
+			del micrófono.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Flujo de audio general</strong>:</p>
+<ul>
+<li><p>Capturar audio con AudioRecord 
+		o MediaRecorder.</p></li>
+<li><p>Procesar o comprimir con codificador adecuado
+		(AAC, AMR, PCM).</p></li>
+<li><p>Enviar por red usando RTP o socket.</p></li>
+<li><p>Reproducir en destino con AudioTrack.</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2136_518905980" lang="es">
+<strong>7.3. Consideraciones y buenas prácticas</strong></h2>
+<ul>
+<li><p>Usar <strong>buffers adecuados</strong>  para
+	evitar latencia o glitches.</p></li>
+<li><p>Liberar recursos de AudioTrack 
+	y AudioRecord  tras su uso.</p></li>
+<li><p>Seleccionar <strong>codificador y formato</strong> 
+	según ancho de banda y compatibilidad del receptor.</p></li>
+<li><p>Para streaming en Android moderno, preferir
+	<strong>MediaCodec + AudioTrack</strong>  o <strong>WebRTC</strong> 
+	frente a AudioGroup  obsoleto.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc2138_518905980" lang="es">
+<strong>8. Control y monitoreo del buffer y eventos multimedia</strong></h1>
+<h2 id="__RefHeading___Toc2140_518905980" lang="es">
+<strong>8.1. Eventos de MediaPlayer</strong></h2>
+<ul>
+<li><p><strong>OnPreparedListener</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: se activa cuando el
+		medio está listo para reproducirse después de llamar a prepare() 
+		o prepareAsync().</p></li>
+<li><p><strong>Uso recomendado</strong>: iniciar la
+		reproducción automáticamente, habilitar botones de control,
+		preparar UI.</p></li>
+</ul>
+<li><p><strong>OnCompletionListener</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: se activa al
+		finalizar la reproducción de un medio.</p></li>
+<li><p><strong>Uso recomendado</strong>: reiniciar
+		audio, avanzar al siguiente elemento en una lista, liberar recursos
+		o cambiar estado de la UI.</p></li>
+</ul>
+<li><p><strong>OnBufferingUpdateListener</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: notifica el
+		progreso del buffering cuando se reproduce contenido en streaming.</p></li>
+<li><p><strong>Uso recomendado</strong>: mostrar barra
+		de progreso, evitar pausas, optimizar UX en streaming en vivo.</p></li>
+</ul>
+<li><p><strong>OnErrorListener</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: captura errores
+		durante la reproducción.</p></li>
+<li><p><strong>Uso recomendado</strong>: manejar errores
+		de fuente, códec, o red, y ofrecer feedback al usuario.</p></li>
+</ul>
+<li><p><strong>OnSeekCompleteListener</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: se activa al
+		completar un seekTo()  en MediaPlayer.</p></li>
+<li><p><strong>Uso recomendado</strong>: reanudar UI o
+		reproducir el medio en la posición deseada.</p></li>
+</ul>
+</li></li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2142_518905980" lang="es">
+<strong>8.2. Logs y depuración</strong></h2>
+<ul>
+<li><p><strong>Log de ejecución</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: registro de eventos
+		de la aplicación, útil para depuración.</p></li>
+<li><p><strong>Uso recomendado</strong>: seguimiento de
+		errores, estado de reproducción, posición de medios, inicio y fin
+		de grabaciones.</p></li>
+</ul>
+<li><p><strong>LOG_TAG</strong></p>
+<ul>
+<li><p><strong>Definición</strong>: constante String 
+		usada para identificar las entradas de log.</p></li>
+<li><p><strong>Uso recomendado</strong>: filtrar
+		registros específicos de una clase o funcionalidad (ej. audio,
+		vídeo).</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2144_518905980" lang="es">
+<strong>8.3. Buenas prácticas de control</strong></h2>
+<ul>
+<li><p><strong>Liberación de recursos multimedia</strong></p>
+<ul>
+<li><p><strong>Momento recomendado</strong>: onStop() 
+		o onDestroy()  de la Activity.</p></li>
+<li><p><strong>Métodos clave</strong>:</p>
+<ul>
+<li><p>MediaPlayer.release() 
+			→ libera todos los recursos de forma inmediata.</p></li>
+<li><p>MediaRecorder.release() 
+			→ similar para objetos de grabación.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Permisos y seguridad</strong></p>
+<ul>
+<li><p>Verificar permisos en tiempo de ejecución para
+		audio y almacenamiento antes de iniciar reproducción o grabación.</p></li>
+</ul>
+<li><p><strong>Control de flujo de streaming</strong></p>
+<ul>
+<li><p>Usar OnBufferingUpdateListener 
+		para ajustar reproducción y UX.</p></li>
+<li><p>Monitorizar posición con seekTo() 
+		y OnSeekCompleteListener.</p></li>
+<li><p>Manejar errores y eventos inesperados con
+		OnErrorListener.</p></li>
+</ul>
+<li><p><strong>Integración con ciclo de vida de
+	Activities</strong></p>
+<ul>
+<li><p>Pausar reproducción en onPause().</p></li>
+<li><p>Guardar estado de reproducción (posición) y
+		restaurar en onResume().</p></li>
+<li><p>Liberar recursos pesados en onStop() 
+		o onDestroy().</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc2146_518905980" lang="es">
+<strong>Resumen rápido – Unidad 03 Multimedia y Dispositivos
+Móviles</strong></h1>
+<h2 id="__RefHeading___Toc2148_518905980" lang="es">
+<strong>1. Fuentes de datos multimedia</strong></h2>
+<ul>
+<li><p><strong>Recursos de la app</strong>  → siempre
+	accesibles; recomendado para uso frecuente.</p></li>
+<li><p><strong>Ficheros locales</strong>  → interno o
+	externo; usar para archivos grandes.</p></li>
+<li><p><strong>Recursos de red</strong>  → streaming;
+	depende de conectividad.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2150_518905980" lang="es">
+<strong>2. Reproducción multimedia</strong></h2>
+<ul>
+<li><p><strong>Clases principales</strong>:</p>
+<ul>
+<li><p>MediaPlayer  →
+		audio/vídeo; estados: Idle → Initialized → Prepared →
+		Started → Paused → Stopped → End</p></li>
+<li><p>VideoView  →
+		simplifica reproducción de vídeo; usar con MediaController.</p></li>
+<li><p>SoundPool  →
+		efectos cortos; baja latencia.</p></li>
+<li><p>AudioTrack  → audio
+		PCM; streaming/datos generados.</p></li>
+</ul>
+<li><p><strong>Control</strong>:</p>
+<ul>
+<li><p>start(), pause(),
+		stop(), seekTo(),
+		release().</p></li>
+<li><p><strong>Listeners</strong>: OnPreparedListener,
+		OnCompletionListener,
+		OnBufferingUpdateListener,
+		OnErrorListener.</p></li>
+</ul>
+<li><p><strong>Streaming</strong>  → reproducción en
+	tiempo real; usar OnBufferingUpdateListener 
+	para barra de progreso.</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2152_518905980" lang="es">
+<strong>3. Grabación multimedia</strong></h2>
+<ul>
+<li><p><strong>Clase principal</strong>: MediaRecorder.</p></li>
+<li><p><strong>Métodos clave</strong>:</p>
+<ul>
+<li><p>setAudioSource(MIC),
+		setVideoSource(CAMERA)</p></li>
+<li><p>setOutputFile(),
+		setOutputFormat(), setAudioEncoder(),
+		setVideoEncoder()</p></li>
+<li><p>prepare(), start(),
+		stop(), reset(),
+		release()</p></li>
+</ul>
+<li><p><strong>Permisos</strong>: RECORD_AUDIO,
+	WRITE_EXTERNAL_STORAGE,
+	READ_EXTERNAL_STORAGE  (runtime desde
+	API 23).</p></li>
+<li><p><strong>Reempaquetado</strong>: MediaExtractor
+	+ MediaMuxer.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2154_518905980" lang="es">
+<strong>4. Ciclo de vida de Activities</strong></h2>
+<ul>
+<li><p>onCreate()  →
+	inicialización UI y objetos multimedia.</p></li>
+<li><p>onStart()  →
+	Activity visible.</p></li>
+<li><p>onResume()  →
+	Activity en primer plano; iniciar/reanudar reproducción.</p></li>
+<li><p>onPause()  → pausar
+	reproducción, guardar estado.</p></li>
+<li><p>onStop()  → Activity
+	no visible; liberar recursos pesados.</p></li>
+<li><p>onDestroy()  →
+	liberar completamente recursos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2156_518905980" lang="es">
+<strong>5. Animaciones</strong></h2>
+<ul>
+<li><p><strong>Basadas en vistas</strong>  → Animation,
+	AnimationUtils; XML en res/anim/.</p></li>
+<li><p><strong>Por propiedades</strong>  →
+	ObjectAnimator, ValueAnimator,
+	AnimatorSet, ViewPropertyAnimator;
+	XML en res/animator/.</p></li>
+<li><p><strong>Entre Activities</strong>  →
+	ActivityOptions, Transition.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2158_518905980" lang="es">
+<strong>6. Formatos y codificadores</strong></h2>
+<ul>
+<li><p><strong>Audio</strong>: AAC (general), AMR_NB/WB
+	(voz), MP3, FLAC, MIDI.</p></li>
+<li><p><strong>Vídeo</strong>: MP4/3GPP (H264 + AAC),
+	MKV/WebM (VP8/VP9), AVI (legacy).</p></li>
+<li><p><strong>Codificadores</strong>:
+	MediaRecorder.AudioEncoder  y
+	MediaRecorder.VideoEncoder.</p></li>
+<li><p><strong>Recomendación</strong>: elegir
+	codificador según compatibilidad, calidad y tamaño.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2160_518905980" lang="es">
+<strong>7. Flujos de audio y streaming</strong></h2>
+<ul>
+<li><p><strong>Captura</strong>: AudioRecord,
+	MediaRecorder.</p></li>
+<li><p><strong>Reproducción</strong>: AudioTrack,
+	SoundPool.</p></li>
+<li><p><strong>Gestión audio</strong>: AudioManager.</p></li>
+<li><p><strong>Streaming en tiempo real</strong>: RTP,
+	sockets, WebRTC; buffers correctos para evitar latencia.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2162_518905980" lang="es">
+<strong>8. Control y monitoreo</strong></h2>
+<ul>
+<li><p><strong>Eventos MediaPlayer</strong>:</p>
+<ul>
+<li><p>OnPreparedListener,
+		OnCompletionListener,
+		OnBufferingUpdateListener,
+		OnSeekCompleteListener,
+		OnErrorListener.</p></li>
+</ul>
+<li><p><strong>Logs</strong>: Log.d(LOG_TAG,
+	mensaje).</p></li>
+<li><p><strong>Liberación de recursos</strong>:
+	release()  en onStop() / onDestroy().</p></li>
+<li><p><strong>Guardado/restauración</strong>: posición
+	de reproducción en onPause() / onResume().</p></li>
+</li></ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

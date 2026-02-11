@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+Multimedia y Dispositivos Móviles – Unidad 2
+– Programación de aplicaciones
+para dispositivos móviles</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+Multimedia y Dispositivos Móviles – Unidad 2
+– Programación de aplicaciones
+para dispositivos móviles</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc300_590826428">1. Estructura y organización de proyectos Android</a></p>
+<p><a href="#__RefHeading___Toc302_590826428">1.1. Carpetas principales</a></p>
+<p><a href="#__RefHeading___Toc304_590826428">1.2. Archivos importantes</a></p>
+<p><a href="#__RefHeading___Toc306_590826428">1.3. Gestión de dependencias y compilación</a></p>
+<p><a href="#__RefHeading___Toc308_590826428">1.4. APK y App Bundle</a></p>
+<p><a href="#__RefHeading___Toc310_590826428">2. Actividades y UI</a></p>
+<p><a href="#__RefHeading___Toc312_590826428">2.1. Activity</a></p>
+<p><a href="#__RefHeading___Toc314_590826428">2.2. WebView</a></p>
+<p><a href="#__RefHeading___Toc316_590826428">2.3. Toast</a></p>
+<p><a href="#__RefHeading___Toc318_590826428">2.4. Interacción con componentes</a></p>
+<p><a href="#__RefHeading___Toc320_590826428">3. Manejo de recursos y almacenamiento</a></p>
+<p><a href="#__RefHeading___Toc322_590826428">3.1. Recursos de la aplicación</a></p>
+<p><a href="#__RefHeading___Toc324_590826428">3.2. Almacenamiento de datos</a></p>
+<p><a href="#__RefHeading___Toc326_590826428">4. Permisos y seguridad</a></p>
+<p><a href="#__RefHeading___Toc328_590826428">4.1. Declaración de permisos</a></p>
+<p><a href="#__RefHeading___Toc330_590826428">4.2. Tipos de permisos según funcionalidad</a></p>
+<p><a href="#__RefHeading___Toc332_590826428">4.3. Permisos en tiempo de ejecución (Runtime Permissions)</a></p>
+<p><a href="#__RefHeading___Toc334_590826428">4.4. Conceptos adicionales de seguridad</a></p>
+<p><a href="#__RefHeading___Toc336_590826428">5. Sensores y eventos de interacción</a></p>
+<p><a href="#__RefHeading___Toc338_590826428">5.1. Sensores</a></p>
+<p><a href="#__RefHeading___Toc340_590826428">5.2. Eventos táctiles</a></p>
+<p><a href="#__RefHeading___Toc342_590826428">5.3. Uso práctico</a></p>
+<p><a href="#__RefHeading___Toc344_590826428">6. Redes y conectividad</a></p>
+<p><a href="#__RefHeading___Toc346_590826428">6.1. Clases principales</a></p>
+<p><a href="#__RefHeading___Toc348_590826428">6.2. Sockets</a></p>
+<p><a href="#__RefHeading___Toc350_590826428">6.3. Wi-Fi P2P y descubrimiento de servicios</a></p>
+<p><a href="#__RefHeading___Toc352_590826428">6.4. Intents y transmisión de datos</a></p>
+<p><a href="#__RefHeading___Toc354_590826428">6.5. Aplicaciones prácticas</a></p>
+<p><a href="#__RefHeading___Toc356_590826428">7. Conectividad y servicios web</a></p>
+<p><a href="#__RefHeading___Toc358_590826428">7.1. Descargas gestionadas</a></p>
+<p><a href="#__RefHeading___Toc360_590826428">7.2. HTTP y códigos de estado</a></p>
+<p><a href="#__RefHeading___Toc362_590826428">7.3. Google Maps</a></p>
+<p><a href="#__RefHeading___Toc364_590826428">7.4. WebView</a></p>
+<p><a href="#__RefHeading___Toc366_590826428">7.5. Aplicaciones prácticas</a></p>
+<p><a href="#__RefHeading___Toc368_590826428">8. Herramientas y pruebas</a></p>
+<p><a href="#__RefHeading___Toc370_590826428">8.1. Android Studio</a></p>
+<p><a href="#__RefHeading___Toc372_590826428">8.2. ADB (Android Debug Bridge)</a></p>
+<p><a href="#__RefHeading___Toc374_590826428">8.3. Registro de eventos y depuración</a></p>
+<p><a href="#__RefHeading___Toc376_590826428">8.4. Aplicaciones prácticas</a></p>
+<p><a href="#__RefHeading___Toc378_590826428">9. Recursos adicionales y documentación</a></p>
+<p><a href="#__RefHeading___Toc380_590826428">9.1. Android Developers</a></p>
+<p><a href="#__RefHeading___Toc382_590826428">9.2. Formato y contenidos</a></p>
+<p><a href="#__RefHeading___Toc384_590826428">9.3. Temas principales</a></p>
+<p><a href="#__RefHeading___Toc386_590826428">Resumen global – Unidad 02: Programación de aplicaciones para dispositivos móviles</a></p>
+<p><a href="#__RefHeading___Toc388_590826428">1. Estructura y organización de proyectos</a></p>
+<p><a href="#__RefHeading___Toc390_590826428">2. Actividades y UI</a></p>
+<p><a href="#__RefHeading___Toc392_590826428">3. Manejo de recursos y almacenamiento</a></p>
+<p><a href="#__RefHeading___Toc394_590826428">4. Permisos y seguridad</a></p>
+<p><a href="#__RefHeading___Toc396_590826428">5. Sensores y eventos de interacción</a></p>
+<p><a href="#__RefHeading___Toc398_590826428">6. Redes y conectividad</a></p>
+<p><a href="#__RefHeading___Toc400_590826428">7. Conectividad y servicios web</a></p>
+<p><a href="#__RefHeading___Toc402_590826428">8. Herramientas y pruebas</a></p>
+<p><a href="#__RefHeading___Toc404_590826428">9. Recursos adicionales y documentación</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc300_590826428" lang="es">
+<strong>1. Estructura y organización de proyectos Android</strong></h1>
+<p>Un proyecto Android sigue una estructura jerárquica
+definida para mantener el código organizado y facilitar la
+compilación y ejecución de la aplicación. Los elementos clave son:</p>
+<hr/>
+<h2 id="__RefHeading___Toc302_590826428" lang="es">
+<strong>1.1. </strong><strong>Carpetas principales</strong></h2>
+<ol>
+<ul>
+<li><p><strong>/src/main/java</strong> 
+Contiene
+		el código fuente de la aplicación (Java o Kotlin).
+La
+		convención para nombrar los paquetes es usar el <strong>nombre de
+		dominio de la empresa en minúsculas invertido</strong>, seguido
+		del nombre de la app o módulo, por ejemplo:</p>
+<pre><code>com.ejemplo.miapp</code></pre><p>
+		Esto evita conflictos de nombres entre aplicaciones diferentes.</p></li>
+<li><p><strong>/res</strong> 
+Contiene
+		los recursos de la aplicación: layouts ( layout ),
+		cadenas de texto ( values/strings.xml ),
+		imágenes ( drawable ), estilos
+		( styles.xml ), colores, animaciones,
+		etc.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc304_590826428" lang="es">
+<strong>1.2. </strong><strong>Archivos importantes</strong></h2>
+<ol>
+<ul>
+<li><p><strong>R.java</strong> 
+Es
+		un archivo <strong>autogenerado</strong>  que asigna un
+		identificador único ( id ) a cada
+		recurso. Por ejemplo:</p>
+<pre><code>R.id.botonEnviar</code>
+<code>R.layout.activity_main</code></pre><p>
+		Se utiliza para acceder a los recursos desde el código.</p></li>
+<li><p><strong>AndroidManifest.xml</strong> 
+Archivo
+		de configuración principal que declara:</p>
+<ul>
+<li><p>Actividades ( Activity )</p></li>
+<li><p>Servicios ( Service )</p></li>
+<li><p>Receptores ( BroadcastReceiver )</p></li>
+<li><p>Permisos requeridos ( &lt;uses-permission&gt; )</p></li>
+<li><p>Metadata de la aplicación (nombre, icono, tema,
+			versión).</p></li>
+</ul>
+</li></ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc306_590826428" lang="es">
+<strong>1.3. </strong><strong>Gestión de dependencias y compilación</strong></h2>
+<ol>
+<ul>
+<li><p><strong>Gradle</strong>  es el sistema de
+		compilación de Android Studio.</p>
+<ul>
+<li><p>build.gradle  a
+			nivel de proyecto → declara dependencias globales, plugins y
+			versiones.</p></li>
+<li><p>build.gradle  a
+			nivel de módulo → dependencias específicas de la aplicación o
+			módulo.</p></li>
+</ul>
+</li></ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc308_590826428" lang="es">
+<strong>1.4. </strong><strong>APK y App Bundle</strong></h2>
+<ol>
+<ul>
+<li><p><strong>APK (Android Package)</strong> 
+Archivo
+		ejecutable de Android que contiene código compilado, recursos y
+		manifest, listo para instalarse en un dispositivo.</p></li>
+<li><p><strong>App Bundle (AAB)</strong> 
+Contiene
+		<strong>todos los recursos y código compilado</strong>, pero no se
+		instala directamente. Google Play genera APK optimizados por
+		dispositivo desde el App Bundle.</p></li>
+<li><p><strong>Firma digital obligatoria</strong> 
+Todos
+		los APK o App Bundles deben estar <strong>firmados digitalmente</strong> 
+		para ser instalados.</p></li>
+<li><p><strong>Generación en Android Studio</strong> 
+Menú:</p>
+<pre><code>Build → Build Bundle / APK → Build APK / Build App Bundle</code></pre></li>
+</ul>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc310_590826428" lang="es">
+<strong>2. Actividades y UI</strong></h1>
+<p>En Android, la <strong>interfaz de usuario (UI)</strong> 
+y la interacción con el usuario se gestionan principalmente mediante
+<strong>Activities</strong>  y sus componentes visuales. Los elementos
+clave son:</p>
+<h2 id="__RefHeading___Toc312_590826428" lang="es">
+<strong>2.</strong><strong>1. </strong><strong>Activity</strong></h2>
+<ol>
+<ul>
+<li><p>Es la unidad principal de interacción con el
+		usuario. Cada pantalla de la app suele corresponder a una Activity.</p></li>
+<li><p>Para <strong>cargar la interfaz visual</strong> 
+		definida en XML dentro de una Activity,
+		se utiliza:</p>
+<pre><code>setContentView(R.layout.nombre_layout);</code></pre><p>
+		Esto enlaza el layout con la Activity, mostrando los controles
+		definidos en el archivo XML.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc314_590826428" lang="es">
+<strong>2.</strong><strong>2. </strong><strong>WebView</strong></h2>
+<ol>
+<ul>
+<li><p>Componente que permite <strong>incrustar
+		contenido web</strong>  dentro de la interfaz de la app.</p></li>
+<li><p>Útil para mostrar páginas HTML, mapas, o
+		contenido dinámico desde la web sin abrir un navegador externo.</p></li>
+<li><p>Se utiliza así:</p>
+<pre><code>WebView webView = findViewById(R.id.miWebView);</code>
+<code>webView.loadUrl("<a href="https://www.ejemplo.com/">https://www.ejemplo.com</a>");</code></pre></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc316_590826428" lang="es">
+<strong>2.</strong><strong>3. </strong><strong>Toast</strong></h2>
+<ol>
+<ul>
+<li><p>Permite mostrar <strong>mensajes cortos y no
+		interactivos</strong>  al usuario.</p></li>
+<li><p>La duración es breve ( Toast.LENGTH_SHORT )
+		o larga ( Toast.LENGTH_LONG ).</p></li>
+<li><p>Ejemplo de uso:</p>
+<pre><code>Toast.makeText(this, "Mensaje rápido", Toast.LENGTH_SHORT).show();</code></pre></li>
+<li><p>Ideal para notificaciones rápidas o
+		confirmaciones sin interrumpir la interacción con la app.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc318_590826428" lang="es">
+<strong>2.</strong><strong>4. </strong><strong>Interacción con
+componentes</strong></h2>
+<ol>
+<ul>
+<li><p>Los elementos visuales (botones, campos de texto,
+		listas) se referencian desde el código mediante sus <strong>IDs</strong> 
+		definidos en XML ( R.id.nombreElemento ).</p></li>
+<li><p>Se pueden registrar <strong>listeners</strong> 
+		para manejar eventos como clics o gestos.</p></li>
+</ul>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc320_590826428" lang="es">
+<strong>3. Manejo de recursos y almacenamiento</strong></h1>
+<p>Android proporciona mecanismos para <strong>gestionar
+recursos de la aplicación</strong>  y <strong>almacenar datos</strong> 
+de manera persistente, ya sea en almacenamiento interno, externo o
+bases de datos locales.</p>
+<hr/>
+<h2 id="__RefHeading___Toc322_590826428" lang="es">
+<strong>3.1. Recursos de la aplicación</strong></h2>
+<ul>
+<li><p>Se almacenan en la carpeta <strong>/res</strong> 
+	y se categorizan por tipo:</p>
+<ul>
+<li><p><strong>Layouts</strong>  → XML que define la
+		interfaz ( res/layout/ ).</p></li>
+<li><p><strong>Strings</strong>  → textos reutilizables
+		( res/values/strings.xml ).</p></li>
+<li><p><strong>Drawables</strong>  → imágenes y
+		gráficos ( res/drawable/ ).</p></li>
+<li><p><strong>Colores, estilos y temas</strong>  →
+		( res/values/colors.xml, styles.xml ).</p></li>
+</ul>
+<li><p><strong>Acceso a recursos</strong>: todos los
+	recursos tienen un identificador en R.java.
+	Ejemplos:</p>
+<pre><code>String titulo = getString(R.string.app_name);</code>
+<code>Button boton = findViewById(R.id.miBoton);</code></pre></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc324_590826428" lang="es">
+<strong>3.2. Almacenamiento de datos</strong></h2>
+<p>Android permite almacenar datos en tres niveles
+principales:</p>
+<h3 lang="es">a) <strong>Archivos</strong></h3>
+<ul>
+<li><p>Lectura/escritura de archivos mediante clases
+	estándar de Java:</p>
+<pre><code>FileInputStream fis = openFileInput("miArchivo.txt");</code>
+<code>int byteLeido = fis.read();</code>
+<code>fis.close();</code></pre></li>
+<li><p>Para escribir en almacenamiento externo, es
+	necesario el permiso:</p>
+<pre><code>&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;</code></pre></li>
+</ul>
+<h3 lang="es">b) <strong>Bases de datos SQLite</strong></h3>
+<ul>
+<li><p>Android integra SQLite como base de datos local
+	ligera.</p></li>
+<li><p>Acceso a la base de datos:</p>
+<ul>
+<li><p><strong>Solo lectura</strong>:</p>
+<pre><code>SQLiteDatabase db = dbHelper.getReadableDatabase();</code></pre></li>
+<li><p><strong>Escritura</strong>:</p>
+<pre><code>SQLiteDatabase db = dbHelper.getWritableDatabase();</code></pre></li>
+</ul>
+<li><p><strong>Consultas parametrizadas</strong>:</p>
+<pre><code>Cursor cursor = db.rawQuery("SELECT * FROM tabla WHERE columna=?", new String[]{valor});</code></pre></li>
+<li><p><strong>Ejecución de sentencias SQL sin retorno</strong>:</p>
+<pre><code>db.execSQL("INSERT INTO tabla(columna) VALUES('dato')");</code></pre></li>
+</li></ul>
+<h3 lang="es">c) <strong>Bundles y almacenamiento en
+memoria</strong></h3>
+<ul>
+<li><p>Para pasar datos entre Activities se usan <strong>Bundles</strong>,
+	especialmente en <strong>Intents</strong>:</p>
+<pre><code>Intent intent = new Intent(this, OtraActivity.class);</code>
+<code>intent.putExtra("clave", valor);</code>
+<code>startActivity(intent);</code></pre>
+<ul>
+<li><p>Los datos quedan almacenados temporalmente en
+		memoria durante la transición.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc326_590826428" lang="es">
+<strong>4. Permisos y seguridad</strong></h1>
+<p>Android implementa un modelo de seguridad basado en
+<strong>permisos</strong>, que controlan el acceso de la aplicación
+a recursos sensibles del dispositivo o del usuario.</p>
+<hr/>
+<h2 id="__RefHeading___Toc328_590826428" lang="es">
+<strong>4.1. Declaración de permisos</strong></h2>
+<ul>
+<li><p>Todos los permisos que la aplicación necesita se
+	<strong>declaran en el AndroidManifest.xml</strong>:</p>
+<pre><code>&lt;uses-permission android:name="android.permission.INTERNET"/&gt;</code>
+<code>&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/&gt;</code>
+<code>&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;</code></pre></li>
+<li><p>Esto permite que el sistema sepa qué recursos
+	requiere la aplicación antes de instalarla.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc330_590826428" lang="es">
+<strong>4.2. Tipos de permisos según funcionalidad</strong></h2>
+<ul>
+<li><p><strong>Acceso a internet</strong>:</p>
+<pre><code>&lt;uses-permission android:name="android.permission.INTERNET"/&gt;</code></pre></li>
+<li><p><strong>Ubicación</strong>:</p>
+<ul>
+<li><p>Precisa: ACCESS_FINE_LOCATION 
+		→ acceso GPS exacto.</p></li>
+<li><p>Aproximada: ACCESS_COARSE_LOCATION 
+		→ basada en red o Wi-Fi.</p></li>
+</ul>
+<li><p><strong>Almacenamiento externo</strong>:</p>
+<ul>
+<li><p>Escritura: WRITE_EXTERNAL_STORAGE</p></li>
+<li><p>Lectura: READ_EXTERNAL_STORAGE 
+		(no siempre explícito si solo se lee).</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc332_590826428" lang="es">
+<strong>4.3. Permisos en tiempo de ejecución (Runtime Permissions)</strong></h2>
+<ul>
+<li><p>Introducidos en <strong>Android 6.0 (API 23,
+	Marshmallow)</strong>.</p></li>
+<li><p>Antes, todos los permisos se concedían al
+	instalar la app. Ahora:</p>
+<ul>
+<li><p>El usuario <strong>puede aceptar o denegar
+		permisos</strong>  durante la ejecución.</p></li>
+<li><p>Ejemplo de comprobación:</p>
+<pre><code>if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)</code>
+<code>        </code><code>!= PackageManager.PERMISSION_GRANTED) {</code>
+<code>    </code><code>ActivityCompat.requestPermissions(this,</code>
+<code>        </code><code>new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);</code>
+<code>}</code></pre></li>
+</ul>
+<li><p>Esto aumenta la seguridad y protege la privacidad
+	del usuario.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc334_590826428" lang="es">
+<strong>4.4. Conceptos adicionales de seguridad</strong></h2>
+<ul>
+<li><p>Todas las aplicaciones Android funcionan en un
+	<strong>sandbox</strong>, aisladas del resto del sistema y de otras
+	apps.</p></li>
+<li><p>Los permisos definen los <strong>canales de
+	comunicación y recursos permitidos</strong>, evitando accesos no
+	autorizados.</p></li>
+<li><p>La combinación de <strong>manifest + runtime
+	permissions</strong>  asegura que la app <strong>solo pueda usar
+	recursos explícitamente autorizados</strong>  por el usuario.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc336_590826428" lang="es">
+<strong>5. Sensores y eventos de interacción</strong></h1>
+<p>Android proporciona APIs para <strong>interactuar con
+sensores del dispositivo</strong>  y capturar <strong>eventos de
+entrada del usuario</strong>, como gestos y toques.</p>
+<hr/>
+<h2 id="__RefHeading___Toc338_590826428" lang="es">
+<strong>5.1. Sensores</strong></h2>
+<ul>
+<li><p><strong>Acceso y gestión</strong></p>
+<ul>
+<li><p>SensorManager  →
+		clase principal para:</p>
+<ul>
+<li><p>Obtener la lista de sensores disponibles.</p></li>
+<li><p>Registrar o cancelar <strong>listeners</strong> 
+			para recibir eventos.</p></li>
+</ul>
+<li><p>SensorEventListener 
+		→ interfaz que define:</p>
+<ul>
+<li><p>onSensorChanged(SensorEvent
+			event)  → notificación cuando cambia el sensor.</p></li>
+<li><p>onAccuracyChanged(Sensor
+			sensor, int accuracy)  → notificación de cambios en
+			precisión.</p></li>
+</ul>
+<li><p>SensorEvent  →
+		objeto que contiene los valores generados por el sensor, la hora
+		del evento y el sensor que lo generó.</p></li>
+</li></li></ul>
+<li><p><strong>Tipos de sensores</strong></p>
+<ul>
+<li><p>Movimiento: acelerómetro, giroscopio.</p></li>
+<li><p>Posición: brújula, orientación.</p></li>
+<li><p>Ambientales: luz, temperatura, presión.</p></li>
+<li><p>Nota: “Sistemáticos” no es un tipo válido
+		en Android.</p></li>
+</ul>
+<li><p><strong>Registro de sensores</strong></p>
+<ul>
+<li><p>Se registra un sensor especificando la frecuencia
+		de actualización:</p>
+<pre><code>sensorManager.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_GAME);</code></pre></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc340_590826428" lang="es">
+<strong>5.2. Eventos táctiles</strong></h2>
+<ul>
+<li><p>Captura de interacción táctil mediante
+	<strong>MotionEvent</strong>:</p>
+<ul>
+<li><p>Métodos principales:</p>
+<pre><code>event.getX(); // coordenada X</code>
+<code>event.getY(); // coordenada Y</code></pre></li>
+<li><p>Tipos de eventos:</p>
+<ul>
+<li><p>MotionEvent.ACTION_DOWN 
+			→ toque inicial.</p></li>
+<li><p>MotionEvent.ACTION_MOVE 
+			→ movimiento mientras se toca la pantalla.</p></li>
+<li><p>MotionEvent.ACTION_UP 
+			→ levantamiento del dedo.</p></li>
+</ul>
+</li></ul>
+<li><p>Los eventos se manejan típicamente dentro de:</p>
+<pre><code>@Override</code>
+<code>public boolean onTouchEvent(MotionEvent event) {</code>
+<code>    </code><code>switch(event.getAction()) {</code>
+<code>        </code><code>case MotionEvent.ACTION_MOVE:</code>
+<code>            </code><code>// procesar movimiento</code>
+<code>            </code><code>break;</code>
+<code>    </code><code>}</code>
+<code>    </code><code>return true;</code>
+<code>}</code></pre></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc342_590826428" lang="es">
+<strong>5.3. Uso práctico</strong></h2>
+<ul>
+<li><p>Permite crear interfaces interactivas basadas en
+	gestos y movimientos.</p></li>
+<li><p>Facilita la integración con <strong>juegos</strong>,
+	<strong>aplicaciones de realidad aumentada</strong>, o <strong>control
+	de dispositivos físicos</strong>  mediante sensores.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc344_590826428" lang="es">
+<strong>6. Redes y conectividad</strong></h1>
+<p>Android ofrece APIs para <strong>gestionar conexiones
+de red</strong>, obtener información sobre su estado y capacidades,
+así como para interactuar con redes locales o remotas.</p>
+<hr/>
+<h2 id="__RefHeading___Toc346_590826428" lang="es">
+<strong>6.1. Clases principales</strong></h2>
+<ol type="a">
+<li><p><strong>Network</strong></p>
+<ul>
+<li><p>Representa una <strong>red concreta</strong>  a la
+		que el dispositivo está conectado o puede conectarse.</p></li>
+<li><p>Se utiliza para identificar conexiones activas y
+		asociarlas con recursos.</p></li>
+</ul>
+<li><p><strong>NetworkCapabilities</strong></p>
+<ul>
+<li><p>Contiene información sobre <strong>capacidades
+		de la red</strong>, como:</p>
+<ul>
+<li><p>Tipo de transporte (Wi-Fi, celular, Ethernet).</p></li>
+<li><p>Conectividad a Internet.</p></li>
+<li><p>Validación y confiabilidad de la red.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>LinkProperties</strong></p>
+<ul>
+<li><p>Describe <strong>propiedades de la conexión</strong>,
+		incluyendo:</p>
+<ul>
+<li><p>Interfaces de red.</p></li>
+<li><p>Direcciones IP asignadas.</p></li>
+<li><p>DNS y rutas.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>ConnectivityManager</strong></p>
+<ul>
+<li><p>Permite comprobar la <strong>disponibilidad de
+		redes</strong>  y obtener Network  o
+		NetworkCapabilities.</p></li>
+<li><p>Ejemplo:</p>
+<pre><code>ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);</code>
+<code>Network network = cm.getActiveNetwork();</code>
+<code>NetworkCapabilities caps = cm.getNetworkCapabilities(network);</code></pre></li>
+</ul>
+</li></li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc348_590826428" lang="es">
+<strong>6.2. Sockets</strong></h2>
+<ul>
+<li><p><strong>Orientados a conexión</strong>  → TCP:
+	transmisión confiable, ordenada, con control de errores.</p></li>
+<li><p><strong>No orientados a conexión</strong>  →
+	UDP: no garantiza fiabilidad ni orden, pero es más rápido para
+	transmisión de datos en tiempo real.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc350_590826428" lang="es">
+<strong>6.3. Wi-Fi P2P y descubrimiento de servicios</strong></h2>
+<ul>
+<li><p><strong>Estado de dispositivos</strong>:</p>
+<ul>
+<li><p>WifiP2pDevice.CONNECTED 
+		→ indica que el dispositivo está conectado mediante Wi-Fi
+		Direct.</p></li>
+</ul>
+<li><p><strong>Descubrimiento de servicios</strong></p>
+<ul>
+<li><p>Permite <strong>detectar servicios ofrecidos por
+		otros dispositivos</strong>  en la misma red sin necesidad de
+		establecer una conexión directa.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc352_590826428" lang="es">
+<strong>6.4. Intents y transmisión de datos</strong></h2>
+<ul>
+<li><p>Para pasar información entre componentes se
+	utiliza <strong>Intent</strong>, que almacena datos en un <strong>Bundle</strong>:</p>
+<pre><code>Intent intent = new Intent(this, OtraActivity.class);</code>
+<code>intent.putExtra("clave", valor);</code>
+<code>Bundle extras = intent.getExtras();</code></pre></li>
+<li><p>El Bundle funciona como un contenedor de datos
+	clave-valor durante la transición entre componentes.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc354_590826428" lang="es">
+<strong>6.5. Aplicaciones prácticas</strong></h2>
+<ul>
+<li><p>Determinar conectividad antes de hacer peticiones
+	HTTP.</p></li>
+<li><p>Envío de datos entre Activities.</p></li>
+<li><p>Detección y utilización de servicios locales
+	(como impresoras o otros dispositivos IoT) mediante Wi-Fi P2P.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc356_590826428" lang="es">
+<strong>7. Conectividad y servicios web</strong></h1>
+<p>Android proporciona herramientas para <strong>interactuar
+con servicios remotos</strong>, descargar datos y mostrar contenido
+web dentro de la aplicación.</p>
+<hr/>
+<h2 id="__RefHeading___Toc358_590826428" lang="es">
+<strong>7.1. Descargas gestionadas</strong></h2>
+<ul>
+<li><p><strong>DownloadManager</strong></p>
+<ul>
+<li><p>Permite realizar <strong>descargas grandes</strong> 
+		gestionadas por el sistema operativo.</p></li>
+<li><p>Gestiona colas, reintentos, notificaciones y
+		comprobación de conectividad automáticamente.</p></li>
+<li><p>Ejemplo de uso:</p>
+<pre><code>DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);</code>
+<code>Uri uri = Uri.parse("https://www.ejemplo.com/archivo.zip");</code>
+<code>DownloadManager.Request request = new DownloadManager.Request(uri);</code>
+<code>downloadManager.enqueue(request);</code></pre></li>
+</ul>
+<li><p><strong>Permiso necesario</strong>:</p>
+<pre><code>&lt;uses-permission android:name="android.permission.INTERNET"/&gt;</code></pre></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc360_590826428" lang="es">
+<strong>7.2. HTTP y códigos de estado</strong></h2>
+<ul>
+<li><p>Para interactuar con servicios web, se utilizan
+	<strong>peticiones HTTP</strong>.</p></li>
+<li><p>Códigos de estado importantes:</p>
+<ul>
+<li><p>200  → OK,
+		solicitud exitosa.</p></li>
+<li><p>301  → Redirección
+		permanente.</p></li>
+<li><p>404  → Recurso no
+		encontrado.</p></li>
+<li><p>500  → Error del
+		servidor.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc362_590826428" lang="es">
+<strong>7.3. Google Maps</strong></h2>
+<ul>
+<li><p>Para integrar mapas se utiliza <strong>Google Maps
+	API</strong>.</p></li>
+<li><p>Requisito: <strong>clave API</strong>  asociada al
+	proyecto para poder usar el servicio en pruebas o producción.</p></li>
+<li><p>Permite mostrar mapas interactivos, marcadores,
+	rutas y ubicación del usuario.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc364_590826428" lang="es">
+<strong>7.4. WebView</strong></h2>
+<ul>
+<li><p>Componente que permite <strong>mostrar contenido
+	web embebido</strong>  dentro de la app.</p></li>
+<li><p>Útil para:</p>
+<ul>
+<li><p>Páginas HTML internas.</p></li>
+<li><p>Integración de servicios web sin salir de la
+		aplicación.</p></li>
+</ul>
+<li><p>Uso básico:</p>
+<pre><code>WebView webView = findViewById(R.id.webView);</code>
+<code>webView.loadUrl("https://www.ejemplo.com");</code></pre></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc366_590826428" lang="es">
+<strong>7.5. Aplicaciones prácticas</strong></h2>
+<ul>
+<li><p>Descargas de archivos y actualizaciones.</p></li>
+<li><p>Visualización de contenido web dentro de la app.</p></li>
+<li><p>Integración con servicios externos como mapas,
+	APIs REST o mapas interactivos.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc368_590826428" lang="es">
+<strong>8. Herramientas y pruebas</strong></h1>
+<p>Android Studio y las herramientas de línea de comandos
+permiten <strong>desarrollar, probar y depurar aplicaciones</strong> 
+de manera eficiente.</p>
+<hr/>
+<h2 id="__RefHeading___Toc370_590826428" lang="es">
+<strong>8.1. Android Studio</strong></h2>
+<ul>
+<li><p><strong>IDE principal</strong>  para desarrollo
+	Android.</p></li>
+<li><p>Funciones relacionadas con pruebas:</p>
+<ul>
+<li><p>Crear y ejecutar pruebas unitarias o
+		instrumentadas.</p></li>
+<li><p>Ver resultados de pruebas directamente en el IDE.</p></li>
+<li><p>Ejecutar y depurar aplicaciones en <strong>emuladores
+		o dispositivos reales</strong>.</p></li>
+</ul>
+<li><p>No incluye funciones irrelevantes como:</p>
+<ul>
+<li><p>“Ocupa menos espacio los programas” (no es
+		funcionalidad de prueba).</p></li>
+<li><p>“Ventana Text Matrix” (no existe como
+		herramienta de pruebas).</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc372_590826428" lang="es">
+<strong>8.2. ADB (Android Debug Bridge)</strong></h2>
+<ul>
+<li><p>Herramienta de línea de comandos para interactuar
+	con el dispositivo o emulador.</p></li>
+<li><p>Comandos útiles:</p>
+<ul>
+<li><p><strong>Enviar archivos al dispositivo/emulador</strong>:</p>
+<pre><code>adb push archivo /sdcard/</code></pre></li>
+<li><p><strong>Copiar archivos del dispositivo al host</strong>:</p>
+<pre><code>adb pull /sdcard/archivo ./destino</code></pre></li>
+<li><p><strong>Instalación de APKs, depuración y
+		logcat</strong>.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc374_590826428" lang="es">
+<strong>8.3. Registro de eventos y depuración</strong></h2>
+<ul>
+<li><p><strong>Logcat</strong>  permite visualizar
+	mensajes de registro en tiempo real.</p></li>
+<li><p>Clase principal: Log</p>
+<ul>
+<li><p>Log.d("TAG",
+		"Mensaje de depuración");</p></li>
+<li><p>Log.i("TAG",
+		"Información");</p></li>
+<li><p>Log.e("TAG",
+		"Error");</p></li>
+</ul>
+<li><p>Útil para seguimiento de errores y comportamiento
+	de la aplicación durante pruebas.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc376_590826428" lang="es">
+<strong>8.4. Aplicaciones prácticas</strong></h2>
+<ul>
+<li><p>Probar la funcionalidad de la app antes de
+	publicación.</p></li>
+<li><p>Depurar errores y comprobar el flujo de datos y
+	eventos.</p></li>
+<li><p>Automatizar pruebas unitarias o instrumentadas
+	desde Android Studio.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc378_590826428" lang="es">
+<strong>9. Recursos adicionales y documentación</strong></h1>
+<p>Android ofrece <strong>documentación oficial y
+recursos de aprendizaje</strong>  para facilitar el desarrollo de
+aplicaciones móviles de manera correcta y eficiente.</p>
+<hr/>
+<h2 id="__RefHeading___Toc380_590826428" lang="es">
+<strong>9.1. Android Developers</strong></h2>
+<ul>
+<li><p>Es la <strong>documentación oficial de Google
+	para Android</strong>.</p></li>
+<li><p>Contiene guías, referencias y ejemplos de código
+	para todas las funcionalidades de Android.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc382_590826428" lang="es">
+<strong>9.2. Formato y contenidos</strong></h2>
+<ul>
+<li><p>La documentación utiliza principalmente <strong>Markdown</strong> 
+	para presentar:</p>
+<ul>
+<li><p>Ejemplos de código.</p></li>
+<li><p>Guías paso a paso.</p></li>
+<li><p>Explicaciones de APIs y componentes.</p></li>
+</ul>
+<li><p>Tipos de recursos:</p>
+<ul>
+<li><p><strong>Guías</strong>  → explicaciones
+		detalladas de conceptos y APIs.</p></li>
+<li><p><strong>Manuales de referencia</strong>  →
+		descripción técnica de clases, métodos y atributos.</p></li>
+<li><p><strong>Ejemplos de código</strong>  →
+		proyectos o fragmentos que ilustran su uso práctico.</p></li>
+</ul>
+<li><p>Recursos que <strong>no forman parte de la
+	documentación oficial</strong>:</p>
+<ul>
+<li><p>Chat online de soporte directo.</p></li>
+<li><p>Información sobre compatibilidad con iOS.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc384_590826428" lang="es">
+<strong>9.3. Temas principales</strong></h2>
+<p>La documentación oficial cubre:</p>
+<ul>
+<li><p>Sensores y eventos.</p></li>
+<li><p>Audio y vídeo.</p></li>
+<li><p>Contenido basado en web.</p></li>
+<li><p>UI, layouts y componentes.</p></li>
+<li><p>Conectividad y redes.</p></li>
+</ul>
+<p>Esto proporciona a los desarrolladores <strong>una guía
+completa para implementar funcionalidades Android</strong>  de forma
+consistente y correcta.</p>
+<hr/>
+<h1 id="__RefHeading___Toc386_590826428" lang="es">
+<strong>Resumen global – Unidad 02: Programación de aplicaciones
+para dispositivos móviles</strong></h1>
+<h2 id="__RefHeading___Toc388_590826428" lang="es">
+<strong>1. Estructura y organización de proyectos</strong></h2>
+<ul>
+<li><p>Código fuente en /src/main/java,
+	paquetes nombrados con dominio invertido ( com.ejemplo.app ).</p></li>
+<li><p>Recursos en /res:
+	layouts, strings, drawables, estilos, colores.</p></li>
+<li><p>Archivos clave:</p>
+<ul>
+<li><p>R.java  → IDs de
+		recursos.</p></li>
+<li><p>AndroidManifest.xml 
+		→ permisos y componentes.</p></li>
+</ul>
+<li><p>Gradle:</p>
+<ul>
+<li><p>Proyecto → dependencias globales.</p></li>
+<li><p>Módulo → dependencias del módulo.</p></li>
+</ul>
+<li><p>APK → ejecutable Android, App Bundle →
+	contiene todo el código y recursos para generar APK optimizados.
+	Firma digital obligatoria.</p></li>
+<li><p>Generación en Android Studio: Build
+	→ Build Bundle / APK → Build APK / Build App Bundle.</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc390_590826428" lang="es">
+<strong>2. Actividades y UI</strong></h2>
+<ul>
+<li><p>Activity  → pantalla
+	de la app, carga layout con setContentView(R.layout.nombre_layout).</p></li>
+<li><p>WebView  → mostrar
+	contenido web embebido.</p></li>
+<li><p>Toast  → mensajes
+	breves y no interactivos.</p></li>
+<li><p>Componentes UI referenciados con
+	R.id.nombreElemento  y gestionados con
+	listeners para eventos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc392_590826428" lang="es">
+<strong>3. Manejo de recursos y almacenamiento</strong></h2>
+<ul>
+<li><p>Acceso a recursos vía R.java 
+	(layouts, strings, drawables, colores).</p></li>
+<li><p>Almacenamiento:</p>
+<ul>
+<li><p>Archivos → FileInputStream.read().</p></li>
+<li><p>SQLite:</p>
+<ul>
+<li><p>getReadableDatabase(),
+			getWritableDatabase().</p></li>
+<li><p>rawQuery()  →
+			SELECT con Cursor.</p></li>
+<li><p>execSQL()  →
+			ejecutar SQL sin retorno.</p></li>
+</ul>
+<li><p>Permisos: WRITE_EXTERNAL_STORAGE 
+		para escritura externa.</p></li>
+</li></ul>
+<li><p>Bundles → pasar datos entre Activities mediante
+	Intent.putExtra()  y getExtras().</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc394_590826428" lang="es">
+<strong>4. Permisos y seguridad</strong></h2>
+<ul>
+<li><p>Declarados en AndroidManifest.xml.</p></li>
+<li><p>Tipos importantes:</p>
+<ul>
+<li><p>INTERNET  → acceso
+		a red.</p></li>
+<li><p>ACCESS_FINE_LOCATION 
+		→ ubicación precisa.</p></li>
+<li><p>ACCESS_COARSE_LOCATION 
+		→ ubicación aproximada.</p></li>
+<li><p>WRITE_EXTERNAL_STORAGE 
+		→ almacenamiento externo.</p></li>
+</ul>
+<li><p>Runtime Permissions (desde API 23, Marshmallow)
+	permiten al usuario aceptar/denegar permisos durante ejecución.</p></li>
+<li><p>Sandbox Android aísla apps; permisos definen
+	recursos accesibles.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc396_590826428" lang="es">
+<strong>5. Sensores y eventos de interacción</strong></h2>
+<ul>
+<li><p>Sensores:</p>
+<ul>
+<li><p>SensorManager  →
+		gestionar sensores y listeners.</p></li>
+<li><p>SensorEventListener 
+		→ métodos onSensorChanged()  y
+		onAccuracyChanged().</p></li>
+<li><p>SensorEvent  →
+		datos de cada evento.</p></li>
+</ul>
+<li><p>Tipos de sensores: movimiento, posición,
+	ambientales.</p></li>
+<li><p>Registro de sensores: registerListener(listener,
+	sensor, SENSOR_DELAY_GAME).</p></li>
+<li><p>Eventos táctiles: MotionEvent 
+	( getX(), getY(),
+	ACTION_MOVE, ACTION_DOWN,
+	ACTION_UP ).</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc398_590826428" lang="es">
+<strong>6. Redes y conectividad</strong></h2>
+<ul>
+<li><p>Clases clave:</p>
+<ul>
+<li><p>Network  →
+		representa red activa.</p></li>
+<li><p>NetworkCapabilities 
+		→ capacidades (transporte, internet, validación).</p></li>
+<li><p>LinkProperties  →
+		propiedades de conexión (IP, rutas, DNS).</p></li>
+<li><p>ConnectivityManager 
+		→ verificar redes disponibles.</p></li>
+</ul>
+<li><p>Sockets: TCP → confiable; UDP → no orientado a
+	conexión, no garantiza orden.</p></li>
+<li><p>Wi-Fi P2P:</p>
+<ul>
+<li><p>WifiP2pDevice.CONNECTED 
+		→ estado de conexión.</p></li>
+<li><p>Descubrimiento de servicios → detectar
+		servicios sin conectar.</p></li>
+</ul>
+<li><p>Intents → pasar datos entre componentes mediante
+	Bundle.</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc400_590826428" lang="es">
+<strong>7. Conectividad y servicios web</strong></h2>
+<ul>
+<li><p>DownloadManager  →
+	descargas grandes gestionadas por el sistema.</p></li>
+<li><p>HTTP:</p>
+<ul>
+<li><p>Códigos: 200 (OK), 301 (redirección
+		permanente), 404 (no encontrado), 500 (error servidor).</p></li>
+</ul>
+<li><p>Google Maps → requiere <strong>clave API</strong>.</p></li>
+<li><p>WebView  → mostrar
+	contenido web interno.</p></li>
+<li><p>Uso práctico: descargar archivos, mostrar
+	contenido web, integrar servicios externos.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc402_590826428" lang="es">
+<strong>8. Herramientas y pruebas</strong></h2>
+<ul>
+<li><p>Android Studio → crear, ejecutar y depurar
+	pruebas.</p></li>
+<li><p>ADB:</p>
+<ul>
+<li><p>adb push  → enviar
+		archivo al dispositivo/emulador.</p></li>
+<li><p>adb pull  → copiar
+		archivo al host.</p></li>
+</ul>
+<li><p>Logcat:</p>
+<ul>
+<li><p>Clase Log  →
+		Log.d(), Log.i(),
+		Log.e().</p></li>
+<li><p>Permite seguimiento de errores y comportamiento
+		de la app.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc404_590826428" lang="es">
+<strong>9. Recursos adicionales y documentación</strong></h2>
+<ul>
+<li><p><strong>Android Developers</strong>  →
+	documentación oficial de Google.</p></li>
+<li><p>Formato Markdown para guías, ejemplos y
+	referencias.</p></li>
+<li><p>Contenido: guías, manuales de referencia,
+	ejemplos de código.</p></li>
+<li><p>Temas principales: sensores, audio y vídeo,
+	contenido web, UI, conectividad.</p></li>
+<li><p>No incluye compatibilidad con iOS ni chat online.</p></li>
+</ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

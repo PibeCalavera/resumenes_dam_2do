@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+de Servicios y Procesos – Unidad 5
+– Utilización de técnicas de
+programación segura</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+de Servicios y Procesos – Unidad 5
+– Utilización de técnicas de
+programación segura</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc3403_3914708500">1. Prácticas de programación segura</a></p>
+<p><a href="#__RefHeading___Toc3405_3914708500">1.1 Concepto general</a></p>
+<p><a href="#__RefHeading___Toc3407_3914708500">1.2 Fundamentos</a></p>
+<p><a href="#__RefHeading___Toc3409_3914708500">1.3 Documentación de seguridad</a></p>
+<p><a href="#__RefHeading___Toc3411_3914708500">1.4 Puntos críticos para examen</a></p>
+<p><a href="#__RefHeading___Toc3413_3914708500">2. Criptografía de clave pública y privada</a></p>
+<p><a href="#__RefHeading___Toc3415_3914708500">2.1 Concepto general</a></p>
+<p><a href="#__RefHeading___Toc3417_3914708500">2.2 Tipos de criptografía</a></p>
+<p><a href="#__RefHeading___Toc3419_3914708500">2.3 Intercambio de claves</a></p>
+<p><a href="#__RefHeading___Toc3421_3914708500">2.4 Distribución de claves públicas</a></p>
+<p><a href="#__RefHeading___Toc3423_3914708500">2.5 Puntos críticos para examen</a></p>
+<p><a href="#__RefHeading___Toc3425_3914708500">3. Principales aplicaciones de la criptografía</a></p>
+<p><a href="#__RefHeading___Toc3427_3914708500">3.1 Concepto general</a></p>
+<p><a href="#__RefHeading___Toc3429_3914708500">3.2 Sistemas que utilizan criptografía asimétrica</a></p>
+<p><a href="#__RefHeading___Toc3431_3914708500">3.3 Puntos críticos para examen</a></p>
+<p><a href="#__RefHeading___Toc3433_3914708500">4. Protocolos criptográficos y comunicaciones seguras</a></p>
+<p><a href="#__RefHeading___Toc3435_3914708500">4.1 Concepto general</a></p>
+<p><a href="#__RefHeading___Toc3437_3914708500">4.2 SSL/TLS</a></p>
+<p><a href="#__RefHeading___Toc3439_3914708500">4.3 Integridad de datos</a></p>
+<p><a href="#__RefHeading___Toc3441_3914708500">4.4 Puntos críticos para examen</a></p>
+<p><a href="#__RefHeading___Toc3443_3914708500">5. Programación de mecanismos de control de acceso y RBAC</a></p>
+<p><a href="#__RefHeading___Toc3445_3914708500">5.1 Concepto general</a></p>
+<p><a href="#__RefHeading___Toc3447_3914708500">5.2 RBAC (Role-Based Access Control)</a></p>
+<p><a href="#__RefHeading___Toc3449_3914708500">5.3 Beneficios de RBAC</a></p>
+<p><a href="#__RefHeading___Toc3451_3914708500">5.4 Puntos críticos para examen</a></p>
+<p><a href="#__RefHeading___Toc3453_3914708500">6. Clases e interfaces de autenticación y autorización (JAAS)</a></p>
+<p><a href="#__RefHeading___Toc3455_3914708500">6.1 Concepto general</a></p>
+<p><a href="#__RefHeading___Toc3457_3914708500">6.2 Clases comunes de JAAS</a></p>
+<p><a href="#__RefHeading___Toc3459_3914708500">6.3 Clases e interfaces para autenticación</a></p>
+<p><a href="#__RefHeading___Toc3461_3914708500">6.4 Pasos para la autenticación de un sujeto</a></p>
+<p><a href="#__RefHeading___Toc3463_3914708500">6.5 Puntos críticos para examen</a></p>
+<p><a href="#__RefHeading___Toc3465_3914708500">7. Depuración, documentación y programación segura aplicada a aplicaciones con comunicación segura</a></p>
+<p><a href="#__RefHeading___Toc3467_3914708500">7.1 Concepto general</a></p>
+<p><a href="#__RefHeading___Toc3469_3914708500">7.2 Depuración en programación segura</a></p>
+<p><a href="#__RefHeading___Toc3471_3914708500">7.3 Documentación de la aplicación</a></p>
+<p><a href="#__RefHeading___Toc3473_3914708500">7.4 Aplicación a comunicaciones seguras (HTTP/HTTPS)</a></p>
+<p><a href="#__RefHeading___Toc3475_3914708500">7.5 Puntos críticos para examen</a></p>
+<p><a href="#__RefHeading___Toc3477_3914708500">Resumen compacto – Unidad 5 – Programación segura</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc3403_3914708500" lang="es">
+<strong>1. Prácticas de programación segura</strong></h1>
+<h2 id="__RefHeading___Toc3405_3914708500" lang="es">
+1.1 Concepto general</h2>
+<ul>
+<li><p>Definición: conjunto de buenas prácticas de
+	programación destinadas a <strong>prevenir vulnerabilidades</strong>,
+	garantizar la <strong>integridad de datos</strong>  y facilitar el
+	<strong>mantenimiento seguro del código</strong>.</p></li>
+<li><p>Objetivos principales:</p>
+<ol>
+<li><p>Evitar errores y vulnerabilidades comunes
+		(inyección de datos, corrupción, etc.).</p></li>
+<li><p>Facilitar futuras mejoras de seguridad (nuevas
+		claves, algoritmos más robustos).</p></li>
+<li><p>Documentar claramente zonas críticas para
+		seguridad.</p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3407_3914708500" lang="es">
+1.2 Fundamentos</h2>
+<ul>
+<li><p><strong>Validación de datos antes de su
+	transformación</strong>:</p>
+<ul>
+<li><p>Asegura que solo se procesen datos correctos.</p></li>
+<li><p><strong>Matiz crítico:</strong> Es el fundamento
+		más importante; otros factores como tipos de atributos ( static,
+		básicos) no garantizan seguridad.</p></li>
+</ul>
+<li><p><strong>Declarar métodos </strong><strong>final</strong><strong>
+	en funciones críticas</strong>:</p>
+<ul>
+<li><p>Protege métodos que manejan cifrado o datos
+		sensibles de modificaciones por herencia.</p></li>
+<li><p><strong>Confusión común:</strong> No todos los
+		métodos necesitan final, solo los
+		críticos.</p></li>
+</ul>
+<li><p><strong>Comprobación de códigos de error o
+	acierto</strong>:</p>
+<ul>
+<li><p>Garantiza resultados esperados y manejo correcto
+		de errores.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3409_3914708500" lang="es">
+1.3 Documentación de seguridad</h2>
+<ul>
+<li><p>Se documentan principalmente <strong>zonas
+	críticas</strong>  (cifrado, control de acceso), no todo el código.</p></li>
+<li><p>Debe incluir:</p>
+<ol>
+<li><p>Roles y privilegios de usuarios.</p></li>
+<li><p>Razones de diseño y decisiones de seguridad.</p></li>
+<li><p>Explicación de métodos final 
+		y consecuencias de no usarlos.</p></li>
+</ol>
+<li><p><strong>Matiz crítico:</strong> El examen tiende
+	a evaluar la documentación de <strong>zonas críticas y roles</strong>,
+	no la actualización general de todo el código.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3411_3914708500" lang="es">
+1.4 Puntos críticos para examen</h2>
+<ul>
+<li><p>Validar datos antes de transformarlos.</p></li>
+<li><p>Declarar final  solo
+	en métodos críticos de seguridad.</p></li>
+<li><p>Documentar roles y privilegios, así como métodos
+	críticos, no todo el código.</p></li>
+<li><p>Seguridad implementada no solo para bloquear
+	intrusos, sino para <strong>facilitar futuras mejoras</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3413_3914708500" lang="es">
+<strong>2. Criptografía de clave pública y privada</strong></h1>
+<h2 id="__RefHeading___Toc3415_3914708500" lang="es">
+2.1 Concepto general</h2>
+<ul>
+<li><p><strong>Definición:</strong> Técnica para
+	asegurar la comunicación entre dos partes en presencia de posibles
+	adversarios, garantizando <strong>confidencialidad, integridad y
+	autenticación</strong>.</p></li>
+<li><p><strong>Objetivos principales:</strong></p>
+<ol>
+<li><p>Evitar que un tercero pueda entender o modificar
+		los mensajes transmitidos.</p></li>
+<li><p>Garantizar la identidad del remitente y receptor.</p></li>
+<li><p>Facilitar la distribución segura de claves.</p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3417_3914708500" lang="es">
+2.2 Tipos de criptografía</h2>
+<ul>
+<li><p><strong>Simétrica:</strong></p>
+<ul>
+<li><p>Una sola clave compartida entre emisor y
+		receptor.</p></li>
+<li><p><strong>Característica clave:</strong> Rápida,
+		pero requiere un canal seguro para compartir la clave.</p></li>
+<li><p><strong>Matiz crítico:</strong> Se enfoca en
+		velocidad y eficiencia, pero el intercambio seguro de la clave es
+		la vulnerabilidad principal.</p></li>
+</ul>
+<li><p><strong>Asimétrica (clave pública / privada):</strong></p>
+<ul>
+<li><p>Cada sujeto tiene un <strong>par de claves</strong>:
+		privada (secreta) y pública (compartida).</p></li>
+<li><p>La clave privada se usa para <strong>descifrado o
+		firma digital</strong>.</p></li>
+<li><p>La clave pública se distribuye para que otros
+		cifren mensajes o verifiquen firmas.</p></li>
+<li><p><strong>Matiz crítico:</strong> La confusión
+		común es pensar que la clave pública protege la confidencialidad
+		sola; en realidad, se combina con la privada para mantener
+		seguridad.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3419_3914708500" lang="es">
+2.3 Intercambio de claves</h2>
+<ul>
+<li><p><strong>Diffie-Hellman:</strong></p>
+<ul>
+<li><p>Permite que dos máquinas acuerden una clave
+		simétrica a través de un <strong>canal inseguro</strong>.</p></li>
+<li><p>Muy utilizado en <strong>sistemas de distribución
+		de claves</strong>.</p></li>
+<li><p><strong>Matiz crítico:</strong> No requiere
+		enviar la clave directamente, pero necesita que ambos participantes
+		generen números aleatorios correctamente.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3421_3914708500" lang="es">
+2.4 Distribución de claves públicas</h2>
+<ul>
+<li><p>Métodos:</p>
+<ol>
+<li><p><strong>Comunicación pública:</strong> fácil
+		de implementar, pero limitada y no segura.</p></li>
+<li><p><strong>Directorio público:</strong> accesible
+		para todos, pero riesgo de modificación por intrusos.</p></li>
+<li><p><strong>Autoridad pública:</strong> acceso
+		controlado mediante petición.</p></li>
+<li><p><strong>Autoridad certificadora (CA):</strong>
+		garantiza autenticidad y permite compartir la clave sin riesgos.</p></li>
+</ol>
+<li><p><strong>Matiz crítico:</strong> La seguridad real
+	depende del método de distribución; CA es el más confiable.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3423_3914708500" lang="es">
+2.5 Puntos críticos para examen</h2>
+<ul>
+<li><p>Diferenciar <strong>simétrica vs asimétrica</strong> 
+	y comprender cuándo usar cada una.</p></li>
+<li><p>Entender que <strong>Diffie-Hellman</strong> 
+	funciona sobre canales inseguros para establecer claves compartidas.</p></li>
+<li><p>Conocer los <strong>métodos de distribución de
+	claves públicas</strong>  y los riesgos asociados.</p></li>
+<li><p>No confundir la clave pública como reemplazo de
+	la privada; funcionan <strong>en conjunto</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3425_3914708500" lang="es">
+<strong>3. Principales aplicaciones de la criptografía</strong></h1>
+<h2 id="__RefHeading___Toc3427_3914708500" lang="es">
+3.1 Concepto general</h2>
+<ul>
+<li><p><strong>Definición:</strong> La criptografía no
+	solo cifra mensajes; se aplica para asegurar distintos procesos
+	dentro de sistemas informáticos y de comunicación.</p></li>
+<li><p><strong>Objetivos principales:</strong></p>
+<ol>
+<li><p>Garantizar autenticidad e integridad de la
+		información.</p></li>
+<li><p>Proteger la confidencialidad en la transmisión y
+		almacenamiento.</p></li>
+<li><p>Facilitar la distribución segura de claves y la
+		gestión de permisos.</p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3429_3914708500" lang="es">
+3.2 Sistemas que utilizan criptografía asimétrica</h2>
+<ul>
+<li><p><strong>Distribución de claves:</strong></p>
+<ul>
+<li><p>Permite que dos partes compartan una <strong>clave
+		simétrica</strong>  de forma segura, usando criptografía
+		asimétrica para acordarla.</p></li>
+<li><p><strong>Ejemplo:</strong> intercambio de claves
+		Diffie-Hellman.</p></li>
+</ul>
+<li><p><strong>Firma digital:</strong></p>
+<ul>
+<li><p>Garantiza que el mensaje proviene del remitente
+		correcto y que no ha sido modificado.</p></li>
+<li><p>Combina la clave privada del remitente y la clave
+		pública del receptor para verificar autenticidad.</p></li>
+</ul>
+<li><p><strong>Matiz crítico:</strong> Algunos
+	estudiantes confunden el uso de Diffie-Hellman como firma digital;
+	en realidad, se usa solo para <strong>acuerdo de claves</strong>, no
+	para autenticación.</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3431_3914708500" lang="es">
+3.3 Puntos críticos para examen</h2>
+<ul>
+<li><p>Diferenciar entre <strong>sistemas de firma
+	digital</strong>  y <strong>sistemas de distribución de claves</strong>.</p></li>
+<li><p>Comprender que <strong>Diffie-Hellman</strong> 
+	pertenece a los sistemas de distribución de claves, no de
+	autenticación.</p></li>
+<li><p>Saber que la criptografía moderna combina
+	matemáticas y computación para crear protocolos robustos frente a
+	adversarios.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3433_3914708500" lang="es">
+<strong>4. Protocolos criptográficos y comunicaciones seguras</strong></h1>
+<h2 id="__RefHeading___Toc3435_3914708500" lang="es">
+4.1 Concepto general</h2>
+<ul>
+<li><p><strong>Definición:</strong> Conjunto de reglas y
+	procedimientos que permiten establecer comunicaciones seguras entre
+	dos o más partes, garantizando <strong>confidencialidad, integridad
+	y autenticación</strong>.</p></li>
+<li><p><strong>Objetivos principales:</strong></p>
+<ol>
+<li><p>Establecer un canal seguro sobre medios inseguros
+		(como Internet).</p></li>
+<li><p>Evitar interceptaciones, manipulaciones o
+		suplantaciones de identidad.</p></li>
+<li><p>Coordinar el intercambio de claves y la
+		verificación de certificados.</p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3437_3914708500" lang="es">
+4.2 SSL/TLS</h2>
+<ul>
+<li><p><strong>SSL (Secure Sockets Layer)</strong>  y <strong>TLS
+	(Transport Layer Security)</strong>  son protocolos estándar para
+	comunicaciones seguras en redes.</p></li>
+<li><p><strong>Handshake SSL/TLS:</strong></p>
+<ul>
+<li><p>Proceso inicial donde cliente y servidor negocian
+		algoritmos y claves.</p></li>
+<li><p>El <strong>servidor envía su clave pública</strong> 
+		si se requiere.</p></li>
+<li><p>Permite la creación de <strong>canales cifrados</strong> 
+		seguros para la transmisión de datos.</p></li>
+</ul>
+<li><p><strong>Versiones y seguridad:</strong></p>
+<ul>
+<li><p>SSL 1.0 / 2.0 → inseguro</p></li>
+<li><p>SSL 3.0 → más seguro</p></li>
+<li><p>TLS → recomendado, más seguro y moderno</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3439_3914708500" lang="es">
+4.3 Integridad de datos</h2>
+<ul>
+<li><p>Garantiza que los datos no han sido modificados
+	durante el tránsito.</p></li>
+<li><p>Se utilizan <strong>hashes o códigos de
+	integridad</strong>  para comprobar la autenticidad del contenido.</p></li>
+<li><p><strong>Matiz crítico:</strong> No confundir la
+	integridad con la confidencialidad; los datos pueden ser legibles
+	pero manipulados si no se protege la integridad.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3441_3914708500" lang="es">
+4.4 Puntos críticos para examen</h2>
+<ul>
+<li><p>Saber diferenciar <strong>Handshake</strong> 
+	(proceso de negociación) de <strong>canal cifrado</strong> 
+	(comunicación segura).</p></li>
+<li><p>Conocer qué versiones de SSL/TLS son seguras y
+	cuáles obsoletas.</p></li>
+<li><p>Entender la función de la <strong>clave pública</strong> 
+	en la negociación inicial.</p></li>
+<li><p>Diferenciar <strong>confidencialidad</strong> 
+	(cifrado) de <strong>integridad</strong>  (no alteración de datos).</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3443_3914708500" lang="es">
+<strong>5. Programación de mecanismos de control de acceso y RBAC</strong></h1>
+<h2 id="__RefHeading___Toc3445_3914708500" lang="es">
+5.1 Concepto general</h2>
+<ul>
+<li><p><strong>Definición:</strong> Conjunto de técnicas
+	y estructuras que regulan <strong>qué usuarios pueden acceder a qué
+	recursos</strong>  y qué operaciones pueden realizar dentro de un
+	sistema.</p></li>
+<li><p><strong>Objetivos principales:</strong></p>
+<ol>
+<li><p>Restringir el acceso solo a usuarios autorizados.</p></li>
+<li><p>Garantizar integridad y confidencialidad de los
+		recursos.</p></li>
+<li><p>Facilitar la administración de permisos y roles
+		dentro de la organización.</p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3447_3914708500" lang="es">
+5.2 RBAC (Role-Based Access Control)</h2>
+<ul>
+<li><p><strong>Definición:</strong> Control de acceso
+	basado en roles, donde los permisos se asignan a <strong>roles</strong>,
+	y los usuarios obtienen esos permisos a través de los roles que se
+	les asignan.</p></li>
+<li><p><strong>Elementos principales:</strong></p>
+<ol>
+<li><p><strong>Usuarios:</strong> personas o entidades
+		que acceden al sistema.</p></li>
+<li><p><strong>Roles:</strong> funciones o
+		responsabilidades dentro de la organización.</p>
+<ul>
+<li><p><strong>Matiz crítico:</strong> Cada rol <strong>crea
+			diversas funciones</strong>, no es un usuario ni una función
+			individual.</p></li>
+</ul>
+<li><p><strong>Permisos:</strong> acciones que pueden
+		realizarse sobre recursos del sistema.</p></li>
+</li></ol>
+<li><p><strong>Reglas que definen RBAC:</strong></p>
+<ol>
+<li><p><strong>Operaciones administrativas:</strong>
+		creación, eliminación y mantenimiento de elementos y relaciones
+		de RBAC.</p></li>
+<li><p><strong>Revisiones administrativas:</strong>
+		consultas sobre usuarios, roles y relaciones.</p></li>
+<li><p><strong>Funcionalidad a nivel de sistema:</strong>
+		activación/desactivación de roles mediante sesiones de usuario.</p></li>
+</ol>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3449_3914708500" lang="es">
+5.3 Beneficios de RBAC</h2>
+<ul>
+<li><p>Administración simple del sistema.</p></li>
+<li><p>Mejora de productividad en gestión de permisos.</p></li>
+<li><p>Mayor seguridad e integridad de recursos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3451_3914708500" lang="es">
+5.4 Puntos críticos para examen</h2>
+<ul>
+<li><p>Diferenciar <strong>usuarios, roles y permisos</strong>.</p></li>
+<li><p>Comprender que <strong>roles crean funciones</strong>,
+	no son funciones ni usuarios.</p></li>
+<li><p>Conocer las <strong>tres reglas de RBAC</strong>  y
+	su propósito.</p></li>
+<li><p>Reconocer los beneficios clave: administración
+	simple, productividad, seguridad.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3453_3914708500" lang="es">
+<strong>6. Clases e interfaces de autenticación y autorización
+(JAAS)</strong></h1>
+<h2 id="__RefHeading___Toc3455_3914708500" lang="es">
+6.1 Concepto general</h2>
+<ul>
+<li><p><strong>Definición:</strong> Java Authentication
+	and Authorization Service (JAAS) es un framework que permite
+	<strong>autenticar sujetos</strong>  (usuarios o entidades) y
+	controlar sus permisos dentro de una aplicación Java.</p></li>
+<li><p><strong>Objetivos principales:</strong></p>
+<ol>
+<li><p>Separar la autenticación y autorización del
+		resto de la lógica de la aplicación.</p></li>
+<li><p>Facilitar el manejo seguro de credenciales y
+		roles.</p></li>
+<li><p>Proporcionar un modelo flexible y reutilizable de
+		control de acceso.</p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3457_3914708500" lang="es">
+6.2 Clases comunes de JAAS</h2>
+<ul>
+<li><p><strong>Subject:</strong> representa información
+	agrupada de una entidad (usuario), incluyendo:</p>
+<ul>
+<li><p>Principales (identidades del sujeto).</p></li>
+<li><p>Credenciales públicas y privadas.</p></li>
+</ul>
+<li><p><strong>Principal:</strong> identifica a una
+	entidad dentro del sistema.</p></li>
+<li><p><strong>Credential:</strong> almacena información
+	de autenticación (como contraseñas o claves).</p></li>
+<li><p><strong>Refreshable / Destroyable:</strong>
+	permiten actualizar o destruir credenciales cuando sea necesario.</p></li>
+<li><p><strong>Matiz crítico:</strong> Algunos exámenes
+	omiten estas clases intermedias, pero <strong>Subject, Principal y
+	Credential</strong>  son esenciales para la autenticación y
+	autorización.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3459_3914708500" lang="es">
+6.3 Clases e interfaces para autenticación</h2>
+<ul>
+<li><p><strong>LoginContext:</strong> proporciona métodos
+	para autenticar sujetos y manejar sesiones de login.</p></li>
+<li><p><strong>LoginModule:</strong> implementa la lógica
+	de autenticación real.</p></li>
+<li><p><strong>LoginException:</strong> gestiona errores
+	de autenticación.</p></li>
+<li><p><strong>Matiz crítico:</strong> La confusión
+	frecuente es pensar que LoginModule es suficiente; <strong>LoginContext</strong> 
+	es la clase que orquesta la autenticación.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3461_3914708500" lang="es">
+6.4 Pasos para la autenticación de un sujeto</h2>
+<ol>
+<li><p>Crear una instancia de <strong>LoginContext</strong>.</p></li>
+<li><p>Invocar <strong>LoginContext.login()</strong>  para
+	iniciar el proceso.</p></li>
+<li><p>LoginContext delega en <strong>LoginModule</strong> 
+	según la configuración.</p></li>
+<li><p>Verificar el éxito o fracaso mediante excepciones
+	o códigos de error.</p></li>
+</ol>
+<ul>
+<li><p><strong>Matiz crítico:</strong> Todos los pasos
+	deben ejecutarse; saltarse uno puede invalidar la autenticación.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3463_3914708500" lang="es">
+6.5 Puntos críticos para examen</h2>
+<ul>
+<li><p>Conocer <strong>Subject, Principal y Credential</strong> 
+	como clases centrales.</p></li>
+<li><p>Diferenciar <strong>LoginContext</strong>  (gestión
+	de sesión y coordinación) de <strong>LoginModule</strong> 
+	(implementación de autenticación).</p></li>
+<li><p>Entender el flujo de autenticación: creación de
+	LoginContext → invocación de login → verificación.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3465_3914708500" lang="es">
+<strong>7. Depuración, documentación y programación segura
+aplicada a aplicaciones con comunicación segura</strong></h1>
+<h2 id="__RefHeading___Toc3467_3914708500" lang="es">
+7.1 Concepto general</h2>
+<ul>
+<li><p><strong>Definición:</strong> Conjunto de técnicas
+	para garantizar que las aplicaciones que manejan datos sensibles o
+	comunicaciones cifradas se desarrollen, prueben y documenten
+	correctamente para evitar vulnerabilidades.</p></li>
+<li><p><strong>Objetivos principales:</strong></p>
+<ol>
+<li><p>Facilitar la depuración y localización de
+		errores en código seguro.</p></li>
+<li><p>Documentar decisiones de seguridad y manejo de
+		datos sensibles.</p></li>
+<li><p>Asegurar que futuras mejoras (algoritmos, claves,
+		certificados) puedan implementarse de manera segura.</p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3469_3914708500" lang="es">
+7.2 Depuración en programación segura</h2>
+<ul>
+<li><p>Se recomienda crear <strong>versiones de
+	depuración</strong>  usando técnicas como <strong>eliminación de
+	código muerto</strong>.</p></li>
+<li><p>Incluir trazas solo donde sea necesario para
+	verificar el uso de variables críticas o estados de seguridad.</p></li>
+<li><p><strong>Matiz crítico:</strong> En el examen, a
+	veces se confunde “incluir trazas en todo el código” con “usar
+	técnicas de depuración para seguridad”; la técnica correcta es
+	<strong>eliminación de código muerto</strong>  combinada con trazas
+	selectivas.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3471_3914708500" lang="es">
+7.3 Documentación de la aplicación</h2>
+<ul>
+<li><p>Documentar <strong>zonas críticas</strong>:
+	cifrado, control de acceso, roles y privilegios.</p></li>
+<li><p>Incluir explicaciones sobre por qué ciertos
+	métodos son final  y consecuencias de
+	no aplicarlo.</p></li>
+<li><p>Delimitar claramente los <strong>tipos de usuarios
+	y privilegios</strong>.</p></li>
+<li><p>Actualizar documentación cuando se modifiquen
+	algoritmos, certificados o claves.</p></li>
+<li><p><strong>Matiz crítico:</strong> El examen premia
+	la documentación de <strong>zonas críticas y roles</strong>, no la
+	actualización de todo el código fuente.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3473_3914708500" lang="es">
+7.4 Aplicación a comunicaciones seguras (HTTP/HTTPS)</h2>
+<ul>
+<li><p>HTTP: protocolo de peticiones y respuestas, sin
+	cifrado (puerto 8080 por defecto).</p></li>
+<li><p>HTTPS: HTTP seguro mediante SSL/TLS, cifrando la
+	comunicación y usando certificados (puerto 443).</p></li>
+<li><p>Herramientas:</p>
+<ul>
+<li><p><strong>Keytool:</strong> generar certificados
+		RSA para servidores HTTPS.</p></li>
+<li><p><strong>SSLContext / ServerSocketFactory:</strong>
+		crear sockets seguros en Java.</p></li>
+</ul>
+<li><p><strong>ProcessConnection:</strong> cada petición
+	HTTP/HTTPS se maneja en un hilo separado para no bloquear el
+	servidor.</p></li>
+<li><p><strong>Matiz crítico:</strong> Algunos
+	estudiantes confunden puertos HTTP y HTTPS, o el uso de certificados
+	auto-firmados frente a certificados emitidos por autoridad
+	certificadora.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3475_3914708500" lang="es">
+7.5 Puntos críticos para examen</h2>
+<ul>
+<li><p>Crear versiones de depuración con <strong>eliminación
+	de código muerto</strong>, no trazas indiscriminadas.</p></li>
+<li><p>Documentar zonas críticas: métodos final,
+	roles, privilegios y decisiones de seguridad.</p></li>
+<li><p>Conocer puertos y diferencias entre <strong>HTTP
+	(8080)</strong>  y <strong>HTTPS (443)</strong>.</p></li>
+<li><p>Entender el flujo de comunicación segura en
+	servidores Java: certificado → SSLContext → SSLServerSocket →
+	manejo multi-hilo.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3477_3914708500" lang="es">
+<strong>Resumen compacto – </strong><strong>Unidad 5 –
+Programación segura</strong></h1>
+<h3 lang="es"><strong>1. Prácticas de programación
+segura</strong></h3>
+<ul>
+<li><p>Validar datos <strong>antes de transformarlos</strong> 
+	→ evita errores y vulnerabilidades.</p></li>
+<li><p>Métodos críticos: declarar final 
+	para impedir modificaciones en herencia.</p></li>
+<li><p>Documentar <strong>zonas críticas</strong>:
+	roles, privilegios, cifrado, métodos final.</p></li>
+<li><p>Puntos clave examen:</p>
+<ul>
+<li><p>Validación de datos</p></li>
+<li><p>Métodos final  en
+		funciones críticas</p></li>
+<li><p>Documentar roles y privilegios, no todo el código</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h3 lang="es"><strong>2. Criptografía de clave
+pública y privada</strong></h3>
+<ul>
+<li><p><strong>Simétrica:</strong> 1 clave compartida;
+	rápida, pero canal seguro necesario.</p></li>
+<li><p><strong>Asimétrica:</strong> par de claves
+	(pública + privada); clave pública cifra, privada descifra o
+	firma.</p></li>
+<li><p><strong>Diffie-Hellman:</strong> acuerda clave
+	simétrica a través de <strong>canal inseguro</strong>.</p></li>
+<li><p>Distribución de clave pública:</p>
+<ul>
+<li><p>Comunicación pública → poco segura</p></li>
+<li><p>Directorio público → riesgo de modificación</p></li>
+<li><p>Autoridad pública → control de acceso</p></li>
+<li><p>Autoridad certificadora → segura y confiable</p></li>
+</ul>
+<li><p>Puntos clave examen:</p>
+<ul>
+<li><p>Simétrica vs asimétrica</p></li>
+<li><p>Diffie-Hellman = distribución de claves</p></li>
+<li><p>Métodos de distribución y riesgos</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h3 lang="es"><strong>3. Principales aplicaciones de
+la criptografía</strong></h3>
+<ul>
+<li><p><strong>Distribución de claves:</strong> para
+	acuerdos de clave simétrica (Diffie-Hellman).</p></li>
+<li><p><strong>Firma digital:</strong> autentica
+	remitente y verifica integridad del mensaje.</p></li>
+<li><p>Matiz crítico: Diffie-Hellman ≠ firma digital</p></li>
+</ul>
+<hr/>
+<h3 lang="es"><strong>4. Protocolos criptográficos
+y comunicaciones seguras</strong></h3>
+<ul>
+<li><p><strong>SSL/TLS:</strong> protocolos para
+	comunicación segura.</p></li>
+<li><p><strong>Handshake:</strong> negociación inicial →
+	servidor envía clave pública.</p></li>
+<li><p>Versiones: SSL 1.0/2.0 = inseguro; SSL 3.0 = menos
+	inseguro; TLS = recomendado.</p></li>
+<li><p>Integridad de datos: asegura que no se modificaron
+	durante el tránsito.</p></li>
+<li><p>Matiz crítico: no confundir integridad (datos no
+	modificados) con confidencialidad (datos cifrados).</p></li>
+</ul>
+<hr/>
+<h3 lang="es"><strong>5. Control de acceso y RBAC</strong></h3>
+<ul>
+<li><p><strong>Elementos:</strong> usuarios, roles,
+	permisos.</p></li>
+<li><p><strong>Roles → funciones</strong>  (no son
+	usuarios).</p></li>
+<li><p>Reglas RBAC: operaciones administrativas,
+	revisiones administrativas, funcionalidad a nivel de sistema.</p></li>
+<li><p>Beneficios: seguridad, productividad,
+	administración simple.</p></li>
+</ul>
+<hr/>
+<h3 lang="es"><strong>6. JAAS – Clases e
+interfaces</strong></h3>
+<ul>
+<li><p><strong>Clases comunes:</strong> Subject,
+	Principal, Credential (centrales).</p></li>
+<li><p><strong>Autenticación:</strong> LoginContext
+	(gestión), LoginModule (implementación), LoginException (errores).</p></li>
+<li><p>Flujo de autenticación: crear LoginContext →
+	login → LoginModule → verificar éxito/fallo.</p></li>
+<li><p>Matiz crítico: LoginContext orquesta todo;
+	LoginModule solo implementa la lógica.</p></li>
+</ul>
+<hr/>
+<h3 lang="es"><strong>7. Depuración, documentación
+y aplicaciones seguras</strong></h3>
+<ul>
+<li><p>Depuración: usar <strong>eliminación de código
+	muerto</strong>, trazas solo donde es necesario.</p></li>
+<li><p>Documentación: roles, privilegios, métodos
+	final, decisiones de seguridad.</p></li>
+<li><p>HTTP/HTTPS:</p>
+<ul>
+<li><p>HTTP → puerto 8080, sin cifrado</p></li>
+<li><p>HTTPS → puerto 443, cifrado con SSL/TLS</p></li>
+<li><p>Keytool → genera certificados RSA</p></li>
+<li><p>SSLContext + SSLServerSocket → sockets seguros</p></li>
+<li><p>ProcessConnection → cada petición en hilo
+		independiente</p></li>
+</ul>
+<li><p>Matiz crítico: puertos, certificados
+	auto-firmados vs autoridad certificadora.</p></li>
+</li></ul>
+<hr/>
+<h3 lang="es"><strong>Matices críticos / errores
+comunes de examen</strong></h3>
+<ol>
+<li><p>Validación de datos = fundamento principal, no
+	tipos de atributos.</p></li>
+<li><p>Métodos final  solo
+	en funciones críticas.</p></li>
+<li><p>Documentación: roles/privilegios y zonas
+	críticas, no todo el código.</p></li>
+<li><p>Diffie-Hellman = distribución de claves, no firma
+	digital.</p></li>
+<li><p>Clave pública ≠ protección total por sí sola,
+	combina con privada.</p></li>
+<li><p>Integridad ≠ confidencialidad.</p></li>
+<li><p>Roles en RBAC → crean funciones, no son usuarios
+	ni funciones individuales.</p></li>
+<li><p>JAAS: LoginContext orquesta, LoginModule
+	implementa, Subject/Principal/Credential esenciales.</p></li>
+<li><p>HTTP (8080) vs HTTPS (443), certificados
+	auto-firmados alertan navegador.</p></li>
+</ol>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

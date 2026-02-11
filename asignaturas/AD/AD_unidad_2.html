@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Acceso
+a Datos – Unidad 2
+– Conectores JDBC y SGBD Embebidos</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Acceso
+a Datos – Unidad 2
+– Conectores JDBC y SGBD Embebidos</h1>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1580_249232493">1. JDBC, conectores y SGBD embebidos (fundamentos)</a></p>
+<p><a href="#__RefHeading___Toc1582_249232493">1.1. JDBC (Java Database Connectivity)</a></p>
+<p><a href="#__RefHeading___Toc1586_249232493">1.2. Componentes principales de JDBC</a></p>
+<p><a href="#__RefHeading___Toc1590_249232493">1.3. Drivers JDBC</a></p>
+<p><a href="#__RefHeading___Toc1592_249232493">1.4. Arquitecturas compatibles con JDBC</a></p>
+<p><a href="#__RefHeading___Toc1594_249232493">1.5. Desfase objeto-relacional</a></p>
+<p><a href="#__RefHeading___Toc1598_249232493">1.6. Sistemas gestores de bases de datos embebidos</a></p>
+<p><a href="#__RefHeading___Toc1604_249232493">1.7. Ventajas del uso de SGBD embebidos con JDBC</a></p>
+<p><a href="#__RefHeading___Toc2737_249232493">2. Drivers, DriverManager y conexiones JDBC</a></p>
+<p><a href="#__RefHeading___Toc2739_249232493">2.1. Carga de drivers JDBC</a></p>
+<p><a href="#__RefHeading___Toc2743_249232493">2.2. Clase DriverManager</a></p>
+<p><a href="#__RefHeading___Toc2749_249232493">2.3. URL de conexión JDBC</a></p>
+<p><a href="#__RefHeading___Toc2755_249232493">2.4. Clase Connection</a></p>
+<p><a href="#__RefHeading___Toc2761_249232493">2.5. Flujo unificado de conexión JDBC</a></p>
+<p><a href="#__RefHeading___Toc2763_249232493">3. Sentencias SQL y ResultSet en JDBC</a></p>
+<p><a href="#__RefHeading___Toc2765_249232493">3.1. Creación de sentencias</a></p>
+<p><a href="#__RefHeading___Toc2771_249232493">3.2. Ejecución de sentencias SQL</a></p>
+<p><a href="#__RefHeading___Toc2777_249232493">3.3. Uso del objeto ResultSet</a></p>
+<p><a href="#__RefHeading___Toc2781_249232493">3.4. Metadatos de la base de datos (DatabaseMetaData)</a></p>
+<p><a href="#__RefHeading___Toc2783_249232493">3.5. Flujo resumido de ejecución de sentencias</a></p>
+<p><a href="#__RefHeading___Toc2785_249232493">4. Gestión de transacciones en JDBC</a></p>
+<p><a href="#__RefHeading___Toc2787_249232493">4.1. Autocommit</a></p>
+<p><a href="#__RefHeading___Toc2795_249232493">4.2. Niveles de aislamiento de transacciones</a></p>
+<p><a href="#__RefHeading___Toc2801_249232493">4.3. Uso práctico</a></p>
+<p><a href="#__RefHeading___Toc2803_249232493">4.4. Idea clave</a></p>
+<p><a href="#__RefHeading___Toc2805_249232493">4.5. Flujo completo visual de JDBC</a></p>
+<p><a href="#__RefHeading___Toc1645_4267272395">5. Procedimientos almacenados y CallableStatement</a></p>
+<p><a href="#__RefHeading___Toc1645_4267272395%20Copia%201">5.1. CallableStatement</a></p>
+<p><a href="#__RefHeading___Toc1647_4267272395">5.2. Creación de un CallableStatement</a></p>
+<p><a href="#__RefHeading___Toc1649_4267272395">5.3. Parámetros de entrada</a></p>
+<p><a href="#__RefHeading___Toc1651_4267272395">5.4 Parámetros de salida</a></p>
+<p><a href="#__RefHeading___Toc1653_4267272395">5.5. Ejecución del procedimiento almacenado</a></p>
+<p><a href="#__RefHeading___Toc1655_4267272395">5.6. Resumen de métodos clave de CallableStatement</a></p>
+<p><a href="#__RefHeading___Toc1657_4267272395">5.7. Relación entre Connection y CallableStatement</a></p>
+<p><a href="#__RefHeading___Toc1659_4267272395">5.8. Idea clave</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1580_249232493" lang="es">
+<strong>1. </strong><strong>JDBC, conectores y SGBD embebidos
+(fundamentos)</strong></h1>
+<h2 id="__RefHeading___Toc1582_249232493" lang="es">
+<strong>1.</strong>1. JDBC (Java Database Connectivity)</h2>
+<p><strong>JDBC</strong>  es la API estándar de Java para
+el acceso a <strong>bases de datos relacionales</strong>. Permite que
+una aplicación Java ejecute sentencias SQL y procese resultados de
+forma <strong>independiente del SGBD concreto</strong>.</p>
+<h3 id="__RefHeading___Toc1584_249232493" lang="es">
+Objetivo de JDBC</h3>
+<ul>
+<li><p>Abstraer el acceso a datos.</p></li>
+<li><p>Unificar el uso de distintos SGBD bajo una misma
+	API.</p></li>
+<li><p>Facilitar portabilidad y mantenibilidad del
+	código.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1586_249232493" lang="es">
+<strong>1.</strong>2. Componentes principales de JDBC</h2>
+<p>JDBC se basa en un conjunto de <strong>interfaces
+clave</strong>, todas incluidas en el paquete:</p>
+<pre><code>java.sql.*</code></pre><h3 id="__RefHeading___Toc1588_249232493" lang="es">
+Interfaces
+fundamentales</h3>
+<ul>
+<li><p><strong>Connection</strong> 
+Representa una
+	conexión activa con la base de datos.</p></li>
+<li><p><strong>Statement / PreparedStatement</strong> 
+Permiten
+	ejecutar sentencias SQL (con o sin parámetros).</p></li>
+<li><p><strong>ResultSet</strong> 
+Contiene las filas
+	devueltas por una consulta SELECT.</p></li>
+<li><p><strong>DriverManager</strong> 
+Gestiona los
+	drivers disponibles y proporciona conexiones.</p></li>
+</ul>
+<p>Estos elementos forman la base de cualquier interacción
+JDBC.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1590_249232493" lang="es">
+<strong>1.</strong>3. Drivers JDBC</h2>
+<p>Un <strong>driver JDBC</strong>  es el componente que
+permite a Java comunicarse con un SGBD concreto. JDBC define <strong>cuatro
+tipos estandarizados</strong>:</p>
+<table>
+<col/>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Tipo
+</th>
+<th>
+				Nombre común
+</th>
+<th>
+				Características
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type
+				1</strong>
+</td>
+<td>JDBC-ODBC
+				Bridge
+</td>
+<td>Traduce
+				JDBC a ODBC. Solo se usa si no hay driver JDBC nativo. Obsoleto.
+</td>
+</tr>
+<tr>
+<td><strong>Type
+				2</strong>
+</td>
+<td>Native-API
+</td>
+<td>Usa
+				librerías nativas del SGBD. Dependiente de plataforma.
+</td>
+</tr>
+<tr>
+<td><strong>Type
+				3</strong>
+</td>
+<td>Network
+</td>
+<td>Usa
+				un middleware intermedio. Poco común hoy en día.
+</td>
+</tr>
+<tr>
+<td><strong>Type
+				4</strong>
+</td>
+<td>Pure
+				Java
+</td>
+<td>Implementado
+				100 % en Java. Más eficiente y portable.
+</td>
+</tr>
+</tbody>
+</table>
+<p>👉 En la práctica moderna, <strong>Type 4 es el
+estándar de facto</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1592_249232493" lang="es">
+<strong>1.</strong>4. Arquitecturas compatibles con JDBC</h2>
+<p>JDBC se adapta a distintas arquitecturas de aplicación:</p>
+<ul>
+<li><p><strong>2-tier (dos capas)</strong> 
+Cliente
+	Java ↔ Base de datos 
+Arquitectura simple, poco escalable.</p></li>
+<li><p><strong>3-tier (tres capas)</strong> 
+Cliente
+	Java ↔ Servidor de aplicaciones ↔ Base de datos 
+Más
+	segura, escalable y habitual en sistemas reales.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1594_249232493" lang="es">
+<strong>1.</strong>5. Desfase objeto-relacional</h2>
+<p>Existe una diferencia conceptual entre:</p>
+<ul>
+<li><p>el <strong>modelo orientado a objetos</strong> 
+	(Java),</p></li>
+<li><p>y el <strong>modelo relacional</strong>  (SQL).</p></li>
+</ul>
+<p>Problemas típicos:</p>
+<ul>
+<li><p>Herencia de clases vs tablas.</p></li>
+<li><p>Relaciones entre objetos vs claves foráneas.</p></li>
+<li><p>Colecciones y referencias múltiples.</p></li>
+<li><p>Tipos de datos sin correspondencia directa.</p></li>
+</ul>
+<h3 id="__RefHeading___Toc1596_249232493" lang="es">
+Estrategias de solución</h3>
+<ul>
+<li><p>Mapeo manual usando JDBC.</p></li>
+<li><p>Uso de <strong>ORM</strong>  como Hibernate o JPA.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1598_249232493" lang="es">
+<strong>1.</strong>6. Sistemas gestores de bases de datos embebidos</h2>
+<p>Un <strong>SGBD embebido</strong>  se integra
+directamente dentro de la aplicación Java, sin servidor
+independiente.</p>
+<h3 id="__RefHeading___Toc1600_249232493" lang="es">
+Características generales</h3>
+<ul>
+<li><p>Portables.</p></li>
+<li><p>Ligeros.</p></li>
+<li><p>Fácil despliegue.</p></li>
+<li><p>Muy usados en pruebas y aplicaciones pequeñas.</p></li>
+</ul>
+<h3 id="__RefHeading___Toc1602_249232493" lang="es">
+SGBD embebidos habituales</h3>
+<ul>
+<li><p><strong>Apache Derby</strong></p>
+<ul>
+<li><p>Java puro, relacional, open source.</p></li>
+<li><p>Proyecto Apache DB.</p></li>
+</ul>
+<li><p><strong>SQLite</strong></p>
+<ul>
+<li><p>Escrito en C.</p></li>
+<li><p>Muy ligero y multiplataforma.</p></li>
+</ul>
+<li><p><strong>HSQLDB / H2</strong></p>
+<ul>
+<li><p>Java puro.</p></li>
+<li><p>Muy usados en testing.</p></li>
+</ul>
+</li></li></li></ul>
+<p>👉 <strong>MySQL no es embebido</strong>: es
+cliente-servidor.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1604_249232493" lang="es">
+<strong>1.</strong>7. Ventajas del uso de SGBD embebidos con JDBC</h2>
+<ul>
+<li><p>Portabilidad junto a la aplicación Java.</p></li>
+<li><p>Sin instalación ni administración de servidor.</p></li>
+<li><p>Bajo consumo de recursos.</p></li>
+<li><p>Integración directa mediante drivers JDBC tipo 4.</p></li>
+<li><p>Ideal para prototipos, aprendizaje y pruebas
+	unitarias.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc2737_249232493" lang="es">
+2. Drivers, DriverManager y conexiones JDBC</h1>
+<h2 id="__RefHeading___Toc2739_249232493" lang="es">
+2.1. Carga de drivers JDBC</h2>
+<p>Antes de poder conectarse a una base de datos, el
+<strong>driver JDBC correspondiente</strong>  debe estar disponible y
+registrado.</p>
+<h3 id="__RefHeading___Toc2741_249232493" lang="es">
+Carga dinámica del driver</h3>
+<p>Tradicionalmente se realiza mediante:</p>
+<pre><code>Class.forName("nombre_completo_del_driver");</code></pre><p>
+Ejemplos:</p>
+<pre><code>Class.forName("com.mysql.cj.jdbc.Driver");   // MySQL</code>
+<code>Class.forName("org.sqlite.JDBC");            // SQLite</code>
+<code>Class.forName("org.apache.derby.jdbc.EmbeddedDriver"); // Derby</code></pre><p>
+<strong>Qué ocurre internamente:</strong></p>
+<ol>
+<li><p>La clase del driver se carga en memoria.</p></li>
+<li><p>Se ejecuta su bloque estático.</p></li>
+<li><p>El driver se registra automáticamente en
+	DriverManager.</p></li>
+</ol>
+<blockquote>Desde <strong>JDBC
+4.0</strong>, si el driver está en el <em>classpath</em>, la carga
+suele ser automática y <code>Class.forName()</code>
+puede omitirse, aunque sigue apareciendo en temarios y ejemplos.</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc2743_249232493" lang="es">
+2.2. Clase <code>DriverManager</code></h2>
+<p>DriverManager  es la clase
+responsable de <strong>gestionar los drivers JDBC</strong> 
+disponibles en la JVM y de <strong>proporcionar conexiones</strong>.</p>
+<h3 id="__RefHeading___Toc2745_249232493" lang="es">
+Funciones principales</h3>
+<ul>
+<li><p>Seleccionar el driver adecuado según la URL.</p></li>
+<li><p>Crear conexiones con el SGBD.</p></li>
+</ul>
+<h3 id="__RefHeading___Toc2747_249232493" lang="es">
+Métodos clave</h3>
+<ul>
+<li><p>getConnection(url)</p></li>
+<li><p>getConnection(url, usuario,
+	contraseña)</p></li>
+<li><p>registerDriver(driver)</p></li>
+<li><p>deregisterDriver(driver)</p></li>
+</ul>
+<p>👉 DriverManager <strong>no
+representa un recurso abierto</strong>, por lo que <strong>no se
+cierra</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc2749_249232493" lang="es">
+2.3. URL de conexión JDBC</h2>
+<p>El <strong>primer parámetro de </strong><strong>getConnection()</strong> 
+es la <strong>URL JDBC</strong>, que indica:</p>
+<ul>
+<li><p>el tipo de SGBD,</p></li>
+<li><p>su ubicación,</p></li>
+<li><p>y opciones de conexión.</p></li>
+</ul>
+<h3 id="__RefHeading___Toc2751_249232493" lang="es">
+Formato general</h3>
+<pre><code>jdbc:&lt;subprotocolo&gt;:&lt;ubicación&gt;[?&lt;opciones&gt;]</code></pre><h3 id="__RefHeading___Toc2753_249232493" lang="es">
+Ejemplos habituales</h3>
+<table>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				SGBD
+</th>
+<th>
+				URL típica
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL
+</td>
+<td>jdbc:mysql://localhost:3306/mi_base
+</td>
+</tr>
+<tr>
+<td>SQLite
+</td>
+<td>jdbc:sqlite:mi_base.db
+</td>
+</tr>
+<tr>
+<td>HSQLDB
+</td>
+<td>jdbc:hsqldb:file:mi_base
+</td>
+</tr>
+<tr>
+<td>Apache
+				Derby
+</td>
+<td>jdbc:derby:mi_base;create=true
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc2755_249232493" lang="es">
+2.4. Clase <code>Connection</code></h2>
+<p>Un objeto Connection 
+representa una <strong>conexión activa con la base de datos</strong>.</p>
+<h3 id="__RefHeading___Toc2757_249232493" lang="es">
+Características principales</h3>
+<ul>
+<li><p>Una aplicación puede tener <strong>múltiples
+	conexiones simultáneas</strong>.</p></li>
+<li><p>Es el punto de partida para:</p>
+<ul>
+<li><p>crear Statement  y
+		PreparedStatement,</p></li>
+<li><p>manejar transacciones,</p></li>
+<li><p>acceder a metadatos.</p></li>
+</ul>
+</li></ul>
+<h3 id="__RefHeading___Toc2759_249232493" lang="es">
+Operaciones relevantes</h3>
+<ul>
+<li><p>Creación de sentencias:</p>
+<ul>
+<li><p>createStatement()</p></li>
+<li><p>prepareStatement()</p></li>
+</ul>
+<li><p>Gestión de transacciones:</p>
+<ul>
+<li><p>setAutoCommit()</p></li>
+<li><p>commit()</p></li>
+<li><p>rollback()</p></li>
+</ul>
+<li><p>Metadatos:</p>
+<ul>
+<li><p>getMetaData()</p></li>
+</ul>
+<li><p>Liberación de recursos:</p>
+<ul>
+<li><p>close()</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2761_249232493" lang="es">
+2.5. Flujo unificado de conexión JDBC</h2>
+<p>Este es el <strong>único flujo de conexión</strong> 
+(ya sin repeticiones) que resume el uso básico de JDBC:</p>
+<ol>
+<li><p>Cargar el driver (si es necesario).</p></li>
+<li><p>Solicitar la conexión mediante DriverManager.</p></li>
+<li><p>Obtener un objeto Connection.</p></li>
+<li><p>Usar la conexión para ejecutar sentencias SQL.</p></li>
+<li><p>Cerrar la conexión al finalizar.</p></li>
+</ol>
+<p>Ejemplo simplificado:</p>
+<pre><code>Connection conn = DriverManager.getConnection(url, user, pass);</code>
+<code>// uso de la conexión</code>
+<code>conn.close();</code></pre>
+<hr/>
+<h1 id="__RefHeading___Toc2763_249232493" lang="es">
+3. Sentencias SQL y ResultSet en JDBC</h1>
+<h2 id="__RefHeading___Toc2765_249232493" lang="es">
+3.1. Creación de sentencias</h2>
+<p>A partir de un objeto Connection,
+se pueden crear distintos tipos de sentencias:</p>
+<h3 id="__RefHeading___Toc2767_249232493" lang="es">
+<code>Statement</code></h3>
+<ul>
+<li><p>Se usa para <strong>sentencias SQL simples sin
+	parámetros</strong>.</p></li>
+<li><p>Creación:</p></li>
+</ul>
+<pre><code>Statement stmt = conn.createStatement();</code></pre><h3 id="__RefHeading___Toc2769_249232493" lang="es">
+<code>PreparedStatement</code></h3>
+<ul>
+<li><p>Permite <strong>sentencias parametrizadas</strong> 
+	usando <strong>placeholders (</strong><strong>?</strong><strong>)</strong>.</p></li>
+<li><p>Ventajas:</p>
+<ul>
+<li><p>Prevención de <strong>inyección SQL</strong>.</p></li>
+<li><p>Mejor rendimiento (precompilación).</p></li>
+<li><p>Código más claro y mantenible.</p></li>
+</ul>
+<li><p>Creación:</p></li>
+</li></ul>
+<pre><code>PreparedStatement ps = conn.prepareStatement("INSERT INTO deptos VALUES (?, ?)");</code>
+<code>ps.setString(1, "Ventas");</code>
+<code>ps.setInt(2, 10);</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc2771_249232493" lang="es">
+3.2. Ejecución de sentencias SQL</h2>
+<h3 id="__RefHeading___Toc2773_249232493" lang="es">
+Consultas <code>SELECT</code></h3>
+<ul>
+<li><p>Método:</p></li>
+</ul>
+<pre><code>ResultSet rs = stmt.executeQuery("SELECT * FROM empleados");</code></pre>
+<ul>
+<li><p>Solo se usa para <strong>consultas</strong>.</p></li>
+<li><p>Devuelve un ResultSet 
+	con las filas resultantes.</p></li>
+<li><p>El ResultSet  funciona
+	como un <strong>cursor</strong>, permitiendo recorrer fila por fila
+	y columna por columna.</p></li>
+</ul>
+<h3 id="__RefHeading___Toc2775_249232493" lang="es">
+Sentencias de actualización</h3>
+<ul>
+<li><p>Método:</p></li>
+</ul>
+<pre><code>int filas = stmt.executeUpdate("UPDATE empleados SET salario = 2000 WHERE id = 1");</code></pre>
+<ul>
+<li><p>Se usa para:</p>
+<ul>
+<li><p>INSERT, UPDATE,
+		DELETE</p></li>
+<li><p>Sentencias DDL: CREATE,
+		ALTER, DROP</p></li>
+</ul>
+<li><p>Devuelve el número de filas afectadas.</p></li>
+<li><p>❌ No se puede usar con SELECT.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2777_249232493" lang="es">
+3.3. Uso del objeto <code>ResultSet</code></h2>
+<p>El ResultSet  contiene los
+datos devueltos por un SELECT:</p>
+<ul>
+<li><p>Permite acceder a las columnas con métodos según
+	el tipo de dato:</p>
+<pre><code>int edad = rs.getInt("edad");</code>
+<code>boolean activo = rs.getBoolean("activo");</code>
+<code>String nombre = rs.getString("nombre");</code></pre></li>
+<li><p>Su ciclo de vida depende de la sentencia que lo
+	generó.</p></li>
+<li><p>Debe cerrarse con rs.close() 
+	para liberar recursos.</p></li>
+</ul>
+<h3 id="__RefHeading___Toc2779_249232493" lang="es">
+Metadatos de resultados (<code>ResultSetMetaData</code>)</h3>
+<ul>
+<li><p>Se obtiene desde un ResultSet:</p></li>
+</ul>
+<pre><code>ResultSetMetaData rsmd = rs.getMetaData();</code></pre>
+<ul>
+<li><p>Permite consultar:</p>
+<ul>
+<li><p>Número de columnas ( getColumnCount() )</p></li>
+<li><p>Nombre de columnas ( getColumnName(int) )</p></li>
+<li><p>Tipos de datos, tamaño, nulabilidad,
+		autoincremento</p></li>
+</ul>
+<li><p>Útil para <strong>procesamiento dinámico</strong> 
+	cuando no se conoce la estructura de la consulta.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2781_249232493" lang="es">
+3.4. Metadatos de la base de datos (<code>DatabaseMetaData</code>)</h2>
+<ul>
+<li><p>Se obtiene desde Connection:</p></li>
+</ul>
+<pre><code>DatabaseMetaData dbmd = conn.getMetaData();</code></pre>
+<ul>
+<li><p>Permite conocer la <strong>estructura global de la
+	base de datos</strong>:</p>
+<ul>
+<li><p>Tablas y vistas ( getTables(...) )</p></li>
+<li><p>Columnas ( getColumns(...) )</p></li>
+<li><p>Claves primarias ( getPrimaryKeys(...) )</p></li>
+<li><p>Claves foráneas ( getExportedKeys(...) )</p></li>
+</ul>
+<li><p>Aplicaciones típicas:</p>
+<ul>
+<li><p>Herramientas de administración</p></li>
+<li><p>ORMs</p></li>
+<li><p>Formularios dinámicos</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2783_249232493" lang="es">
+3.5. Flujo resumido de ejecución de sentencias</h2>
+<ol>
+<li><p>Crear Statement  o
+	PreparedStatement  desde Connection.</p></li>
+<li><p>Ejecutar sentencia:</p>
+<ul>
+<li><p>executeQuery()  →
+		devuelve ResultSet</p></li>
+<li><p>executeUpdate()  →
+		devuelve número de filas afectadas</p></li>
+</ul>
+<li><p>Procesar resultados:</p>
+<ul>
+<li><p>Recorrer ResultSet</p></li>
+<li><p>Usar ResultSetMetaData 
+		si es necesario</p></li>
+</ul>
+<li><p>Cerrar recursos:</p></li>
+</li></li></ol>
+<pre><code>rs.close();</code>
+<code>stmt.close();</code></pre>
+<hr/>
+<h1 id="__RefHeading___Toc2785_249232493" lang="es">
+4. Gestión de transacciones en JDBC</h1>
+<h2 id="__RefHeading___Toc2787_249232493" lang="es">
+4.1. Autocommit</h2>
+<h3 id="__RefHeading___Toc2789_249232493" lang="es">
+Concepto</h3>
+<ul>
+<li><p>Cada conexión JDBC puede funcionar en <strong>modo
+	autocommit</strong>.</p></li>
+<li><p>Define <strong>cómo y cuándo se confirman los
+	cambios</strong>  realizados por sentencias SQL.</p></li>
+</ul>
+<h3 id="__RefHeading___Toc2791_249232493" lang="es">
+Configuración</h3>
+<pre><code>conn.setAutoCommit(true);  // Autocommit activado</code>
+<code>conn.setAutoCommit(false); // Autocommit desactivado</code></pre><h3 id="__RefHeading___Toc2793_249232493" lang="es">
+Significado</h3>
+<ul>
+<li><p><strong>Autocommit activado (</strong><strong>true</strong><strong>)</strong></p>
+<ul>
+<li><p>Cada sentencia SQL se ejecuta como una
+		<strong>transacción independiente</strong>.</p></li>
+<li><p>Se confirma automáticamente sin necesidad de
+		commit().</p></li>
+<li><p>Es el <strong>modo por defecto</strong>  de JDBC.</p></li>
+</ul>
+<li><p><strong>Autocommit desactivado (</strong><strong>false</strong><strong>)</strong></p>
+<ul>
+<li><p>Permite agrupar varias sentencias en <strong>una
+		única transacción lógica</strong>.</p></li>
+<li><p>El programador controla la confirmación
+		mediante:</p>
+<pre><code>conn.commit();   // confirma los cambios</code>
+<code>conn.rollback(); // revierte los cambios</code></pre></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2795_249232493" lang="es">
+4.2. Niveles de aislamiento de transacciones</h2>
+<p>El <strong>aislamiento</strong>  determina qué datos de
+otras transacciones pueden ser vistos y garantiza consistencia ante
+concurrencia.</p>
+<h3 id="__RefHeading___Toc2797_249232493" lang="es">
+Configuración</h3>
+<pre><code>conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);</code></pre><h3 id="__RefHeading___Toc2799_249232493" lang="es">
+Niveles importantes</h3>
+<table>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Nivel
+</th>
+<th>
+				Significado
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRANSACTION_READ_COMMITTED
+</td>
+<td>Solo
+				se ven los datos <strong>ya confirmados</strong>   por otras
+				transacciones. Evita lecturas sucias.
+</td>
+</tr>
+<tr>
+<td>TRANSACTION_NONE
+</td>
+<td>El
+				SGBD <strong>no soporta transacciones</strong>. Sin aislamiento
+				ni control de concurrencia.
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>Nota: JDBC
+define otros niveles (<code>READ_UNCOMMITTED</code>,
+<code>REPEATABLE_READ</code>, <code>SERIALIZABLE</code>),
+pero los más comunes y evaluados en temarios básicos son los
+anteriores.</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc2801_249232493" lang="es">
+4.3. Uso práctico</h2>
+<ol>
+<li><p>Desactivar autocommit si se requiere control
+	manual:</p></li>
+</ol>
+<pre><code>conn.setAutoCommit(false);</code></pre>
+<ol start="2">
+<li><p>Ejecutar varias sentencias SQL como parte de la
+	misma transacción.</p></li>
+<li><p>Confirmar cambios con commit() 
+	o deshacerlos con rollback().</p></li>
+<li><p>Configurar el aislamiento según las necesidades
+	de concurrencia:</p></li>
+</ol>
+<pre><code>conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc2803_249232493" lang="es">
+4.4. Idea clave</h2>
+<ul>
+<li><p>La gestión de transacciones permite:</p>
+<ul>
+<li><p>Agrupar operaciones en <strong>unidades de
+		trabajo coherentes</strong>.</p></li>
+<li><p>Controlar <strong>consistencia de datos</strong> 
+		y <strong>concurrencia</strong>.</p></li>
+<li><p>Ajustar el comportamiento de la conexión a las
+		<strong>garantías del SGBD</strong>.</p></li>
+</ul>
+<li><p>Junto con el control de recursos ( close() 
+	de ResultSet, Statement,
+	Connection ) completa la <strong>responsabilidad
+	del programador</strong>  sobre la ejecución segura y eficiente de
+	operaciones en JDBC.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2805_249232493" lang="es">
+4.5. Flujo completo visual de JDBC</h2>
+<pre><code>Driver (Type 4, org.mysql.cj.jdbc.Driver)</code>
+<code>      ↓ </code><code>(registrado en DriverManager)</code>
+<code>DriverManager</code>
+<code>      ↓ </code><code>getConnection(url, user, pass)</code>
+<code>Connection</code>
+<code>      ↓ </code><code>createStatement() / prepareStatement()</code>
+<code>Statement / PreparedStatement</code>
+<code>      ↓ </code><code>executeQuery() / executeUpdate()</code>
+<code>ResultSet</code>
+<code>      ↓ </code><code>procesamiento y cierre</code>
+<code>close() de ResultSet, Statement, Connection</code></pre>
+<hr/>
+<h1 id="__RefHeading___Toc1645_4267272395" lang="es">
+5. Procedimientos almacenados y CallableStatement</h1>
+<h2 id="__RefHeading___Toc1645_4267272395 Copia 1" lang="es">
+5.1. CallableStatement</h2>
+<p>CallableStatement  es una
+interfaz de JDBC que permite ejecutar <strong>procedimientos
+almacenados</strong>  y <strong>funciones</strong>  definidas en la
+base de datos.
+A diferencia de Statement 
+y PreparedStatement, admite <strong>parámetros
+de entrada (IN)</strong>  y <strong>salida (OUT)</strong>.</p>
+<p>Se encuentra en el paquete:</p>
+<pre><code>java.sql.*</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc1647_4267272395" lang="es">
+5.2. Creación de un CallableStatement</h2>
+<p>Un CallableStatement  se
+obtiene a partir de un objeto Connection 
+mediante:</p>
+<pre><code>CallableStatement cs = conn.prepareCall("{ call procedimiento(?, ?) }");</code></pre><p>
+Este método prepara la llamada a un procedimiento almacenado del
+SGBD.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1649_4267272395" lang="es">
+5.3. Parámetros de entrada</h2>
+<p>Los parámetros de entrada se asignan mediante métodos
+setX():</p>
+<pre><code>cs.setInt(1, 10);</code>
+<code>cs.setString(2, "Juan");</code></pre><p>
+El índice del parámetro comienza en <strong>1</strong>, no en 0.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1651_4267272395" lang="es">
+5.4 Parámetros de salida</h2>
+<p>Los parámetros de salida deben registrarse <strong>antes
+de ejecutar</strong>  la sentencia.</p>
+<pre><code>cs.registerOutParameter(2, Types.VARCHAR);</code></pre><p>
+Es obligatorio indicar el <strong>tipo SQL</strong>  del parámetro.</p>
+<p>Los tipos SQL se definen en la clase:</p>
+<pre><code>java.sql.Types</code></pre><p>
+Ejemplos habituales:</p>
+<ul>
+<li><p>Types.INTEGER</p></li>
+<li><p>Types.VARCHAR</p></li>
+<li><p>Types.DATE</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1653_4267272395" lang="es">
+5.5. Ejecución del procedimiento almacenado</h2>
+<p>El método habitual para ejecutar un procedimiento
+almacenado es:</p>
+<pre><code>cs.execute();</code></pre><p>
+Tras la ejecución, los valores de salida se recuperan con métodos
+getX():</p>
+<pre><code>String resultado = cs.getString(2);</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc1655_4267272395" lang="es">
+5.6. Resumen de métodos clave de CallableStatement</h2>
+<ul>
+<li><p>setInt(),
+	setString(), etc. → parámetros de
+	entrada</p></li>
+<li><p>registerOutParameter() 
+	→ parámetros de salida</p></li>
+<li><p>execute()  →
+	ejecución del procedimiento</p></li>
+<li><p>getX()  →
+	recuperación de valores de salida</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1657_4267272395" lang="es">
+5.7. Relación entre Connection y CallableStatement</h2>
+<ol>
+<li><p>Llamada a procedimientos desde Connection 
+La
+	llamada a un procedimiento almacenado se realiza siempre desde un
+	objeto Connection.</p></li>
+</ol>
+<p>Método utilizado:</p>
+<pre><code>prepareCall(String sql)</code></pre><p>
+Este método está específicamente diseñado para procedimientos y
+funciones almacenadas.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1659_4267272395" lang="es">
+5.8. Idea clave</h2>
+<ul>
+<li><p>CallableStatement  se
+	utiliza cuando el acceso a datos se realiza mediante <strong>procedimientos
+	almacenados</strong>.</p></li>
+<li><p>Permite trabajar con <strong>parámetros de
+	entrada y salida</strong>, algo que no es posible con Statement.</p></li>
+<li><p>Es habitual en entornos empresariales y bases de
+	datos complejas.</p></li>
+</ul>
+<hr/>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

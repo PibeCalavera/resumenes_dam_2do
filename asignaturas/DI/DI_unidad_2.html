@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Desarrollo
+de Interfaces – Unidad
+2 – Creación de componentes
+visuales</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Desarrollo
+de Interfaces – Unidad
+2 – Creación de componentes
+visuales</h1>
+<p>
+
+</p>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc3816_4017242538">1. Controles personalizados</a></p>
+<p><a href="#__RefHeading___Toc3820_4017242538">1.1. Características clave:</a></p>
+<p><a href="#__RefHeading___Toc3822_4017242538">1.2. Implementación:</a></p>
+<p><a href="#__RefHeading___Toc3824_4017242538">1.3. Ventajas:</a></p>
+<p><a href="#__RefHeading___Toc3826_4017242538">1.4. Inconvenientes:</a></p>
+<p><a href="#__RefHeading___Toc3855_4017242538">2. Propiedades de JavaFX y binding</a></p>
+<p><a href="#__RefHeading___Toc3857_4017242538">2.1. Características clave:</a></p>
+<p><a href="#__RefHeading___Toc3859_4017242538">2.2. Ventajas frente a atributos Java simples:</a></p>
+<p><a href="#__RefHeading___Toc3861_4017242538">2.3. Uso en FXML:</a></p>
+<p><a href="#__RefHeading___Toc3863_4017242538">2.4. Relación con otros conceptos de la unidad:</a></p>
+<p><a href="#__RefHeading___Toc3865_4017242538">3. Eventos en JavaFX:</a></p>
+<p><a href="#__RefHeading___Toc3867_4017242538">3.1. Tipos de eventos más comunes:</a></p>
+<p><a href="#__RefHeading___Toc3869_4017242538">3.2. Localización del manejo de eventos:</a></p>
+<p><a href="#__RefHeading___Toc3871_4017242538">3.3. Implementación de acciones:</a></p>
+<p><a href="#__RefHeading___Toc3873_4017242538">3.4. Relación con propiedades y controles personalizados:</a></p>
+<p><a href="#__RefHeading___Toc3875_4017242538">3.5. Puntos importantes que se repiten en preguntas:</a></p>
+<p><a href="#__RefHeading___Toc3877_4017242538">4. Gestión de visibilidad y composición de nodos en JavaFX</a></p>
+<p><a href="#__RefHeading___Toc3879_4017242538">4.1. Visibilidad de nodos:</a></p>
+<p><a href="#__RefHeading___Toc3881_4017242538">4.2. Inclusión y composición de componentes con FXML:</a></p>
+<p><a href="#__RefHeading___Toc3883_4017242538">4.3. Relación con otros temas:</a></p>
+<p><a href="#__RefHeading___Toc3885_4017242538">4.4. Puntos importantes repetidos en preguntas:</a></p>
+<p><a href="#__RefHeading___Toc3887_4017242538">5. Pruebas unitarias con JUnit</a></p>
+<p><a href="#__RefHeading___Toc3889_4017242538">5.1. Herramientas:</a></p>
+<p><a href="#__RefHeading___Toc3891_4017242538">5.2. Configuración de pruebas:</a></p>
+<p><a href="#__RefHeading___Toc3893_4017242538">5.3. Tipos de pruebas:</a></p>
+<p><a href="#__RefHeading___Toc3895_4017242538">5.4. Aserciones (assertions):</a></p>
+<p><a href="#__RefHeading___Toc3897_4017242538">5.5. Relación con otros temas:</a></p>
+<p><a href="#__RefHeading___Toc3899_4017242538">5.6. Puntos clave repetidos en preguntas:</a></p>
+<p><a href="#__RefHeading___Toc4137_4017242538">6. Documentación de código con Javadoc</a></p>
+<p><a href="#__RefHeading___Toc4139_4017242538">6.1. Comentarios asociados a Javadoc:</a></p>
+<p><a href="#__RefHeading___Toc4141_4017242538">6.2. Etiquetas más comunes:</a></p>
+<p><a href="#__RefHeading___Toc4143_4017242538">6.3. Propósito principal:</a></p>
+<p><a href="#__RefHeading___Toc4145_4017242538">6.4. Resultado de la documentación:</a></p>
+<p><a href="#__RefHeading___Toc4147_4017242538">6.5. Relación con otros temas:</a></p>
+<p><a href="#__RefHeading___Toc4149_4017242538">6.6. Puntos clave repetidos en preguntas:</a></p>
+<p><a href="#__RefHeading___Toc4151_4017242538">7. Distribución y reutilización de componentes gráficos</a></p>
+<p><a href="#__RefHeading___Toc4153_4017242538">7.1. Formato de distribución:</a></p>
+<p><a href="#__RefHeading___Toc4155_4017242538">7.2. Organización en paquetes:</a></p>
+<p><a href="#__RefHeading___Toc4157_4017242538">7.3. Composición de interfaces reutilizables:</a></p>
+<p><a href="#__RefHeading___Toc4159_4017242538">7.4. Ventajas de la reutilización y distribución:</a></p>
+<p><a href="#__RefHeading___Toc4161_4017242538">7.5. Inconvenientes potenciales:</a></p>
+<p><a href="#__RefHeading___Toc4163_4017242538">7.6. Relación con otros temas:</a></p>
+<p><a href="#__RefHeading___Toc4165_4017242538">7.7. Puntos clave repetidos en preguntas:</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc3816_4017242538" lang="es">
+<strong>1. </strong><strong>Controles personalizados</strong></h1>
+<p>Un <strong>control personalizado</strong>  es un
+componente gráfico que combina uno o varios controles existentes y
+les añade <strong>funcionalidad específica o comportamiento propio</strong>.
+Permite crear unidades reutilizables de interfaz gráfica que pueden
+integrarse en distintas vistas o proyectos.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3820_4017242538" lang="es">
+<strong>1.</strong><strong>1</strong><strong>. </strong><strong>Características
+clave:</strong></h2>
+<ul>
+<li><p><strong>Reutilizable:</strong> Se puede usar en
+	varias escenas o aplicaciones sin modificar su código interno.</p></li>
+<li><p><strong>Independiente en lógica y apariencia:</strong>
+	Encapsula la funcionalidad y la interfaz visual.</p></li>
+<li><p><strong>Propiedades observables:</strong> Usa
+	StringProperty, IntegerProperty,
+	BooleanProperty, etc., para exponer
+	valores configurables y permitir <strong>binding y listeners</strong>.</p></li>
+<li><p><strong>Controlador:</strong> No tiene un
+	controlador propio; su comportamiento siempre se gestiona desde el
+	<strong>controlador del contenedor</strong>  que lo incluye. Esto
+	evita duplicación de lógica y centraliza la gestión de eventos.</p></li>
+<li><p><strong>Eventos:</strong> Puede propagar eventos
+	propios (custom events) que otros controles o el controlador de la
+	vista pueden escuchar.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3822_4017242538" lang="es">
+<strong>1.</strong><strong>2</strong><strong>. </strong><strong>Implementación:</strong></h2>
+<ol>
+<li><p>Se extiende una clase de control existente o se
+	usa un contenedor ( Pane, Region )
+	como base.</p></li>
+<li><p>Se definen <strong>propiedades observables</strong> 
+	para los valores que se quieran exponer al exterior.</p></li>
+<li><p>Se implementa la <strong>lógica interna</strong> 
+	(validaciones, restricciones, estilo).</p></li>
+<li><p>Se documenta y empaqueta para <strong>reutilización
+	y distribución</strong>, normalmente en un JAR.</p></li>
+</ol>
+<hr/>
+<h3 lang="es"><strong>Ejemplo de propiedades en un
+control personalizado:</strong></h3>
+<pre><code>private StringProperty text = new SimpleStringProperty(this, "text", "valorPorDefecto");</code>
+
+<code>public String getText() { return text.get(); }</code>
+<code>public void setText(String value) { text.set(value); }</code>
+<code>public StringProperty textProperty() { return text; }</code></pre>
+<ul>
+<li><p>El <strong>tercer argumento del constructor</strong> 
+	( "valorPorDefecto" ) define el
+	<strong>valor inicial</strong>  de la propiedad.</p></li>
+<li><p>Permite enlazar ( binding )
+	la propiedad con otros controles o escuchar cambios mediante
+	listeners.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3824_4017242538" lang="es">
+<strong>1.</strong><strong>3</strong><strong>. </strong><strong>Ventajas:</strong></h2>
+<ul>
+<li><p>Ciclos de desarrollo más cortos al reutilizar
+	componentes.</p></li>
+<li><p>Facilita la modularidad y mantenimiento de la
+	interfaz gráfica.</p></li>
+<li><p>Permite crear controles especializados sin
+	duplicar lógica.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3826_4017242538" lang="es">
+<strong>1.</strong><strong>4</strong><strong>. </strong><strong>Inconvenientes:</strong></h2>
+<ul>
+<li><p>Integrar componentes de distintos proveedores o
+	con diferentes tecnologías puede ser difícil.</p></li>
+<li><p>No siempre es posible encontrar un componente ya
+	hecho que cumpla exactamente los requisitos de la aplicación.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3855_4017242538" lang="es">
+<strong>2. </strong><strong>Propiedades de JavaFX y binding</strong></h1>
+<p>Las <strong>propiedades de JavaFX</strong>  son objetos
+especiales ( StringProperty,
+IntegerProperty, BooleanProperty,
+etc.) que representan los <strong>atributos de un componente gráfico</strong> 
+y permiten que su valor sea <strong>observable y enlazable</strong>.
+Esto va más allá de los atributos Java simples, ya que facilita la
+sincronización automática entre la <strong>interfaz gráfica</strong> 
+y la <strong>lógica de la aplicación</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3857_4017242538" lang="es">
+<strong>2.1. </strong><strong>Características clave:</strong></h2>
+<ol>
+<li><p><strong>Observable:</strong> Pueden notificar
+	automáticamente a los escuchadores ( listeners )
+	cuando su valor cambia.</p></li>
+<li><p><strong>Enlazable (binding):</strong> Permiten que
+	dos propiedades se sincronicen automáticamente, por ejemplo, un
+	TextField  y una variable del modelo.</p></li>
+<li><p><strong>Valor por defecto:</strong> Al instanciar
+	la propiedad, el <strong>tercer argumento del constructor</strong> 
+	define su valor inicial. Ejemplo:</p></li>
+</ol>
+<pre><code>private StringProperty nombre = new SimpleStringProperty(this, "nombre", "valorPorDefecto");</code></pre>
+<ul>
+<li><p>Primer argumento: propietario ( this )</p></li>
+<li><p>Segundo argumento: nombre de la propiedad
+	( "nombre" )</p></li>
+<li><p>Tercer argumento: valor inicial
+	( "valorPorDefecto" )</p></li>
+</ul>
+<ol start="4">
+<li><p><strong>Accesores:</strong> Para exponer la
+	propiedad se usan métodos get, set 
+	y property, por ejemplo:</p></li>
+</ol>
+<pre><code>public String getNombre() { return nombre.get(); }</code>
+<code>public void setNombre(String value) { nombre.set(value); }</code>
+<code>public StringProperty nombreProperty() { return nombre; }</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc3859_4017242538" lang="es">
+<strong>2.2. </strong><strong>Ventajas frente a atributos Java
+simples:</strong></h2>
+<ul>
+<li><p>Permiten <strong>enlazar valores</strong>  sin
+	necesidad de actualizar manualmente la interfaz o los datos.</p></li>
+<li><p>Facilitan la <strong>observación de cambios</strong>,
+	lo que es clave para interfaces reactivas.</p></li>
+<li><p>Integran las propiedades de manera coherente en
+	<strong>controles personalizados</strong>, permitiendo que sean
+	configurables desde FXML mediante atributos XML.</p></li>
+</ul>
+<h2 id="__RefHeading___Toc3861_4017242538" lang="es">
+<strong>2.3. </strong><strong>Uso en FXML:</strong></h2>
+<ul>
+<li><p>Una propiedad expuesta en un control personalizado
+	puede vincularse directamente en el archivo FXML usando un atributo
+	con el <strong>nombre de la propiedad</strong>.</p></li>
+<li><p>Ejemplo:</p></li>
+</ul>
+<pre><code>&lt;CustomControl fx:id="miControl" text="Valor inicial"/&gt;</code></pre><p>
+Aquí text  corresponde a textProperty() 
+del control.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3863_4017242538" lang="es">
+<strong>2.4. </strong><strong>Relación con otros conceptos de la
+unidad:</strong></h2>
+<ul>
+<li><p>Los <strong>controles personalizados</strong> 
+	dependen de propiedades para exponer valores configurables.</p></li>
+<li><p>Los <strong>eventos</strong>  pueden activarse
+	cuando una propiedad cambia, utilizando listeners.</p></li>
+<li><p>Facilita la <strong>reutilización y composición</strong> 
+	de componentes, ya que sus valores son accesibles desde FXML o desde
+	otros controles.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3865_4017242538" lang="es">
+<strong>3. </strong><strong>Eventos en JavaFX:</strong></h1>
+<p>Un <strong>evento</strong>  en JavaFX es una acción o
+suceso que ocurre en la interfaz gráfica y que puede ser <strong>detectado
+y manejado</strong>  por la aplicación. Los eventos permiten que los
+<strong>componentes gráficos reaccionen</strong>  ante interacciones
+del usuario o cambios internos.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3867_4017242538" lang="es">
+<strong>3.1. </strong><strong>Tipos de eventos más comunes:</strong></h2>
+<ol>
+<li><p><strong>Eventos de ratón:</strong> clic, doble
+	clic, arrastrar, soltar, movimiento del cursor.</p></li>
+<li><p><strong>Eventos de teclado:</strong> pulsación,
+	liberación de teclas.</p></li>
+<li><p><strong>Eventos internos del componente:</strong>
+	cambios en sus propiedades observables (por ejemplo, cambio de texto
+	en un TextField ).</p></li>
+<li><p><strong>Eventos personalizados:</strong> generados
+	por <strong>controles personalizados</strong>  para notificar cambios
+	o acciones específicas.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3869_4017242538" lang="es">
+<strong>3.2. </strong><strong>Localización del manejo de eventos:</strong></h2>
+<ul>
+<li><p><strong>Controlador:</strong> La práctica
+	estándar es implementar los <strong>handlers</strong>  en la clase
+	controladora asociada al FXML.</p></li>
+<li><p><strong>Vista (FXML):</strong> Se pueden definir
+	métodos manejadores directamente usando atributos como
+	onAction="#nombreMetodo".</p></li>
+<li><p><strong>Control personalizado:</strong> Puede
+	propagar eventos propios que otros controles o la vista pueden
+	escuchar.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3871_4017242538" lang="es">
+<strong>3.3. </strong><strong>Implementación de acciones:</strong></h2>
+<ul>
+<li><p>Cada evento se asocia a un <strong>manejador
+	(handler)</strong>, que es una función que contiene la lógica que
+	se ejecuta cuando ocurre el evento.</p></li>
+<li><p>Ejemplo:</p></li>
+</ul>
+<pre><code>button.setOnAction(event -&gt; System.out.println("Botón pulsado"));</code></pre>
+<ul>
+<li><p>Esto permite mantener la <strong>separación de
+	responsabilidades</strong>: la vista define el componente, el
+	controlador define la acción.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3873_4017242538" lang="es">
+<strong>3.4. </strong><strong>Relación con propiedades y controles
+personalizados:</strong></h2>
+<ul>
+<li><p>Las <strong>propiedades observables</strong> 
+	permiten disparar eventos cuando cambian valores importantes.</p></li>
+<li><p>Los <strong>controles personalizados</strong> 
+	pueden generar sus propios eventos para que el <strong>controlador
+	principal</strong>  reaccione, integrando la lógica de manera
+	modular.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3875_4017242538" lang="es">
+<strong>3.5. </strong><strong>Puntos importantes que se repiten en
+preguntas:</strong></h2>
+<ul>
+<li><p>Eventos pueden manejarse en <strong>vista,
+	controlador o control personalizado</strong>.</p></li>
+<li><p>Las acciones se implementan siempre en la <strong>función
+	manejadora del evento</strong>.</p></li>
+<li><p>Un componente gráfico puede responder a <strong>teclado,
+	ratón y cambios internos</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3877_4017242538" lang="es">
+<strong>4. </strong><strong>Gestión de visibilidad y composición de
+nodos en JavaFX</strong></h1>
+<p>En JavaFX, un <strong>nodo</strong>  ( Node )
+representa cualquier componente gráfico de la interfaz, como
+botones, etiquetas, paneles o controles personalizados. Gestionar su
+<strong>visibilidad</strong>  y <strong>composición</strong>  permite
+controlar qué elementos se muestran, cómo se organizan y cómo se
+reutilizan en la aplicación.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3879_4017242538" lang="es">
+<strong>4.</strong><strong>1. Visibilidad de nodos:</strong></h2>
+<ul>
+<li><p><strong>Método principal:</strong>
+setVisible(boolean)</p>
+<ul>
+<li><p>setVisible(true):
+		muestra el nodo en la interfaz.</p></li>
+<li><p>setVisible(false):
+		oculta el nodo sin eliminarlo de la escena.</p></li>
+</ul>
+<li><p><strong>Importancia:</strong> permite <strong>mostrar
+	u ocultar elementos dinámicamente</strong>, manteniendo la
+	estructura del layout.</p></li>
+<li><p><strong>Relación con propiedades:</strong>
+	cambios en propiedades observables pueden disparar automáticamente
+	eventos que alteren la visibilidad de un nodo.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3881_4017242538" lang="es">
+<strong>4.</strong><strong>2. Inclusión y composición de
+componentes con FXML:</strong></h2>
+<ul>
+<li><p><strong>Etiqueta principal:</strong> &lt;fx:include&gt;</p>
+<ul>
+<li><p>Permite <strong>insertar un archivo FXML dentro
+		de otro</strong>, favoreciendo la reutilización de componentes.</p></li>
+</ul>
+<li><p><strong>Propiedades críticas:</strong></p>
+<ul>
+<li><p>source: ruta al
+		archivo FXML que se incluye.</p></li>
+<li><p>fx:id: identificador
+		del nodo para poder referenciarlo desde el controlador.</p></li>
+</ul>
+<li><p><strong>Ventajas:</strong></p>
+<ul>
+<li><p>Facilita la <strong>composición de interfaces</strong> 
+		a partir de módulos reutilizables.</p></li>
+<li><p>Permite mantener <strong>interfaces grandes y
+		complejas</strong>  organizadas y modulares.</p></li>
+<li><p>Integra controles personalizados de manera
+		declarativa desde XML.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3883_4017242538" lang="es">
+<strong>4.3. </strong><strong>Relación con otros temas:</strong></h2>
+<ul>
+<li><p>Los <strong>controles personalizados</strong>  se
+	pueden incluir en FXML usando &lt;fx:include&gt;.</p></li>
+<li><p>Sus <strong>propiedades observables</strong> 
+	pueden configurarse directamente mediante atributos XML en FXML.</p></li>
+<li><p>La <strong>gestión de eventos</strong>  de los
+	componentes incluidos se realiza en el controlador principal o
+	mediante listeners vinculados al nodo incluido.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3885_4017242538" lang="es">
+<strong>4.4. </strong><strong>Puntos importantes repetidos en
+preguntas:</strong></h2>
+<ul>
+<li><p>La <strong>visibilidad</strong>  se controla con
+	setVisible(true/false).</p></li>
+<li><p>&lt;fx:include&gt; 
+	requiere definir <strong>source</strong>  y opcionalmente <strong>fx:id</strong>.</p></li>
+<li><p>Facilita la <strong>modularidad y reutilización</strong> 
+	de componentes.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3887_4017242538" lang="es">
+<strong>5. </strong><strong>Pruebas unitarias con JUnit</strong></h1>
+<p>Una <strong>prueba unitaria</strong>  es un test que
+verifica el correcto funcionamiento de una <strong>unidad mínima de
+código</strong>  (generalmente un método o clase) de forma aislada.
+Su objetivo es <strong>detectar errores temprano</strong>, asegurar
+que los cambios no rompan funcionalidades existentes y medir la
+<strong>calidad del código</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3889_4017242538" lang="es">
+<strong>5.</strong><strong>1. Herramientas:</strong></h2>
+<ul>
+<li><p><strong>JUnit:</strong> estándar para Java,
+	integrado en IDEs como NetBeans.</p></li>
+<li><p>Permite crear <strong>clases de prueba</strong> 
+	con múltiples métodos de test y generar reportes de resultados.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3891_4017242538" lang="es">
+<strong>5.</strong><strong>2. Configuración de pruebas:</strong></h2>
+<ul>
+<li><p><strong>Método previo a cada test:</strong></p>
+<ul>
+<li><p>@BeforeEach  (JUnit
+		5) se usa para ejecutar un bloque de código <strong>antes de cada
+		prueba</strong>, inicializando variables o configurando el entorno.</p></li>
+</ul>
+<li><p>Otros tipos de anotaciones importantes
+	(mencionadas en JUnit, aunque no aparecieron explícitamente en
+	preguntas): @Test, @AfterEach,
+	@BeforeAll.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3893_4017242538" lang="es">
+<strong>5.</strong><strong>3. Tipos de pruebas:</strong></h2>
+<ul>
+<li><p><strong>Unitarias:</strong> prueba de
+	métodos/clases individuales.</p></li>
+<li><p><strong>Integración:</strong> verifica la
+	interacción entre módulos o clases.</p></li>
+<li><p><strong>Regresión:</strong> comprueba que nuevas
+	modificaciones no rompan funcionalidades existentes.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3895_4017242538" lang="es">
+<strong>5.</strong><strong>4. Aserciones (assertions):</strong></h2>
+<ul>
+<li><p>Métodos que validan resultados esperados versus
+	reales.</p></li>
+<li><p><strong>Ejemplo:</strong> assertEquals(expected,
+	actual)</p>
+<ul>
+<li><p>Verifica que dos valores sean iguales; si no, la
+		prueba falla.</p></li>
+</ul>
+<li><p>Otras aserciones: assertTrue,
+	assertFalse, assertNotNull.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3897_4017242538" lang="es">
+<strong>5.</strong><strong>5. Relación con otros temas:</strong></h2>
+<ul>
+<li><p>Las <strong>propiedades observables</strong>  y
+	<strong>eventos</strong>  pueden probarse mediante pruebas unitarias,
+	especialmente en controles personalizados.</p></li>
+<li><p>Facilita la <strong>verificación de la lógica
+	interna</strong>  de controles antes de integrarlos en la interfaz.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3899_4017242538" lang="es">
+<strong>5.6. </strong><strong>Puntos clave repetidos en preguntas:</strong></h2>
+<ul>
+<li><p>Propósito principal: <strong>medir calidad y
+	detectar errores en unidades mínimas de código</strong>.</p></li>
+<li><p>Herramienta: <strong>JUnit</strong>.</p></li>
+<li><p>Configuración: @BeforeEach.</p></li>
+<li><p>Comparación de resultados: assertEquals.</p></li>
+<li><p>Tipos de pruebas: unitarias, integración,
+	regresión.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc4137_4017242538" lang="es">
+<strong>6. </strong><strong>Documentación de código con Javadoc</strong></h1>
+<p><strong>Javadoc</strong>  es la herramienta estándar de
+Java para generar <strong>documentación legible y estructurada</strong> 
+a partir de los comentarios especiales insertados en el código
+fuente. La documentación resultante se genera en <strong>formato
+HTML</strong>  y facilita la comprensión y mantenimiento del código.</p>
+<hr/>
+<h2 id="__RefHeading___Toc4139_4017242538" lang="es">
+<strong>6.</strong><strong>1. Comentarios asociados a Javadoc:</strong></h2>
+<ul>
+<li><p>Se utilizan <strong>comentarios de documentación</strong>:</p></li>
+</ul>
+<pre><code>/** Comentario descriptivo */</code></pre>
+<ul>
+<li><p>Se colocan antes de <strong>clases, métodos o
+	atributos</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4141_4017242538" lang="es">
+<strong>6.</strong><strong>2. Etiquetas más comunes:</strong></h2>
+<ul>
+<li><p>@param: describe cada
+	<strong>parámetro de un método o constructor</strong>.</p></li>
+<li><p>@return: describe el
+	valor que retorna un método.</p></li>
+<li><p>@throws  / @exception:
+	describe excepciones que puede lanzar un método.</p></li>
+<li><p>Otras etiquetas: @see,
+	@deprecated, @author.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4143_4017242538" lang="es">
+<strong>6.</strong><strong>3. Propósito principal:</strong></h2>
+<ul>
+<li><p>Generar documentación que sea <strong>clara,
+	navegable y estructurada</strong>.</p></li>
+<li><p>Permite a otros desarrolladores comprender <strong>qué
+	hace cada clase y método</strong>  sin necesidad de leer todo el
+	código.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4145_4017242538" lang="es">
+<strong>6.</strong><strong>4. Resultado de la documentación:</strong></h2>
+<ul>
+<li><p>Javadoc produce <strong>archivos HTML</strong>  que
+	incluyen:</p>
+<ul>
+<li><p>Lista de clases y paquetes.</p></li>
+<li><p>Métodos y atributos de cada clase.</p></li>
+<li><p>Descripciones y relaciones entre clases.</p></li>
+</ul>
+<li><p>Se puede abrir en cualquier navegador para
+	<strong>consultar la API de la aplicación</strong>.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4147_4017242538" lang="es">
+<strong>6.</strong><strong>5. Relación con otros temas:</strong></h2>
+<ul>
+<li><p>Los <strong>controles personalizados</strong>  y
+	componentes reutilizables se documentan con Javadoc para que su uso
+	sea claro en otros proyectos.</p></li>
+<li><p>Las <strong>propiedades y métodos expuestos</strong> 
+	deben documentarse, especialmente si se usan en FXML o por otros
+	desarrolladores.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4149_4017242538" lang="es">
+<strong>6.6. </strong><strong>Puntos clave repetidos en preguntas:</strong></h2>
+<ul>
+<li><p>Herramienta: <strong>Javadoc</strong></p></li>
+<li><p>Comentarios: /** ... */</p></li>
+<li><p>Etiqueta @param:
+	describe parámetros</p></li>
+<li><p>Salida: <strong>HTML</strong></p></li>
+<li><p>Propósito: <strong>facilitar comprensión y
+	mantenimiento del código</strong></p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc4151_4017242538" lang="es">
+<strong>7. </strong><strong>Distribución y reutilización de
+componentes gráficos</strong></h1>
+<p>La <strong>reutilización de componentes</strong> 
+consiste en crear unidades de software (controles o paneles) que
+puedan incorporarse en distintos proyectos o escenas sin modificar su
+código interno. La <strong>distribución</strong>  asegura que otros
+desarrolladores o proyectos puedan usar esos componentes fácilmente.</p>
+<hr/>
+<h2 id="__RefHeading___Toc4153_4017242538" lang="es">
+<strong>7.</strong><strong>1. Formato de distribución:</strong></h2>
+<ul>
+<li><p>Se empaquetan normalmente como <strong>archivos
+	JAR (Java Archive)</strong>.</p></li>
+<li><p>Contienen:</p>
+<ul>
+<li><p>Clases Java del componente</p></li>
+<li><p>Recursos asociados (archivos FXML, imágenes,
+		CSS)</p></li>
+</ul>
+<li><p>Esto permite integrarlos en otros proyectos de
+	forma sencilla mediante importación del JAR.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4155_4017242538" lang="es">
+<strong>7.</strong><strong>2. Organización en paquetes:</strong></h2>
+<ul>
+<li><p>Los componentes se agrupan en <strong>paquetes
+	(</strong><strong>package</strong><strong>)</strong>,
+	facilitando:</p>
+<ul>
+<li><p>Modularidad</p></li>
+<li><p>Reutilización</p></li>
+<li><p>Referencia clara desde el código de otros
+		proyectos</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4157_4017242538" lang="es">
+<strong>7.</strong><strong>3. Composición de interfaces
+reutilizables:</strong></h2>
+<ul>
+<li><p>Se puede usar &lt;fx:include&gt; 
+	en FXML para <strong>insertar un componente en otra vista</strong>.</p></li>
+<li><p>Se deben definir las propiedades:</p>
+<ul>
+<li><p>source: archivo FXML
+		a incluir</p></li>
+<li><p>fx:id: identificador
+		para referenciar el nodo desde el controlador</p></li>
+</ul>
+<li><p>Permite <strong>construir interfaces complejas a
+	partir de módulos reutilizables</strong>.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4159_4017242538" lang="es">
+<strong>7.</strong><strong>4. Ventajas de la reutilización y
+distribución:</strong></h2>
+<ul>
+<li><p><strong>Ciclos de desarrollo más cortos</strong>,
+	al no rehacer la misma funcionalidad.</p></li>
+<li><p><strong>Mantenimiento más sencillo</strong>, al
+	centralizar la lógica en un componente.</p></li>
+<li><p><strong>Reutilización en distintos proyectos</strong> 
+	sin duplicar código.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4161_4017242538" lang="es">
+<strong>7.</strong><strong>5. Inconvenientes potenciales:</strong></h2>
+<ul>
+<li><p>Dificultad de <strong>integrar componentes de
+	distintos proveedores o tecnologías</strong>.</p></li>
+<li><p>No siempre se encuentra un componente que cumpla
+	<strong>exactamente con los requisitos</strong>  de la aplicación.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4163_4017242538" lang="es">
+<strong>7.</strong><strong>6. Relación con otros temas:</strong></h2>
+<ul>
+<li><p>Los <strong>controles personalizados</strong>  se
+	distribuyen y reutilizan mediante paquetes y JAR.</p></li>
+<li><p>Sus <strong>propiedades</strong>  permiten
+	configurarlos desde FXML al integrarlos en nuevos proyectos.</p></li>
+<li><p>Los <strong>eventos y handlers</strong>  siguen
+	funcionando al reutilizar el componente, manteniendo modularidad.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4165_4017242538" lang="es">
+<strong>7.7. </strong><strong>Puntos clave repetidos en preguntas:</strong></h2>
+<ul>
+<li><p>Distribución: <strong>JAR</strong></p></li>
+<li><p>Organización: <strong>paquetes</strong></p></li>
+<li><p>Inclusión: &lt;fx:include&gt; 
+	con source  y fx:id</p></li>
+<li><p>Ventajas: reutilización, ciclos cortos,
+	modularidad</p></li>
+<li><p>Inconvenientes: integración limitada con otros
+	proveedores</p></li>
+</ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+de Servicios y Procesos – Unidad 2
+– Programación multihilo</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+de Servicios y Procesos – Unidad 2
+– Programación multihilo</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1378_1044307265">1. Conceptos básicos de concurrencia y multihilo</a></p>
+<p><a href="#__RefHeading___Toc1380_1044307265">1.1. Concurrencia y ejecución multihilo</a></p>
+<p><a href="#__RefHeading___Toc1382_1044307265">1.2. Thread safety (código seguro para hilos)</a></p>
+<p><a href="#__RefHeading___Toc1384_1044307265">1.3. Condición de carrera (Race condition)</a></p>
+<p><a href="#__RefHeading___Toc1386_1044307265">1.4. Interferencia entre hilos</a></p>
+<p><a href="#__RefHeading___Toc1388_1044307265">1.5. Valor inmutable (Inmutabilidad)</a></p>
+<p><a href="#__RefHeading___Toc1390_1044307265">1.6. Operaciones atómicas</a></p>
+<p><a href="#__RefHeading___Toc1392_1044307265">1.7. Errores de consistencia de memoria</a></p>
+<p><a href="#__RefHeading___Toc1394_1044307265">1.8. Visibilidad de memoria y volatile</a></p>
+<p><a href="#__RefHeading___Toc1396_1044307265">1.9. Métodos relevantes de la clase Thread</a></p>
+<p><a href="#__RefHeading___Toc1890_1044307265">2. Hilos y creación de hilos en Java</a></p>
+<p><a href="#__RefHeading___Toc1892_1044307265">2.1. ¿Qué es un hilo en Java?</a></p>
+<p><a href="#__RefHeading___Toc1894_1044307265">2.2. Formas de crear un hilo en Java</a></p>
+<p><a href="#__RefHeading___Toc1896_1044307265">2.3. ¿Cuántas formas hay de implementar un hilo?</a></p>
+<p><a href="#__RefHeading___Toc1898_1044307265">2.4. Inicio y ejecución de un hilo</a></p>
+<p><a href="#__RefHeading___Toc1900_1044307265">2.5. Finalización de un hilo</a></p>
+<p><a href="#__RefHeading___Toc1902_1044307265">2.6. Detención cooperativa de hilos</a></p>
+<p><a href="#__RefHeading___Toc1904_1044307265">2.7. Grupo de hilos (ThreadGroup)</a></p>
+<p><a href="#__RefHeading___Toc1906_1044307265">2.8. Relación con ExecutorService (visión completa)</a></p>
+<p><a href="#__RefHeading___Toc1908_1044307265">3. Estados y ciclo de vida de los hilos</a></p>
+<p><a href="#__RefHeading___Toc1910_1044307265">3.1. Ciclo de vida de un hilo</a></p>
+<p><a href="#__RefHeading___Toc1912_1044307265">3.2. Estado NEW</a></p>
+<p><a href="#__RefHeading___Toc1914_1044307265">3.3. Estado RUNNABLE</a></p>
+<p><a href="#__RefHeading___Toc1916_1044307265">3.4. Estado BLOCKED</a></p>
+<p><a href="#__RefHeading___Toc1918_1044307265">3.5. Estado WAITING</a></p>
+<p><a href="#__RefHeading___Toc1920_1044307265">3.6. Estado TIMED_WAITING</a></p>
+<p><a href="#__RefHeading___Toc1922_1044307265">3.7. Estado TERMINATED</a></p>
+<p><a href="#__RefHeading___Toc1924_1044307265">3.8. Transiciones importantes entre estados</a></p>
+<p><a href="#__RefHeading___Toc1926_1044307265">3.9. Estados y sincronización</a></p>
+<p><a href="#__RefHeading___Toc1928_1044307265">4. Memoria, pila y compartición de datos entre hilos</a></p>
+<p><a href="#__RefHeading___Toc1930_1044307265">4.1. Modelo de memoria en Java (visión general)</a></p>
+<p><a href="#__RefHeading___Toc1932_1044307265">4.2. Variables locales</a></p>
+<p><a href="#__RefHeading___Toc1934_1044307265">4.3. Objetos locales (punto conflictivo)</a></p>
+<p><a href="#__RefHeading___Toc1936_1044307265">4.4. Miembros de un objeto</a></p>
+<p><a href="#__RefHeading___Toc1938_1044307265">4.5. Variables estáticas</a></p>
+<p><a href="#__RefHeading___Toc1940_1044307265">4.6. ¿Qué no se comparte nunca entre hilos?</a></p>
+<p><a href="#__RefHeading___Toc1942_1044307265">4.7. Errores comunes de razonamiento</a></p>
+<p><a href="#__RefHeading___Toc1944_1044307265">4.8. Relación con problemas de concurrencia</a></p>
+<p><a href="#__RefHeading___Toc1946_1044307265">5. Sincronización y monitores</a></p>
+<p><a href="#__RefHeading___Toc1948_1044307265">5.1. ¿Para qué usamos la sincronización?</a></p>
+<p><a href="#__RefHeading___Toc1950_1044307265">5.2. El concepto de monitor</a></p>
+<p><a href="#__RefHeading___Toc1952_1044307265">5.3. La palabra clave synchronized</a></p>
+<p><a href="#__RefHeading___Toc1954_1044307265">5.4. Métodos synchronized</a></p>
+<p><a href="#__RefHeading___Toc1956_1044307265">5.5. Bloques synchronized</a></p>
+<p><a href="#__RefHeading___Toc1958_1044307265">5.6. synchronized y visibilidad de memoria</a></p>
+<p><a href="#__RefHeading___Toc1960_1044307265">5.7. volatile vs synchronized</a></p>
+<p><a href="#__RefHeading___Toc1962_1044307265">5.8. Problemas derivados de la sincronización</a></p>
+<p><a href="#__RefHeading___Toc1964_1044307265">5.9. Thread safety y trampas de examen</a></p>
+<p><a href="#__RefHeading___Toc1966_1044307265">6. Planificación y prioridad de hilos</a></p>
+<p><a href="#__RefHeading___Toc1968_1044307265">6.1. Sistemas de tiempo compartido</a></p>
+<p><a href="#__RefHeading___Toc1970_1044307265">6.2. Planificación de hilos y la JVM</a></p>
+<p><a href="#__RefHeading___Toc1972_1044307265">6.3. Prioridades de los hilos</a></p>
+<p><a href="#__RefHeading___Toc1974_1044307265">6.4. Prioridad por defecto</a></p>
+<p><a href="#__RefHeading___Toc1976_1044307265">6.5. ¿Qué ocurre si todos los hilos tienen máxima prioridad?</a></p>
+<p><a href="#__RefHeading___Toc1978_1044307265">6.6. Orden de finalización de hilos</a></p>
+<p><a href="#__RefHeading___Toc1980_1044307265">6.7. Problemas relacionados con prioridades</a></p>
+<p><a href="#__RefHeading___Toc1982_1044307265">6.8. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1984_1044307265">7. Documentación y diseño de objetos en entornos multihilo</a></p>
+<p><a href="#__RefHeading___Toc1986_1044307265">7.1. Operaciones de un objeto</a></p>
+<p><a href="#__RefHeading___Toc1988_1044307265">7.2. Operaciones simples y compuestas</a></p>
+<p><a href="#__RefHeading___Toc1990_1044307265">7.3. Importancia de la documentación en multihilo</a></p>
+<p><a href="#__RefHeading___Toc1992_1044307265">7.4. Documentar bloqueos y sincronización</a></p>
+<p><a href="#__RefHeading___Toc1994_1044307265">7.5. Sincronización interna vs externa</a></p>
+<p><a href="#__RefHeading___Toc1996_1044307265">7.6. Diseño de clases seguras para hilos</a></p>
+<p><a href="#__RefHeading___Toc1998_1044307265">7.7. Errores habituales en diseño</a></p>
+<p><a href="#__RefHeading___Toc2000_1044307265">Unidad 02 – Programación Multihilo (Resumen ultra-compacto)</a></p>
+<p><a href="#__RefHeading___Toc2002_1044307265">1. Concurrencia y conceptos básicos</a></p>
+<p><a href="#__RefHeading___Toc2004_1044307265">2. Creación y ejecución de hilos</a></p>
+<p><a href="#__RefHeading___Toc2006_1044307265">3. Estados y ciclo de vida</a></p>
+<p><a href="#__RefHeading___Toc2008_1044307265">4. Memoria y compartición</a></p>
+<p><a href="#__RefHeading___Toc2010_1044307265">5. Sincronización y monitores</a></p>
+<p><a href="#__RefHeading___Toc2012_1044307265">6. Planificación y prioridades</a></p>
+<p><a href="#__RefHeading___Toc2014_1044307265">7. Documentación y diseño multihilo</a></p>
+<p><a href="#__RefHeading___Toc2016_1044307265">8. Métodos clave de la clase Thread</a></p>
+<p><a href="#__RefHeading___Toc2018_1044307265">Ideas clave de examen</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1378_1044307265" lang="es">
+<strong>1. Conceptos básicos de concurrencia y multihilo</strong></h1>
+<h2 id="__RefHeading___Toc1380_1044307265" lang="es">
+<strong>1.1. Concurrencia y ejecución multihilo</strong></h2>
+<p>La <strong>concurrencia</strong>  consiste en la
+ejecución simultánea (real o aparente) de varias tareas. En Java,
+esta concurrencia se implementa principalmente mediante <strong>hilos
+(threads)</strong>.</p>
+<ul>
+<li><p>Un <strong>hilo</strong>  es una unidad de
+	ejecución dentro de un proceso.</p></li>
+<li><p>Un mismo proceso puede contener <strong>varios
+	hilos</strong>  que:</p>
+<ul>
+<li><p>Comparten el <strong>heap</strong>  (memoria de
+		objetos)</p></li>
+<li><p>Tienen su <strong>propia pila (stack)</strong>  de
+		ejecución</p></li>
+</ul>
+</li></ul>
+<p>La concurrencia permite:</p>
+<ul>
+<li><p>Mejor aprovechamiento de la CPU</p></li>
+<li><p>Programas más reactivos</p></li>
+<li><p>Paralelismo en sistemas multinúcleo</p></li>
+</ul>
+<p>Pero introduce <strong>riesgos</strong>  si no se
+controla correctamente.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1382_1044307265" lang="es">
+<strong>1.2. Thread safety (código seguro para hilos)</strong></h2>
+<p>Un código es <strong>thread-safe</strong>  cuando puede
+ejecutarse correctamente por varios hilos <strong>al mismo tiempo</strong>,
+sin producir:</p>
+<ul>
+<li><p>Resultados incorrectos</p></li>
+<li><p>Estados inconsistentes</p></li>
+<li><p>Errores difíciles de reproducir</p></li>
+</ul>
+<p>Un código thread-safe:</p>
+<ul>
+<li><p>Protege el acceso a los <strong>recursos
+	compartidos</strong></p></li>
+<li><p>Garantiza <strong>consistencia de datos</strong></p></li>
+<li><p>Garantiza <strong>visibilidad de memoria</strong></p></li>
+</ul>
+<p>⚠ Importante:</p>
+<ul>
+<li><p>Un método synchronized
+<strong>no es sinónimo automático</strong>  de thread-safe</p></li>
+<li><p>Un programa puede ser thread-safe <strong>sin usar
+	synchronized</strong>, por ejemplo mediante:</p>
+<ul>
+<li><p>Inmutabilidad</p></li>
+<li><p>Variables locales</p></li>
+<li><p>Clases concurrentes</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1384_1044307265" lang="es">
+<strong>1.3. Condición de carrera (Race condition)</strong></h2>
+<p>Una <strong>condición de carrera</strong>  ocurre
+cuando:</p>
+<ul>
+<li><p>Varios hilos acceden al mismo recurso</p></li>
+<li><p><strong>Al menos uno de ellos escribe</strong></p></li>
+<li><p>El resultado depende del <strong>orden de
+	ejecución</strong></p></li>
+</ul>
+<p>Ejemplo típico:</p>
+<pre><code>contador++;</code></pre><p>
+Esta operación <strong>no es atómica</strong>  y puede producir
+valores incorrectos si varios hilos la ejecutan simultáneamente.</p>
+<p>Consecuencias:</p>
+<ul>
+<li><p>Resultados impredecibles</p></li>
+<li><p>Errores intermitentes</p></li>
+<li><p>Dificultad extrema de depuración</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1386_1044307265" lang="es">
+<strong>1.4. Interferencia entre hilos</strong></h2>
+<p>La <strong>interferencia</strong>  es el efecto concreto
+que produce una condición de carrera:</p>
+<ul>
+<li><p>Un hilo pisa o invalida el trabajo de otro</p></li>
+<li><p>Se pierde información</p></li>
+<li><p>El estado final no es coherente</p></li>
+</ul>
+<p>👉 La condición de carrera es el <strong>contexto</strong>,
+👉
+la interferencia es el <strong>problema observable</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1388_1044307265" lang="es">
+<strong>1.5. Valor inmutable (Inmutabilidad)</strong></h2>
+<p>Un <strong>objeto inmutable</strong>  es aquel cuyo
+estado:</p>
+<ul>
+<li><p>Se establece en el constructor</p></li>
+<li><p><strong>No puede modificarse después</strong></p></li>
+</ul>
+<p>Características:</p>
+<ul>
+<li><p>Campos final</p></li>
+<li><p>Sin métodos set</p></li>
+<li><p>Estado completamente inicializado al crearse</p></li>
+</ul>
+<p>Ventajas en multihilo:</p>
+<ul>
+<li><p>Son <strong>intrínsecamente thread-safe</strong></p></li>
+<li><p>No necesitan sincronización</p></li>
+<li><p>Se pueden compartir libremente entre hilos</p></li>
+</ul>
+<p>Ejemplos en Java:</p>
+<ul>
+<li><p>String</p></li>
+<li><p>Integer</p></li>
+<li><p>LocalDate</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1390_1044307265" lang="es">
+<strong>1.6. Operaciones atómicas</strong></h2>
+<p>Una <strong>operación atómica</strong>  es aquella
+que:</p>
+<ul>
+<li><p>Se ejecuta <strong>entera o no se ejecuta</strong></p></li>
+<li><p>No puede ser interrumpida por otro hilo</p></li>
+</ul>
+<p>Ejemplos:</p>
+<ul>
+<li><p>Lectura/escritura de referencias</p></li>
+<li><p>Operaciones de clases Atomic* 
+	( AtomicInteger, etc.)</p></li>
+</ul>
+<p>⚠ Ojo:</p>
+<ul>
+<li><p>Que una operación esté escrita en <strong>una
+	línea</strong>  no significa que sea atómica</p></li>
+<li><p>contador++
+<strong>no es atómica</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1392_1044307265" lang="es">
+<strong>1.7. Errores de consistencia de memoria</strong></h2>
+<p>Los <strong>errores de consistencia de memoria</strong> 
+ocurren cuando:</p>
+<ul>
+<li><p>Varios hilos trabajan con los mismos datos</p></li>
+<li><p>Cada hilo tiene una <strong>vista distinta</strong> 
+	del valor real</p></li>
+<li><p>Los cambios de un hilo <strong>no son visibles</strong> 
+	para otros</p></li>
+</ul>
+<p>Esto se debe a:</p>
+<ul>
+<li><p>Cachés de CPU</p></li>
+<li><p>Reordenamientos de instrucciones</p></li>
+<li><p>Falta de sincronización</p></li>
+</ul>
+<p>Relacionado con el <strong>Java Memory Model (JMM)</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1394_1044307265" lang="es">
+<strong>1.8. Visibilidad de memoria y </strong><strong><code>volatile</code></strong></h2>
+<p>La palabra clave volatile 
+garantiza:</p>
+<ul>
+<li><p>Que las escrituras de una variable sean visibles
+	para otros hilos</p></li>
+<li><p>Que no se reordenen ciertas operaciones</p></li>
+</ul>
+<p>volatile:</p>
+<ul>
+<li><p><strong>No garantiza exclusión mutua</strong></p></li>
+<li><p><strong>No evita condiciones de carrera</strong></p></li>
+<li><p>Solo asegura <strong>visibilidad</strong></p></li>
+</ul>
+<p>Se usa para:</p>
+<ul>
+<li><p>Flags de control</p></li>
+<li><p>Estados simples compartidos</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1396_1044307265" lang="es">
+<strong>1.9. Métodos relevantes de la clase </strong><strong><code>Thread</code></strong></h2>
+<p>La clase Thread  define
+métodos fundamentales para trabajar con hilos.
+Incluye <strong>métodos
+de instancia y estáticos</strong>.</p>
+<h3 lang="es">Métodos clave:</h3>
+<ul>
+<li><p>run()  → código que
+	ejecuta el hilo</p></li>
+<li><p>start()  → inicia el
+	hilo (no ejecuta run()  directamente)</p></li>
+<li><p>getId()  →
+	identificador del hilo</p></li>
+<li><p>getName()  / setName()</p></li>
+<li><p>getPriority()  /
+	setPriority()</p></li>
+<li><p>currentThread() 
+	(estático) → devuelve el hilo actual</p></li>
+<li><p>sleep()  (estático)</p></li>
+<li><p>join()</p></li>
+</ul>
+<p>📌 Punto importante (examen):</p>
+<blockquote>Aunque algunos
+sean estáticos y otros de instancia, <strong>todos pertenecen a la
+clase Thread</strong>.</blockquote>
+<hr/>
+<h1 id="__RefHeading___Toc1890_1044307265" lang="es">
+<strong>2. Hilos y creación de hilos en Java</strong></h1>
+<p>Este tema desarrolla <strong>cómo se crean, ejecutan y
+finalizan los hilos</strong>, ampliando lo que apareció en las
+preguntas y cubriendo <strong>todo el enfoque real de Java</strong>,
+no solo el de examen.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1892_1044307265" lang="es">
+<strong>2.1. ¿Qué es un hilo en Java?</strong></h2>
+<p>En Java, un <strong>hilo</strong>  es una instancia de
+ejecución representada por la clase:</p>
+<pre><code>java.lang.Thread</code></pre><p>
+Cada hilo:</p>
+<ul>
+<li><p>Tiene su propio <strong>flujo de ejecución</strong></p></li>
+<li><p>Comparte el <strong>heap</strong>  con otros hilos
+	del mismo proceso</p></li>
+<li><p>Ejecuta código concurrentemente con otros hilos</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1894_1044307265" lang="es">
+<strong>2.2. Formas de crear un hilo en Java</strong></h2>
+<h3 lang="es"><strong>2.2.1. Heredando de la clase
+</strong><strong><code>Thread</code></strong></h3>
+<pre><code>class MiHilo extends Thread {</code>
+<code>    </code><code>@Override</code>
+<code>    </code><code>public void run() {</code>
+<code>        </code><code>// código del hilo</code>
+<code>    </code><code>}</code>
+<code>}</code></pre><p>
+Ejecución:</p>
+<pre><code>MiHilo h = new MiHilo();</code>
+<code>h.start();</code></pre><p>
+Características:</p>
+<ul>
+<li><p>Se sobrescribe <strong>run()</strong></p></li>
+<li><p>start()  crea un nuevo
+	hilo y luego llama internamente a run()</p></li>
+<li><p>No permite heredar de otra clase (limitación
+	importante)</p></li>
+</ul>
+<p>📌 Pregunta típica de examen:</p>
+<blockquote>¿Qué método
+se sobrescribe al heredar de Thread? → <strong>run()</strong></blockquote>
+<hr/>
+<h3 lang="es"><strong>2.2.2. Implementando la
+interfaz </strong><strong><code>Runnable</code></strong></h3>
+<pre><code>class MiTarea implements Runnable {</code>
+<code>    </code><code>@Override</code>
+<code>    </code><code>public void run() {</code>
+<code>        </code><code>// código concurrente</code>
+<code>    </code><code>}</code>
+<code>}</code>
+<code>Thread h = new Thread(new MiTarea());</code>
+<code>h.start();</code></pre><p>
+Ventajas:</p>
+<ul>
+<li><p>Permite heredar de otra clase</p></li>
+<li><p>Separación entre <strong>tarea</strong>  y <strong>hilo</strong></p></li>
+<li><p>Más flexible y reutilizable</p></li>
+</ul>
+<p>📌 Es la <strong>forma recomendada</strong>  en la
+mayoría de los casos.</p>
+<hr/>
+<h3 lang="es"><strong>2.2.3. Implementando
+</strong><strong><code>Callable&lt;V&gt;</code></strong></h3>
+<p>Callable  es similar a
+Runnable, pero:</p>
+<ul>
+<li><p>Devuelve un valor</p></li>
+<li><p>Puede lanzar <strong>excepciones comprobadas</strong></p></li>
+</ul>
+<pre><code>Callable&lt;Integer&gt; tarea = () -&gt; 42;</code></pre><p>
+Se ejecuta mediante un <strong>ExecutorService</strong>  y devuelve un
+Future&lt;V&gt;.</p>
+<p>Se usa cuando:</p>
+<ul>
+<li><p>Necesitamos obtener un resultado</p></li>
+<li><p>Queremos gestionar excepciones</p></li>
+</ul>
+<p>📌 Pregunta de examen:</p>
+<blockquote>¿Cuándo es
+preferible usar Callable a Runnable?<br/>
+→ Cuando necesitamos
+<strong>retornar un valor y/o lanzar excepciones comprobadas</strong>.</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1896_1044307265" lang="es">
+<strong>2.3. ¿Cuántas formas hay de implementar un hilo?</strong></h2>
+<p>Desde el punto de vista académico del temario:</p>
+<ul>
+<li><p><strong>Dos</strong>: Thread 
+	y Runnable</p></li>
+<li><p>Ampliado: Callable 
+	(con ejecutores)</p></li>
+</ul>
+<p>📌 En exámenes suele aceptarse:</p>
+<blockquote><b>Dos</b>,
+aunque también es técnicamente correcto tres.</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1898_1044307265" lang="es">
+<strong>2.4. Inicio y ejecución de un hilo</strong></h2>
+<ul>
+<li><p>start():</p>
+<ul>
+<li><p>Crea un nuevo hilo</p></li>
+<li><p>Cambia el estado a <strong>Runnable</strong></p></li>
+<li><p>Llama internamente a run()</p></li>
+</ul>
+</li></ul>
+<p>⚠ Error común:</p>
+<pre><code>h.run(); // NO crea un hilo nuevo</code></pre><p>
+Esto ejecuta el código <strong>en el hilo actual</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1900_1044307265" lang="es">
+<strong>2.5. Finalización de un hilo</strong></h2>
+<p>Un hilo <strong>finaliza</strong>  cuando:</p>
+<ul>
+<li><p>Termina la ejecución de su método run() 
+	o call()</p></li>
+</ul>
+<p>No existe:</p>
+<ul>
+<li><p>stopThread()</p></li>
+<li><p>killThread()</p></li>
+<li><p>endThread()</p></li>
+</ul>
+<p>📌 Pregunta de examen:</p>
+<blockquote>¿Qué método
+produce la finalización de un hilo?<br/>
+→ <strong>Ninguno</strong>.
+El hilo termina cuando acaba su método principal.</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1902_1044307265" lang="es">
+<strong>2.6. Detención cooperativa de hilos</strong></h2>
+<p>La forma correcta de detener un hilo es:</p>
+<ul>
+<li><p>Usar una <strong>variable de control</strong></p></li>
+<li><p>Comprobarla periódicamente</p></li>
+</ul>
+<p>Ejemplo:</p>
+<pre><code>volatile boolean detener = false;</code></pre><p>
+Nunca se debe usar:</p>
+<ul>
+<li><p>Thread.stop() 
+	(obsoleto y peligroso)</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1904_1044307265" lang="es">
+<strong>2.7. Grupo de hilos (</strong><strong><code>ThreadGroup</code></strong><strong>)</strong></h2>
+<p>Un ThreadGroup  permite:</p>
+<ul>
+<li><p>Agrupar hilos</p></li>
+<li><p>Aplicar operaciones comunes</p></li>
+<li><p>Gestionar jerarquías de grupos</p></li>
+</ul>
+<p>📌 Respuesta correcta de examen:</p>
+<blockquote>Permite
+<strong>gestionar grupos de hebras</strong>.</blockquote>
+<p>Hoy en día:</p>
+<ul>
+<li><p>Está <strong>en desuso</strong></p></li>
+<li><p>Sustituido por ExecutorService</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1906_1044307265" lang="es">
+<strong>2.8. Relación con </strong><strong><code>ExecutorService</code></strong><strong>
+(visión completa)</strong></h2>
+<p>Aunque no siempre entra en examen:</p>
+<ul>
+<li><p>Java moderno <strong>no gestiona hilos manualmente</strong></p></li>
+<li><p>Usa <strong>ejecutores</strong>:</p>
+<ul>
+<li><p>Pool de hilos</p></li>
+<li><p>Gestión automática</p></li>
+<li><p>Mejor escalabilidad</p></li>
+</ul>
+</li></ul>
+<p>Ejemplo:</p>
+<pre><code>ExecutorService executor = Executors.newFixedThreadPool(4);</code></pre>
+<hr/>
+<h1 id="__RefHeading___Toc1908_1044307265" lang="es">
+<strong>3. Estados y ciclo de vida de los hilos</strong></h1>
+<p>Este tema describe <strong>cómo evoluciona un hilo
+desde que se crea hasta que finaliza</strong>, qué estados existen y
+cómo se producen las transiciones entre ellos. Es un tema <strong>muy
+preguntado en examen</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1910_1044307265" lang="es">
+<strong>3.1. Ciclo de vida de un hilo</strong></h2>
+<p>En Java, el ciclo de vida oficial de un hilo está
+definido por la enumeración:</p>
+<pre><code>Thread.State</code></pre><p>
+Los estados son:</p>
+<ol>
+<li><p><strong>NEW</strong></p></li>
+<li><p><strong>RUNNABLE</strong></p></li>
+<li><p><strong>BLOCKED</strong></p></li>
+<li><p><strong>WAITING</strong></p></li>
+<li><p><strong>TIMED_WAITING</strong></p></li>
+<li><p><strong>TERMINATED</strong></p></li>
+</ol>
+<p>📌 Respuesta típica de examen:</p>
+<blockquote>New, Runnable,
+Waiting, Timed Waiting, Terminated</blockquote>
+<p>(Algunas respuestas simplifican u omiten BLOCKED ).</p>
+<hr/>
+<h2 id="__RefHeading___Toc1912_1044307265" lang="es">
+<strong>3.2. Estado NEW</strong></h2>
+<ul>
+<li><p>El hilo ha sido creado</p></li>
+<li><p>Aún <strong>no se ha llamado a </strong><strong>start()</strong></p></li>
+</ul>
+<pre><code>Thread h = new Thread();</code></pre><p>
+No consume CPU.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1914_1044307265" lang="es">
+<strong>3.3. Estado RUNNABLE</strong></h2>
+<ul>
+<li><p>El hilo está:</p>
+<ul>
+<li><p>Ejecutándose <strong>o</strong></p></li>
+<li><p>Listo para ejecutarse</p></li>
+</ul>
+</li></ul>
+<p>📌 Importante:</p>
+<blockquote>Java <strong>no
+distingue</strong> entre “listo” y “ejecutando”</blockquote>
+<p>El <strong>sistema operativo</strong>  decide cuándo
+ejecutarlo realmente.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1916_1044307265" lang="es">
+<strong>3.4. Estado BLOCKED</strong></h2>
+<p>Un hilo entra en <strong>BLOCKED</strong>  cuando:</p>
+<ul>
+<li><p>Intenta acceder a un recurso protegido
+	( synchronized )</p></li>
+<li><p>Otro hilo posee el monitor</p></li>
+</ul>
+<p>Ejemplo:</p>
+<pre><code>synchronized(obj) {</code>
+<code>   </code><code>// otro hilo ya está dentro</code>
+<code>}</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc1918_1044307265" lang="es">
+<strong>3.5. Estado WAITING</strong></h2>
+<p>El hilo espera indefinidamente hasta que:</p>
+<ul>
+<li><p>Otro hilo lo despierte</p></li>
+</ul>
+<p>Se produce con:</p>
+<ul>
+<li><p>wait()</p></li>
+<li><p>join()</p></li>
+<li><p>LockSupport.park()</p></li>
+</ul>
+<p>No consume CPU.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1920_1044307265" lang="es">
+<strong>3.6. Estado TIMED_WAITING</strong></h2>
+<p>Similar a WAITING, pero
+con <strong>tiempo máximo</strong>.</p>
+<p>Se produce con:</p>
+<ul>
+<li><p>sleep(long)</p></li>
+<li><p>wait(long)</p></li>
+<li><p>join(long)</p></li>
+</ul>
+<p>Cuando el tiempo termina, el hilo vuelve a <strong>RUNNABLE</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1922_1044307265" lang="es">
+<strong>3.7. Estado TERMINATED</strong></h2>
+<ul>
+<li><p>El hilo ha terminado su ejecución</p></li>
+<li><p>No puede reiniciarse</p></li>
+</ul>
+<p>Un hilo llega aquí cuando:</p>
+<ul>
+<li><p>run()  o call() 
+	finaliza</p></li>
+<li><p>Se lanza una excepción no controlada</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1924_1044307265" lang="es">
+<strong>3.8. Transiciones importantes entre estados</strong></h2>
+<ul>
+<li><p>NEW → RUNNABLE  →
+	start()</p></li>
+<li><p>RUNNABLE → BLOCKED 
+	→ espera monitor</p></li>
+<li><p>RUNNABLE → WAITING 
+	→ wait(), join()</p></li>
+<li><p>WAITING / TIMED_WAITING →
+	RUNNABLE  → notificación / tiempo</p></li>
+<li><p>RUNNABLE → TERMINATED 
+	→ fin de ejecución</p></li>
+</ul>
+<p>📌 Pregunta típica:</p>
+<blockquote>Cuando se
+desbloquea un hilo, ¿a qué estado pasa?<br/>
+→ <strong>RUNNABLE
+(Listo)</strong></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1926_1044307265" lang="es">
+<strong>3.9. Estados y sincronización</strong></h2>
+<ul>
+<li><p>Los estados están directamente relacionados con:</p>
+<ul>
+<li><p>Monitores</p></li>
+<li><p>Bloqueos</p></li>
+<li><p>Planificación</p></li>
+</ul>
+</li></ul>
+<p>Un mal diseño puede producir:</p>
+<ul>
+<li><p>Hilos bloqueados indefinidamente</p></li>
+<li><p>Deadlocks</p></li>
+<li><p>Starvation</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1928_1044307265" lang="es">
+<strong>4. Memoria, pila y compartición de datos entre hilos</strong></h1>
+<p>Este tema es <strong>clave para entender por qué
+aparecen los problemas de concurrencia</strong>. Muchas preguntas de
+examen salen directamente de aquí.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1930_1044307265" lang="es">
+<strong>4.1. Modelo de memoria en Java (visión general)</strong></h2>
+<p>En un programa Java con varios hilos existen, a grandes
+rasgos, dos zonas de memoria:</p>
+<h3 lang="es"><strong>Memoria compartida (Heap)</strong></h3>
+<ul>
+<li><p>Objetos</p></li>
+<li><p>Miembros de objetos</p></li>
+<li><p>Variables estáticas</p></li>
+</ul>
+<h3 lang="es"><strong>Memoria privada por hilo
+(Stack)</strong></h3>
+<ul>
+<li><p>Variables locales</p></li>
+<li><p>Parámetros de métodos</p></li>
+<li><p>Pila de llamadas</p></li>
+</ul>
+<p>📌 Regla fundamental:</p>
+<blockquote><strong>Todo lo
+que está en el heap puede ser compartido</strong><br/>
+<strong>Todo
+lo que está en el stack es privado del hilo</strong></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1932_1044307265" lang="es">
+<strong>4.2. Variables locales</strong></h2>
+<p>Las <strong>variables locales</strong>:</p>
+<ul>
+<li><p>Se almacenan en la <strong>pila (stack)</strong> 
+	del hilo</p></li>
+<li><p>Son <strong>exclusivas</strong>  de cada hilo</p></li>
+<li><p><strong>Nunca se comparten</strong>  entre hilos</p></li>
+</ul>
+<p>📌 Respuesta de examen:</p>
+<blockquote>Las variables
+locales <strong>nunca son compartidas por hilos</strong></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1934_1044307265" lang="es">
+<strong>4.3. Objetos locales (punto conflictivo)</strong></h2>
+<p>Un <strong>objeto local</strong>:</p>
+<pre><code>void metodo() {</code>
+<code>    </code><code>Objeto o = new Objeto();</code>
+<code>}</code></pre>
+<ul>
+<li><p>La <strong>referencia</strong>  es local (stack)</p></li>
+<li><p>El <strong>objeto</strong>  se almacena en el <strong>heap</strong></p></li>
+</ul>
+<p>👉 Por tanto:</p>
+<ul>
+<li><p>El objeto <strong>sí puede ser compartido</strong> 
+	si su referencia se escapa</p></li>
+<li><p><strong>No es intrínsecamente seguro</strong></p></li>
+</ul>
+<p>📌 Pregunta típica:</p>
+<blockquote>¿Por qué el
+uso de objetos locales no es seguro?<br/>
+→ Porque <strong>se
+almacenan en el heap compartido</strong></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1936_1044307265" lang="es">
+<strong>4.4. Miembros de un objeto</strong></h2>
+<p>Los <strong>miembros (atributos)</strong>:</p>
+<ul>
+<li><p>Se almacenan en el <strong>heap</strong></p></li>
+<li><p>Son compartidos si varios hilos acceden a la <strong>misma
+	instancia</strong></p></li>
+</ul>
+<p>📌 Respuesta típica:</p>
+<blockquote>Usar miembros de
+objetos en multihilo es peligroso<br/>
+→ <strong>Si dos hilos
+acceden a la misma instancia</strong></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1938_1044307265" lang="es">
+<strong>4.5. Variables estáticas</strong></h2>
+<p>Las variables static:</p>
+<ul>
+<li><p>Pertenecen a la clase</p></li>
+<li><p>Hay <strong>una sola copia</strong></p></li>
+<li><p>Son <strong>compartidas por todos los hilos</strong></p></li>
+</ul>
+<p>Requieren:</p>
+<ul>
+<li><p>Sincronización</p></li>
+<li><p>Atomicidad</p></li>
+<li><p>O inmutabilidad</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1940_1044307265" lang="es">
+<strong>4.6. ¿Qué no se comparte nunca entre hilos?</strong></h2>
+<p>✔ Variables locales 
+✔ Pila de ejecución 
+✔
+Parámetros de métodos</p>
+<p>📌 Respuesta de examen:</p>
+<blockquote>Todo lo
+almacenado en la <strong>pila de cada hilo</strong></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1942_1044307265" lang="es">
+<strong>4.7. Errores comunes de razonamiento</strong></h2>
+<p>❌ “Es local, luego es seguro” → FALSO
+(objetos) 
+❌ “Está en un método, luego no se comparte” →
+FALSO 
+✔ “Está en el stack” → seguro 
+✔
+“Está en el heap” → potencialmente compartido</p>
+<hr/>
+<h2 id="__RefHeading___Toc1944_1044307265" lang="es">
+<strong>4.8. Relación con problemas de concurrencia</strong></h2>
+<p>Los problemas aparecen cuando:</p>
+<ul>
+<li><p>Hay <strong>estado compartido</strong></p></li>
+<li><p>Hay <strong>escrituras concurrentes</strong></p></li>
+<li><p>No hay sincronización</p></li>
+</ul>
+<p>Esto conduce a:</p>
+<ul>
+<li><p>Condiciones de carrera</p></li>
+<li><p>Interferencias</p></li>
+<li><p>Inconsistencia de memoria</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1946_1044307265" lang="es">
+<strong>5. Sincronización y monitores</strong></h1>
+<p>Este es el <strong>núcleo técnico</strong>  de la
+programación multihilo en Java. Aquí se explican los mecanismos que
+permiten <strong>controlar el acceso concurrente</strong>  a recursos
+compartidos y evitar los problemas vistos en los temas anteriores.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1948_1044307265" lang="es">
+<strong>5.1. ¿Para qué usamos la sincronización?</strong></h2>
+<p>La <strong>sincronización entre hilos</strong>  se
+utiliza para:</p>
+<ul>
+<li><p>Evitar <strong>condiciones de carrera</strong></p></li>
+<li><p>Prevenir <strong>interferencias entre hilos</strong></p></li>
+<li><p>Garantizar <strong>consistencia de memoria</strong></p></li>
+<li><p>Asegurar <strong>exclusión mutua</strong></p></li>
+<li><p>Garantizar <strong>visibilidad de cambios</strong></p></li>
+</ul>
+<p>📌 Idea clave:</p>
+<blockquote>Sincronizar no
+es “hacer más lento” el programa,<br/>
+es <strong>hacerlo
+correcto</strong>.</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1950_1044307265" lang="es">
+<strong>5.2. El concepto de monitor</strong></h2>
+<p>La sincronización en Java se construye alrededor de
+una entidad interna llamada:</p>
+<p>👉 <strong>monitor</strong></p>
+<p>Un <strong>monitor</strong>:</p>
+<ul>
+<li><p>Está asociado a <strong>cada objeto</strong></p></li>
+<li><p>Permite que <strong>solo un hilo</strong>  ejecute
+	código sincronizado a la vez</p></li>
+<li><p>Es gestionado automáticamente por la JVM</p></li>
+</ul>
+<p>📌 Pregunta de examen:</p>
+<blockquote>Podemos
+construir la sincronización alrededor de una entidad interna
+conocida como…<br/>
+→ <strong>monitor</strong></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1952_1044307265" lang="es">
+<strong>5.3. La palabra clave </strong><strong><code>synchronized</code></strong></h2>
+<p>synchronized  permite
+definir <strong>secciones críticas</strong>, es decir, zonas de
+código que:</p>
+<ul>
+<li><p>No pueden ejecutarse simultáneamente por varios
+	hilos</p></li>
+<li><p>Protegen recursos compartidos</p></li>
+</ul>
+<p>Puede aplicarse a:</p>
+<ul>
+<li><p>Métodos</p></li>
+<li><p>Bloques de código</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1954_1044307265" lang="es">
+<strong>5.4. Métodos </strong><strong><code>synchronized</code></strong></h2>
+<pre><code>public synchronized void metodo() {</code>
+<code>    </code><code>// sección crítica</code>
+<code>}</code></pre><p>
+Características:</p>
+<ul>
+<li><p>El hilo adquiere el <strong>monitor del objeto</strong></p></li>
+<li><p>Ningún otro hilo puede entrar en métodos
+	sincronizados del mismo objeto</p></li>
+<li><p>Al salir, el monitor se libera</p></li>
+</ul>
+<p>📌 Pregunta típica:</p>
+<blockquote>¿Qué
+conseguimos con los métodos synchronized?<br/>
+→ Que <strong>dos
+métodos no accedan simultáneamente a un recurso</strong></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1956_1044307265" lang="es">
+<strong>5.5. Bloques </strong><strong><code>synchronized</code></strong></h2>
+<pre><code>synchronized(objeto) {</code>
+<code>    </code><code>// sección crítica</code>
+<code>}</code></pre><p>
+Ventajas:</p>
+<ul>
+<li><p>Mayor control</p></li>
+<li><p>Mejor rendimiento</p></li>
+<li><p>Sincronización más fina</p></li>
+</ul>
+<p>Se sincroniza explícitamente sobre:</p>
+<ul>
+<li><p>Un objeto</p></li>
+<li><p>Un monitor concreto</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1958_1044307265" lang="es">
+<strong>5.6. </strong><strong><code>synchronized</code></strong><strong>
+y visibilidad de memoria</strong></h2>
+<p>Además de exclusión mutua, synchronized 
+garantiza que:</p>
+<ul>
+<li><p>Los cambios realizados por un hilo</p></li>
+<li><p>Sean visibles para los demás hilos</p></li>
+</ul>
+<p>Por eso:</p>
+<ul>
+<li><p>Soluciona <strong>interferencias</strong></p></li>
+<li><p>Soluciona <strong>errores de consistencia de
+	memoria</strong></p></li>
+</ul>
+<p>📌 Pregunta de examen:</p>
+<blockquote>Un método
+declarado synchronized…<br/>
+→ Soluciona interferencias y
+problemas de consistencia de memoria</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1960_1044307265" lang="es">
+<strong>5.7. </strong><strong><code>volatile</code></strong><strong>
+vs </strong><strong><code>synchronized</code></strong></h2>
+<table>
+<thead>
+<tr>
+<th>volatile
+</th>
+<th>synchronized
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Garantiza
+				visibilidad
+</td>
+<td>Garantiza
+				visibilidad
+</td>
+</tr>
+<tr>
+<td>No garantiza
+				exclusión
+</td>
+<td>Garantiza
+				exclusión
+</td>
+</tr>
+<tr>
+<td>No evita race
+				conditions
+</td>
+<td>Evita race
+				conditions
+</td>
+</tr>
+<tr>
+<td>Más ligero
+</td>
+<td>Más costoso
+</td>
+</tr>
+</tbody>
+</table>
+<p>📌 Importante:</p>
+<blockquote><code>volatile</code>
+<strong>no sustituye</strong> a <code>synchronized</code></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1962_1044307265" lang="es">
+<strong>5.8. Problemas derivados de la sincronización</strong></h2>
+<h3 lang="es"><strong>Interbloqueo (Deadlock)</strong></h3>
+<p>Ocurre cuando:</p>
+<ul>
+<li><p>Dos o más hilos</p></li>
+<li><p>Esperan indefinidamente recursos bloqueados entre
+	sí</p></li>
+</ul>
+<p>📌 Pregunta de examen:</p>
+<blockquote>Los métodos
+synchronized…<br/>
+→ <strong>Pueden ocasionar interbloqueos</strong></blockquote>
+<hr/>
+<h3 lang="es"><strong>Starvation</strong></h3>
+<p>Un hilo:</p>
+<ul>
+<li><p>Nunca consigue CPU o recursos</p></li>
+<li><p>Debido a prioridades o bloqueos excesivos</p></li>
+</ul>
+<hr/>
+<h3 lang="es"><strong>Livelock</strong></h3>
+<p>Los hilos:</p>
+<ul>
+<li><p>No están bloqueados</p></li>
+<li><p>Pero no progresan</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1964_1044307265" lang="es">
+<strong>5.9. Thread safety y trampas de examen</strong></h2>
+<p>📌 Punto conflictivo que detectaste correctamente:</p>
+<p>Pregunta:</p>
+<blockquote>Para hacer un
+hilo seguro los métodos deben declararse como…</blockquote>
+<p>Respuesta técnica real:</p>
+<ul>
+<li><p>synchronized  (una de
+	las formas)</p></li>
+</ul>
+<p>Respuesta correcta de examen:</p>
+<ul>
+<li><p><strong>Ninguna respuesta es correcta</strong></p></li>
+</ul>
+<p>👉 Motivo:</p>
+<ul>
+<li><p>No hay <strong>una única forma</strong></p></li>
+<li><p>La respuesta ofrecida es <strong>incompleta</strong></p></li>
+</ul>
+<p>⚠ Regla práctica de examen:</p>
+<blockquote>Si todas las
+opciones son parciales → <strong>“Ninguna es correcta”</strong></blockquote>
+<hr/>
+<h1 id="__RefHeading___Toc1966_1044307265" lang="es">
+<strong>6. Planificación y prioridad de hilos</strong></h1>
+<p>Este tema explica <strong>cómo se decide qué hilo se
+ejecuta en cada momento</strong>, qué papel juegan las prioridades y
+cuáles son las <strong>limitaciones reales de Java</strong>  frente
+al sistema operativo.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1968_1044307265" lang="es">
+<strong>6.1. Sistemas de tiempo compartido</strong></h2>
+<p>En un <strong>sistema de tiempo compartido</strong>:</p>
+<ul>
+<li><p>La CPU se divide en <strong>fracciones de tiempo</strong> 
+	(time slices)</p></li>
+<li><p>Varios hilos parecen ejecutarse simultáneamente</p></li>
+<li><p>El cambio entre hilos se llama <strong>cambio de
+	contexto</strong></p></li>
+</ul>
+<p>📌 Pregunta de examen:</p>
+<blockquote>En un sistema de
+tiempo compartido…<br/>
+→ El uso de la CPU se divide en
+fracciones de tiempo</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1970_1044307265" lang="es">
+<strong>6.2. Planificación de hilos y la JVM</strong></h2>
+<h3 lang="es">¿Quién decide qué hilo se ejecuta?</h3>
+<p>En Java:</p>
+<ul>
+<li><p>La <strong>JVM no implementa un algoritmo propio
+	de planificación</strong></p></li>
+<li><p>Delega la planificación en el <strong>sistema
+	operativo</strong></p></li>
+</ul>
+<p>📌 Respuesta esperada en examen:</p>
+<blockquote>La JVM <strong>no
+posee un algoritmo de planificación</strong> para la ejecución de
+hilos</blockquote>
+<p>⚠ Matiz técnico real:</p>
+<ul>
+<li><p>La JVM mapea hilos Java a hilos del SO</p></li>
+<li><p>Pero para el temario → <strong>no planifica</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1972_1044307265" lang="es">
+<strong>6.3. Prioridades de los hilos</strong></h2>
+<p>Cada hilo tiene una <strong>prioridad</strong>, que
+influye (pero no garantiza) su ejecución.</p>
+<h3 lang="es">Rango de prioridades en Java</h3>
+<ul>
+<li><p>Valores enteros de <strong>1 a 10</strong></p></li>
+<li><p>Constantes:</p>
+<ul>
+<li><p>MIN_PRIORITY  = 1</p></li>
+<li><p>NORM_PRIORITY  = 5</p></li>
+<li><p>MAX_PRIORITY  = 10</p></li>
+</ul>
+</li></ul>
+<p>📌 Punto conflictivo detectado:</p>
+<blockquote>No existe
+<code>DEFAULT_PRIORITY</code></blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1974_1044307265" lang="es">
+<strong>6.4. Prioridad por defecto</strong></h2>
+<p>Cuando se crea un hilo:</p>
+<ul>
+<li><p>Hereda la prioridad del hilo que lo crea</p></li>
+<li><p>Normalmente es <strong>NORM_PRIORITY (5)</strong></p></li>
+</ul>
+<p>📌 Preguntas de examen:</p>
+<ul>
+<li><p>¿Qué prioridad por defecto tiene un hilo? →
+	NORM_PRIORITY</p></li>
+<li><p>Valor numérico → <strong>5</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1976_1044307265" lang="es">
+<strong>6.5. ¿Qué ocurre si todos los hilos tienen máxima
+prioridad?</strong></h2>
+<ul>
+<li><p>La prioridad es <strong>relativa</strong></p></li>
+<li><p>Si todos tienen la misma prioridad:</p>
+<ul>
+<li><p>No se obtiene ninguna ventaja</p></li>
+<li><p>El SO decide el orden</p></li>
+</ul>
+</li></ul>
+<p>📌 Respuesta correcta:</p>
+<blockquote>No conseguimos
+nada, puesto que la prioridad es algo relativo</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1978_1044307265" lang="es">
+<strong>6.6. Orden de finalización de hilos</strong></h2>
+<p>Si lanzamos varios hilos:</p>
+<ul>
+<li><p>Con la misma prioridad</p></li>
+<li><p>Sin sincronización explícita</p></li>
+</ul>
+<p>👉 <strong>No podemos saber el orden de finalización</strong></p>
+<p>Depende de:</p>
+<ul>
+<li><p>Planificador del SO</p></li>
+<li><p>Carga del sistema</p></li>
+<li><p>Tiempo de ejecución</p></li>
+</ul>
+<p>📌 Respuesta de examen:</p>
+<blockquote>No estamos
+seguros, depende del sistema operativo</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1980_1044307265" lang="es">
+<strong>6.7. Problemas relacionados con prioridades</strong></h2>
+<h3 lang="es"><strong>Starvation (inanición)</strong></h3>
+<ul>
+<li><p>Hilos de baja prioridad</p></li>
+<li><p>Nunca reciben CPU suficiente</p></li>
+</ul>
+<h3 lang="es"><strong>Inversión de prioridades</strong></h3>
+<ul>
+<li><p>Un hilo de baja prioridad bloquea a uno de alta</p></li>
+<li><p>Problema clásico en sistemas concurrentes</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1982_1044307265" lang="es">
+<strong>6.8. Buenas prácticas</strong></h2>
+<ul>
+<li><p>No confiar en prioridades para lógica del
+	programa</p></li>
+<li><p>Usar sincronización y diseño correcto</p></li>
+<li><p>Preferir ejecutores ( ExecutorService )</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1984_1044307265" lang="es">
+<strong>7. Documentación y diseño de objetos en entornos multihilo</strong></h1>
+<p>Este tema suele parecer “teórico”, pero es <strong>crítico
+en sistemas concurrentes reales</strong>  y también aparece en examen
+de forma muy concreta.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1986_1044307265" lang="es">
+<strong>7.1. Operaciones de un objeto</strong></h2>
+<p>Las <strong>operaciones de un objeto</strong>  provienen
+de:</p>
+<ul>
+<li><p><strong>Los métodos del propio objeto</strong></p></li>
+</ul>
+<p>📌 Respuesta de examen:</p>
+<blockquote>¿De dónde
+pueden venir las operaciones de un objeto?<br/>
+→ De métodos del
+propio objeto</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1988_1044307265" lang="es">
+<strong>7.2. Operaciones simples y compuestas</strong></h2>
+<p>Un objeto puede ofrecer:</p>
+<ul>
+<li><p><strong>Operaciones de una sola llamada</strong></p></li>
+<li><p><strong>Operaciones compuestas</strong>  (varias
+	llamadas que deben tratarse como una unidad)</p></li>
+</ul>
+<p>Las operaciones compuestas:</p>
+<ul>
+<li><p>Son especialmente peligrosas en multihilo</p></li>
+<li><p>Requieren sincronización externa o interna</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1990_1044307265" lang="es">
+<strong>7.3. Importancia de la documentación en multihilo</strong></h2>
+<p>En entornos concurrentes, la documentación debe
+indicar claramente:</p>
+<ul>
+<li><p>Qué métodos son:</p>
+<ul>
+<li><p>Thread-safe</p></li>
+<li><p>No thread-safe</p></li>
+</ul>
+<li><p>Qué operaciones:</p>
+<ul>
+<li><p>Bloquean</p></li>
+<li><p>Pueden esperar indefinidamente</p></li>
+</ul>
+</li></li></ul>
+<p>📌 Pregunta de examen:</p>
+<blockquote>La documentación
+en procesos multihilo…<br/>
+→ Debe indicar cuándo se necesita un
+bloqueo antes de realizar una operación</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc1992_1044307265" lang="es">
+<strong>7.4. Documentar bloqueos y sincronización</strong></h2>
+<p>Si un hilo puede quedar <strong>bloqueado</strong>  al
+ejecutar una operación, la documentación debe indicar:</p>
+<ul>
+<li><p><strong>Cuándo los objetos requieren
+	sincronización externa</strong></p></li>
+<li><p><strong>Qué bloqueo es necesario para realizar la
+	operación</strong></p></li>
+</ul>
+<p>📌 Importante:</p>
+<blockquote>No siempre se
+documenta <strong>quién bloquea a quién</strong>,<br/>
+sino <strong>qué
+debe hacer el usuario del objeto</strong>.</blockquote>
+<p>Esto explica por qué:</p>
+<ul>
+<li><p>“Todas las respuestas son correctas” era
+	<strong>incorrecta</strong></p></li>
+<li><p>El corrector esperaba una opción <strong>concreta</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1994_1044307265" lang="es">
+<strong>7.5. Sincronización interna vs externa</strong></h2>
+<h3 lang="es"><strong>Sincronización interna</strong></h3>
+<ul>
+<li><p>El propio objeto se protege</p></li>
+<li><p>Métodos synchronized</p></li>
+<li><p>Más segura para el usuario</p></li>
+</ul>
+<h3 lang="es"><strong>Sincronización externa</strong></h3>
+<ul>
+<li><p>El usuario del objeto debe sincronizar</p></li>
+<li><p>Debe documentarse <strong>explícitamente</strong></p></li>
+<li><p>Más flexible, pero más peligrosa</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1996_1044307265" lang="es">
+<strong>7.6. Diseño de clases seguras para hilos</strong></h2>
+<p>Una clase bien diseñada en multihilo:</p>
+<ul>
+<li><p>Minimiza estado compartido</p></li>
+<li><p>Usa inmutabilidad cuando es posible</p></li>
+<li><p>Documenta claramente sus garantías</p></li>
+<li><p>No oculta bloqueos inesperados</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1998_1044307265" lang="es">
+<strong>7.7. Errores habituales en diseño</strong></h2>
+<ul>
+<li><p>No documentar bloqueos</p></li>
+<li><p>Asumir que el usuario “ya sabrá” sincronizar</p></li>
+<li><p>Mezclar operaciones seguras e inseguras</p></li>
+<li><p>Usar sincronización innecesaria</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc2000_1044307265" lang="es">
+<strong>Unidad 02 – Programación Multihilo (Resumen
+ultra-compacto)</strong></h1>
+<hr/>
+<h2 id="__RefHeading___Toc2002_1044307265" lang="es">
+<strong>1. Concurrencia y conceptos básicos</strong></h2>
+<ul>
+<li><p><strong>Hilo</strong>: unidad de ejecución dentro
+	de un proceso.</p></li>
+<li><p><strong>Concurrencia</strong>: ejecución
+	simultánea (real o aparente) de varios hilos.</p></li>
+<li><p><strong>Thread-safe</strong>: código que funciona
+	correctamente con varios hilos a la vez.</p></li>
+<li><p><strong>Condición de carrera</strong>: varios
+	hilos acceden al mismo recurso y al menos uno escribe.</p></li>
+<li><p><strong>Interferencia</strong>: un hilo pisa los
+	cambios de otro.</p></li>
+<li><p><strong>Operación atómica</strong>: se ejecuta
+	entera o no se ejecuta.</p></li>
+<li><p><strong>Inmutabilidad</strong>: objetos cuyo
+	estado no cambia → thread-safe por diseño.</p></li>
+<li><p><strong>Errores de consistencia de memoria</strong>:
+	distintos hilos ven valores distintos del mismo dato.</p></li>
+<li><p><strong>volatile</strong>:
+	garantiza visibilidad, no exclusión mutua.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2004_1044307265" lang="es">
+<strong>2. Creación y ejecución de hilos</strong></h2>
+<ul>
+<li><p><strong>Clase base</strong>: Thread</p></li>
+<li><p><strong>Formas de crear hilos</strong>:</p>
+<ul>
+<li><p>Heredar de Thread 
+		(sobrescribir run() )</p></li>
+<li><p>Implementar Runnable</p></li>
+<li><p>Implementar Callable 
+		(retorna valor, lanza excepciones)</p></li>
+</ul>
+<li><p><strong>Inicio correcto</strong>: start() 
+	(no run() )</p></li>
+<li><p><strong>Finalización</strong>: cuando termina
+	run()  o call()</p></li>
+<li><p><strong>No existen métodos seguros para matar
+	hilos</strong></p></li>
+<li><p><strong>Detención correcta</strong>: variable de
+	control (cooperativa)</p></li>
+<li><p><strong>ThreadGroup</strong>: agrupa hilos
+	(obsoleto)</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2006_1044307265" lang="es">
+<strong>3. Estados y ciclo de vida</strong></h2>
+<p>Estados ( Thread.State ):</p>
+<ul>
+<li><p><strong>NEW</strong></p></li>
+<li><p><strong>RUNNABLE</strong>  (listo o ejecutando)</p></li>
+<li><p><strong>BLOCKED</strong></p></li>
+<li><p><strong>WAITING</strong></p></li>
+<li><p><strong>TIMED_WAITING</strong></p></li>
+<li><p><strong>TERMINATED</strong></p></li>
+</ul>
+<p>Claves:</p>
+<ul>
+<li><p>start()  → NEW →
+	RUNNABLE</p></li>
+<li><p>Desbloqueo → RUNNABLE</p></li>
+<li><p>Fin de run()  →
+	TERMINATED</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2008_1044307265" lang="es">
+<strong>4. Memoria y compartición</strong></h2>
+<ul>
+<li><p><strong>Stack (pila)</strong>: privada por hilo</p></li>
+<li><p><strong>Heap</strong>: compartido</p></li>
+<li><p><strong>Variables locales</strong>  → stack →
+	nunca compartidas</p></li>
+<li><p><strong>Objetos locales</strong>  → heap →
+	pueden compartirse</p></li>
+<li><p><strong>Miembros de objetos</strong>  → heap →
+	compartidos si misma instancia</p></li>
+<li><p><strong>static</strong> 
+	→ compartidas por todos los hilos</p></li>
+<li><p>Problemas aparecen con <strong>estado compartido +
+	escritura concurrente</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2010_1044307265" lang="es">
+<strong>5. Sincronización y monitores</strong></h2>
+<ul>
+<li><p><strong>Monitor</strong>: entidad interna asociada
+	a cada objeto</p></li>
+<li><p><strong>synchronized</strong>:</p>
+<ul>
+<li><p>Exclusión mutua</p></li>
+<li><p>Visibilidad de memoria</p></li>
+</ul>
+<li><p>Puede aplicarse a:</p>
+<ul>
+<li><p>Métodos</p></li>
+<li><p>Bloques</p></li>
+</ul>
+<li><p><strong>No todo thread-safe usa </strong><strong>synchronized</strong></p></li>
+<li><p>Problemas posibles:</p>
+<ul>
+<li><p>Deadlock</p></li>
+<li><p>Starvation</p></li>
+<li><p>Livelock</p></li>
+</ul>
+<li><p>En examen:</p>
+<ul>
+<li><p>Respuestas parciales → “Ninguna es correcta”</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2012_1044307265" lang="es">
+<strong>6. Planificación y prioridades</strong></h2>
+<ul>
+<li><p>Sistemas de <strong>tiempo compartido</strong></p></li>
+<li><p>La <strong>JVM no planifica</strong>  (lo hace el
+	SO)</p></li>
+<li><p>Prioridades:</p>
+<ul>
+<li><p>Rango: <strong>1–10</strong></p></li>
+<li><p>MIN_PRIORITY  = 1</p></li>
+<li><p>NORM_PRIORITY  = 5
+		(por defecto)</p></li>
+<li><p>MAX_PRIORITY  = 10</p></li>
+</ul>
+<li><p>La prioridad es <strong>relativa</strong></p></li>
+<li><p>Mismo nivel → orden impredecible</p></li>
+<li><p>No confiar en prioridades para la lógica</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2014_1044307265" lang="es">
+<strong>7. Documentación y diseño multihilo</strong></h2>
+<ul>
+<li><p>Las operaciones de un objeto provienen de sus
+	métodos</p></li>
+<li><p>Operaciones compuestas → alto riesgo</p></li>
+<li><p>La documentación debe indicar:</p>
+<ul>
+<li><p>Cuándo se requiere sincronización externa</p></li>
+<li><p>Qué bloqueo es necesario</p></li>
+</ul>
+<li><p>Sincronización:</p>
+<ul>
+<li><p>Interna → más segura</p></li>
+<li><p>Externa → debe documentarse</p></li>
+</ul>
+<li><p>La documentación forma parte de la seguridad</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2016_1044307265" lang="es">
+<strong>8. Métodos clave de la clase </strong><strong><code>Thread</code></strong></h2>
+<p>Todos pertenecen a Thread:</p>
+<ul>
+<li><p>run()</p></li>
+<li><p>start()</p></li>
+<li><p>getId()</p></li>
+<li><p>currentThread() 
+	(estático)</p></li>
+<li><p>sleep()</p></li>
+<li><p>join()</p></li>
+<li><p>getPriority(),
+	setPriority()</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2018_1044307265" lang="es">
+<strong>Ideas clave de examen</strong></h2>
+<ul>
+<li><p>Local ≠ seguro (objetos)</p></li>
+<li><p>Heap = compartido</p></li>
+<li><p>volatile  ≠
+	synchronized</p></li>
+<li><p>No existe DEFAULT_PRIORITY</p></li>
+<li><p>No hay método para “detener” hilos</p></li>
+<li><p>Prioridad no garantiza orden</p></li>
+<li><p>Si todas las respuestas son incompletas →
+	<strong>“Ninguna es correcta”</strong></p></li>
+</ul>
+<hr/>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

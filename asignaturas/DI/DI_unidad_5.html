@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Desarrollo
+de Interfaces – Unidad 5 –
+Documentación de aplicaciones</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Desarrollo
+de Interfaces – Unidad 5 –
+Documentación de aplicaciones</h1>
+<p>
+
+</p>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc3661_3487988700">1. Concepto y objetivos de la documentación</a></p>
+<p><a href="#__RefHeading___Toc3663_3487988700">1.1. Objetivos principales:</a></p>
+<p><a href="#__RefHeading___Toc3665_3487988700">1.2. Tipos básicos según el público objetivo:</a></p>
+<p><a href="#__RefHeading___Toc3667_3487988700">1.3. Importancia de mantenerla actualizada:</a></p>
+<p><a href="#__RefHeading___Toc3669_3487988700">2. Documentación interna</a></p>
+<p><a href="#__RefHeading___Toc3671_3487988700">2.1. Contenido típico:</a></p>
+<p><a href="#__RefHeading___Toc3673_3487988700">2.2. Normas y buenas prácticas:</a></p>
+<p><a href="#__RefHeading___Toc3675_3487988700">2.3. Importancia:</a></p>
+<p><a href="#__RefHeading___Toc3677_3487988700">3. Documentación externa</a></p>
+<p><a href="#__RefHeading___Toc3679_3487988700">3.1. Tipos de documentación externa y sus contenidos:</a></p>
+<p><a href="#__RefHeading___Toc3681_3487988700">3.2. Diferencias clave entre documentos:</a></p>
+<p><a href="#__RefHeading___Toc3683_3487988700">3.3. Importancia de la documentación externa:</a></p>
+<p><a href="#__RefHeading___Toc3685_3487988700">4. Tutoriales y ejemplos</a></p>
+<p><a href="#__RefHeading___Toc3687_3487988700">4.1. Características principales:</a></p>
+<p><a href="#__RefHeading___Toc3689_3487988700">4.2. Estructura típica de un tutorial:</a></p>
+<p><a href="#__RefHeading___Toc3691_3487988700">4.3. Relación con otros documentos:</a></p>
+<p><a href="#__RefHeading___Toc3693_3487988700">4.4. Objetivos principales:</a></p>
+<p><a href="#__RefHeading___Toc3695_3487988700">4.5. Importancia de los ejemplos:</a></p>
+<p><a href="#__RefHeading___Toc3697_3487988700">5. Sistemas de ayuda integrados en Java (JavaHelp)</a></p>
+<p><a href="#__RefHeading___Toc3699_3487988700">5.1. Componentes principales de JavaHelp:</a></p>
+<p><a href="#__RefHeading___Toc3701_3487988700">5.2. Importancia de JavaHelp en la documentación:</a></p>
+<p><a href="#__RefHeading___Toc4640_3487988700">6. Estructura general de la documentación</a></p>
+<p><a href="#__RefHeading___Toc4642_3487988700">6.1. Componentes principales:</a></p>
+<p><a href="#__RefHeading___Toc4644_3487988700">6.2. Importancia de la estructura:</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc3661_3487988700" lang="es">
+<strong>1. Concepto y objetivos de la documentación</strong></h1>
+<p>La documentación de software es el conjunto de
+documentos que describen, explican o registran información sobre un
+sistema, su desarrollo, instalación, funcionamiento y mantenimiento.
+Su finalidad principal es <strong>facilitar la comprensión, el uso,
+la evolución y el mantenimiento del software</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3663_3487988700" lang="es">
+<strong>1.1. </strong><strong>Objetivos principales:</strong></h2>
+<ul>
+<li><p>Proporcionar una <strong>guía clara para usuarios
+	y desarrolladores</strong>.</p></li>
+<li><p>Facilitar la <strong>mantenimiento y evolución</strong> 
+	del software a lo largo de su ciclo de vida.</p></li>
+<li><p>Garantizar <strong>coherencia</strong>  entre lo
+	que el software hace y lo que la documentación describe.</p></li>
+<li><p>Reducir errores derivados de mal uso o de
+	desconocimiento del sistema.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3665_3487988700" lang="es">
+<strong>1.2. </strong><strong>Tipos básicos según el público
+objetivo:</strong></h2>
+<ol>
+<li><p><strong>Documentación interna:</strong> dirigida
+	al equipo de desarrollo, enfocada en la implementación y
+	mantenimiento técnico del sistema.</p></li>
+<li><p><strong>Documentación externa:</strong> dirigida
+	a usuarios finales y administradores de sistemas, enfocada en el uso
+	y despliegue del software.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3667_3487988700" lang="es">
+<strong>1.3. </strong><strong>Importancia de mantenerla actualizada:</strong></h2>
+<ul>
+<li><p>El software evoluciona constantemente
+	(correcciones, mejoras, nuevos módulos).</p></li>
+<li><p>La documentación desactualizada puede generar
+	errores de uso, fallos de instalación o problemas en la
+	configuración.</p></li>
+<li><p>Documentación actualizada asegura que tanto
+	desarrolladores como usuarios trabajen con información confiable.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3669_3487988700" lang="es">
+<strong>2. Documentación interna</strong></h1>
+<p>La documentación interna está destinada al <strong>equipo
+de desarrollo</strong>  y otros técnicos que participan en la
+construcción, mantenimiento y evolución del software. Su objetivo
+es <strong>facilitar la comprensión del código y de la arquitectura
+interna del sistema</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3671_3487988700" lang="es">
+<strong>2.1. </strong><strong>Contenido típico:</strong></h2>
+<h3 lang="es"><strong>	Código comentado:</strong></h3>
+<ol>
+<ul>
+<li><p>Comentarios claros sobre bloques críticos y
+		funciones importantes.</p></li>
+<li><p>Se evita incluir comentarios largos y confusos
+		que solo compliquen la lectura.</p></li>
+<li><p>La documentación interna es <strong>sólo
+		técnica</strong>  según el enfoque del corrector de la asignatura.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Diagramas UML:</strong></h3>
+<ol>
+<ul>
+<li><p>Diagramas de clases, secuencia, casos de uso o
+		componentes.</p></li>
+<li><p>Ayudan a visualizar la arquitectura y relaciones
+		entre módulos.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Arquitectura y
+especificaciones técnicas:</strong></h3>
+<ol>
+<ul>
+<li><p>Descripción de la estructura del software y de
+		la lógica interna.</p></li>
+<li><p>Detalles sobre patrones de diseño, estructura de
+		bases de datos, módulos y dependencias.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3673_3487988700" lang="es">
+<strong>2.2. </strong><strong>Normas y buenas prácticas:</strong></h2>
+<ul>
+<li><p>Minimizar comentarios innecesarios si el código
+	es autoexplicativo.</p></li>
+<li><p>Comentar bloques de código que realizan
+	operaciones críticas o complejas.</p></li>
+<li><p>Mantener consistencia y claridad en la
+	terminología usada en comentarios y diagramas.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3675_3487988700" lang="es">
+<strong>2.3. </strong><strong>Importancia:</strong></h2>
+<ul>
+<li><p>Facilita <strong>el mantenimiento y la depuración</strong> 
+	del software.</p></li>
+<li><p>Permite que nuevos desarrolladores comprendan
+	rápidamente la lógica interna.</p></li>
+<li><p>Ayuda a mantener la coherencia entre la
+	implementación y las especificaciones técnicas.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3677_3487988700" lang="es">
+<strong>3. Documentación externa</strong></h1>
+<p>La documentación externa está dirigida a <strong>usuarios
+finales y administradores de sistemas</strong>. Su objetivo es
+<strong>facilitar el uso, la instalación, la configuración y la
+administración del software</strong>, sin entrar en detalles de
+implementación interna.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3679_3487988700" lang="es">
+<strong>3.1. </strong><strong>Tipos de documentación externa y sus
+contenidos:</strong></h2>
+<h3 lang="es"><strong>	Manual de Usuario:</strong></h3>
+<ol>
+<ul>
+<li><p>Contenido: Introducción, descripción de cada
+		módulo, guía de referencia, tutoriales y ejemplos prácticos.</p></li>
+<li><p>Propósito: Enseñar al usuario cómo utilizar
+		correctamente la aplicación.</p></li>
+<li><p>Características: Funcional, orientado a tareas,
+		incluye capturas de pantalla y ejemplos que refuerzan la seguridad
+		del usuario al operar el sistema.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Guía Rápida:</strong></h3>
+<ol>
+<ul>
+<li><p>Contenido: Resumen de las operaciones esenciales
+		de la aplicación.</p></li>
+<li><p>Propósito: Permitir al usuario empezar a usar la
+		aplicación rápidamente.</p></li>
+<li><p>Características: Resumida, clara, con
+		instrucciones paso a paso, enfocada en el inicio rápido de tareas.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Manual de Instalación:</strong></h3>
+<ol>
+<ul>
+<li><p>Contenido: Instrucciones detalladas para instalar
+		el software, incluyendo pasos secuenciales, requisitos mínimos y
+		recomendados de hardware y software.</p></li>
+<li><p>Propósito: Asegurar una instalación correcta y
+		estable del sistema.</p></li>
+<li><p>Características: Documento técnico, paso a
+		paso, fundamental para administradores y personal de despliegue.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Manual de Configuración y
+Administración:</strong></h3>
+<ol>
+<ul>
+<li><p>Contenido: Parametrización avanzada del sistema,
+		configuración de red, gestión de permisos, mantenimiento y
+		administración general.</p></li>
+<li><p>Propósito: Proporcionar a los administradores
+		las herramientas necesarias para operar y mantener el software en
+		producción.</p></li>
+<li><p>Características: Documento técnico, detallado,
+		orientado a expertos o personal técnico.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3681_3487988700" lang="es">
+<strong>3.2. </strong><strong>Diferencias clave entre documentos:</strong></h2>
+<ul>
+<li><p><strong>Manual de Usuario y Guía Rápida:</strong>
+	funcionales y orientados al uso.</p></li>
+<li><p><strong>Manual de Instalación y Configuración:</strong>
+	técnicos y orientados al despliegue y administración.</p></li>
+<li><p><strong>Tutoriales y ejemplos</strong>  se
+	consideran parte de la documentación externa funcional.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3683_3487988700" lang="es">
+<strong>3.3. </strong><strong>Importancia de la documentación
+externa:</strong></h2>
+<ul>
+<li><p>Reduce errores por uso incorrecto del software.</p></li>
+<li><p>Facilita el aprendizaje y la adopción rápida del
+	sistema.</p></li>
+<li><p>Proporciona confianza al usuario a través de
+	ejemplos y guías claras.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3685_3487988700" lang="es">
+<strong>4. Tutoriales y ejemplos</strong></h1>
+<p>Un <strong>tutorial</strong>  es un documento de la
+documentación externa diseñado para <strong>enseñar al usuario a
+realizar tareas concretas paso a paso</strong>. Su finalidad es
+<strong>aprender haciendo</strong>, proporcionando confianza y
+seguridad al usuario en el uso del software.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3687_3487988700" lang="es">
+<strong>4.1. </strong><strong>Características principales:</strong></h2>
+<ul>
+<li><p>Documentación <strong>externa</strong>  y
+	funcional.</p></li>
+<li><p>Estructura simple y directa, orientada a la
+	práctica.</p></li>
+<li><p>Complementa el manual de usuario o la guía
+	rápida.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3689_3487988700" lang="es">
+<strong>4.2. </strong><strong>Estructura típica de un tutorial:</strong></h2>
+<ol>
+<li><p><strong>Título:</strong> identifica la tarea o
+	proceso que se va a aprender.</p></li>
+<li><p><strong>Introducción:</strong> contextualiza el
+	tutorial, explicando el objetivo y los requisitos previos.</p></li>
+<li><p><strong>Redacción de los pasos:</strong>
+	instrucciones detalladas, secuenciales y claras para completar la
+	tarea.</p></li>
+<li><p><strong>Ejemplos:</strong> muestran casos de uso
+	reales o simulados, reforzando la comprensión y la seguridad del
+	usuario.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3691_3487988700" lang="es">
+<strong>4.3. </strong><strong>Relación con otros documentos:</strong></h2>
+<ul>
+<li><p>Muy similar a la <strong>guía rápida</strong>  en
+	cuanto a simplicidad y enfoque práctico.</p></li>
+<li><p>Puede incluir capturas de pantalla y ejemplos que
+	también forman parte del manual de usuario completo.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3693_3487988700" lang="es">
+<strong>4.4. </strong><strong>Objetivos principales:</strong></h2>
+<ul>
+<li><p>Facilitar la <strong>comprensión rápida de
+	tareas específicas</strong>.</p></li>
+<li><p>Dar <strong>confianza al usuario</strong>  mediante
+	ejemplos prácticos.</p></li>
+<li><p>Servir como complemento didáctico al manual de
+	usuario.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3695_3487988700" lang="es">
+<strong>4.5. </strong><strong>Importancia de los ejemplos:</strong></h2>
+<ul>
+<li><p>Demuestran cómo lograr resultados exitosos con la
+	aplicación.</p></li>
+<li><p>Permiten que el usuario vea aplicaciones concretas
+	de funciones abstractas.</p></li>
+<li><p>Ayudan a reforzar la seguridad y confianza durante
+	el aprendizaje.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3697_3487988700" lang="es">
+<strong>5. Sistemas de ayuda integrados en Java (JavaHelp)</strong></h1>
+<p><strong>JavaHelp</strong>  es una <strong>API estándar
+de Java</strong>  para integrar sistemas de ayuda en aplicaciones de
+escritorio. Permite que el software incluya un <strong>sistema de
+ayuda navegable, con búsqueda, índice y tabla de contenidos</strong>,
+mejorando la experiencia del usuario.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3699_3487988700" lang="es">
+<strong>5.1. </strong><strong>Componentes principales de JavaHelp:</strong></h2>
+<h3 lang="es"><strong>	Fichero Helpset (</strong><strong><code>.hs</code></strong><strong>
+/ XML):</strong></h3>
+<ol>
+<ul>
+<li><p>Archivo principal que <strong>representa el
+		sistema de ayuda completo</strong>.</p></li>
+<li><p>Contiene referencias a la tabla de contenidos,
+		índice, mapa de ayuda y archivos HTML.</p></li>
+<li><p>Funciona como <strong>contenedor de toda la
+		ayuda</strong>.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Fichero de índices
+(</strong><strong><code>index.xml</code></strong><strong>):</strong></h3>
+<ol>
+<ul>
+<li><p>Define términos clave que se pueden buscar
+		dentro de los documentos de ayuda.</p></li>
+<li><p>Es utilizado por el <strong>motor de búsqueda</strong> 
+		para localizar rápidamente los temas.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Fichero de mapeo (</strong><strong><code>.jhm</code></strong><strong>):</strong></h3>
+<ol>
+<ul>
+<li><p>Asocia los identificadores de ayuda a archivos
+		HTML específicos.</p></li>
+<li><p>Facilita la navegación y la búsqueda contextual
+		dentro del sistema de ayuda.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Tabla de contenidos (TOC,
+XML):</strong></h3>
+<ol>
+<ul>
+<li><p>Estructura jerárquica de capítulos y
+		subcapítulos.</p></li>
+<li><p>Permite una <strong>navegación organizada</strong> 
+		y facilita la consulta por temas.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Motor de búsqueda:</strong></h3>
+<ol>
+<ul>
+<li><p>Permite realizar <strong>búsquedas por palabras
+		clave</strong>  dentro de los documentos HTML.</p></li>
+<li><p>Utiliza los ficheros de índices y mapas para
+		localizar resultados relevantes.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Clase </strong><strong><code>HelpSet</code></strong><strong>:</strong></h3>
+<ol>
+<ul>
+<li><p>Carga y organiza todos los componentes del
+		sistema de ayuda.</p></li>
+<li><p>No realiza búsquedas ni abre ventanas
+		directamente; esas tareas las gestionan otras clases como Jhelp.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3701_3487988700" lang="es">
+<strong>5.2. </strong><strong>Importancia de JavaHelp en la
+documentación:</strong></h2>
+<ul>
+<li><p>Proporciona un <strong>sistema de ayuda integrado
+	y consistente</strong>  dentro de la aplicación.</p></li>
+<li><p>Facilita la consulta rápida de temas por parte de
+	usuarios finales y administradores.</p></li>
+<li><p>Permite mantener la documentación actualizada de
+	forma centralizada.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc4640_3487988700" lang="es">
+<strong>6. Estructura general de la documentación</strong></h1>
+<p>La estructura de la documentación organiza la
+información de manera lógica y accesible para los distintos
+públicos, asegurando que <strong>usuarios, administradores y
+desarrolladores</strong>  encuentren lo que necesitan rápidamente.</p>
+<hr/>
+<h2 id="__RefHeading___Toc4642_3487988700" lang="es">
+<strong>6.1. </strong><strong>Componentes principales:</strong></h2>
+<h3 lang="es"><strong>	Manual de Usuario:</strong></h3>
+<ol>
+<ul>
+<li><p><strong>Introducción:</strong> contexto del
+		sistema y objetivos del manual.</p></li>
+<li><p><strong>Apartados por módulo:</strong>
+		descripción de funcionalidades de cada módulo del software.</p></li>
+<li><p><strong>Guía de referencia:</strong> glosario de
+		términos, definiciones, atajos o comandos.</p></li>
+<li><p><strong>Ejemplos y tutoriales:</strong> refuerzan
+		la comprensión y la confianza del usuario.</p></li>
+<li><p>Incluye capturas de pantalla y pasos prácticos.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Guía Rápida:</strong></h3>
+<ol>
+<ul>
+<li><p>Documento resumido y funcional para iniciar el
+		uso del software rápidamente.</p></li>
+<li><p>Contiene instrucciones esenciales paso a paso.</p></li>
+<li><p>Muy útil para usuarios que necesitan comenzar
+		sin leer el manual completo.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Manual de Instalación:</strong></h3>
+<ol>
+<ul>
+<li><p>Pasos detallados de instalación del software.</p></li>
+<li><p>Requisitos mínimos y recomendados de hardware y
+		software.</p></li>
+<li><p>Secuencias de instalación para asegurar
+		funcionamiento correcto.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Manual de Configuración y
+Administración:</strong></h3>
+<ol>
+<ul>
+<li><p>Ajustes avanzados del sistema, permisos, red y
+		mantenimiento.</p></li>
+<li><p>Dirigido a administradores y personal técnico.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Glosario de términos:</strong></h3>
+<ol>
+<ul>
+<li><p>Incluido normalmente en la <strong>guía de
+		referencia</strong>  o manual de usuario completo.</p></li>
+<li><p>No se incluye en tutoriales ni guías rápidas.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Normas de presentación y
+buenas prácticas:</strong></h3>
+<ol>
+<ul>
+<li><p>Claridad, consistencia y lenguaje técnico
+		adecuado según el público.</p></li>
+<li><p>Uso de capturas, diagramas y ejemplos para
+		mejorar comprensión.</p></li>
+<li><p>Estructura modular que permite actualizar
+		secciones sin afectar otras partes.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc4644_3487988700" lang="es">
+<strong>6.2. </strong><strong>Importancia de la estructura:</strong></h2>
+<ul>
+<li><p>Facilita la <strong>consulta rápida y eficiente</strong> 
+	según el tipo de usuario.</p></li>
+<li><p>Permite <strong>mantener coherencia y
+	actualizaciones</strong>  de manera ordenada.</p></li>
+<li><p>Mejora la <strong>usabilidad de la documentación</strong>,
+	asegurando que los usuarios puedan aprovechar todas las
+	funcionalidades del software.</p></li>
+</ul>
+<hr/>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

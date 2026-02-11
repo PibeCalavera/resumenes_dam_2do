@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Desarrollo
+de Interfaces – Unidad 7
+– Realización de pruebas</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Desarrollo
+de Interfaces – Unidad 7
+– Realización de pruebas</h1>
+<p>
+
+</p>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1393_2210907573">1. Fundamentos y objetivos de las pruebas de software</a></p>
+<p><a href="#__RefHeading___Toc1395_2210907573">1.1 Definición del sistema de prueba</a></p>
+<p><a href="#__RefHeading___Toc1397_2210907573">1.2 Propósito de las pruebas de software</a></p>
+<p><a href="#__RefHeading___Toc1399_2210907573">1.3 Éxito de una prueba</a></p>
+<p><a href="#__RefHeading___Toc1401_2210907573">1.4 Principios clave</a></p>
+<p><a href="#__RefHeading___Toc1403_2210907573">2. Fases y jerarquía de pruebas</a></p>
+<p><a href="#__RefHeading___Toc1405_2210907573">2.1 Fases de la etapa de pruebas</a></p>
+<p><a href="#__RefHeading___Toc1407_2210907573">2.2 Jerarquía de pruebas</a></p>
+<p><a href="#__RefHeading___Toc1409_2210907573">2.3 Principios de ejecución</a></p>
+<p><a href="#__RefHeading___Toc1411_2210907573">3. Tipos específicos de pruebas</a></p>
+<p><a href="#__RefHeading___Toc1413_2210907573">3.1 Pruebas unitarias</a></p>
+<p><a href="#__RefHeading___Toc1415_2210907573">3.2 Pruebas de integración</a></p>
+<p><a href="#__RefHeading___Toc1417_2210907573">3.3 Pruebas de regresión</a></p>
+<p><a href="#__RefHeading___Toc1419_2210907573">4. Pruebas de seguridad</a></p>
+<p><a href="#__RefHeading___Toc1421_2210907573">4.1 Definición</a></p>
+<p><a href="#__RefHeading___Toc1423_2210907573">4.2 Conceptos clave</a></p>
+<p><a href="#__RefHeading___Toc1425_2210907573">4.3 Objetivos y buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1427_2210907573">4.4 Ejemplos de preguntas cubiertas</a></p>
+<p><a href="#__RefHeading___Toc1429_2210907573">5. Pruebas de rendimiento, volumen y uso de recursos</a></p>
+<p><a href="#__RefHeading___Toc1431_2210907573">5.1 Definición y objetivos</a></p>
+<p><a href="#__RefHeading___Toc1433_2210907573">5.2 Métricas clave</a></p>
+<p><a href="#__RefHeading___Toc1435_2210907573">5.3 Herramientas principales</a></p>
+<p><a href="#__RefHeading___Toc1437_2210907573">5.4 Fases de las pruebas de rendimiento y uso de recursos</a></p>
+<p><a href="#__RefHeading___Toc1439_2210907573">5.5 Conceptos importantes</a></p>
+<p><a href="#__RefHeading___Toc1441_2210907573">5.6 Preguntas cubiertas</a></p>
+<p><a href="#__RefHeading___Toc1443_2210907573">Resumen compacto – Unidad 7: Realización de pruebas</a></p>
+<p><a href="#__RefHeading___Toc1445_2210907573">1. Fundamentos y objetivos</a></p>
+<p><a href="#__RefHeading___Toc1447_2210907573">2. Fases y jerarquía</a></p>
+<p><a href="#__RefHeading___Toc1449_2210907573">3. Tipos específicos de pruebas</a></p>
+<p><a href="#__RefHeading___Toc1451_2210907573">4. Pruebas de seguridad</a></p>
+<p><a href="#__RefHeading___Toc1453_2210907573">5. Pruebas de rendimiento, volumen y recursos</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1393_2210907573" lang="es">
+<strong>1. Fundamentos y objetivos de las pruebas de software</strong></h1>
+<h2 id="__RefHeading___Toc1395_2210907573" lang="es">
+1.1 Definición del sistema de prueba</h2>
+<ul>
+<li><p>Un <strong>sistema de prueba</strong>  es el
+	conjunto de estrategias, herramientas y procedimientos que permiten
+	evaluar el software para:</p>
+<ul>
+<li><p>Comparar el sistema implementado con sus
+		<strong>especificaciones</strong>.</p></li>
+<li><p>Detectar <strong>defectos o incongruencias</strong>.</p></li>
+<li><p>Verificar que las <strong>correcciones de errores
+		no introduzcan nuevos fallos</strong>.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1397_2210907573" lang="es">
+1.2 Propósito de las pruebas de software</h2>
+<ul>
+<li><p>Garantizar la <strong>calidad del producto final</strong> 
+	antes de su entrega al cliente.</p></li>
+<li><p>Identificar <strong>errores y defectos</strong> 
+	para corregirlos a tiempo.</p></li>
+<li><p>Aumentar la <strong>objetividad</strong>  de la
+	evaluación: las pruebas deben ser realizadas por <strong>personas
+	distintas a los desarrolladores</strong>  del código.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1399_2210907573" lang="es">
+1.3 Éxito de una prueba</h2>
+<ul>
+<li><p>Según la Unidad 7, <strong>una prueba tiene éxito
+	cuando detecta un error</strong>.</p></li>
+<li><p>Nota conceptual: aunque una prueba pueda parecer
+	“exitosa” si el resultado esperado se obtiene, <strong>el
+	corrector prioriza la definición basada en detección de defectos</strong>.</p></li>
+<li><p>Este enfoque refuerza el objetivo principal de las
+	pruebas: <strong>encontrar errores para mejorar la calidad del
+	software</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1401_2210907573" lang="es">
+1.4 Principios clave</h2>
+<ul>
+<li><p><strong>No garantiza ausencia total de errores:</strong>
+	las pruebas buscan <strong>detectar defectos</strong>, no probar
+	exhaustivamente cada posible error.</p></li>
+<li><p><strong>Detección temprana:</strong> cuanto antes
+	se detecten errores, más barato y sencillo es corregirlos.</p></li>
+<li><p><strong>Objetividad:</strong> realizar pruebas con
+	evaluadores externos a los desarrolladores reduce sesgos y aumenta
+	la efectividad.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1403_2210907573" lang="es">
+<strong>2. Fases y jerarquía de pruebas</strong></h1>
+<h2 id="__RefHeading___Toc1405_2210907573" lang="es">
+2.1 Fases de la etapa de pruebas</h2>
+<p>Las fases dentro de la etapa de pruebas se estructuran
+para asegurar que <strong>cada aspecto del software es evaluado de
+manera sistemática</strong>:</p>
+<ol>
+<li><p><strong>Planificación de pruebas</strong></p>
+<ul>
+<li><p>Diseñar el <strong>plan de pruebas</strong>,
+		definiendo objetivos, alcance, criterios de éxito, recursos y
+		herramientas necesarias.</p></li>
+</ul>
+<li><p><strong>Diseño de pruebas</strong></p>
+<ul>
+<li><p>Definir los <strong>casos de prueba</strong>,
+		escenarios y condiciones específicas que serán evaluadas.</p></li>
+<li><p>Incluye la identificación de <strong>entradas,
+		salidas y resultados esperados</strong>.</p></li>
+</ul>
+<li><p><strong>Ejecución de pruebas</strong></p>
+<ul>
+<li><p>Realizar los <strong>tests según los casos y
+		escenarios definidos</strong>.</p></li>
+<li><p>Recoger resultados, errores y comportamientos
+		inesperados.</p></li>
+</ul>
+<li><p><strong>Evaluación de resultados</strong></p>
+<ul>
+<li><p>Analizar los resultados obtenidos, compararlos
+		con las especificaciones y decidir si se requiere <strong>corrección
+		o re-ejecución de pruebas</strong>.</p></li>
+</ul>
+</li></li></li></li></ol>
+<p><strong>Nota:</strong> Analizar los requisitos
+pertenece a la fase de <strong>análisis del proyecto</strong>, no a
+la etapa de pruebas.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1407_2210907573" lang="es">
+2.2 Jerarquía de pruebas</h2>
+<p>El <strong>orden de ejecución de las pruebas</strong> 
+sigue una jerarquía basada en la complejidad y las dependencias
+entre módulos:</p>
+<ol>
+<li><p><strong>Pruebas unitarias</strong></p>
+<ul>
+<li><p>Verifican <strong>cada módulo o componente
+		individual</strong>.</p></li>
+<li><p>Se realizan <strong>en primer lugar</strong>  para
+		detectar errores tempranos.</p></li>
+<li><p>Reducen costos de corrección y facilitan el
+		desarrollo posterior.</p></li>
+</ul>
+<li><p><strong>Pruebas de integración</strong></p>
+<ul>
+<li><p>Evalúan que los <strong>módulos interactúen
+		correctamente</strong>.</p></li>
+<li><p><strong>Tipos principales:</strong></p>
+<ul>
+<li><p><strong>Incremental ascendente (Bottom-Up):</strong>
+			se empieza con módulos más independientes y con menos
+			dependencias.</p></li>
+<li><p><strong>Incremental descendente (Top-Down):</strong>
+			se empieza con módulos principales o de alto nivel.</p></li>
+<li><p><strong>No incremental / Big Bang:</strong> se
+			integran todos los módulos de golpe, más difícil aislar
+			errores.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Pruebas de sistema</strong></p>
+<ul>
+<li><p>Verifican el <strong>funcionamiento completo del
+		sistema</strong>  frente a las especificaciones funcionales y no
+		funcionales.</p></li>
+<li><p>Evalúan la <strong>coherencia entre componentes
+		y su comportamiento global</strong>.</p></li>
+</ul>
+<li><p><strong>Pruebas de aceptación</strong></p>
+<ul>
+<li><p>Se realizan desde la perspectiva del <strong>usuario
+		o cliente</strong>.</p></li>
+<li><p>Validan que el sistema <strong>cumpla los
+		requisitos y expectativas reales</strong>  antes de la entrega.</p></li>
+</ul>
+</li></li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1409_2210907573" lang="es">
+2.3 Principios de ejecución</h2>
+<ul>
+<li><p>El orden sigue <strong>de lo más independiente y
+	simple a lo más global y complejo</strong>.</p></li>
+<li><p>Detectar errores en etapas tempranas (unitarias y
+	de integración) <strong>reduce costes y facilita la corrección</strong>.</p></li>
+<li><p>Las pruebas de sistema y aceptación <strong>verifican
+	la coherencia global</strong>  y la conformidad con las
+	especificaciones.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1411_2210907573" lang="es">
+<strong>3. Tipos específicos de pruebas</strong></h1>
+<h2 id="__RefHeading___Toc1413_2210907573" lang="es">
+3.1 Pruebas unitarias</h2>
+<ul>
+<li><p><strong>Definición:</strong> Verifican el
+	correcto funcionamiento de <strong>módulos o componentes
+	individuales</strong>  de forma aislada.</p></li>
+<li><p><strong>Momento de ejecución:</strong> Se
+	realizan <strong>en primer lugar</strong>  dentro de la fase de
+	pruebas.</p></li>
+<li><p><strong>Objetivo principal:</strong></p>
+<ul>
+<li><p>Detectar errores <strong>en etapas tempranas</strong>,
+		cuando son más fáciles y baratos de corregir.</p></li>
+<li><p>Garantizar que <strong>cada módulo funciona
+		según lo esperado</strong>  antes de integrarlo con otros.</p></li>
+</ul>
+<li><p><strong>Herramientas y metodologías:</strong></p>
+<ul>
+<li><p><strong>JUnit</strong>  (para aplicaciones Java)</p>
+<ul>
+<li><p><strong>Métodos de aserción:</strong>
+assertEquals, assertTrue,
+			assertNotNull, etc., que determinan
+			si la prueba pasa o falla.</p></li>
+<li><p><strong>Clase </strong><strong>Assert</strong><strong>:</strong>
+			proporciona los métodos de comparación entre valores esperados y
+			calculados.</p></li>
+</ul>
+<li><p>Las pruebas unitarias <strong>no verifican la
+		integración entre módulos</strong>, solo su funcionalidad
+		individual.</p></li>
+</li></ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1415_2210907573" lang="es">
+3.2 Pruebas de integración</h2>
+<ul>
+<li><p><strong>Definición:</strong> Verifican que <strong>los
+	módulos interactúan correctamente entre sí</strong>  cuando se
+	combinan.</p></li>
+<li><p><strong>Objetivo:</strong> Detectar errores
+	derivados de la interacción entre componentes que funcionan
+	correctamente de forma aislada.</p></li>
+<li><p><strong>Tipos de integración:</strong></p>
+<ol>
+<li><p><strong>Incremental ascendente (Bottom-Up):</strong></p>
+<ul>
+<li><p>Comienza con módulos o clases <strong>menos
+			dependientes</strong>, luego se integran los más dependientes.</p></li>
+<li><p>Facilita la identificación de errores locales y
+			reduce la complejidad inicial.</p></li>
+</ul>
+<li><p><strong>Incremental descendente (Top-Down):</strong></p>
+<ul>
+<li><p>Comienza con módulos de <strong>alto nivel o
+			principales</strong>, simulando los subordinados con stubs.</p></li>
+</ul>
+<li><p><strong>No incremental / Big Bang:</strong></p>
+<ul>
+<li><p>Todos los módulos se integran y prueban
+			simultáneamente.</p></li>
+<li><p>Dificulta aislar errores y es más arriesgado si
+			hay fallos en varios módulos.</p></li>
+</ul>
+</li></li></li></ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1417_2210907573" lang="es">
+3.3 Pruebas de regresión</h2>
+<ul>
+<li><p><strong>Definición:</strong> Evaluan que <strong>los
+	cambios recientes no introduzcan nuevos errores</strong>  en
+	funcionalidades previamente correctas.</p></li>
+<li><p><strong>Momento de ejecución:</strong> Tras
+	realizar <strong>correcciones, parches o actualizaciones</strong>  en
+	el software.</p></li>
+<li><p><strong>Objetivo principal:</strong></p>
+<ul>
+<li><p>Asegurar que las <strong>correcciones de errores
+		han tenido éxito</strong>  y que no se han generado defectos
+		nuevos.</p></li>
+</ul>
+<li><p><strong>Importancia:</strong></p>
+<ul>
+<li><p>Mantener la <strong>estabilidad del sistema</strong> 
+		a lo largo del ciclo de vida del desarrollo.</p></li>
+<li><p>Minimizar riesgos asociados a cambios y
+		actualizaciones frecuentes.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc1419_2210907573" lang="es">
+<strong>4. Pruebas de seguridad</strong></h1>
+<h2 id="__RefHeading___Toc1421_2210907573" lang="es">
+4.1 Definición</h2>
+<ul>
+<li><p>Las pruebas de seguridad verifican que <strong>los
+	usuarios sólo puedan acceder a funciones y datos autorizados</strong>,
+	protegiendo la integridad y confidencialidad del sistema.</p></li>
+<li><p>Objetivo principal: <strong>garantizar el control
+	de acceso correcto según roles y permisos</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1423_2210907573" lang="es">
+4.2 Conceptos clave</h2>
+<ol>
+<li><p><strong>Autenticación:</strong></p>
+<ul>
+<li><p>Proceso para <strong>verificar la identidad</strong> 
+		de un usuario o sistema antes de permitir acceso.</p></li>
+<li><p>Ejemplos: login con usuario/contraseña,
+		certificados digitales, autenticación multifactor.</p></li>
+</ul>
+<li><p><strong>Autorización:</strong></p>
+<ul>
+<li><p>Define <strong>qué acciones y datos</strong> 
+		puede usar un usuario autenticado según su rol.</p></li>
+<li><p>Ejemplo práctico:</p>
+<ul>
+<li><p>“Cada usuario puede crear cuentas, pero sólo
+			los administradores pueden borrarlas”.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Control de acceso basado en roles (RBAC):</strong></p>
+<ul>
+<li><p>Los usuarios tienen permisos asignados <strong>según
+		su rol</strong>, limitando las funciones y datos disponibles.</p></li>
+<li><p>Esto asegura que <strong>nadie pueda ejecutar
+		acciones fuera de su nivel de privilegio</strong>.</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1425_2210907573" lang="es">
+4.3 Objetivos y buenas prácticas</h2>
+<ul>
+<li><p>Detectar posibles <strong>brechas de seguridad y
+	accesos indebidos</strong>  antes de la entrega del software.</p></li>
+<li><p>Garantizar que <strong>los mecanismos de control
+	de acceso sean consistentes</strong>  y confiables.</p></li>
+<li><p>Realizar pruebas con <strong>usuarios distintos a
+	los desarrolladores</strong>  para asegurar objetividad.</p></li>
+<li><p>Validar tanto la <strong>autenticación</strong> 
+	(quién puede entrar) como la <strong>autorización</strong>  (qué
+	puede hacer).</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1427_2210907573" lang="es">
+4.4 Ejemplos de preguntas cubiertas</h2>
+<ul>
+<li><p>¿Qué pruebas aseguran que los usuarios están
+	restringidos a funciones y datos autorizados? → <strong>Pruebas de
+	seguridad</strong>.</p></li>
+<li><p>Proceso de verificar identidad antes del acceso →
+	<strong>Autenticación</strong>.</p></li>
+<li><p>Restricción de funciones según permisos →
+	<strong>Autorización / control de acceso</strong>.</p></li>
+<li><p>Ejemplo: creación y eliminación de cuentas según
+	rol de usuario.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1429_2210907573" lang="es">
+<strong>5. Pruebas de rendimiento, volumen y uso de recursos</strong></h1>
+<h2 id="__RefHeading___Toc1431_2210907573" lang="es">
+5.1 Definición y objetivos</h2>
+<ul>
+<li><p><strong>Pruebas de rendimiento:</strong> Evalúan
+	<strong>la capacidad de respuesta, velocidad y estabilidad</strong> 
+	del sistema bajo condiciones normales y extremas.</p></li>
+<li><p><strong>Pruebas de volumen:</strong> Se centran en
+	el <strong>comportamiento del sistema frente a grandes cantidades de
+	datos</strong>  (bases de datos extensas, transacciones masivas).</p></li>
+<li><p><strong>Pruebas de uso de recursos:</strong> Miden
+	<strong>CPU, memoria, número de threads, tamaño de la pila, y
+	otros recursos del sistema</strong>  para asegurar eficiencia y
+	evitar cuellos de botella.</p></li>
+<li><p>Objetivo formal: <strong>especificar cómo se
+	comporta el sistema ante condiciones particulares de trabajo</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1433_2210907573" lang="es">
+5.2 Métricas clave</h2>
+<ul>
+<li><p><strong>Memoria utilizada</strong>  (heap y
+	non-heap) y actividad del Garbage Collector.</p></li>
+<li><p><strong>Uso de CPU</strong>  por la aplicación.</p></li>
+<li><p><strong>Tiempo de respuesta</strong>  o latencia
+	ante solicitudes.</p></li>
+<li><p><strong>Número de threads activos</strong>  y
+	consumo de recursos del sistema.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1435_2210907573" lang="es">
+5.3 Herramientas principales</h2>
+<ol>
+<li><p><strong>JMeter:</strong></p>
+<ul>
+<li><p>Permite realizar <strong>pruebas de carga y
+		estrés</strong>, simulando múltiples usuarios concurrentes.</p></li>
+<li><p>Útil para aplicaciones web y servicios, midiendo
+		tiempos de respuesta y estabilidad bajo carga.</p></li>
+</ul>
+<li><p><strong>JConsole:</strong></p>
+<ul>
+<li><p>Herramienta para <strong>monitorización de
+		aplicaciones Java</strong>.</p></li>
+<li><p>Permite supervisar:</p>
+<ul>
+<li><p>Uso de <strong>CPU</strong>  y memoria (heap y
+			non-heap).</p></li>
+<li><p>Actividad del <strong>Garbage Collector</strong>.</p></li>
+<li><p>Número de <strong>threads</strong>  y estado de
+			la JVM.</p></li>
+</ul>
+<li><p>Requiere instalación del <strong>JDK</strong> 
+		para su uso.</p></li>
+</li></ul>
+</li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1437_2210907573" lang="es">
+5.4 Fases de las pruebas de rendimiento y uso de recursos</h2>
+<ol>
+<li><p><strong>Preparación de la infraestructura:</strong>
+	Configurar hardware, red, servidores y entornos de prueba.</p></li>
+<li><p><strong>Definición de escenarios de prueba:</strong>
+	Determinar <strong>cargas, tipos de transacciones y condiciones
+	específicas</strong>  a evaluar.</p></li>
+<li><p><strong>Automatización de pruebas:</strong> Usar
+	herramientas como JMeter para <strong>simular múltiples usuarios y
+	ciclos de prueba</strong>.</p></li>
+<li><p><strong>Ejecución y monitoreo:</strong> Registrar
+	métricas clave, identificar cuellos de botella y analizar
+	resultados.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1439_2210907573" lang="es">
+5.5 Conceptos importantes</h2>
+<ul>
+<li><p><strong>Pruebas de volumen:</strong> Abarcan
+	sistemas de escritorio, servidores y servicios; todas son válidas
+	para evaluar comportamiento con grandes cantidades de datos.</p></li>
+<li><p><strong>Pruebas de uso de recursos:</strong> No
+	buscan errores funcionales, sino <strong>eficiencia y estabilidad
+	bajo carga</strong>.</p></li>
+<li><p><strong>Éxito de la prueba de recursos:</strong>
+	Se define por el <strong>cumplimiento de los niveles de rendimiento
+	esperados y la estabilidad del sistema</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1441_2210907573" lang="es">
+5.6 Preguntas cubiertas</h2>
+<ul>
+<li><p>Métricas monitoreadas: <strong>CPU, memoria,
+	threads, latencia</strong>.</p></li>
+<li><p>Herramientas: <strong>JMeter para carga/estrés,
+	JConsole para monitorización de recursos Java</strong>.</p></li>
+<li><p>Fases y procedimiento de pruebas de rendimiento y
+	recursos.</p></li>
+<li><p>Relación con definición formal: <strong>especificar
+	comportamiento bajo condiciones particulares de trabajo</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1443_2210907573" lang="es">
+<strong>Resumen compacto – Unidad 7: Realización de pruebas</strong></h1>
+<h2 id="__RefHeading___Toc1445_2210907573" lang="es">
+1. Fundamentos y objetivos</h2>
+<ul>
+<li><p><strong>Sistema de prueba:</strong> compara
+	software con especificaciones, detecta defectos, verifica
+	correcciones.</p></li>
+<li><p><strong>Propósito:</strong> mejorar <strong>calidad
+	del software</strong>, detectar errores, garantizar <strong>objetividad</strong>.</p></li>
+<li><p><strong>Éxito de prueba:</strong> cuando <strong>se
+	descubre un error</strong>  (definición oficial).</p></li>
+<li><p><strong>Principios:</strong> detección temprana →
+	reduce costes; pruebas hechas por <strong>personas distintas a
+	desarrolladores</strong>; no garantizan ausencia total de errores.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1447_2210907573" lang="es">
+2. Fases y jerarquía</h2>
+<p><strong>Fases de pruebas:</strong></p>
+<ol>
+<li><p>Planificación  → objetivos, criterios,
+	recursos.</p></li>
+<li><p>Diseño  → casos de prueba y escenarios.</p></li>
+<li><p>Ejecución  → aplicar tests y recoger
+	resultados.</p></li>
+<li><p>Evaluación  → analizar resultados,
+	decidir correcciones.</p></li>
+</ol>
+<p><strong>Jerarquía de ejecución:</strong></p>
+<ol>
+<li><p><strong>Unitarias:</strong> módulos individuales,
+	primeros en ejecutarse, detectan errores tempranos.</p></li>
+<li><p><strong>Integración:</strong> interacción entre
+	módulos.</p>
+<ul>
+<li><p>Bottom-Up  (ascendente)</p></li>
+<li><p>Top-Down  (descendente)</p></li>
+<li><p>Big Bang  (no incremental)</p></li>
+</ul>
+<li><p><strong>Sistema:</strong> comportamiento completo
+	frente a especificaciones.</p></li>
+<li><p><strong>Aceptación:</strong> perspectiva de
+	usuario/cliente, valida requisitos reales.</p></li>
+</li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1449_2210907573" lang="es">
+3. Tipos específicos de pruebas</h2>
+<h3 lang="es">3.1 <b>Unitarias</b></h3>
+<ul>
+<li><p>Detectan errores en <strong>módulos individuales</strong>.</p></li>
+<li><p>Herramientas: <strong>JUnit</strong>, clase
+	<strong>Assert</strong>, métodos assertEquals,
+	assertTrue, etc.</p></li>
+</ul>
+<h3 lang="es">3.2 <b>Integración</b></h3>
+<ul>
+<li><p>Verifica interacción de módulos.</p></li>
+<li><p>Estrategias: incremental (ascendente/descendente),
+	Big Bang.</p></li>
+</ul>
+<h3 lang="es">3.3 <b>Regresión</b></h3>
+<ul>
+<li><p>Verifica que <strong>cambios no introduzcan
+	errores</strong>  nuevos.</p></li>
+<li><p>Se realizan tras correcciones, parches o
+	actualizaciones.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1451_2210907573" lang="es">
+4. Pruebas de seguridad</h2>
+<ul>
+<li><p>Objetivo: <strong>control de acceso correcto según
+	roles</strong>.</p></li>
+<li><p><strong>Autenticación:</strong> verificar
+	identidad antes de permitir acceso.</p></li>
+<li><p><strong>Autorización:</strong> restringir
+	acciones según permisos.</p></li>
+<li><p>Ejemplo: usuarios crean cuentas, sólo
+	administradores las borran.</p></li>
+<li><p>Buenas prácticas: pruebas realizadas por personas
+	distintas a desarrolladores, evaluar permisos y roles.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1453_2210907573" lang="es">
+5. Pruebas de rendimiento, volumen y recursos</h2>
+<ul>
+<li><p><strong>Rendimiento:</strong> velocidad, capacidad
+	de respuesta, estabilidad.</p></li>
+<li><p><strong>Volumen:</strong> comportamiento con
+	grandes cantidades de datos.</p></li>
+<li><p><strong>Uso de recursos:</strong> CPU, memoria,
+	threads, tamaño de pila.</p></li>
+<li><p><strong>Herramientas:</strong></p>
+<ul>
+<li><p><strong>JMeter:</strong> pruebas de carga y
+		estrés.</p></li>
+<li><p><strong>JConsole:</strong> monitorización de
+		CPU, memoria, GC y threads (requiere <strong>JDK</strong> ).</p></li>
+</ul>
+<li><p><strong>Fases:</strong> preparación de
+	infraestructura, definición de escenarios, automatización,
+	ejecución y monitoreo.</p></li>
+<li><p>Éxito: cumplimiento de niveles de
+	rendimiento y estabilidad esperados.</p></li>
+</li></ul>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

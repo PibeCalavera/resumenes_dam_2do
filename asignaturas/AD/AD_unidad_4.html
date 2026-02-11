@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Acceso
+a Datos – Unidad 4 – Bases de datos objeto relacionales y
+orientadas a objetos</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Acceso
+a Datos – Unidad 4 – Bases de datos objeto relacionales y
+orientadas a objetos</h1>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc2243_3609837347">1. Bases de datos objeto-relacionales (ORDBMS)</a></p>
+<p><a href="#__RefHeading___Toc2245_3609837347">1.1. Definición</a></p>
+<p><a href="#__RefHeading___Toc2247_3609837347">1.2. Objetivos principales</a></p>
+<p><a href="#__RefHeading___Toc2249_3609837347">1.3. Tipos de datos objeto en Oracle</a></p>
+<p><a href="#__RefHeading___Toc2251_3609837347">1.4. Comparación de objetos</a></p>
+<p><a href="#__RefHeading___Toc2253_3609837347">1.5. Identificadores de objetos (OID)</a></p>
+<p><a href="#__RefHeading___Toc2255_3609837347">1.6. Consultas y manipulación</a></p>
+<p><a href="#__RefHeading___Toc2257_3609837347">1.7. Ventajas de ORDBMS</a></p>
+<p><a href="#__RefHeading___Toc2259_3609837347">1.8. Desventajas de ORDBMS</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347">2. Bases de datos orientadas a objetos (OODBMS)</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347%20Copia%201">2.1. Definición</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347%20Copia%202">2.2. Objetivos principales</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347%20Copia%203">2.3. Ejemplos</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347%20Copia%204">2.4. Operaciones básicas</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347%20Copia%205">2.5. Consultas y condiciones</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347%20Copia%206">2.6. Gestión de transacciones</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347%20Copia%207">2.7. Ventajas de OODB</a></p>
+<p><a href="#__RefHeading___Toc2415_3609837347%20Copia%208">2.8. Desventajas de OODB</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347">3. Herramientas y clientes de exploración</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%201">3.1. Definición</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%202">3.2. Objetivos principales</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%203">3.3. Ejemplos de clientes</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%204">3.4. Funcionalidades principales</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%205">3.5. Operadores y métodos relacionados</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%206">3.6. Ventajas de estas herramientas</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%207">3.7. Limitaciones</a></p>
+<p><a href="#__RefHeading___Toc2419_3609837347">3. Documentación y migración de bases de datos objeto-relacionales y orientadas a objetos</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%208">3.1. Importancia de la documentación</a></p>
+<p><a href="#__RefHeading___Toc1829_1370591270">3.2. Elementos que se deben documentar</a></p>
+<p><a href="#__RefHeading___Toc1831_1370591270">3.3. Elementos que NO se deben documentar</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%2011">3.4. Migración de bases de datos</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%2012">3.5. Buenas prácticas ante cambios de versión</a></p>
+<p><a href="#__RefHeading___Toc2417_3609837347%20Copia%2013">3.6. Objetivos de la documentación y migración</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc2243_3609837347" lang="es">
+<strong>1. </strong><strong>Bases de datos objeto-relacionales
+(ORDBMS)</strong></h1>
+<h2 id="__RefHeading___Toc2245_3609837347" lang="es">
+<strong>1.</strong>1. Definición</h2>
+<p>Un <strong>ORDBMS</strong>  es un sistema gestor de
+bases de datos que combina la estructura relacional con conceptos de
+la programación orientada a objetos. Permite almacenar <strong>tipos
+de datos complejos</strong>, colecciones, herencia, métodos y
+encapsulación dentro de los tipos de datos, manteniendo
+compatibilidad con tablas relacionales tradicionales.</p>
+<hr/>
+<h2 id="__RefHeading___Toc2247_3609837347" lang="es">
+<strong>1.</strong>2. Objetivos principales</h2>
+<ul>
+<li><p>Integrar <strong>modelo relacional</strong>  y
+	<strong>modelo orientado a objetos</strong>.</p></li>
+<li><p>Soportar tipos de datos complejos y métodos
+	asociados a los objetos.</p></li>
+<li><p>Permitir la reutilización de estructuras y la
+	herencia de tipos.</p></li>
+<li><p>Facilitar la transición de sistemas relacionales
+	existentes a modelos más ricos y orientados a objetos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2249_3609837347" lang="es">
+<strong>1.</strong>3. Tipos de datos objeto en Oracle</h2>
+<ul>
+<li><p><strong>Definición de tipos:</strong></p></li>
+</ul>
+<pre><code>CREATE [OR REPLACE] TYPE nombre_tipo AS OBJECT (</code>
+<code>  </code><code>atributo1 TIPO,</code>
+<code>  </code><code>atributo2 TIPO,</code>
+<code>  </code><code>...</code>
+<code>  </code><code>MEMBER FUNCTION/PROCEDURE ...</code>
+<code>);</code></pre>
+<ul>
+<li><p><strong>Implementación de métodos:</strong></p></li>
+</ul>
+<pre><code>CREATE OR REPLACE TYPE BODY nombre_tipo AS</code>
+<code>  </code><code>&lt;implementación de métodos&gt;</code>
+<code>END;</code></pre>
+<ul>
+<li><p><strong>Tipos válidos:</strong> CHAR, VARCHAR2,
+	NUMBER, DATE, colecciones.</p></li>
+<li><p><strong>Tipos no permitidos:</strong> RECORD, LONG
+	RAW.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2251_3609837347" lang="es">
+<strong>1.</strong>4. Comparación de objetos</h2>
+<ul>
+<li><p><strong>MAP:</strong> define un cálculo sobre los
+	atributos del objeto para comparaciones, devuelve positivo, negativo
+	o cero.</p></li>
+<li><p><strong>ORDER:</strong> compara objetos basándose
+	en un atributo escalar (CHAR, NUMBER, DATE, etc.).</p></li>
+<li><p>Permite ordenar o buscar objetos en colecciones y
+	consultas OQL.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2253_3609837347" lang="es">
+<strong>1.</strong>5. Identificadores de objetos (OID)</h2>
+<ul>
+<li><p>En Oracle, se asignan <strong>automáticamente</strong> 
+	y son <strong>únicos</strong>  para cada objeto.</p></li>
+<li><p>Garantizan la identificación inequívoca de cada
+	instancia dentro de la tabla de objetos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2255_3609837347" lang="es">
+<strong>1.</strong>6. Consultas y manipulación</h2>
+<ul>
+<li><p><strong>ODL (Object Definition Language):</strong>
+	define los tipos de objeto (equivalente a DDL).</p></li>
+<li><p><strong>OQL (Object Query Language):</strong>
+	lenguaje declarativo tipo SQL. Permite realizar consultas sobre
+	objetos, incluyendo filtrado, ordenación y operaciones de
+	agregación.</p></li>
+<li><p><strong>Cláusulas principales:</strong> INSERT 
+	(inserción de objetos), UPDATE 
+	(modificación), DELETE  (borrado).</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2257_3609837347" lang="es">
+<strong>1.</strong>7. Ventajas de ORDBMS</h2>
+<ul>
+<li><p>Soporte de <strong>tipos de datos complejos y
+	colecciones</strong>.</p></li>
+<li><p>Compatibilidad con bases relacionales
+	tradicionales.</p></li>
+<li><p>Permite <strong>herencia, métodos y encapsulación</strong> 
+	dentro de los tipos de datos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2259_3609837347" lang="es">
+<strong>1.</strong>8. Desventajas de ORDBMS</h2>
+<ul>
+<li><p>Incrementa la <strong>complejidad</strong>  del
+	sistema.</p></li>
+<li><p>Mayor coste de mantenimiento.</p></li>
+<li><p>Posible incompatibilidad parcial con sistemas
+	puramente relacionales.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc2415_3609837347" lang="es">
+<strong>2. </strong><strong>Bases de datos orientadas a objetos
+(OODBMS)</strong></h1>
+<h2 id="__RefHeading___Toc2415_3609837347 Copia 1" lang="es">
+<strong>2.</strong>1. Definición</h2>
+<p>Una <strong>OODB</strong>  es un sistema gestor de bases
+de datos que almacena <strong>objetos completos</strong>, incluyendo
+sus <strong>atributos y métodos</strong>, siguiendo el paradigma
+orientado a objetos. No depende del modelo relacional y permite
+representar directamente la lógica y estructura del mundo real en el
+almacenamiento.</p>
+<hr/>
+<h2 id="__RefHeading___Toc2415_3609837347 Copia 2" lang="es">
+<strong>2.</strong>2. Objetivos principales</h2>
+<ul>
+<li><p>Almacenar <strong>objetos completos</strong>  con
+	sus métodos y relaciones.</p></li>
+<li><p>Facilitar el <strong>modelado directo del dominio
+	de la aplicación</strong>.</p></li>
+<li><p>Permitir operaciones CRUD (crear, leer,
+	actualizar, borrar) sobre objetos de manera directa.</p></li>
+<li><p>Gestionar transacciones y consistencia de datos
+	según el paradigma orientado a objetos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2415_3609837347 Copia 3" lang="es">
+<strong>2.</strong>3. Ejemplos</h2>
+<ul>
+<li><p><strong>NeoDatis:</strong> base de datos orientada
+	a objetos escrita en Java, multiplataforma.</p></li>
+<li><p><strong>Db4o:</strong> base de datos orientada a
+	objetos para Java y .NET, optimizada para aplicaciones embebidas y
+	de escritorio.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2415_3609837347 Copia 4" lang="es">
+<strong>2.</strong>4. Operaciones básicas</h2>
+<ul>
+<li><p><strong>Almacenar objetos:</strong></p>
+<ul>
+<li><p>NeoDatis: store(object)</p></li>
+<li><p>Db4o: store(object) 
+		seguido de commit()</p></li>
+</ul>
+<li><p><strong>Borrar objetos:</strong> delete(object)</p></li>
+<li><p><strong>Modificar objetos:</strong></p>
+<ul>
+<li><p>Se recupera el objeto, se modifican sus atributos
+		y se vuelve a almacenar ( store() )</p></li>
+<li><p>Luego se confirma con commit() 
+		(Db4o) o la operación se realiza directamente (NeoDatis)</p></li>
+</ul>
+<li><p><strong>Recuperar objetos:</strong></p>
+<ul>
+<li><p>Db4o: queryByExample(object) 
+		devuelve un ObjectSet.</p></li>
+<li><p>NeoDatis: CriteriaQuery 
+		con condiciones Where  y métodos gt(),
+		ge(), lt(),
+		le(), equal().</p></li>
+</ul>
+<li><p><strong>Operadores especiales:</strong></p>
+<ul>
+<li><p>ALL: recuperar todos
+		los objetos de una clase o tabla.</p></li>
+<li><p>VALUE: extraer
+		atributos individuales de los objetos.</p></li>
+</ul>
+</li></li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2415_3609837347 Copia 5" lang="es">
+<strong>2.</strong>5. Consultas y condiciones</h2>
+<ul>
+<li><p><strong>NeoDatis:</strong></p>
+<ul>
+<li><p>CriteriaQuery  define
+		la consulta.</p></li>
+<li><p>Clase Where  permite
+		aplicar condiciones sobre atributos.</p></li>
+<li><p>Métodos: gt() 
+		(mayor que), ge()  (mayor o igual),
+		lt()  (menor que), le() 
+		(menor o igual), equal()  (igual).</p></li>
+</ul>
+<li><p><strong>Db4o:</strong></p>
+<ul>
+<li><p>queryByExample(object) 
+		compara atributos con un patrón de ejemplo.</p></li>
+<li><p>Devuelve un ObjectSet 
+		que se puede iterar o filtrar.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2415_3609837347 Copia 6" lang="es">
+<strong>2.</strong>6. Gestión de transacciones</h2>
+<ul>
+<li><p><strong>Db4o:</strong></p>
+<ul>
+<li><p>Por defecto, se inicia implícitamente al abrir
+		un contenedor.</p></li>
+<li><p>commit(): confirma
+		los cambios de la transacción actual.</p></li>
+<li><p>rollback(): deshace
+		los cambios de la transacción.</p></li>
+</ul>
+<li><p><strong>NeoDatis:</strong></p>
+<ul>
+<li><p>Sistema <strong>optimista</strong>: los cambios
+		se almacenan en memoria hasta confirmación ( commit() ).</p></li>
+<li><p>rollback()  deshace
+		los cambios pendientes.</p></li>
+<li><p>En caso de error, se puede recuperar el estado
+		desde el archivo de transacción.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2415_3609837347 Copia 7" lang="es">
+<strong>2.</strong>7. Ventajas de OODB</h2>
+<ul>
+<li><p>Representación directa del mundo real mediante
+	objetos completos.</p></li>
+<li><p>Escalabilidad: creación de nuevos tipos de
+	objetos basados en los existentes.</p></li>
+<li><p>Integración natural con lenguajes orientados a
+	objetos.</p></li>
+<li><p>Soporte completo de métodos en objetos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2415_3609837347 Copia 8" lang="es">
+<strong>2.</strong>8. Desventajas de OODB</h2>
+<ul>
+<li><p>Incremento de la complejidad de diseño y
+	mantenimiento.</p></li>
+<li><p>Ausencia de un estándar universal completamente
+	definido.</p></li>
+<li><p>Posible reducción de la seguridad y control de
+	acceso en entornos complejos.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc2417_3609837347" lang="es">
+<strong>3. </strong><strong>Herramientas y clientes de exploración</strong></h1>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 1" lang="es">
+<strong>3.</strong>1. Definición</h2>
+<p>Las bases de datos orientadas a objetos suelen incluir
+<strong>clientes gráficos</strong>  que permiten navegar, explorar y
+administrar los objetos almacenados en la base de datos sin necesidad
+de programar. Estos clientes facilitan la <strong>inspección de
+estructuras, relaciones y colecciones de objetos</strong>, así como
+la ejecución de consultas básicas.</p>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 2" lang="es">
+<strong>3.</strong>2. Objetivos principales</h2>
+<ul>
+<li><p>Facilitar la <strong>visualización de objetos</strong> 
+	y sus atributos.</p></li>
+<li><p>Permitir la <strong>consulta y filtrado</strong> 
+	de objetos sin escribir código de acceso a datos.</p></li>
+<li><p>Ayudar en <strong>depuración y pruebas</strong> 
+	durante el desarrollo.</p></li>
+<li><p>Administrar la base de datos: inserciones,
+	modificaciones, eliminaciones y exportaciones.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 3" lang="es">
+<strong>3.</strong>3. Ejemplos de clientes</h2>
+<ul>
+<li><p><strong>NeoDatis ObjectExplorer:</strong></p>
+<ul>
+<li><p>Cliente gráfico incluido con NeoDatis.</p></li>
+<li><p>Permite explorar objetos y colecciones en un
+		archivo .odb.</p></li>
+<li><p>Muestra los atributos, relaciones y métodos de
+		los objetos.</p></li>
+<li><p>Permite ejecutar consultas simples y navegar
+		jerárquicamente por los datos.</p></li>
+</ul>
+<li><p><strong>Db4o Explorer:</strong> (conceptual, no
+	detallado en las preguntas)</p>
+<ul>
+<li><p>Funciona de manera similar, permitiendo
+		inspeccionar ObjectSet  y la estructura
+		de objetos en contenedores Db4o.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 4" lang="es">
+<strong>3.</strong>4. Funcionalidades principales</h2>
+<ul>
+<li><p><strong>Navegación:</strong> explorar clases,
+	objetos y colecciones dentro de la base de datos.</p></li>
+<li><p><strong>Visualización de atributos:</strong>
+	mostrar el valor de los campos de cada objeto.</p></li>
+<li><p><strong>Filtrado de objetos:</strong> aplicar
+	condiciones sobre atributos (por ejemplo, valores mayores que,
+	menores que o iguales).</p></li>
+<li><p><strong>Exportación/importación:</strong> mover
+	o copiar datos de una base de datos a otra ubicación.</p></li>
+<li><p><strong>Depuración:</strong> verificar que los
+	objetos y relaciones están correctamente almacenados.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 5" lang="es">
+<strong>3.</strong>5. Operadores y métodos relacionados</h2>
+<ul>
+<li><p>Para mostrar los valores de los atributos de un
+	objeto: <strong>operador </strong><strong>VALUE</strong>.</p></li>
+<li><p>Para filtrar datos en consultas:</p>
+<ul>
+<li><p><strong>NeoDatis:</strong> CriteriaQuery 
+		con Where  y métodos gt(),
+		ge(), lt(),
+		le(), equal().</p></li>
+<li><p>Permite consultas completas, parciales o basadas
+		en ejemplos.</p></li>
+</ul>
+<li><p>Para recuperar todos los objetos de una clase:
+	<strong>operador </strong><strong>ALL</strong>.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 6" lang="es">
+<strong>3.</strong>6. Ventajas de estas herramientas</h2>
+<ul>
+<li><p>Ahorro de tiempo en depuración y pruebas.</p></li>
+<li><p>Visualización directa de la estructura de objetos
+	y relaciones.</p></li>
+<li><p>Reducción de errores al evitar codificación
+	manual de consultas sencillas.</p></li>
+<li><p>Facilitan la migración o copia de bases de datos
+	al inspeccionar y exportar objetos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 7" lang="es">
+<strong>3.</strong>7. Limitaciones</h2>
+<ul>
+<li><p>Funcionalidades avanzadas (consultas complejas,
+	agregaciones o joins) pueden requerir <strong>código en NeoDatis o
+	Db4o</strong>, no solo la interfaz gráfica.</p></li>
+<li><p>No reemplazan el diseño ni la planificación de
+	la base de datos.</p></li>
+<li><p>Dependencia del cliente: algunas versiones pueden
+	no ser compatibles con todas las versiones de la base de datos.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc2419_3609837347" lang="es">
+<strong>3. </strong><strong>Documentación y migración de bases de
+datos objeto-relacionales y orientadas a objetos</strong></h1>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 8" lang="es">
+<strong>3.</strong>1. Importancia de la documentación</h2>
+<ul>
+<li><p>Documentar una aplicación que accede a una base
+	de datos es crucial para <strong>garantizar la portabilidad,
+	mantenibilidad y compatibilidad</strong>  ante cambios de versión
+	del SGBD o del entorno de ejecución.</p></li>
+<li><p>La documentación adecuada permite a futuros
+	desarrolladores o administradores <strong>comprender la
+	configuración, dependencias y métodos de acceso a datos</strong>,
+	evitando errores al actualizar o migrar sistemas.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1829_1370591270" lang="es">
+3.2. Elementos que se deben documentar</h2>
+<ol>
+<li><p><strong>Versión del sistema gestor de base de
+	datos (SGBD) utilizado</strong></p>
+<ul>
+<li><p>Permite garantizar compatibilidad ante
+		actualizaciones o migraciones.</p></li>
+</ul>
+<li><p><strong>Versión del JRE</strong></p>
+<ul>
+<li><p>Documentar la versión de la máquina virtual de
+		Java utilizada, ya que puede afectar la compatibilidad con
+		bibliotecas y el SGBD.</p></li>
+</ul>
+<li><p><strong>Versión de las bibliotecas de acceso al
+	SGBD</strong></p>
+<ul>
+<li><p>Incluye controladores (drivers) y librerías
+		específicas usadas por la aplicación para interactuar con la base
+		de datos.</p></li>
+<li><p>Fundamental para asegurar compatibilidad ante
+		cambios de versión.</p></li>
+</ul>
+<li><p><strong>Configuraciones específicas del SGBD</strong></p>
+<ul>
+<li><p>Opciones de inicialización, parámetros de
+		rendimiento, rutas de archivos de base de datos, etc.</p></li>
+<li><p>Permite replicar el entorno en otro sistema o
+		migrar a un nuevo servidor.</p></li>
+</ul>
+<li><p><strong>Diagrama de relaciones entre objetos</strong></p>
+<ul>
+<li><p>Representación visual de las relaciones entre
+		tablas, vistas y otros objetos utilizados por la aplicación.</p></li>
+</ul>
+</li></li></li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1831_1370591270" lang="es">
+3.3. Elementos que NO se deben documentar</h2>
+<ul>
+<li><p>Configuración temporal del IDE (NetBeans,
+	Eclipse, etc.) que no afecte directamente al acceso a la base de
+	datos.</p></li>
+<li><p>Detalles irrelevantes para la compatibilidad de
+	acceso a los datos o el comportamiento del SGBD.</p></li>
+<li><p>Método de conexión.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 11" lang="es">
+<strong>3.</strong>4. Migración de bases de datos</h2>
+<ul>
+<li><p><strong>NeoDatis:</strong></p>
+<ul>
+<li><p>Para ejecutar la base de datos en otra ubicación,
+		basta con <strong>copiar el archivo </strong><strong>.odb</strong>.</p></li>
+<li><p>También es posible utilizar comandos de
+		<strong>export/import</strong>, pero la copia directa mantiene la
+		integridad de los objetos y relaciones.</p></li>
+</ul>
+<li><p><strong>Db4o:</strong></p>
+<ul>
+<li><p>Similar: se puede trasladar el contenedor de base
+		de datos (.db4o ) a otra ubicación y
+		continuar trabajando.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 12" lang="es">
+<strong>3.</strong>5. Buenas prácticas ante cambios de versión</h2>
+<ul>
+<li><p>Mantener <strong>registro de la versión del SGBD</strong> 
+	y de las bibliotecas utilizadas.</p></li>
+<li><p>Documentar <strong>métodos de acceso y
+	transacciones</strong>  empleados en la aplicación.</p></li>
+<li><p>Verificar que las <strong>consultas y operaciones
+	sobre objetos</strong>  siguen funcionando tras la actualización.</p></li>
+<li><p>Realizar <strong>copias de seguridad</strong> 
+	antes de migrar la base de datos a otro servidor o versión.</p></li>
+<li><p>Probar la aplicación en un entorno de desarrollo
+	antes de aplicar cambios en producción.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc2417_3609837347 Copia 13" lang="es">
+<strong>3.</strong>6. Objetivos de la documentación y migración</h2>
+<ul>
+<li><p>Reducir riesgos al actualizar la base de datos.</p></li>
+<li><p>Facilitar la <strong>portabilidad</strong>  y el
+	mantenimiento del sistema.</p></li>
+<li><p>Asegurar la <strong>consistencia de los datos</strong> 
+	y la integridad de los objetos.</p></li>
+<li><p>Evitar errores debidos a dependencias ocultas de
+	versión o configuración del SGBD.</p></li>
+</ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

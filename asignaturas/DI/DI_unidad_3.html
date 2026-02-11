@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Desarrollo
+de Interfaces – Unidad
+3 – Diseño de Interfaces
+gráficas</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Desarrollo
+de Interfaces – Unidad
+3 – Diseño de Interfaces
+gráficas</h1>
+<p>
+
+</p>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1878_1452970379">1. Principios de diseño de interfaces</a></p>
+<p><a href="#__RefHeading___Toc1880_1452970379">1.1 Correspondencia (Mapping)</a></p>
+<p><a href="#__RefHeading___Toc1882_1452970379">1.2 Retroalimentación (Feedback)</a></p>
+<p><a href="#__RefHeading___Toc1884_1452970379">1.3 Consistencia y Previsibilidad</a></p>
+<p><a href="#__RefHeading___Toc1886_1452970379">1.4 Eficiencia</a></p>
+<p><a href="#__RefHeading___Toc1888_1452970379">1.5 Accesibilidad</a></p>
+<p><a href="#__RefHeading___Toc1890_1452970379">2. Controles y Componentes de UI</a></p>
+<p><a href="#__RefHeading___Toc1892_1452970379">2.1 Botones y Botones de Comando</a></p>
+<p><a href="#__RefHeading___Toc1894_1452970379">2.2 Botones tipo radio (Radio Buttons)</a></p>
+<p><a href="#__RefHeading___Toc1896_1452970379">2.3 Casillas de verificación (Checkboxes)</a></p>
+<p><a href="#__RefHeading___Toc1898_1452970379">2.4 Listas desplegables (Dropdown / Combo Box)</a></p>
+<p><a href="#__RefHeading___Toc1900_1452970379">2.5 Campos de texto y etiquetas</a></p>
+<p><a href="#__RefHeading___Toc1902_1452970379">2.6 Barras de herramientas (Toolbars)</a></p>
+<p><a href="#__RefHeading___Toc1904_1452970379">2.7 Pestañas (Tabs)</a></p>
+<p><a href="#__RefHeading___Toc1906_1452970379">2.8 Cuadros de diálogo (Dialogs)</a></p>
+<p><a href="#__RefHeading___Toc1908_1452970379">3. Menús y Barras</a></p>
+<p><a href="#__RefHeading___Toc1910_1452970379">3.1 Barra de Menú (Menu Bar)</a></p>
+<p><a href="#__RefHeading___Toc1912_1452970379">3.2 Menú Ribbon / Cinta</a></p>
+<p><a href="#__RefHeading___Toc1914_1452970379">3.3 Barras de Herramientas (Toolbars)</a></p>
+<p><a href="#__RefHeading___Toc1916_1452970379">3.4 Atajos de Teclado (Shortcuts)</a></p>
+<p><a href="#__RefHeading___Toc1918_1452970379">3.5 Principios y buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1920_1452970379">3.6 Diferencias entre barra de menú y barra de herramientas</a></p>
+<p><a href="#__RefHeading___Toc4387_1452970379">4. Estilo y Presentación</a></p>
+<p><a href="#__RefHeading___Toc4389_1452970379">4.1 Propiedades de texto en JavaFX</a></p>
+<p><a href="#__RefHeading___Toc4391_1452970379">4.2 Contraste y accesibilidad</a></p>
+<p><a href="#__RefHeading___Toc4393_1452970379">4.3 Aplicación de estilo</a></p>
+<p><a href="#__RefHeading___Toc4395_1452970379">4.4 Principios de presentación</a></p>
+<p><a href="#__RefHeading___Toc4397_1452970379">5. Metáforas y objetos reconocibles</a></p>
+<p><a href="#__RefHeading___Toc4399_1452970379">5.1 Concepto de metáfora en UI</a></p>
+<p><a href="#__RefHeading___Toc4401_1452970379">5.2 Tipos de metáforas comunes</a></p>
+<p><a href="#__RefHeading___Toc4403_1452970379">5.3 Buenas prácticas de uso</a></p>
+<p><a href="#__RefHeading___Toc4405_1452970379">5.4 Relación con otros principios de UI</a></p>
+<p><a href="#__RefHeading___Toc4407_1452970379">6. Interacción y Usabilidad</a></p>
+<p><a href="#__RefHeading___Toc4409_1452970379">6.1 Principios de interacción</a></p>
+<p><a href="#__RefHeading___Toc4411_1452970379">6.2 Agrupación y navegación</a></p>
+<p><a href="#__RefHeading___Toc4413_1452970379">6.3 Diálogos y decisiones críticas</a></p>
+<p><a href="#__RefHeading___Toc4415_1452970379">6.4 Eficiencia y accesibilidad</a></p>
+<p><a href="#__RefHeading___Toc4417_1452970379">6.5 Buenas prácticas generales</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1878_1452970379" lang="es">
+<strong>1. </strong><strong>Principios de diseño de interfaces</strong></h1>
+<p>Los <strong>principios de diseño</strong>  son guías
+fundamentales para crear interfaces gráficas <strong>eficientes,
+comprensibles y accesibles</strong>. Se aplican a todos los elementos
+de la interfaz, desde botones hasta menús y diálogos.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1880_1452970379" lang="es">
+<strong>1.1 Correspondencia (Mapping)</strong></h2>
+<ul>
+<li><p>Define que la acción de un control debe <strong>reflejar
+	intuitivamente el efecto que produce en el sistema</strong>.</p></li>
+<li><p>Ejemplo: presionar un botón hacia abajo activa la
+	acción; mover un deslizador a la derecha aumenta un valor.</p></li>
+<li><p>Beneficio: <strong>predicción intuitiva</strong>,
+	reducción de errores y aprendizaje más rápido del usuario.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1882_1452970379" lang="es">
+<strong>1.2 Retroalimentación (Feedback)</strong></h2>
+<ul>
+<li><p>El sistema debe informar al usuario sobre el
+	<strong>resultado de sus acciones</strong>, evitando incertidumbre.</p></li>
+<li><p>Ejemplos: mensaje de éxito, indicador de
+	progreso, cambio visual de un control.</p></li>
+<li><p>Beneficio: asegura que el usuario sepa que la
+	acción fue <strong>realizada correctamente o necesita corrección</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1884_1452970379" lang="es">
+<strong>1.3 Consistencia y Previsibilidad</strong></h2>
+<ul>
+<li><p>Los elementos de la interfaz deben <strong>mantener
+	comportamiento y estilo uniforme</strong>, dentro de la aplicación
+	y entre aplicaciones similares.</p></li>
+<li><p>Ejemplo: menús siempre en la parte superior,
+	atajos de teclado comunes como CTRL+S para guardar.</p></li>
+<li><p>Beneficio: reduce la curva de aprendizaje y
+	permite la transferencia de conocimientos entre aplicaciones.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1886_1452970379" lang="es">
+<strong>1.4 Eficiencia</strong></h2>
+<ul>
+<li><p>Facilitar la <strong>ejecución rápida de tareas
+	frecuentes</strong>, especialmente para usuarios avanzados.</p></li>
+<li><p>Herramientas clave:</p>
+<ul>
+<li><p><strong>Atajos de teclado (shortcuts)</strong>:
+		ejecutar acciones sin usar el ratón.</p></li>
+<li><p><strong>Barras de herramientas (toolbars)</strong>:
+		iconos de acceso rápido a funciones frecuentes.</p></li>
+</ul>
+<li><p>Beneficio: aumenta productividad y fluidez en el
+	uso de la aplicación.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1888_1452970379" lang="es">
+<strong>1.5 Accesibilidad</strong></h2>
+<ul>
+<li><p>La interfaz debe ser <strong>usable por todos los
+	usuarios</strong>, incluyendo aquellos con limitaciones visuales,
+	motoras o cognitivas.</p></li>
+<li><p>Principios:</p>
+<ul>
+<li><p>Texto legible y contrastado.</p></li>
+<li><p>Controles fácilmente reconocibles y
+		seleccionables.</p></li>
+<li><p>Compatibilidad con herramientas de asistencia y
+		estándares WCAG.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc1890_1452970379" lang="es">
+<strong>2. Controles y Componentes de UI</strong></h1>
+<p>Los controles de interfaz permiten al usuario
+<strong>interactuar con la aplicación</strong>, ya sea ejecutando
+acciones, seleccionando valores o navegando por el contenido. Cada
+control tiene un propósito específico y se debe elegir según la
+tarea a realizar.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1892_1452970379" lang="es">
+<strong>2.1 Botones y Botones de Comando</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Ejecutar una acción
+	inmediata al ser presionados.</p></li>
+<li><p><strong>Uso correcto:</strong></p>
+<ul>
+<li><p>Texto conciso, generalmente en <strong>infinitivo
+		en español</strong>: “Guardar”, “Cancelar”, “Enviar”.</p></li>
+<li><p>Se puede asociar <strong>atajo de teclado</strong> 
+		para acciones frecuentes.</p></li>
+<li><p>Tamaño y estilo consistente dentro de la
+		aplicación.</p></li>
+</ul>
+<li><p><strong>Ejemplo:</strong> Botón “Guardar” que
+	almacena los cambios en un documento.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1894_1452970379" lang="es">
+<strong>2.2 Botones tipo radio (Radio Buttons)</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Permitir la <strong>selección
+	de un único valor</strong>  entre varias opciones mutuamente
+	excluyentes.</p></li>
+<li><p><strong>Uso correcto:</strong></p>
+<ul>
+<li><p>Visualizar <strong>todas las opciones disponibles</strong> 
+		de un vistazo.</p></li>
+<li><p>Adecuado para <strong>2–7 opciones</strong>; si
+		hay 8 o más, se recomienda una lista desplegable.</p></li>
+</ul>
+<li><p><strong>Ejemplo:</strong> Selección del método
+	de pago: “Tarjeta”, “Paypal”, “Transferencia”.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1896_1452970379" lang="es">
+<strong>2.3 Casillas de verificación (Checkboxes)</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Permitir la <strong>selección
+	múltiple</strong>  dentro de un conjunto de opciones.</p></li>
+<li><p><strong>Uso correcto:</strong></p>
+<ul>
+<li><p>Cada opción es independiente; el usuario puede
+		marcar o desmarcar libremente.</p></li>
+<li><p>Se deben usar cuando las opciones no son
+		mutuamente excluyentes.</p></li>
+</ul>
+<li><p><strong>Ejemplo:</strong> Selección de intereses
+	en un formulario: “Deportes”, “Música”, “Cine”.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1898_1452970379" lang="es">
+<strong>2.4 Listas desplegables (Dropdown / Combo Box)</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Permitir seleccionar un
+	<strong>único valor de un conjunto amplio de opciones</strong>.</p></li>
+<li><p><strong>Uso correcto:</strong></p>
+<ul>
+<li><p>Reducir saturación visual cuando el número de
+		opciones es grande (8 o más).</p></li>
+<li><p>El valor seleccionado queda visible cuando la
+		lista está cerrada.</p></li>
+</ul>
+<li><p><strong>Ejemplo:</strong> Selección del país en
+	un formulario de registro.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1900_1452970379" lang="es">
+<strong>2.5 Campos de texto y etiquetas</strong></h2>
+<ul>
+<li><p><strong>Campos de texto (TextField / TextArea):</strong></p>
+<ul>
+<li><p>Permiten <strong>entrada editable de datos</strong> 
+		por parte del usuario.</p></li>
+<li><p>Pueden configurarse como <strong>solo lectura</strong> 
+		para mostrar información no editable pero seleccionable y
+		copiables.</p></li>
+</ul>
+<li><p><strong>Etiquetas (Label):</strong></p>
+<ul>
+<li><p>Mostrar texto <strong>informativo o descriptivo</strong> 
+		sin permitir edición.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1902_1452970379" lang="es">
+<strong>2.6 Barras de herramientas (Toolbars)</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Proporcionar <strong>acceso
+	rápido a funciones frecuentes</strong>  mediante iconos.</p></li>
+<li><p><strong>Uso correcto:</strong></p>
+<ul>
+<li><p>Iconos reconocibles y coherentes con las
+		funciones.</p></li>
+<li><p>Complementa la barra de menú, pero no reemplaza
+		la navegación completa.</p></li>
+</ul>
+<li><p><strong>Ejemplo:</strong> Barra con iconos
+	“Guardar”, “Abrir”, “Imprimir” en un editor de texto.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1904_1452970379" lang="es">
+<strong>2.7 Pestañas (Tabs)</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Organizar contenido en
+	<strong>secciones dentro de la misma ventana</strong>, permitiendo
+	navegar entre ellas sin abrir nuevas ventanas.</p></li>
+<li><p><strong>Uso correcto:</strong></p>
+<ul>
+<li><p>Colocar elementos comunes fuera de las pestañas.</p></li>
+<li><p>Colocar elementos específicos de la sección
+		dentro de la pestaña.</p></li>
+<li><p>Evitar que el usuario pueda crear o borrar
+		pestañas indiscriminadamente.</p></li>
+</ul>
+<li><p><strong>Ejemplo:</strong> Configuración de un
+	software con pestañas “General”, “Seguridad”, “Avanzado”.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1906_1452970379" lang="es">
+<strong>2.8 Cuadros de diálogo (Dialogs)</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Comunicar información
+	o solicitar interacción específica al usuario.</p></li>
+<li><p><strong>Tipos:</strong></p>
+<ul>
+<li><p><strong>Información:</strong> Mensajes
+		informativos con icono de información.</p></li>
+<li><p><strong>Confirmación:</strong> Solicita decisión
+		obligatoria, bloqueando la aplicación hasta la respuesta.</p></li>
+<li><p><strong>Advertencia / Error:</strong> Alertan de
+		problemas o acciones críticas.</p></li>
+<li><p><strong>Excepción:</strong> Muestra errores del
+		sistema de manera controlada.</p></li>
+</ul>
+<li><p><strong>Uso correcto:</strong></p>
+<ul>
+<li><p>Ser <strong>simples y enfocados en una única
+		tarea</strong>.</p></li>
+<li><p>Modales cuando la decisión es crítica.</p></li>
+</ul>
+<li><p><strong>Ejemplo:</strong> “¿Desea guardar los
+	cambios antes de salir?”</p></li>
+</li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc1908_1452970379" lang="es">
+<strong>3. Menús y Barras</strong></h1>
+<p>Los menús y barras permiten <strong>acceder a
+funcionalidades y comandos</strong>  de la aplicación de forma
+estructurada y rápida. Son elementos esenciales en aplicaciones de
+escritorio y en interfaces web complejas.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1910_1452970379" lang="es">
+<strong>3.1 Barra de Menú (Menu Bar)</strong></h2>
+<ul>
+<li><p><strong>Ubicación:</strong> Parte superior de la
+	ventana, siguiendo las convenciones de escritorio.</p></li>
+<li><p><strong>Función:</strong> Contener <strong>elementos
+	jerárquicos</strong>  (menús desplegables) con todas las opciones
+	principales de la aplicación.</p></li>
+<li><p><strong>Buenas prácticas:</strong></p>
+<ul>
+<li><p>Nombres claros, concisos y reconocibles.</p></li>
+<li><p>Evitar componentes complejos dentro de los menús.</p></li>
+<li><p>Mantener consistencia con otras aplicaciones para
+		reducir la curva de aprendizaje.</p></li>
+</ul>
+<li><p><strong>Ejemplo:</strong> Menú principal con
+	“Archivo”, “Edición”, “Ver”, “Ayuda”.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1912_1452970379" lang="es">
+<strong>3.2 Menú Ribbon / Cinta</strong></h2>
+<ul>
+<li><p><strong>Ubicación y estructura:</strong> Basado
+	en <strong>pestañas</strong>  que agrupan comandos por tareas o
+	funcionalidades.</p></li>
+<li><p><strong>Ventaja:</strong> Reduce la profundidad de
+	navegación en comparación con menús tradicionales, mostrando
+	<strong>grupos de herramientas relacionados</strong>  en una sola
+	vista.</p></li>
+<li><p><strong>Ejemplo:</strong> Microsoft Office:
+	pestañas “Inicio”, “Insertar”, “Revisar”, cada una con
+	grupos de botones y comandos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1914_1452970379" lang="es">
+<strong>3.3 Barras de Herramientas (Toolbars)</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Acceso rápido a
+	<strong>funciones frecuentes mediante iconos</strong>.</p></li>
+<li><p><strong>Complemento de la barra de menú:</strong>
+	No reemplaza la navegación completa; facilita acciones repetitivas.</p></li>
+<li><p><strong>Ejemplo:</strong> Iconos “Guardar”,
+	“Imprimir”, “Deshacer”, ubicados debajo de la barra de menú.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1916_1452970379" lang="es">
+<strong>3.4 Atajos de Teclado (Shortcuts)</strong></h2>
+<ul>
+<li><p><strong>Función:</strong> Permiten ejecutar
+	acciones frecuentes sin usar el ratón, aumentando la eficiencia.</p></li>
+<li><p><strong>Ejemplos comunes:</strong></p>
+<ul>
+<li><p>CTRL+S → Guardar</p></li>
+<li><p>CTRL+C → Copiar</p></li>
+<li><p>CTRL+V → Pegar</p></li>
+</ul>
+<li><p><strong>Buenas prácticas:</strong></p>
+<ul>
+<li><p>Atajos consistentes con estándares de
+		escritorio.</p></li>
+<li><p>Asociar teclas de acceso rápido visibles en los
+		menús.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1918_1452970379" lang="es">
+<strong>3.5 Principios y buenas prácticas</strong></h2>
+<ul>
+<li><p><strong>Consistencia:</strong> Mantener ubicación
+	y comportamiento uniforme.</p></li>
+<li><p><strong>Claridad:</strong> Nombres de menús y
+	elementos comprensibles.</p></li>
+<li><p><strong>Previsibilidad:</strong> Las acciones del
+	menú deben reflejar la función que ejecutan.</p></li>
+<li><p><strong>Accesibilidad:</strong> Todos los
+	elementos deben ser operables mediante teclado y con suficiente
+	contraste visual.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1920_1452970379" lang="es">
+<strong>3.6 Diferencias entre barra de menú y barra de herramientas</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Elemento
+</th>
+<th>Función
+				principal
+</th>
+<th>Forma de
+				interacción
+</th>
+<th>Uso típico
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menu Bar
+</td>
+<td>Contiene
+				todas las opciones de la aplicación
+</td>
+<td>Texto y
+				submenús
+</td>
+<td>Organización
+				jerárquica y navegación completa
+</td>
+</tr>
+<tr>
+<td>Toolbar
+</td>
+<td>Acceso rápido
+				a acciones frecuentes
+</td>
+<td>Iconos
+				clicables
+</td>
+<td>Ejecución
+				rápida de funciones repetitivas
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h1 id="__RefHeading___Toc4387_1452970379" lang="es">
+<strong>4. Estilo y Presentación</strong></h1>
+<p>El estilo de los componentes de interfaz determina <strong>cómo
+se percibe la aplicación visualmente</strong>  y afecta directamente
+a la <strong>legibilidad, la usabilidad y la accesibilidad</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc4389_1452970379" lang="es">
+<strong>4.1 Propiedades de texto en JavaFX</strong></h2>
+<ul>
+<li><p><strong>Tamaño de fuente:</strong></p>
+<ul>
+<li><p>Propiedad CSS: -fx-font-size</p></li>
+<li><p>Ejemplo: -fx-font-size:
+		14px;</p></li>
+<li><p>Permite ajustar el tamaño para mejorar lectura y
+		jerarquía visual.</p></li>
+</ul>
+<li><p><strong>Familia tipográfica:</strong></p>
+<ul>
+<li><p>Propiedad CSS: -fx-font-family</p></li>
+<li><p>Ejemplo: -fx-font-family:
+		"Arial";</p></li>
+<li><p>Determina la apariencia y consistencia
+		tipográfica de los controles.</p></li>
+</ul>
+<li><p><strong>Color de texto:</strong></p>
+<ul>
+<li><p>Propiedad CSS: -fx-text-fill</p></li>
+<li><p>Formatos válidos:</p>
+<ul>
+<li><p><strong>Hexadecimal:</strong> #FF0000</p></li>
+<li><p><strong>Nombre de color:</strong> red,
+			blue, white</p></li>
+<li><p><strong>RGB:</strong> rgb(255,0,0)</p></li>
+</ul>
+<li><p>Permite asegurar contraste y visibilidad
+		adecuada.</p></li>
+</li></ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4391_1452970379" lang="es">
+<strong>4.2 Contraste y accesibilidad</strong></h2>
+<ul>
+<li><p>Es fundamental que el <strong>texto y los
+	controles sean legibles</strong>  frente al fondo.</p></li>
+<li><p>Se recomienda evaluar contraste con herramientas
+	como <strong>Colour Contrast Analyser 2.0</strong>.</p></li>
+<li><p>Estándares de accesibilidad: WCAG (Web Content
+	Accessibility Guidelines).</p></li>
+<li><p>Beneficio: mejora la usabilidad para personas con
+	dificultades visuales y asegura cumplimiento de normas
+	internacionales.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4393_1452970379" lang="es">
+<strong>4.3 Aplicación de estilo</strong></h2>
+<ul>
+<li><p>CSS en JavaFX permite <strong>separar estilo y
+	funcionalidad</strong>, mejorando mantenimiento y consistencia.</p></li>
+<li><p>Ejemplo de estilo de botón:</p></li>
+</ul>
+<pre><code>.button {</code>
+<code>    </code><code>-fx-font-size: 14px;</code>
+<code>    </code><code>-fx-font-family: "Verdana";</code>
+<code>    </code><code>-fx-text-fill: #FFFFFF;</code>
+<code>    </code><code>-fx-background-color: #0078D7;</code>
+<code>}</code></pre>
+<ul>
+<li><p>Ventaja: cambios de estilo globales sin modificar
+	la lógica de la aplicación.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4395_1452970379" lang="es">
+<strong>4.4 Principios de presentación</strong></h2>
+<ul>
+<li><p>Legibilidad: texto visible y contrastado.</p></li>
+<li><p>Consistencia: misma tipografía, tamaño y colores
+	para tipos similares de información.</p></li>
+<li><p>Claridad: uso de colores y fuentes que refuercen
+	la jerarquía de información.</p></li>
+<li><p>Neutralidad: evitar colores agresivos o llamativos
+	innecesarios que distraigan al usuario.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc4397_1452970379" lang="es">
+<strong>5. Metáforas y objetos reconocibles</strong></h1>
+<p>Las <strong>metáforas de interfaz</strong>  son
+elementos visuales o conceptuales que permiten al usuario <strong>entender
+rápidamente la función de un control o área</strong>  basándose en
+su experiencia previa con objetos del mundo real o con otras
+aplicaciones.</p>
+<hr/>
+<h2 id="__RefHeading___Toc4399_1452970379" lang="es">
+<strong>5.1 Concepto de metáfora en UI</strong></h2>
+<ul>
+<li><p>Una metáfora relaciona <strong>una acción
+	digital con un objeto o concepto conocido</strong>.</p></li>
+<li><p>Beneficio: reduce la curva de aprendizaje, aumenta
+	la intuición y la previsibilidad de la interfaz.</p></li>
+<li><p>Ejemplo clásico: <strong>“Papelera de
+	reciclaje”</strong>  para eliminar archivos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4401_1452970379" lang="es">
+<strong>5.2 Tipos de metáforas comunes</strong></h2>
+<ol>
+<li><p><strong>Metáforas de escritorio:</strong></p>
+<ul>
+<li><p>Carpetas → organización de archivos.</p></li>
+<li><p>Archivos → documentos guardados.</p></li>
+<li><p>Escritorio → área principal de trabajo.</p></li>
+</ul>
+<li><p><strong>Metáforas de control:</strong></p>
+<ul>
+<li><p>Botones que parecen pulsables.</p></li>
+<li><p>Deslizadores que emulan palancas o perillas.</p></li>
+</ul>
+<li><p><strong>Iconos reconocibles:</strong></p>
+<ul>
+<li><p>Disquete → guardar (aunque menos usado hoy).</p></li>
+<li><p>Lupa → búsqueda.</p></li>
+<li><p>Sobre → correo o mensaje.</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc4403_1452970379" lang="es">
+<strong>5.3 Buenas prácticas de uso</strong></h2>
+<ul>
+<li><p>Usar <strong>objetos ya conocidos por los usuarios</strong> 
+	y mantener consistencia con otras aplicaciones.</p></li>
+<li><p>Evitar metáforas confusas o demasiado abstractas
+	que requieran explicación.</p></li>
+<li><p>Acompañar iconos con texto cuando sea necesario
+	para reforzar comprensión.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4405_1452970379" lang="es">
+<strong>5.4 Relación con otros principios de UI</strong></h2>
+<ul>
+<li><p><strong>Consistencia:</strong> los iconos y
+	metáforas deben funcionar igual en toda la aplicación.</p></li>
+<li><p><strong>Correspondencia (mapping):</strong> el
+	efecto del control debe coincidir con la metáfora visual.</p></li>
+<li><p><strong>Accesibilidad:</strong> metáforas deben
+	ser comprensibles incluso con ayudas visuales o lectores de
+	pantalla.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc4407_1452970379" lang="es">
+<strong>6. Interacción y Usabilidad</strong></h1>
+<p>La interacción y la usabilidad se refieren a <strong>cómo
+el usuario percibe, comprende y maneja la interfaz</strong>, y cómo
+la interfaz guía al usuario para realizar tareas de forma eficiente
+y segura.</p>
+<hr/>
+<h2 id="__RefHeading___Toc4409_1452970379" lang="es">
+<strong>6.1 Principios de interacción</strong></h2>
+<ul>
+<li><p><strong>Retroalimentación:</strong></p>
+<ul>
+<li><p>La interfaz debe informar siempre al usuario del
+		resultado de sus acciones.</p></li>
+<li><p>Ejemplo: indicador de progreso, mensaje de
+		confirmación o cambio visual de un botón.</p></li>
+</ul>
+<li><p><strong>Correspondencia / Mapping:</strong></p>
+<ul>
+<li><p>La acción del control debe reflejar
+		intuitivamente su efecto.</p></li>
+<li><p>Ejemplo: presionar un botón hacia abajo ejecuta
+		la acción indicada.</p></li>
+</ul>
+<li><p><strong>Consistencia y previsibilidad:</strong></p>
+<ul>
+<li><p>Elementos con misma función deben comportarse
+		igual.</p></li>
+<li><p>Ejemplo: CTRL+S siempre guarda, barras de
+		herramientas y menús usan iconos estándar.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4411_1452970379" lang="es">
+<strong>6.2 Agrupación y navegación</strong></h2>
+<ul>
+<li><p><strong>Agrupación lógica de controles:</strong></p>
+<ul>
+<li><p>Relacionar controles y elementos según su
+		función para mejorar comprensión y velocidad.</p></li>
+<li><p>Ejemplo: pestañas para secciones relacionadas,
+		menús agrupando funciones similares.</p></li>
+</ul>
+<li><p><strong>Navegación clara:</strong></p>
+<ul>
+<li><p>Evitar que el usuario se pierda entre múltiples
+		ventanas o paneles.</p></li>
+<li><p>Ejemplo: pestañas, barras de herramientas y
+		menús organizados jerárquicamente.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4413_1452970379" lang="es">
+<strong>6.3 Diálogos y decisiones críticas</strong></h2>
+<ul>
+<li><p><strong>Cuadros de diálogo modales:</strong></p>
+<ul>
+<li><p>Bloquean la aplicación hasta que el usuario tome
+		una decisión.</p></li>
+<li><p>Se usan para acciones críticas que no pueden ser
+		ignoradas (guardar cambios, confirmar eliminación).</p></li>
+</ul>
+<li><p><strong>Mensajes de alerta y advertencia:</strong></p>
+<ul>
+<li><p>Informativos → icono de información.</p></li>
+<li><p>Advertencia → icono de advertencia.</p></li>
+<li><p>Error → icono de error.</p></li>
+</ul>
+<li><p>Garantiza <strong>control del flujo de la
+	aplicación y seguridad de los datos</strong>.</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc4415_1452970379" lang="es">
+<strong>6.4 Eficiencia y accesibilidad</strong></h2>
+<ul>
+<li><p><strong>Atajos de teclado:</strong> facilitan
+	ejecución rápida de tareas frecuentes.</p></li>
+<li><p><strong>Toolbars:</strong> acceso inmediato a
+	funciones recurrentes mediante iconos reconocibles.</p></li>
+<li><p><strong>Contraste y legibilidad:</strong> colores,
+	tamaños y fuentes que permitan uso cómodo por todos los usuarios.</p></li>
+<li><p><strong>Compatibilidad con ayudas técnicas:</strong>
+	lectores de pantalla, teclados alternativos, etc.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc4417_1452970379" lang="es">
+<strong>6.5 Buenas prácticas generales</strong></h2>
+<ul>
+<li><p>Interfaz clara, consistente y predecible.</p></li>
+<li><p>Mensajes y controles <strong>simples y directos</strong>.</p></li>
+<li><p>Uso de metáforas y elementos reconocibles.</p></li>
+<li><p>Minimizar sobrecarga visual y cognitiva.</p></li>
+<li><p>Mantener jerarquía de información y flujo lógico
+	de tareas.</p></li>
+</ul>
+<hr/>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

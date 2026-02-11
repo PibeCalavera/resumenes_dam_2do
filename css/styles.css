@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  line-height: 1.6;
+  background-color: #fafafa;
+  color: #222;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #333;
+  font-weight: 900;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #0066cc;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ── LISTAS CON SANGRÍA ── */
+ul,
+ol {
+  padding-left: 40px; /* sangría/tabulación izquierda */
+  margin: 10px 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* ── PÁRRAFOS ── */
+p {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+/* ── TABLAS ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: left; /* alineación izquierda */
+  vertical-align: top;
+}
+
+table th {
+  font-weight: bold; /* encabezado en negrita */
+  background-color: #f0f0f0;
+}
+
+table td p,
+table th p {
+  margin: 0;
+  padding: 0;
+}
+
+/* ── CÓDIGO DENTRO DE TABLAS Y PÁRRAFOS ── */
+code {
+  font-family: Consolas, monospace;
+  background-color: #eee;
+  padding: 2px 4px;
+  border-radius: 3px;
+}

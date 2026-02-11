@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Acceso
+a Datos – Unidad 3
+– Herramientas de Mapeo Objeto Relacional (ORM)</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Acceso
+a Datos – Unidad 3
+– Herramientas de Mapeo Objeto Relacional (ORM)</h1>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1697_3299855623">1. Conceptos fundamentales de ORM</a></p>
+<p><a href="#__RefHeading___Toc1699_3299855623">1.1. Definición de ORM (Object-Relational Mapping)</a></p>
+<p><a href="#__RefHeading___Toc1701_3299855623">1.2. Objetivos principales</a></p>
+<p><a href="#__RefHeading___Toc1703_3299855623">1.3. Ventajas del ORM</a></p>
+<p><a href="#__RefHeading___Toc1705_3299855623">1.4. Desventajas y limitaciones</a></p>
+<p><a href="#__RefHeading___Toc1707_3299855623">1.5. Comparación con métodos tradicionales</a></p>
+<p><a href="#__RefHeading___Toc1709_3299855623">2. Hibernate como herramienta ORM</a></p>
+<p><a href="#__RefHeading___Toc1711_3299855623">2.1. Definición de Hibernate</a></p>
+<p><a href="#__RefHeading___Toc1713_3299855623">2.2. Funcionalidades principales</a></p>
+<p><a href="#__RefHeading___Toc1715_3299855623">2.3. Ciclo de vida de los objetos en Hibernate</a></p>
+<p><a href="#__RefHeading___Toc1717_3299855623">2.4. Arquitectura básica de Hibernate</a></p>
+<p><a href="#__RefHeading___Toc1719_3299855623">2.5. Patrones aplicados</a></p>
+<p><a href="#__RefHeading___Toc1721_3299855623">3. Ficheros y configuración en Hibernate</a></p>
+<p><a href="#__RefHeading___Toc1723_3299855623">3.1. Fichero de configuración principal: hibernate.cfg.xml</a></p>
+<p><a href="#__RefHeading___Toc1725_3299855623">3.2. Ficheros de mapeo: .hbm.xml</a></p>
+<p><a href="#__RefHeading___Toc1727_3299855623">3.3. Fichero de ingeniería inversa: .reveng.xml</a></p>
+<p><a href="#__RefHeading___Toc1729_3299855623">3.4. Clases Java asociadas a los ficheros de mapeo</a></p>
+<p><a href="#__RefHeading___Toc1731_3299855623">3.5. Relaciones entre ficheros</a></p>
+<p><a href="#__RefHeading___Toc1733_3299855623">4. Sesiones y transacciones en Hibernate</a></p>
+<p><a href="#__RefHeading___Toc1735_3299855623">4.1. Interfaz Session</a></p>
+<p><a href="#__RefHeading___Toc1737_3299855623">4.2. Interfaz Transaction</a></p>
+<p><a href="#__RefHeading___Toc1739_3299855623">4.3. Ciclo de vida de los objetos en Hibernate</a></p>
+<p><a href="#__RefHeading___Toc1741_3299855623">4.4. Patrones aplicados</a></p>
+<p><a href="#__RefHeading___Toc1743_3299855623">4.5. Buenas prácticas en sesiones y transacciones</a></p>
+<p><a href="#__RefHeading___Toc1745_3299855623">5. Consultas con HQL (Hibernate Query Language)</a></p>
+<p><a href="#__RefHeading___Toc1747_3299855623">5.1. Definición de HQL</a></p>
+<p><a href="#__RefHeading___Toc1749_3299855623">5.2. Operaciones posibles en HQL</a></p>
+<p><a href="#__RefHeading___Toc1751_3299855623">5.3. Interfaz Query</a></p>
+<p><a href="#__RefHeading___Toc1753_3299855623">5.4. Tipos de parámetros en HQL</a></p>
+<p><a href="#__RefHeading___Toc1755_3299855623">5.5. Diferencias con SQL</a></p>
+<p><a href="#__RefHeading___Toc1757_3299855623">5.6. Buenas prácticas al usar HQL</a></p>
+<p><a href="#__RefHeading___Toc1759_3299855623">6. Mapeo objeto-relacional avanzado</a></p>
+<p><a href="#__RefHeading___Toc1761_3299855623">6.1. Relaciones entre entidades</a></p>
+<p><a href="#__RefHeading___Toc1763_3299855623">6.2. Estrategias de generación de claves primarias</a></p>
+<p><a href="#__RefHeading___Toc1765_3299855623">6.3. Herencia en Hibernate</a></p>
+<p><a href="#__RefHeading___Toc1767_3299855623">6.4. Cascading y Fetch Types</a></p>
+<p><a href="#__RefHeading___Toc1769_3299855623">7. Ingeniería inversa y generación automática</a></p>
+<p><a href="#__RefHeading___Toc1771_3299855623">7.1. Concepto de ingeniería inversa</a></p>
+<p><a href="#__RefHeading___Toc1773_3299855623">7.2. Ficheros utilizados</a></p>
+<p><a href="#__RefHeading___Toc1775_3299855623">7.3. Proceso típico de generación</a></p>
+<p><a href="#__RefHeading___Toc1777_3299855623">7.4. Ventajas de la ingeniería inversa</a></p>
+<p><a href="#__RefHeading___Toc1779_3299855623">7.5. Consideraciones importantes</a></p>
+<p><a href="#__RefHeading___Toc1781_3299855623">8. Buenas prácticas y control de rendimiento en Hibernate</a></p>
+<p><a href="#__RefHeading___Toc1783_3299855623">8.1. Manejo adecuado de sesiones y transacciones</a></p>
+<p><a href="#__RefHeading___Toc1785_3299855623">8.2. Optimización de consultas</a></p>
+<p><a href="#__RefHeading___Toc1787_3299855623">8.3. Caché</a></p>
+<p><a href="#__RefHeading___Toc1789_3299855623">8.4. Uso de Lazy Loading y Eager Loading</a></p>
+<p><a href="#__RefHeading___Toc1791_3299855623">8.5. Otras buenas prácticas</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1697_3299855623" lang="es">
+<strong>1. </strong><strong>Conceptos fundamentales de ORM</strong></h1>
+<h2 id="__RefHeading___Toc1699_3299855623" lang="es">
+<strong>1.</strong><strong>1. Definición de ORM (Object-Relational
+Mapping)</strong></h2>
+<p>ORM es una <strong>técnica de persistencia de datos</strong> 
+que permite mapear <strong>objetos de un lenguaje orientado a objetos</strong> 
+(por ejemplo, Java) a <strong>tablas de una base de datos relacional</strong>.
+El objetivo es que los desarrolladores trabajen con <strong>objetos</strong> 
+en lugar de manipular directamente tablas y SQL.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1701_3299855623" lang="es">
+<strong>1.</strong><strong>2. Objetivos principales</strong></h2>
+<ul>
+<li><p><strong>Abstraer la interacción con la base de
+	datos</strong>, evitando escribir SQL manualmente para operaciones
+	comunes.</p></li>
+<li><p><strong>Sincronizar automáticamente</strong>  los
+	objetos con los datos almacenados en la base de datos.</p></li>
+<li><p><strong>Facilitar el manejo de relaciones
+	complejas</strong>  entre objetos (uno a uno, uno a muchos, muchos a
+	muchos).</p></li>
+<li><p><strong>Mantener la integridad y consistencia de
+	los datos</strong>  mediante control de transacciones.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1703_3299855623" lang="es">
+<strong>1.</strong><strong>3. Ventajas del ORM</strong></h2>
+<ul>
+<li><p>Incrementa la <strong>productividad</strong>, al
+	reducir la necesidad de escribir SQL repetitivo.</p></li>
+<li><p>Mejora la <strong>mantenibilidad</strong>, al
+	centralizar la lógica de persistencia.</p></li>
+<li><p>Permite <strong>independencia del motor de base de
+	datos</strong>, usando configuraciones y dialectos adaptables.</p></li>
+<li><p>Maneja automáticamente <strong>relaciones,
+	herencias y claves primarias/foráneas</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1705_3299855623" lang="es">
+<strong>1.</strong><strong>4. Desventajas y limitaciones</strong></h2>
+<ul>
+<li><p><strong>Pérdida de control sobre SQL</strong>:
+	las consultas generadas automáticamente pueden no ser óptimas.</p></li>
+<li><p><strong>Problemas de rendimiento</strong>: en
+	consultas complejas o sistemas de alta carga.</p></li>
+<li><p><strong>Curva de aprendizaje</strong>: se requiere
+	entender el mapeo y ciclo de vida de los objetos.</p></li>
+<li><p>Puede generar <strong>sobrecarga de memoria</strong>,
+	especialmente si no se usan correctamente las sesiones y cachés.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1707_3299855623" lang="es">
+<strong>1.</strong><strong>5. Comparación con métodos tradicionales</strong></h2>
+<ul>
+<li><p><strong>JDBC puro</strong>: el desarrollador
+	escribe SQL manual, gestiona conexiones y transacciones.</p></li>
+<li><p><strong>ORM</strong>: el framework genera SQL
+	automáticamente y gestiona transacciones y relaciones, permitiendo
+	trabajar con objetos directamente.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1709_3299855623" lang="es">
+<strong>2. </strong><strong>Hibernate como herramienta ORM</strong></h1>
+<ul>
+<li><p><strong>En NetBeans es un pluggin.</strong></p></li>
+<li><p><strong>Paquete a importar:</strong><strong>
+	org.hibernate</strong></p></li>
+</ul>
+<h2 id="__RefHeading___Toc1711_3299855623" lang="es">
+<strong>2.</strong><strong>1. Definición de Hibernate</strong></h2>
+<p>Hibernate es un <strong>framework ORM para Java</strong> 
+que permite <strong>mapear clases y objetos Java a tablas de bases de
+datos relacionales</strong>. Proporciona persistencia de objetos sin
+necesidad de escribir SQL de manera directa, gestionando
+automáticamente las operaciones CRUD y las relaciones entre
+entidades.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1713_3299855623" lang="es">
+<strong>2.</strong><strong>2. Funcionalidades principales</strong></h2>
+<ul>
+<li><p><strong>Persistencia de objetos:</strong> guarda,
+	actualiza, borra y recupera objetos de la base de datos.</p></li>
+<li><p><strong>Gestión automática de relaciones:</strong>
+	maneja relaciones uno a uno, uno a muchos y muchos a muchos entre
+	entidades.</p></li>
+<li><p><strong>Generación automática de SQL:</strong>
+	traduce HQL y operaciones sobre objetos a sentencias SQL adaptadas
+	al dialecto de la base de datos.</p></li>
+<li><p><strong>Control de transacciones y consistencia:</strong>
+	asegura integridad de los datos mediante transacciones ACID.</p></li>
+<li><p><strong>Caché y optimización:</strong> soporta
+	caché de primer y segundo nivel para mejorar rendimiento.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1715_3299855623" lang="es">
+<strong>2.</strong><strong>3. Ciclo de vida de los objetos en
+Hibernate</strong></h2>
+<p>Un objeto puede encontrarse en tres <strong>estados
+fundamentales</strong>:</p>
+<ol>
+<li><p><strong>Transitorio:</strong></p>
+<ul>
+<li><p>Objeto creado en memoria ( new )
+		pero <strong>no asociado a Hibernate</strong>  ni persistido en la
+		base de datos.</p></li>
+<li><p>No tiene identificador asignado.</p></li>
+</ul>
+<li><p><strong>Persistente:</strong></p>
+<ul>
+<li><p>Objeto asociado a una <strong>sesión Hibernate
+		(</strong><strong>Session</strong><strong>)</strong>.</p></li>
+<li><p>Cambios realizados se <strong>sincronizan
+		automáticamente</strong>  con la base de datos al hacer commit() 
+		o flush().</p></li>
+</ul>
+<li><p><strong>Separado (Detached):</strong></p>
+<ul>
+<li><p>Objeto que <strong>ya fue persistente</strong> 
+		pero cuya sesión se ha cerrado o desconectado.</p></li>
+<li><p>Cambios posteriores no se sincronizan
+		automáticamente, requiere update()  o
+		merge()  para volver a asociarlo a una
+		sesión.</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1717_3299855623" lang="es">
+<strong>2.</strong><strong>4. Arquitectura básica de Hibernate</strong></h2>
+<ul>
+<li><p><strong>SessionFactory</strong>:</p>
+<ul>
+<li><p>Objeto pesado y <strong>thread-safe</strong>  que
+		se crea al inicio del programa.</p></li>
+<li><p>Responsable de <strong>generar sesiones
+		(</strong><strong>Session</strong><strong>)</strong>.</p></li>
+<li><p>Se suele implementar con <strong>patrón
+		Singleton</strong>, ya que solo se necesita una instancia para toda
+		la aplicación.</p></li>
+</ul>
+<li><p><strong>Session</strong>:</p>
+<ul>
+<li><p>Interfaz que representa una <strong>sesión de
+		trabajo con la base de datos</strong>.</p></li>
+<li><p>Se utiliza para realizar operaciones CRUD,
+		consultas HQL, y manejar transacciones.</p></li>
+</ul>
+<li><p><strong>Transaction</strong>:</p>
+<ul>
+<li><p>Gestiona el inicio, confirmación ( commit )
+		o deshacer ( rollback ) de los cambios
+		en la base de datos.</p></li>
+<li><p>Garantiza <strong>consistencia de los datos
+		(ACID)</strong>.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1719_3299855623" lang="es">
+<strong>2.</strong><strong>5. Patrones aplicados</strong></h2>
+<ul>
+<li><p><strong>Singleton en </strong><strong>SessionFactory</strong>:</p>
+<ul>
+<li><p>Garantiza <strong>una única instancia de
+		</strong><strong>SessionFactory</strong> 
+		durante el ciclo de vida de la aplicación.</p></li>
+<li><p>Mejora eficiencia y evita múltiples cargas de
+		configuración.</p></li>
+</ul>
+<li><p><strong>Proxy y Lazy Loading:</strong></p>
+<ul>
+<li><p>Hibernate puede generar proxies de los objetos
+		persistentes para <strong>cargar datos solo cuando se acceden</strong>,
+		optimizando consultas y rendimiento.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc1721_3299855623" lang="es">
+<strong>3. </strong><strong>Ficheros y configuración en Hibernate</strong></h1>
+<h2 id="__RefHeading___Toc1723_3299855623" lang="es">
+<strong>3.</strong><strong>1. Fichero de configuración principal:
+</strong><strong><code>hibernate.cfg.xml</code></strong></h2>
+<ul>
+<li><p><strong>Se carga con </strong><strong>Configuration().configure();</strong></p></li>
+<li><p><strong>Función principal:</strong> definir la
+	<strong>configuración global de Hibernate</strong>  y la conexión
+	con la base de datos.</p></li>
+<li><p><strong>Contenido típico:</strong></p>
+<ul>
+<li><p><strong>Propiedades de conexión:</strong> driver
+		JDBC, URL de la base de datos, usuario, contraseña.</p></li>
+<li><p><strong>Dialecto SQL:</strong> indica a Hibernate
+		cómo generar SQL compatible con la base de datos utilizada.</p></li>
+<li><p><strong>Recursos de mapeo:</strong> &lt;mapping
+		resource="Clase.hbm.xml"/&gt;  para cada clase
+		persistente.</p></li>
+<li><p><strong>Opciones adicionales:</strong> caché,
+		configuración de logging, estrategias de generación de esquemas.</p></li>
+</ul>
+<li><p><strong>Uso en la práctica:</strong> Hibernate
+	carga este fichero con Configuration().configure() 
+	para inicializar la SessionFactory.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1725_3299855623" lang="es">
+<strong>3.</strong><strong>2. Ficheros de mapeo: </strong><strong><code>.hbm.xml</code></strong></h2>
+<ul>
+<li><p><strong>Función principal:</strong> relacionar
+	<strong>clases Java</strong>  con <strong>tablas de la base de datos</strong> 
+	(atributos, relaciones, claves primarias/foráneas).</p></li>
+<li><p><strong>Contenido típico:</strong></p>
+<ul>
+<li><p>Nombre de la clase Java y paquete.</p></li>
+<li><p>Nombre de la tabla correspondiente.</p></li>
+<li><p>Definición de atributos y columnas, tipos de
+		datos.</p></li>
+<li><p>Relaciones: &lt;one-to-one&gt;,
+		&lt;one-to-many&gt;, &lt;many-to-many&gt;.</p></li>
+<li><p>Claves primarias: &lt;id&gt; 
+		y estrategia de generación.</p></li>
+</ul>
+<li><p><strong>Resultado:</strong> Hibernate sabe cómo
+	persistir y recuperar objetos desde la base de datos.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1727_3299855623" lang="es">
+<strong>3.</strong><strong>3. Fichero de ingeniería inversa:
+</strong><strong><code>.reveng.xml</code></strong></h2>
+<ul>
+<li><p><strong>Función principal:</strong> generar
+	automáticamente <strong>clases Java y ficheros de mapeo</strong>  a
+	partir de una base de datos ya existente.</p></li>
+<li><p><strong>Uso práctico:</strong></p>
+<ul>
+<li><p>Define reglas de conversión de tablas a clases y
+		columnas a atributos.</p></li>
+<li><p>Permite personalizar nombres de clases, paquetes
+		y tipos de datos.</p></li>
+</ul>
+<li><p><strong>Ventaja:</strong> facilita la creación de
+	entidades cuando la base de datos ya está creada.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1729_3299855623" lang="es">
+<strong>3.</strong><strong>4. Clases Java asociadas a los ficheros de
+mapeo</strong></h2>
+<ul>
+<li><p>Cada .hbm.xml  suele
+	tener una <strong>clase Java correspondiente</strong>  que representa
+	la entidad.</p></li>
+<li><p>Hibernate convierte automáticamente los datos de
+	la base de datos en <strong>instancias de estas clases</strong>.</p></li>
+<li><p>Estas clases deben implementar <strong>Serializable</strong> 
+	si queremos garantizar persistencia completa o uso en cachés
+	distribuidas.</p></li>
+<li><p>Son POJO 
+	( Plain Old Java Object ):
+	Clases normales y corrientes. Extensión .java</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1731_3299855623" lang="es">
+<strong>3.</strong><strong>5. Relaciones entre ficheros</strong></h2>
+<ul>
+<li><p>hibernate.cfg.xml
+<strong>apunta a los ficheros de mapeo</strong>  para registrar las
+	entidades a gestionar.</p></li>
+<li><p>.hbm.xml  define <strong>cómo
+	mapear la clase Java a la tabla</strong>.</p></li>
+<li><p>.reveng.xml  se
+	utiliza <strong>cuando se genera automáticamente el mapeo</strong> 
+	a partir de una base de datos existente.</p></li>
+<li><p>La SessionFactory 
+	utiliza toda esta información para crear <strong>sesiones (</strong><strong>Session</strong><strong>)</strong> 
+	capaces de manipular objetos persistentes.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1733_3299855623" lang="es">
+<strong>4. </strong><strong>Sesiones y transacciones en Hibernate</strong></h1>
+<h2 id="__RefHeading___Toc1735_3299855623" lang="es">
+<strong>4.</strong><strong>1. Interfaz </strong><strong><code>Session</code></strong></h2>
+<ul>
+<li><p>Representa <strong>una sesión de trabajo con la
+	base de datos</strong>.</p></li>
+<li><p>Es <strong>ligera y no thread-safe</strong>, por
+	lo que se crea por cada unidad de trabajo.</p></li>
+<li><p><strong>Funciones principales:</strong></p>
+<ul>
+<li><p><strong>CRUD sobre objetos:</strong></p>
+<ul>
+<li><p>save(objeto) 
+			/ persist(objeto)  →
+			almacenar un objeto nuevo.</p></li>
+<li><p>get(Class, id) 
+			/ load(Class, id)  →
+			recuperar objetos por clave primaria.</p></li>
+<li><p>update(objeto) 
+			/ merge(objeto)  →
+			sincronizar cambios de un objeto separado.</p></li>
+<li><p>delete(objeto) 
+			→ eliminar un objeto persistente.</p></li>
+</ul>
+<li><p><strong>Consultas:</strong> crear objetos Query 
+		o usar Criteria.</p></li>
+<li><p><strong>Gestión del ciclo de vida de objetos:</strong>
+		controla si están transitorios, persistentes o separados.</p></li>
+</li></ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1737_3299855623" lang="es">
+<strong>4.</strong><strong>2. Interfaz </strong><strong><code>Transaction</code></strong></h2>
+<ul>
+<li><p>Gestiona <strong>el inicio, confirmación y
+	deshacer de cambios</strong>  en la base de datos.</p></li>
+<li><p>Métodos principales:</p>
+<ul>
+<li><p>beginTransaction() 
+		→ inicia una nueva transacción asociada a la sesión.</p></li>
+<li><p>commit()  →
+		confirma los cambios, sincronizando objetos persistentes con la
+		base de datos.</p></li>
+<li><p>rollback()  →
+		deshace todos los cambios de la transacción actual, garantizando
+		consistencia.</p></li>
+</ul>
+<li><p>Garantiza las propiedades <strong>ACID</strong>  de
+	las transacciones:</p>
+<ul>
+<li><p><strong>Atomicidad:</strong> todos los cambios se
+		aplican o ninguno.</p></li>
+<li><p><strong>Consistencia:</strong> la base de datos
+		permanece consistente tras la transacción.</p></li>
+<li><p><strong>Aislamiento:</strong> evita
+		interferencias entre transacciones concurrentes.</p></li>
+<li><p><strong>Durabilidad:</strong> los cambios
+		confirmados persisten incluso ante fallos.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1739_3299855623" lang="es">
+<strong>4.</strong><strong>3. Ciclo de vida de los objetos en
+Hibernate</strong></h2>
+<ol>
+<li><p><strong>Transitorio:</strong> objeto creado pero
+	<strong>no asociado a la sesión</strong>.</p></li>
+<li><p><strong>Persistente:</strong> objeto <strong>asociado
+	a la sesión</strong>, cambios se sincronizan automáticamente.</p></li>
+<li><p><strong>Separado (Detached):</strong> objeto
+	previamente persistente pero <strong>desconectado de la sesión</strong>,
+	requiere update()  o merge() 
+	para volver a persistir cambios.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1741_3299855623" lang="es">
+<strong>4.</strong><strong>4. Patrones aplicados</strong></h2>
+<ul>
+<li><p><strong>Singleton en </strong><strong>SessionFactory</strong><strong>:</strong></p>
+<ul>
+<li><p>Se crea una única instancia de SessionFactory 
+		para toda la aplicación.</p></li>
+<li><p>Mejora eficiencia y evita múltiples cargas de
+		configuración.</p></li>
+</ul>
+<li><p><strong>Lazy Loading (carga diferida):</strong></p>
+<ul>
+<li><p>Hibernate puede generar proxies de objetos para
+		<strong>cargar los datos solo cuando se accede</strong>,
+		optimizando rendimiento.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1743_3299855623" lang="es">
+<strong>4.</strong><strong>5. Buenas prácticas en sesiones y
+transacciones</strong></h2>
+<ul>
+<li><p><strong>Abrir y cerrar sesiones correctamente:</strong>
+	usar try-with-resources  o cerrar
+	explícitamente con session.close().</p></li>
+<li><p><strong>Cerrar transacciones siempre:</strong>
+	usar commit()  o rollback() 
+	según el resultado.</p></li>
+<li><p><strong>Evitar mantener transacciones abiertas:</strong>
+	puede generar bloqueos o inconsistencias.</p></li>
+<li><p><strong>Separar transacciones por unidad de
+	trabajo:</strong> cada operación lógica debe tener su propia
+	transacción.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1745_3299855623" lang="es">
+<strong>5. </strong><strong>Consultas con HQL (Hibernate Query
+Language)</strong></h1>
+<h2 id="__RefHeading___Toc1747_3299855623" lang="es">
+<strong>5.</strong><strong>1. Definición de HQL</strong></h2>
+<ul>
+<li><p><strong>HQL (Hibernate Query Language)</strong>  es
+	un <strong>lenguaje de consultas orientado a objetos</strong>.</p></li>
+<li><p>Permite realizar <strong>operaciones de selección,
+	inserción, actualización y borrado</strong>  sobre <strong>entidades
+	Java</strong>  mapeadas, en lugar de tablas SQL directamente.</p></li>
+<li><p>Hibernate <strong>convierte automáticamente HQL
+	en SQL</strong>, adaptándolo al dialecto de la base de datos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1749_3299855623" lang="es">
+<strong>5.</strong><strong>2. Operaciones posibles en HQL</strong></h2>
+<ul>
+<li><p><strong>SELECT:</strong> recuperar objetos o
+	atributos de entidades.</p></li>
+<li><p><strong>INSERT:</strong> insertar nuevos registros
+	a través de entidades existentes.</p></li>
+<li><p><strong>UPDATE:</strong> modificar registros
+	existentes.</p></li>
+<li><p><strong>DELETE:</strong> eliminar registros
+	basándose en condiciones.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1751_3299855623" lang="es">
+<strong>5.</strong><strong>3. Interfaz </strong><strong><code>Query</code></strong></h2>
+<ul>
+<li><p>Representa una <strong>consulta HQL</strong>  y
+	controla su ejecución.</p></li>
+<li><p><strong>Métodos principales:</strong></p>
+<ul>
+<li><p>list()  →
+		devuelve todos los resultados como una <strong>lista (</strong><strong>List</strong><strong>)
+		de objetos Java</strong>.</p></li>
+<li><p>uniqueResult() 
+		→ devuelve <strong>un único objeto</strong>; lanza excepción si
+		hay más de uno.</p></li>
+<li><p>executeUpdate() 
+		→ ejecuta <strong>sentencias de modificación</strong>  (INSERT,
+		UPDATE, DELETE).</p></li>
+<li><p>setParameter() 
+		→ vincula valores a parámetros de la consulta.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1753_3299855623" lang="es">
+<strong>5.</strong><strong>4. Tipos de parámetros en HQL</strong></h2>
+<ol>
+<li><p><strong>Posicionales:</strong> usando ?,
+	se asigna por índice:</p>
+<pre><code>query.setParameter(0, valor);</code></pre></li>
+<li><p><strong>Nombrados:</strong> usando :nombre,
+	se asigna por nombre:</p>
+<pre><code>query.setParameter("nombre", valor);</code></pre></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1755_3299855623" lang="es">
+<strong>5.</strong><strong>5. Diferencias con SQL</strong></h2>
+<ul>
+<li><p>HQL trabaja con <strong>clases y atributos de
+	Java</strong>, no directamente con tablas y columnas.</p></li>
+<li><p>Permite aprovechar <strong>relaciones, herencias y
+	asociaciones mapeadas</strong>  entre entidades.</p></li>
+<li><p>Hibernate se encarga de generar <strong>SQL
+	optimizado</strong>  y adaptado al motor de base de datos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1757_3299855623" lang="es">
+<strong>5.</strong><strong>6. Buenas prácticas al usar HQL</strong></h2>
+<ul>
+<li><p>Usar <strong>parámetros nombrados</strong>  para
+	mayor claridad y evitar inyecciones SQL.</p></li>
+<li><p>Evitar consultas que generen <strong>N+1 selects</strong>,
+	usando fetch  o join
+	fetch.</p></li>
+<li><p>Mantener consultas <strong>lo más cercanas
+	posible al modelo de objetos</strong>  para aprovechar el ORM.</p></li>
+<li><p>Controlar el tamaño de los resultados usando
+	<strong>paginación (</strong><strong>setMaxResults</strong><strong>,
+	</strong><strong>setFirstResult</strong><strong>)</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1759_3299855623" lang="es">
+<strong>6. </strong><strong>Mapeo objeto-relacional avanzado</strong></h1>
+<h2 id="__RefHeading___Toc1761_3299855623" lang="es">
+<strong>6.</strong><strong>1. Relaciones entre entidades</strong></h2>
+<p>Hibernate permite mapear diferentes tipos de relaciones
+entre objetos y tablas:</p>
+<ol>
+<li><p><strong>Uno a uno (</strong><strong>one-to-one</strong><strong>)</strong></p>
+<ul>
+<li><p>Cada fila de una tabla se relaciona con <strong>una
+		sola fila</strong>  de otra tabla.</p></li>
+<li><p>Se puede implementar con <strong>clave foránea
+		en una de las tablas</strong>  o <strong>tabla intermedia</strong>.</p></li>
+<li><p>Se especifica en el mapeo con &lt;one-to-one&gt; 
+		o anotaciones @OneToOne.</p></li>
+</ul>
+<li><p><strong>Uno a muchos (</strong><strong>one-to-many</strong><strong>)</strong></p>
+<ul>
+<li><p>Una entidad se relaciona con <strong>varias
+		instancias de otra entidad</strong>.</p></li>
+<li><p>Comúnmente implementado con <strong>lista o set
+		en la clase Java</strong>.</p></li>
+<li><p>Se define con &lt;one-to-many&gt; 
+		en XML o @OneToMany  en anotaciones.</p></li>
+</ul>
+<li><p><strong>Muchos a muchos (</strong><strong>many-to-many</strong><strong>)</strong></p>
+<ul>
+<li><p>Varias instancias de una entidad se relacionan
+		con varias instancias de otra entidad.</p></li>
+<li><p>Se implementa con <strong>tabla intermedia (join
+		table)</strong>  que contiene claves foráneas de ambas tablas.</p></li>
+<li><p>Se define con &lt;many-to-many&gt; 
+		o @ManyToMany.</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1763_3299855623" lang="es">
+<strong>6.</strong><strong>2. Estrategias de generación de claves
+primarias</strong></h2>
+<p>Hibernate permite varias formas de generar
+automáticamente identificadores de entidades:</p>
+<ul>
+<li><p><strong>identity</strong>:
+	la base de datos genera la clave automáticamente (auto-increment).</p></li>
+<li><p><strong>sequence</strong>:
+	usa una secuencia de la base de datos.</p></li>
+<li><p><strong>increment</strong>:
+	Hibernate genera claves incrementales en memoria (no recomendado en
+	entornos concurrentes).</p></li>
+<li><p><strong>uuid</strong>:
+	genera identificadores únicos universales.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1765_3299855623" lang="es">
+<strong>6.</strong><strong>3. Herencia en Hibernate</strong></h2>
+<p>Hibernate permite mapear <strong>jerarquías de clases</strong> 
+en la base de datos de tres formas principales:</p>
+<ol>
+<li><p><strong>Single Table (una tabla por toda la
+	jerarquía)</strong></p>
+<ul>
+<li><p>Todas las clases de la jerarquía se guardan en
+		<strong>una sola tabla</strong>.</p></li>
+<li><p>Se usa una columna discriminadora para
+		identificar la subclase.</p></li>
+<li><p>Ventaja: consultas rápidas, desventaja: muchas
+		columnas nulas.</p></li>
+</ul>
+<li><p><strong>Table per Class (una tabla por cada clase
+	concreta)</strong></p>
+<ul>
+<li><p>Cada subclase tiene su <strong>propia tabla</strong> 
+		con los atributos heredados.</p></li>
+<li><p>Evita columnas nulas, pero las consultas que unen
+		clases requieren UNION.</p></li>
+</ul>
+<li><p><strong>Joined Subclass (una tabla por cada clase,
+	unidas)</strong></p>
+<ul>
+<li><p>La clase padre tiene su tabla y cada subclase
+		tiene su propia tabla con sus atributos.</p></li>
+<li><p>Se usan JOIN  para
+		reconstruir objetos completos.</p></li>
+<li><p>Ventaja: mantiene normalización;
+		desventaja: consultas más complejas.</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1767_3299855623" lang="es">
+<strong>6.</strong><strong>4. Cascading y Fetch Types</strong></h2>
+<ul>
+<li><p><strong>Cascading (</strong><strong>cascade</strong><strong>)</strong></p>
+<ul>
+<li><p>Permite <strong>propagar operaciones</strong>  de
+		una entidad a sus relaciones.</p></li>
+<li><p>Tipos comunes: all,
+		save-update, delete,
+		persist, merge.</p></li>
+<li><p>Ejemplo: al borrar un padre, borrar
+		automáticamente sus hijos.</p></li>
+</ul>
+<li><p><strong>Fetch types</strong></p>
+<ul>
+<li><p><strong>EAGER</strong> 
+		→ carga inmediatamente la relación asociada.</p></li>
+<li><p><strong>LAZY</strong> 
+		→ carga diferida, los datos se recuperan solo al acceder a la
+		relación.</p></li>
+<li><p>Mejora rendimiento al evitar cargar datos
+		innecesarios.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc1769_3299855623" lang="es">
+<strong>7. </strong><strong>Ingeniería inversa y generación
+automática</strong></h1>
+<h2 id="__RefHeading___Toc1771_3299855623" lang="es">
+<strong>7.</strong><strong>1. Concepto de ingeniería inversa</strong></h2>
+<ul>
+<li><p>La <strong>ingeniería inversa en Hibernate</strong> 
+	consiste en <strong>crear automáticamente clases Java y ficheros de
+	mapeo (</strong><strong>.hbm.xml</strong><strong>)
+	a partir de una base de datos existente</strong>.</p></li>
+<li><p>Evita la necesidad de escribir manualmente las
+	entidades y mapeos para tablas ya existentes.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1773_3299855623" lang="es">
+<strong>7.</strong><strong>2. Ficheros utilizados</strong></h2>
+<ol>
+<li><p><strong>.reveng.xml</strong><strong>
+	(Reverse Engineering File)</strong></p>
+<ul>
+<li><p>Define <strong>reglas de mapeo automáticas</strong> 
+		para la conversión de tablas y columnas a clases y atributos.</p></li>
+<li><p>Permite <strong>personalizar nombres de clases,
+		paquetes, tipos de datos y exclusión de tablas</strong>.</p></li>
+</ul>
+<li><p><strong>.hbm.xml</strong><strong>
+	(fichero de mapeo generado)</strong></p>
+<ul>
+<li><p>Se crea a partir del .reveng.xml 
+		y refleja <strong>cómo cada tabla se relaciona con su clase Java</strong>.</p></li>
+<li><p>Incluye claves primarias, relaciones y atributos.</p></li>
+</ul>
+<li><p><strong>Clases Java</strong></p>
+<ul>
+<li><p>Se generan automáticamente junto con los mapeos.</p></li>
+<li><p>Implementan Serializable 
+		para persistencia completa y compatibilidad con cachés
+		distribuidas.</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1775_3299855623" lang="es">
+<strong>7.</strong><strong>3. Proceso típico de generación</strong></h2>
+<ol>
+<li><p>Configurar un <strong>fichero </strong><strong>.reveng.xml</strong> 
+	con reglas de mapeo.</p></li>
+<li><p>Ejecutar la <strong>herramienta de generación de
+	Hibernate (Hibernate Tools)</strong>.</p></li>
+<li><p>Generar automáticamente:</p>
+<ul>
+<li><p>Clases Java de las entidades.</p></li>
+<li><p>Ficheros .hbm.xml  de
+		mapeo.</p></li>
+</ul>
+<li><p>Registrar los ficheros .hbm.xml 
+	en el hibernate.cfg.xml  para que
+	Hibernate los reconozca.</p></li>
+</li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1777_3299855623" lang="es">
+<strong>7.</strong><strong>4. Ventajas de la ingeniería inversa</strong></h2>
+<ul>
+<li><p>Ahorra tiempo y reduce errores manuales al crear
+	entidades para una base de datos existente.</p></li>
+<li><p>Permite <strong>trabajar directamente con el
+	modelo de la base de datos real</strong>  sin modificar la estructura
+	existente.</p></li>
+<li><p>Facilita la <strong>migración de proyectos</strong> 
+	o integración de aplicaciones con bases de datos heredadas.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1779_3299855623" lang="es">
+<strong>7.</strong><strong>5. Consideraciones importantes</strong></h2>
+<ul>
+<li><p>Verificar <strong>tipos de datos y nombres de
+	columnas</strong>, ya que la generación automática puede necesitar
+	ajustes.</p></li>
+<li><p>Revisar <strong>relaciones y claves primarias</strong>,
+	especialmente en bases de datos complejas con muchas relaciones.</p></li>
+<li><p>Ajustar <strong>paquetes y nombres de clases</strong> 
+	según convenciones de la aplicación.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1781_3299855623" lang="es">
+<strong>8. </strong><strong>Buenas prácticas y control de
+rendimiento en Hibernate</strong></h1>
+<h2 id="__RefHeading___Toc1783_3299855623" lang="es">
+<strong>8.</strong><strong>1. Manejo adecuado de sesiones y
+transacciones</strong></h2>
+<ul>
+<li><p><strong>Abrir y cerrar sesiones correctamente</strong>:</p>
+<ul>
+<li><p>Usar session.close() 
+		después de terminar operaciones.</p></li>
+<li><p>Se recomienda try-with-resources 
+		en Java para garantizar cierre automático.</p></li>
+</ul>
+<li><p><strong>Cerrar transacciones</strong>:</p>
+<ul>
+<li><p>Siempre realizar commit() 
+		si la operación fue exitosa o rollback() 
+		en caso de error.</p></li>
+<li><p>Evitar dejar transacciones abiertas, ya que puede
+		generar bloqueos de recursos o inconsistencias.</p></li>
+</ul>
+<li><p><strong>Separar transacciones por unidad de
+	trabajo</strong>:</p>
+<ul>
+<li><p>Cada operación lógica debe tener su propia
+		transacción para mantener atomicidad.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1785_3299855623" lang="es">
+<strong>8.</strong><strong>2. Optimización de consultas</strong></h2>
+<ul>
+<li><p>Evitar el problema de <strong>N+1 selects</strong>:</p>
+<ul>
+<li><p>Usar fetch join  o
+		configurar relaciones con FetchType.EAGER 
+		o LAZY  según necesidad.</p></li>
+</ul>
+<li><p><strong>Paginación de resultados</strong>:</p>
+<ul>
+<li><p>Usar setFirstResult() 
+		y setMaxResults()  para manejar grandes
+		volúmenes de datos.</p></li>
+</ul>
+<li><p><strong>Parámetros nombrados en HQL</strong>:</p>
+<ul>
+<li><p>Mejor legibilidad y seguridad frente a
+		inyecciones SQL.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1787_3299855623" lang="es">
+<strong>8.</strong><strong>3. Caché</strong></h2>
+<ul>
+<li><p><strong>Caché de primer nivel (Session)</strong>:</p>
+<ul>
+<li><p>Automático, asociado a la sesión.</p></li>
+<li><p>Todos los objetos recuperados en la misma sesión
+		se almacenan y no se vuelven a cargar desde la base de datos.</p></li>
+</ul>
+<li><p><strong>Caché de segundo nivel (SessionFactory)</strong>:</p>
+<ul>
+<li><p>Opcional, compartido entre sesiones.</p></li>
+<li><p>Permite reducir consultas repetidas a la base de
+		datos.</p></li>
+</ul>
+<li><p><strong>Buenas prácticas con caché</strong>:</p>
+<ul>
+<li><p>Evitar almacenar objetos grandes o muy volátiles.</p></li>
+<li><p>Configurar correctamente la estrategia de caché
+		para cada entidad.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1789_3299855623" lang="es">
+<strong>8.</strong><strong>4. Uso de Lazy Loading y Eager Loading</strong></h2>
+<ul>
+<li><p><strong>Lazy (diferido):</strong> solo carga los
+	datos relacionados cuando se accede a ellos.</p>
+<ul>
+<li><p>Reduce carga inicial y mejora rendimiento.</p></li>
+</ul>
+<li><p><strong>Eager (inmediato):</strong> carga los
+	datos relacionados al mismo tiempo que la entidad principal.</p>
+<ul>
+<li><p>Útil cuando se sabe que los datos relacionados
+		siempre se van a necesitar.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1791_3299855623" lang="es">
+<strong>8.</strong><strong>5. Otras buenas prácticas</strong></h2>
+<ul>
+<li><p>Implementar <strong>Serializable</strong>  en las
+	entidades si se usan caches distribuidas o se requiere
+	serialización.</p></li>
+<li><p>Evitar operaciones masivas dentro de una sola
+	transacción si pueden afectar la memoria.</p></li>
+<li><p>Monitorizar y analizar <strong>consultas generadas
+	por Hibernate</strong>, especialmente las automáticas, para
+	optimizar rendimiento.</p></li>
+<li><p>Usar <strong>merge()</strong><strong>
+	en lugar de </strong><strong>update()</strong> 
+	cuando se trabaja con objetos separados para evitar excepciones de
+	estado persistente.</p></li>
+</ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+de Servicios y Procesos – Unidad 3
+– Programación de comunicaciones
+en red</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+de Servicios y Procesos – Unidad 3
+– Programación de comunicaciones
+en red</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc3537_397280232">1. Conceptos generales de red y comunicación</a></p>
+<p><a href="#__RefHeading___Toc3539_397280232">1.1 Protocolo de comunicación</a></p>
+<p><a href="#__RefHeading___Toc3541_397280232">1.2 Identificador de una máquina en la red</a></p>
+<p><a href="#__RefHeading___Toc3543_397280232">1.3 Modelo OSI</a></p>
+<p><a href="#__RefHeading___Toc3545_397280232">1.4 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc3547_397280232">2. Protocolos TCP y UDP</a></p>
+<p><a href="#__RefHeading___Toc3549_397280232">2.1 Concepto de protocolo de transporte</a></p>
+<p><a href="#__RefHeading___Toc3551_397280232">2.2 TCP (Transmission Control Protocol)</a></p>
+<p><a href="#__RefHeading___Toc3553_397280232">2.3 UDP (User Datagram Protocol)</a></p>
+<p><a href="#__RefHeading___Toc3555_397280232">2.4 Comparación TCP vs UDP</a></p>
+<p><a href="#__RefHeading___Toc3557_397280232">2.5 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc3559_397280232">3. Java para redes</a></p>
+<p><a href="#__RefHeading___Toc3561_397280232">3.1 Paquete principal: java.net</a></p>
+<p><a href="#__RefHeading___Toc3563_397280232">3.2 Librerías externas</a></p>
+<p><a href="#__RefHeading___Toc3565_397280232">3.3 Buenas prácticas y recomendaciones</a></p>
+<p><a href="#__RefHeading___Toc3567_397280232">3.4 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc3569_397280232">4. Sockets – creación y flujo de información TCP/UDP</a></p>
+<p><a href="#__RefHeading___Toc3571_397280232">4.1 Concepto de socket</a></p>
+<p><a href="#__RefHeading___Toc3573_397280232">4.2 Sockets TCP</a></p>
+<p><a href="#__RefHeading___Toc3575_397280232">4.3 Sockets UDP</a></p>
+<p><a href="#__RefHeading___Toc3577_397280232">4.4 Parámetros de creación</a></p>
+<p><a href="#__RefHeading___Toc3579_397280232">4.5 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc3581_397280232">5. Hilos y concurrencia en sockets</a></p>
+<p><a href="#__RefHeading___Toc3583_397280232">5.1 Necesidad de hilos en sockets</a></p>
+<p><a href="#__RefHeading___Toc3585_397280232">5.2 Hilos en TCP</a></p>
+<p><a href="#__RefHeading___Toc3587_397280232">5.3 Hilos en UDP</a></p>
+<p><a href="#__RefHeading___Toc3589_397280232">5.4 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc3591_397280232">6. Serialización de objetos en Java</a></p>
+<p><a href="#__RefHeading___Toc3593_397280232">6.1 Concepto de serialización</a></p>
+<p><a href="#__RefHeading___Toc3595_397280232">6.2 Clases y métodos</a></p>
+<p><a href="#__RefHeading___Toc3597_397280232">6.3 Requisitos para un objeto serializable</a></p>
+<p><a href="#__RefHeading___Toc3599_397280232">6.4 Flujo típico de uso</a></p>
+<p><a href="#__RefHeading___Toc3601_397280232">6.5 Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc3603_397280232">6.6 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc3605_397280232">7. Gestión y cierre de sockets</a></p>
+<p><a href="#__RefHeading___Toc3607_397280232">7.1 Importancia del cierre de sockets</a></p>
+<p><a href="#__RefHeading___Toc3609_397280232">7.2 Método para cerrar un socket</a></p>
+<p><a href="#__RefHeading___Toc3611_397280232">7.3 Cierre durante operaciones bloqueantes</a></p>
+<p><a href="#__RefHeading___Toc3613_397280232">7.4 Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc3615_397280232">7.5 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc3617_397280232">8. Interfaz gráfica y notificación de cambios (DefaultListModel y sockets)</a></p>
+<p><a href="#__RefHeading___Toc3619_397280232">8.1 Contexto</a></p>
+<p><a href="#__RefHeading___Toc3621_397280232">8.2 ¿Qué es DefaultListModel?</a></p>
+<p><a href="#__RefHeading___Toc3623_397280232">8.3 Uso en aplicaciones con sockets</a></p>
+<p><a href="#__RefHeading___Toc3625_397280232">8.4 Resumen conceptual</a></p>
+<p><a href="#__RefHeading___Toc3627_397280232">Unidad 3 – Programación de comunicaciones en red (Resumen condensado)</a></p>
+<p><a href="#__RefHeading___Toc3629_397280232">1. Conceptos generales de red y comunicación</a></p>
+<p><a href="#__RefHeading___Toc3631_397280232">2. Protocolos TCP y UDP</a></p>
+<p><a href="#__RefHeading___Toc3633_397280232">3. Java para redes</a></p>
+<p><a href="#__RefHeading___Toc3635_397280232">4. Sockets – creación y flujo de información</a></p>
+<p><a href="#__RefHeading___Toc3637_397280232">5. Hilos y concurrencia</a></p>
+<p><a href="#__RefHeading___Toc3639_397280232">6. Serialización de objetos en Java</a></p>
+<p><a href="#__RefHeading___Toc3641_397280232">7. Gestión y cierre de sockets</a></p>
+<p><a href="#__RefHeading___Toc3643_397280232">8. Interfaz gráfica y notificación de cambios</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc3537_397280232" lang="es">
+<strong>1. Conceptos generales de red y comunicación</strong></h1>
+<h2 id="__RefHeading___Toc3539_397280232" lang="es">
+1.1 Protocolo de comunicación</h2>
+<ul>
+<li><p>Un <strong>protocolo de comunicación</strong>  es
+	un conjunto de normas que define cómo se intercambian mensajes
+	entre computadoras en una red.</p></li>
+<li><p>Especifica:</p>
+<ol>
+<li><p>Formato de los mensajes</p></li>
+<li><p>Orden y sincronización</p></li>
+<li><p>Reglas de transmisión y recepción</p></li>
+</ol>
+<li><p><strong>Ejemplos:</strong> HTTP, FTP, SMTP, DNS</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3541_397280232" lang="es">
+1.2 Identificador de una máquina en la red</h2>
+<ul>
+<li><p>Cada máquina se identifica mediante una <strong>dirección
+	IP</strong>  (Internet Protocol).</p></li>
+<li><p>Tipos de IP:</p>
+<ul>
+<li><p>IPv4: 32 bits (ej.: 192.168.1.10)</p></li>
+<li><p>IPv6: 128 bits (ej.: 2001:0db8::1)</p></li>
+</ul>
+<li><p><strong>DNS (Domain Name System):</strong> traduce
+	nombres de dominio a direcciones IP, pero <strong>no identifica
+	directamente</strong>  la máquina.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3543_397280232" lang="es">
+1.3 Modelo OSI</h2>
+<p>El <strong>modelo OSI</strong>  organiza las funciones
+de red en <strong>7 capas</strong>, jerárquicamente:</p>
+<table>
+<thead>
+<tr>
+<th>Capa
+</th>
+<th>Función
+</th>
+<th>Ejemplos de
+				protocolos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7. Aplicación
+</td>
+<td>Interacción
+				directa con el usuario, protocolos de alto nivel
+</td>
+<td>HTTP, FTP,
+				SMTP
+</td>
+</tr>
+<tr>
+<td>6.
+				Presentación
+</td>
+<td>Traduce
+				datos, cifrado/compresión
+</td>
+<td>SSL/TLS,
+				JPEG, ASCII
+</td>
+</tr>
+<tr>
+<td>5. Sesión
+</td>
+<td>Control de
+				sesiones y diálogo entre sistemas
+</td>
+<td>RPC, NetBIOS
+</td>
+</tr>
+<tr>
+<td>4. Transporte
+</td>
+<td>Transporte
+				fiable de datos entre hosts, control de flujo y errores
+</td>
+<td>TCP, UDP
+</td>
+</tr>
+<tr>
+<td>3. Red
+</td>
+<td>Enrutamiento
+				de paquetes entre redes
+</td>
+<td>IP, ICMP
+</td>
+</tr>
+<tr>
+<td>2. Enlace de
+				datos
+</td>
+<td>Transmisión
+				confiable de tramas entre nodos en la misma red
+</td>
+<td>Ethernet,
+				Wi-Fi (MAC)
+</td>
+</tr>
+<tr>
+<td>1. Física
+</td>
+<td>Transmisión
+				de bits a través del medio
+</td>
+<td>Cable, fibra,
+				radio
+</td>
+</tr>
+</tbody>
+</table>
+<h3 lang="es">1.3.1 Puntos clave</h3>
+<ul>
+<li><p>La <strong>capa de transporte</strong>  (TCP/UDP)
+	se encarga de la entrega de datos entre hosts.</p></li>
+<li><p>La <strong>capa de aplicación</strong>  contiene
+	los protocolos que usan las aplicaciones directamente.</p></li>
+<li><p>Cada capa solo interactúa con la capa superior e
+	inferior, lo que permite <strong>modularidad y escalabilidad</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3545_397280232" lang="es">
+1.4 Resumen conceptual</h2>
+<ol>
+<li><p><strong>Protocolo de comunicación:</strong>
+	normas de intercambio de mensajes.</p></li>
+<li><p><strong>Dirección IP:</strong> identificador
+	único de una máquina en la red.</p></li>
+<li><p><strong>Modelo OSI:</strong> estructura jerárquica
+	de 7 capas desde física hasta aplicación, con funciones y ejemplos
+	claros de protocolos.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3547_397280232" lang="es">
+<strong>2. Protocolos TCP y UDP</strong></h1>
+<h2 id="__RefHeading___Toc3549_397280232" lang="es">
+2.1 Concepto de protocolo de transporte</h2>
+<ul>
+<li><p>Los protocolos de transporte son responsables de
+	<strong>entregar los datos entre aplicaciones</strong>  que se
+	ejecutan en hosts distintos.</p></li>
+<li><p>Se encuentran en la <strong>capa 4 (Transporte)
+	del modelo OSI</strong>.</p></li>
+<li><p>Los dos protocolos más importantes en Java y
+	redes en general son:</p>
+<ol>
+<li><p><strong>TCP (Transmission Control Protocol)</strong></p></li>
+<li><p><strong>UDP (User Datagram Protocol)</strong></p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3551_397280232" lang="es">
+2.2 TCP (Transmission Control Protocol)</h2>
+<ul>
+<li><p><strong>Orientado a conexión:</strong> requiere
+	establecer una conexión antes de transmitir datos.</p></li>
+<li><p><strong>Fiable:</strong> garantiza que los datos
+	lleguen completos y en orden.</p></li>
+<li><p><strong>Control de flujo y congestión:</strong>
+	regula la velocidad de envío para no saturar al receptor.</p></li>
+<li><p><strong>Bloqueante:</strong> las operaciones de
+	lectura/escritura ( read(), write() )
+	pueden bloquear el hilo si no hay datos disponibles.</p></li>
+<li><p><strong>Usos típicos:</strong> transferencia de
+	archivos (FTP), correo electrónico (SMTP), navegación web (HTTP).</p></li>
+</ul>
+<h3 lang="es">2.2.1 Características clave</h3>
+<ul>
+<li><p>Establece una <strong>sesión entre cliente y
+	servidor</strong>  antes de transmitir datos.</p></li>
+<li><p>Los datos se transmiten como un <strong>flujo
+	continuo de bytes</strong>.</p></li>
+<li><p>Permite la <strong>programación con hilos</strong> 
+	para atender múltiples conexiones simultáneamente.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3553_397280232" lang="es">
+2.3 UDP (User Datagram Protocol)</h2>
+<ul>
+<li><p><strong>No orientado a conexión:</strong> los
+	paquetes (datagramas) se envían sin establecer sesión previa.</p></li>
+<li><p><strong>No fiable:</strong> los paquetes pueden
+	perderse, duplicarse o llegar desordenados.</p></li>
+<li><p><strong>Ligero y rápido:</strong> bajo overhead,
+	útil cuando la velocidad es más importante que la fiabilidad.</p></li>
+<li><p><strong>No bloqueante obligatorio:</strong> se
+	puede usar hilos, pero no es necesario para que funcione.</p></li>
+<li><p><strong>Usos típicos:</strong> streaming de
+	video, VoIP, juegos en red, mensajes cortos y rápidos.</p></li>
+</ul>
+<h3 lang="es">2.3.1 Características clave</h3>
+<ul>
+<li><p>Envía datos como <strong>datagramas
+	independientes</strong>.</p></li>
+<li><p>Cada datagrama incluye la <strong>dirección IP y
+	el puerto del receptor</strong>.</p></li>
+<li><p>Ideal para aplicaciones que toleran pérdida de
+	paquetes.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3555_397280232" lang="es">
+2.4 Comparación TCP vs UDP</h2>
+<table>
+<thead>
+<tr>
+<th>Característica
+</th>
+<th>TCP
+</th>
+<th>UDP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orientación
+				a conexión
+</td>
+<td>Sí
+</td>
+<td>No
+</td>
+</tr>
+<tr>
+<td>Fiabilidad
+</td>
+<td>Garantizada
+</td>
+<td>No
+				garantizada
+</td>
+</tr>
+<tr>
+<td>Orden de
+				entrega
+</td>
+<td>Sí
+</td>
+<td>No
+				necesariamente
+</td>
+</tr>
+<tr>
+<td>Control de
+				flujo
+</td>
+<td>Sí
+</td>
+<td>No
+</td>
+</tr>
+<tr>
+<td>Bloqueo en
+				E/S
+</td>
+<td>Sí (requiere
+				hilos para concurrencia)
+</td>
+<td>Opcional
+				hilos
+</td>
+</tr>
+<tr>
+<td>Uso típico
+</td>
+<td>Web, correo,
+				archivos
+</td>
+<td>Streaming,
+				juegos, VoIP
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc3557_397280232" lang="es">
+2.5 Resumen conceptual</h2>
+<ol>
+<li><p><strong>TCP:</strong> orientado a conexión,
+	fiable, flujo de bytes, hilos recomendados para concurrencia.</p></li>
+<li><p><strong>UDP:</strong> no orientado a conexión,
+	rápido, envío de datagramas, hilos opcionales.</p></li>
+<li><p>Ambos protocolos pertenecen a la <strong>capa de
+	transporte</strong>  y son fundamentales para la comunicación de
+	aplicaciones en red.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3559_397280232" lang="es">
+<strong>3. Java para redes</strong></h1>
+<h2 id="__RefHeading___Toc3561_397280232" lang="es">
+3.1 Paquete principal: <code>java.net</code></h2>
+<ul>
+<li><p>Java proporciona clases en el paquete <strong>java.net</strong> 
+	para trabajar con redes.</p></li>
+<li><p>Permite <strong>acceder a recursos de red</strong>,
+	crear conexiones, enviar y recibir datos.</p></li>
+</ul>
+<h3 lang="es">3.1.1 Clases de alto nivel</h3>
+<ol>
+<li><p><strong>URI</strong></p>
+<ul>
+<li><p>Proporciona un <strong>identificador de recurso</strong>.</p></li>
+<li><p>No permite acceder directamente al recurso, solo
+		lo identifica.</p></li>
+</ul>
+<li><p><strong>URL</strong></p>
+<ul>
+<li><p>Representa un <strong>identificador + acceso al
+		recurso</strong>.</p></li>
+<li><p>Permite abrir streams para leer datos desde el
+		recurso remoto.</p></li>
+</ul>
+<li><p><strong>URLConnection</strong></p>
+<ul>
+<li><p>Creado a partir de una URL, sirve como <strong>enlace
+		de comunicación</strong>.</p></li>
+<li><p>Delegado a protocolos como HTTP o FTP.</p></li>
+</ul>
+<li><p><strong>HttpURLConnection</strong></p>
+<ul>
+<li><p>Subclase de URLConnection para <strong>control
+		específico de HTTP</strong>, métodos como GET,
+		POST.</p></li>
+</ul>
+</li></li></li></li></ol>
+<h3 lang="es">3.1.2 Clases para sockets y redes</h3>
+<ol>
+<li><p><strong>Socket</strong>  → socket cliente TCP</p></li>
+<li><p><strong>ServerSocket</strong>  → socket servidor
+	TCP</p></li>
+<li><p><strong>DatagramSocket</strong>  → socket UDP
+	(envío y recepción de datagramas)</p></li>
+<li><p><strong>DatagramPacket</strong>  → contenedor de
+	datos para enviar/recibir por UDP</p></li>
+<li><p><strong>NetworkInterface</strong>  → consultar
+	interfaces de red de la máquina (Ethernet, Wi-Fi)</p></li>
+<li><p><strong>InetAddress / Inet6Address / Inet4Address</strong> 
+	→ representar direcciones IP</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3563_397280232" lang="es">
+3.2 Librerías externas</h2>
+<ul>
+<li><p>Además de java.net,
+	existen librerías externas que <strong>facilitan la programación
+	de red</strong>  y reducen redundancia:</p></li>
+</ul>
+<ol>
+<li><p><strong>Jexxus (Java Nexus)</strong></p>
+<ul>
+<li><p>Encapsula la API de sockets para TCP y UDP.</p></li>
+<li><p>Permite crear <strong>servidores y clientes</strong> 
+		de forma sencilla.</p></li>
+<li><p>Ejemplo:</p>
+<pre><code>Server server = new Server(new DebugConnectionListener(), 15652);</code>
+<code>server.startServer();</code>
+
+<code>ClientConnection conn = new ClientConnection(clientListener, "localhost", 15652);</code></pre></li>
+</ul>
+<li><p><strong>SimpleNet</strong></p>
+<ul>
+<li><p>Abstracción y despacho rápido de mensajes, útil
+		para protocolos ligeros.</p></li>
+</ul>
+<li><p><strong>Jpcap</strong></p>
+<ul>
+<li><p>Captura y envía paquetes para análisis de red
+		en Java.</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc3565_397280232" lang="es">
+3.3 Buenas prácticas y recomendaciones</h2>
+<ul>
+<li><p>Usar <strong>URI</strong>  para identificar
+	recursos y <strong>URL</strong>  para acceder a ellos.</p></li>
+<li><p>Obtener URLConnection 
+	o HttpURLConnection  para <strong>control
+	fino del acceso y lectura de datos</strong>.</p></li>
+<li><p>Para aplicaciones concurrentes, combinar sockets
+	con <strong>hilos</strong>  si se requiere atender múltiples
+	clientes.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3567_397280232" lang="es">
+3.4 Resumen conceptual</h2>
+<ol>
+<li><p><strong>java.net</strong>:
+	paquete base para programación en red.</p></li>
+<li><p><strong>Clases clave</strong>: URI, URL,
+	URLConnection, HttpURLConnection, Socket, ServerSocket,
+	DatagramSocket, DatagramPacket, NetworkInterface.</p></li>
+<li><p><strong>Librerías externas</strong>: Jexxus,
+	SimpleNet, Jpcap para facilitar desarrollo.</p></li>
+<li><p>Uso recomendado: <strong>modularidad, abstracción
+	y hilos para concurrencia</strong>.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3569_397280232" lang="es">
+<strong>4. Sockets – creación y flujo de información TCP/UDP</strong></h1>
+<h2 id="__RefHeading___Toc3571_397280232" lang="es">
+4.1 Concepto de socket</h2>
+<ul>
+<li><p>Un <strong>socket</strong>  es un <strong>punto de
+	comunicación</strong>  entre dos programas en red que permite enviar
+	y recibir datos.</p></li>
+<li><p>Tipos de sockets:</p>
+<ol>
+<li><p><strong>TCP (orientado a conexión)</strong></p></li>
+<li><p><strong>UDP (no orientado a conexión)</strong></p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3573_397280232" lang="es">
+4.2 Sockets TCP</h2>
+<h3 lang="es">4.2.1 Creación de sockets</h3>
+<ol>
+<li><p><strong>Socket cliente TCP</strong></p>
+<ul>
+<li><p>Se crea con:</p>
+<pre><code>Socket cliente = new Socket("host", puerto);</code></pre></li>
+<li><p><strong>Función:</strong> inicia la conexión
+		con un servidor que escucha en el puerto especificado.</p></li>
+<li><p>Se ejecuta <strong>en el lado cliente</strong>.</p></li>
+</ul>
+<li><p><strong>ServerSocket (servidor TCP)</strong></p>
+<ul>
+<li><p>Se crea con:</p>
+<pre><code>ServerSocket servidor = new ServerSocket(puerto);</code></pre></li>
+<li><p><strong>Función:</strong> escucha conexiones
+		entrantes de clientes en el puerto indicado.</p></li>
+<li><p>Se ejecuta <strong>en el lado servidor</strong>.</p></li>
+</ul>
+<li><p><strong>Aceptación de clientes</strong></p>
+<ul>
+<li><p>Método accept() 
+		bloquea el servidor hasta que un cliente se conecta:</p>
+<pre><code>Socket conexion = servidor.accept();</code></pre></li>
+</ul>
+</li></li></li></ol>
+<h3 lang="es">4.2.2 Flujo de información</h3>
+<ul>
+<li><p>Los sockets TCP usan <strong>streams</strong>  para
+	enviar y recibir datos:</p>
+<ul>
+<li><p>InputStream  →
+		lectura de datos</p></li>
+<li><p>OutputStream  →
+		envío de datos</p></li>
+</ul>
+<li><p>Operaciones pueden ser <strong>bloqueantes</strong>,
+	por lo que normalmente se usan <strong>hilos</strong>  para atender
+	múltiples clientes.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3575_397280232" lang="es">
+4.3 Sockets UDP</h2>
+<h3 lang="es">4.3.1 Creación de sockets</h3>
+<ul>
+<li><p>Clase DatagramSocket 
+	para enviar/recibir paquetes:</p>
+<pre><code>DatagramSocket socket = new DatagramSocket(puerto);</code></pre></li>
+<li><p>No hay conexión explícita entre cliente y
+	servidor.</p></li>
+</ul>
+<h3 lang="es">4.3.2 Envío y recepción de
+datagramas</h3>
+<ul>
+<li><p>Se usa DatagramPacket 
+	para <strong>contenedor de datos</strong>, incluyendo:</p>
+<ul>
+<li><p>Datos a enviar</p></li>
+<li><p>Dirección IP del receptor</p></li>
+<li><p>Puerto del receptor</p></li>
+</ul>
+<li><p>Ejemplo de envío:</p>
+<pre><code>DatagramPacket paquete = new DatagramPacket(datos, datos.length, direccion, puerto);</code>
+<code>socket.send(paquete);</code></pre></li>
+<li><p>UDP <strong>no garantiza la entrega ni el orden</strong> 
+	de los paquetes.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3577_397280232" lang="es">
+4.4 Parámetros de creación</h2>
+<ul>
+<li><p>TCP: dirección del servidor + puerto del servidor</p></li>
+<li><p>Servidor TCP: solo puerto para escuchar</p></li>
+<li><p>UDP: puerto local (y opcionalmente dirección
+	remota para envío)</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3579_397280232" lang="es">
+4.5 Resumen conceptual</h2>
+<ol>
+<li><p><strong>Socket TCP:</strong> orientado a conexión,
+	usa Socket  y ServerSocket,
+	flujo de bytes con InputStream / OutputStream.</p></li>
+<li><p><strong>Socket UDP:</strong> no orientado a
+	conexión, usa DatagramSocket  y
+	DatagramPacket.</p></li>
+<li><p><strong>Hilos:</strong> recomendables en TCP para
+	concurrencia, opcionales en UDP.</p></li>
+<li><p><strong>Parámetros:</strong> cliente TCP necesita
+	host + puerto; servidor TCP solo puerto; UDP puerto y dirección
+	opcional.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3581_397280232" lang="es">
+<strong>5. Hilos y concurrencia en sockets</strong></h1>
+<h2 id="__RefHeading___Toc3583_397280232" lang="es">
+5.1 Necesidad de hilos en sockets</h2>
+<ul>
+<li><p>Las operaciones de <strong>lectura y escritura en
+	sockets TCP</strong>  pueden ser <strong>bloqueantes</strong>.</p></li>
+<li><p>Si un servidor atiende un cliente en el <strong>hilo
+	principal</strong>, se bloqueará hasta que el cliente envíe datos
+	o cierre la conexión.</p></li>
+<li><p>Para poder <strong>atender múltiples clientes
+	simultáneamente</strong>, se crean <strong>hilos independientes</strong> 
+	para cada conexión.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3585_397280232" lang="es">
+5.2 Hilos en TCP</h2>
+<ul>
+<li><p><strong>Servidor TCP:</strong></p>
+<ul>
+<li><p>Método típico:</p>
+<pre><code>while(true){</code>
+<code>    </code><code>Socket cliente = servidor.accept(); // bloquea hasta que llega un cliente</code>
+<code>    </code><code>new Thread(() -&gt; manejarCliente(cliente)).start();</code>
+<code>}</code></pre></li>
+<li><p>Cada cliente se atiende en un hilo separado,
+		evitando bloqueo del servidor.</p></li>
+</ul>
+<li><p><strong>Cliente TCP:</strong></p>
+<ul>
+<li><p>Normalmente usa un hilo para escuchar respuestas
+		mientras otro envía mensajes.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3587_397280232" lang="es">
+5.3 Hilos en UDP</h2>
+<ul>
+<li><p><strong>UDP no requiere hilos</strong>, porque
+	cada datagrama es independiente y no bloquea la comunicación.</p></li>
+<li><p>Se pueden usar hilos para:</p>
+<ol>
+<li><p>Procesar datagramas entrantes en paralelo</p></li>
+<li><p>Mantener el programa receptivo mientras se
+		envían/reciben paquetes</p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3589_397280232" lang="es">
+5.4 Resumen conceptual</h2>
+<ol>
+<li><p><strong>Hilos son necesarios en TCP</strong>  para
+	evitar que el servidor se bloquee y permitir concurrencia.</p></li>
+<li><p><strong>Hilos son opcionales en UDP</strong>,
+	útiles solo para procesar datagramas de forma paralela.</p></li>
+<li><p><strong>Principio general:</strong> cualquier
+	operación de E/S bloqueante en red se puede aislar en un hilo para
+	mejorar la eficiencia y capacidad de respuesta.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3591_397280232" lang="es">
+<strong>6. Serialización de objetos en Java</strong></h1>
+<h2 id="__RefHeading___Toc3593_397280232" lang="es">
+6.1 Concepto de serialización</h2>
+<ul>
+<li><p>La <strong>serialización</strong>  es el proceso
+	de <strong>convertir un objeto en una secuencia de bytes</strong> 
+	para:</p>
+<ol>
+<li><p>Guardarlo en un archivo</p></li>
+<li><p>Enviarlo a través de una red</p></li>
+</ol>
+<li><p>La <strong>deserialización</strong>  es el proceso
+	inverso: reconstruir el objeto a partir de la secuencia de bytes.</p></li>
+<li><p>Propósito principal: <strong>transmisión de
+	objetos entre aplicaciones Java</strong>.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3595_397280232" lang="es">
+6.2 Clases y métodos</h2>
+<h3 lang="es">6.2.1 Clases principales</h3>
+<ul>
+<li><p>ObjectOutputStream  →
+	para <strong>serializar</strong>  objetos (escribir objetos en un
+	stream)</p></li>
+<li><p>ObjectInputStream  →
+	para <strong>deserializar</strong>  objetos (leer objetos de un
+	stream)</p></li>
+</ul>
+<h3 lang="es">6.2.2 Métodos clave</h3>
+<ul>
+<li><p>writeObject(Object obj) 
+	→ escribe un objeto serializado en el stream</p></li>
+<li><p>readObject()  → lee
+	un objeto serializado y lo reconstruye</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3597_397280232" lang="es">
+6.3 Requisitos para un objeto serializable</h2>
+<ul>
+<li><p>La clase del objeto debe <strong>implementar la
+	interfaz </strong><strong>Serializable</strong>.</p></li>
+<li><p>No se necesita heredar de una clase especial, ni
+	usar un paquete distinto.</p></li>
+<li><p>Los campos <strong>transient</strong>  no se
+	serializan (se omiten).</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3599_397280232" lang="es">
+6.4 Flujo típico de uso</h2>
+<ol>
+<li><p><strong>Serialización (envío o almacenamiento):</strong></p>
+<pre><code>ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());</code>
+<code>out.writeObject(miObjeto);</code></pre></li>
+<li><p><strong>Deserialización (recepción o lectura):</strong></p>
+<pre><code>ObjectInputStream in = new ObjectInputStream(socket.getInputStream());</code>
+<code>MiClase objetoRecibido = (MiClase) in.readObject();</code></pre></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3601_397280232" lang="es">
+6.5 Buenas prácticas</h2>
+<ul>
+<li><p>Siempre <strong>cerrar los streams</strong> 
+	después de usarlos ( close()  o
+	try-with-resources ).</p></li>
+<li><p>Manejar excepciones: IOException 
+	y ClassNotFoundException.</p></li>
+<li><p>Evitar serializar información sensible sin
+	cifrado, porque los bytes pueden ser interceptados en la red.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3603_397280232" lang="es">
+6.6 Resumen conceptual</h2>
+<ol>
+<li><p><strong>Serialización:</strong> objeto → bytes;
+	<strong>deserialización:</strong> bytes → objeto.</p></li>
+<li><p><strong>Clases y métodos:</strong>
+ObjectOutputStream / writeObject(),
+	ObjectInputStream / readObject().</p></li>
+<li><p><strong>Requisito:</strong> clase debe implementar
+	Serializable.</p></li>
+<li><p><strong>Uso típico:</strong> enviar objetos por
+	red o guardar en ficheros, con manejo seguro de streams y
+	excepciones.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3605_397280232" lang="es">
+<strong>7. Gestión y cierre de sockets</strong></h1>
+<h2 id="__RefHeading___Toc3607_397280232" lang="es">
+7.1 Importancia del cierre de sockets</h2>
+<ul>
+<li><p>Cada socket consume <strong>recursos del sistema</strong> 
+	(memoria, descriptores de archivo).</p></li>
+<li><p>Si un socket <strong>no se cierra</strong>, puede:</p>
+<ol>
+<li><p>Degradar el rendimiento del servidor</p></li>
+<li><p>Provocar fugas de recursos</p></li>
+<li><p>Limitar el número de conexiones futuras</p></li>
+</ol>
+<li><p>La <strong>JVM no garantiza</strong>  que los
+	sockets se cierren automáticamente al finalizar la aplicación.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3609_397280232" lang="es">
+7.2 Método para cerrar un socket</h2>
+<ul>
+<li><p>Todos los sockets (TCP y UDP) tienen el método:</p>
+<pre><code>close();</code></pre></li>
+<li><p><strong>Efectos de </strong><strong>close()</strong><strong>:</strong></p>
+<ol>
+<li><p>Cierra el flujo de salida ( OutputStream )</p></li>
+<li><p>Cierra el flujo de entrada ( InputStream )</p></li>
+<li><p>Libera el puerto y otros recursos asociados</p></li>
+<li><p>Hace que el socket quede <strong>indisponible
+		para futuros usos de red</strong></p></li>
+</ol>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3611_397280232" lang="es">
+7.3 Cierre durante operaciones bloqueantes</h2>
+<ul>
+<li><p>Si se llama a close() 
+	mientras el socket está <strong>bloqueado en una operación de E/S</strong>,
+	se genera una <strong>excepción (</strong><strong>SocketException</strong><strong>)</strong>.</p></li>
+<li><p>Por eso es importante <strong>manejar excepciones</strong> 
+	y, en servidores, usar hilos para no bloquear la ejecución
+	principal.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3613_397280232" lang="es">
+7.4 Buenas prácticas</h2>
+<ol>
+<li><p>Siempre cerrar sockets explícitamente al
+	finalizar la comunicación.</p></li>
+<li><p>Usar <strong>try-with-resources</strong>  cuando
+	sea posible:</p>
+<pre><code>try (Socket cliente = new Socket("localhost", 5557)) {</code>
+<code>    </code><code>// usar el socket</code>
+<code>} // se cierra automáticamente al salir del bloque</code></pre></li>
+<li><p>Manejar correctamente <strong>InputStream</strong> 
+	y <strong>OutputStream</strong>  asociados.</p></li>
+<li><p>Cierre correcto es clave para <strong>estabilidad
+	y rendimiento</strong>  de la aplicación.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3615_397280232" lang="es">
+7.5 Resumen conceptual</h2>
+<ol>
+<li><p><strong>Cerrar sockets es obligatorio</strong> 
+	para evitar fugas y degradación de rendimiento.</p></li>
+<li><p><strong>Método:</strong> close(),
+	que cierra todos los flujos y libera recursos.</p></li>
+<li><p><strong>Bloqueos y excepciones:</strong> cerrar un
+	socket bloqueado genera excepción; usar hilos para evitar
+	problemas.</p></li>
+<li><p><strong>Buenas prácticas:</strong> manejo de
+	recursos, try-with-resources, gestión de flujos y excepciones.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3617_397280232" lang="es">
+<strong>8. Interfaz gráfica y notificación de cambios
+(DefaultListModel y sockets)</strong></h1>
+<h2 id="__RefHeading___Toc3619_397280232" lang="es">
+8.1 Contexto</h2>
+<ul>
+<li><p>En aplicaciones de red con <strong>interfaces
+	gráficas</strong>  (GUI), a menudo necesitamos <strong>mostrar
+	listas dinámicas</strong>  de clientes conectados o mensajes
+	recibidos.</p></li>
+<li><p>Java Swing proporciona la clase <strong>DefaultListModel</strong> 
+	para manejar listas de manera eficiente.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3621_397280232" lang="es">
+8.2 ¿Qué es DefaultListModel?</h2>
+<ul>
+<li><p>Es un <strong>modelo de datos</strong>  para JList 
+	que almacena elementos y permite:</p>
+<ol>
+<li><p>Añadir, eliminar y actualizar elementos de forma
+		dinámica</p></li>
+<li><p>Notificar automáticamente a los componentes
+		visuales ( JList ) cuando hay cambios</p></li>
+</ol>
+<li><p>Permite <strong>separar la lógica de datos de la
+	presentación</strong>.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3623_397280232" lang="es">
+8.3 Uso en aplicaciones con sockets</h2>
+<ul>
+<li><p>En un servidor que atiende múltiples clientes:</p>
+<ul>
+<li><p>Cada vez que un cliente se conecta o desconecta,
+		se <strong>actualiza el </strong><strong>DefaultListModel</strong>.</p></li>
+<li><p>Esto provoca que la lista en la interfaz se
+		<strong>refresque automáticamente</strong>.</p></li>
+</ul>
+<li><p>Ejemplo:</p>
+<pre><code>DefaultListModel&lt;String&gt; listaClientes = new DefaultListModel&lt;&gt;();</code>
+<code>JList&lt;String&gt; jlist = new JList&lt;&gt;(listaClientes);</code>
+
+<code>// Cuando un cliente se conecta</code>
+<code>listaClientes.addElement("Cliente 1");</code>
+<code>// Cuando un cliente se desconecta</code>
+<code>listaClientes.removeElement("Cliente 1");</code></pre></li>
+</li></ul>
+<h3 lang="es">8.3.1 Ventajas</h3>
+<ol>
+<li><p><strong>Notificación automática:</strong> no se
+	necesita refrescar manualmente la GUI.</p></li>
+<li><p><strong>Sincronización con hilos:</strong> se
+	puede actualizar desde hilos que atienden clientes usando
+	SwingUtilities.invokeLater().</p></li>
+<li><p><strong>Flexibilidad:</strong> permite mostrar
+	cualquier tipo de información dinámica relacionada con la red.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3625_397280232" lang="es">
+8.4 Resumen conceptual</h2>
+<ol>
+<li><p><strong>DefaultListModel:</strong> modelo de datos
+	para JList, notifica cambios
+	automáticamente.</p></li>
+<li><p><strong>Uso típico:</strong> mostrar clientes
+	conectados, mensajes recibidos o estado de la red.</p></li>
+<li><p><strong>Concurrencia:</strong> usar invokeLater 
+	para actualizar la GUI desde hilos que manejan sockets.</p></li>
+<li><p><strong>Objetivo:</strong> separar datos de
+	presentación y mantener la interfaz reactiva en aplicaciones de
+	red.</p></li>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3627_397280232" lang="es">
+<strong>Unidad 3 – Programación de comunicaciones en red (Resumen
+condensado)</strong></h1>
+<h2 id="__RefHeading___Toc3629_397280232" lang="es">
+1. Conceptos generales de red y comunicación</h2>
+<ol>
+<li><p><strong>Protocolo de comunicación:</strong>
+	conjunto de normas que define cómo intercambian mensajes dos
+	sistemas. Ej.: HTTP, FTP, SMTP.</p></li>
+<li><p><strong>Dirección IP:</strong> identificador
+	único de una máquina en la red.</p>
+<ul>
+<li><p>IPv4 (32 bits), IPv6 (128 bits)</p></li>
+<li><p>DNS traduce nombres de dominio a IP.</p></li>
+</ul>
+<li><p><strong>Modelo OSI:</strong> estructura jerárquica
+	de 7 capas:</p>
+<ul>
+<li><p>Aplicación → interacción directa, ej. HTTP,
+		FTP</p></li>
+<li><p>Presentación → cifrado, compresión</p></li>
+<li><p>Sesión → control de sesiones</p></li>
+<li><p>Transporte → entrega fiable, TCP/UDP</p></li>
+<li><p>Red → enrutamiento de paquetes</p></li>
+<li><p>Enlace de datos → transmisión de tramas entre
+		nodos</p></li>
+<li><p>Física → transmisión de bits por el medio</p></li>
+</ul>
+</li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc3631_397280232" lang="es">
+2. Protocolos TCP y UDP</h2>
+<ol>
+<li><p><strong>TCP (Transmission Control Protocol)</strong></p>
+<ul>
+<li><p>Orientado a conexión, fiable, flujo de bytes</p></li>
+<li><p>Bloqueante, se usan hilos para concurrencia</p></li>
+<li><p>Ej.: FTP, SMTP, HTTP</p></li>
+</ul>
+<li><p><strong>UDP (User Datagram Protocol)</strong></p>
+<ul>
+<li><p>No orientado a conexión, rápido, envío de
+		datagramas</p></li>
+<li><p>No garantiza orden ni entrega</p></li>
+<li><p>Hilos opcionales para procesar datagramas
+		paralelos</p></li>
+<li><p>Ej.: streaming, VoIP, juegos</p></li>
+</ul>
+</li></li></ol>
+<p><strong>Comparación TCP vs UDP:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Característica
+</th>
+<th>TCP
+</th>
+<th>UDP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orientación
+</td>
+<td>Sí
+</td>
+<td>No
+</td>
+</tr>
+<tr>
+<td>Fiabilidad
+</td>
+<td>Sí
+</td>
+<td>No
+</td>
+</tr>
+<tr>
+<td>Orden de
+				entrega
+</td>
+<td>Sí
+</td>
+<td>No
+</td>
+</tr>
+<tr>
+<td>Control de
+				flujo
+</td>
+<td>Sí
+</td>
+<td>No
+</td>
+</tr>
+<tr>
+<td>Uso de hilos
+</td>
+<td>Recomendado
+</td>
+<td>Opcional
+</td>
+</tr>
+<tr>
+<td>Ejemplo
+</td>
+<td>HTTP, FTP
+</td>
+<td>Streaming,
+				VoIP
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc3633_397280232" lang="es">
+3. Java para redes</h2>
+<ol>
+<li><p><strong>Paquete </strong><strong>java.net</strong>:
+	clases para red, creación de sockets, acceso a recursos.</p></li>
+<li><p><strong>Clases clave:</strong></p>
+<ul>
+<li><p>URI: identificador
+		de recurso</p></li>
+<li><p>URL: identificador +
+		acceso</p></li>
+<li><p>URLConnection,
+		HttpURLConnection: enlaces de
+		comunicación</p></li>
+<li><p>Socket,
+		ServerSocket: TCP cliente/servidor</p></li>
+<li><p>DatagramSocket,
+		DatagramPacket: UDP</p></li>
+<li><p>NetworkInterface,
+		InetAddress</p></li>
+</ul>
+<li><p><strong>Librerías externas:</strong></p>
+<ul>
+<li><p>Jexxus: simplifica TCP/UDP, clientes y servidores</p></li>
+<li><p>SimpleNet: despacho rápido de mensajes</p></li>
+<li><p>Jpcap: captura/análisis de paquetes</p></li>
+</ul>
+</li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc3635_397280232" lang="es">
+4. Sockets – creación y flujo de información</h2>
+<ol>
+<li><p><strong>TCP:</strong></p>
+<ul>
+<li><p>Cliente: Socket(host,
+		puerto)</p></li>
+<li><p>Servidor: ServerSocket(puerto)</p></li>
+<li><p>Aceptar conexiones: accept()</p></li>
+<li><p>Flujo de información: InputStream 
+		/ OutputStream</p></li>
+<li><p>Requiere hilos para concurrencia</p></li>
+</ul>
+<li><p><strong>UDP:</strong></p>
+<ul>
+<li><p>Socket: DatagramSocket</p></li>
+<li><p>Paquetes: DatagramPacket 
+		(datos + dirección + puerto)</p></li>
+<li><p>No orientado a conexión, hilos opcionales</p></li>
+</ul>
+</li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc3637_397280232" lang="es">
+5. Hilos y concurrencia</h2>
+<ol>
+<li><p>Necesarios en <strong>TCP</strong>  para evitar
+	bloqueo y atender múltiples clientes.</p></li>
+<li><p>Opcionales en <strong>UDP</strong>, útiles para
+	procesar datagramas en paralelo.</p></li>
+<li><p>Buen principio general: <strong>aislar operaciones
+	bloqueantes en hilos</strong>.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3639_397280232" lang="es">
+6. Serialización de objetos en Java</h2>
+<ol>
+<li><p><strong>Serialización:</strong> objeto → bytes;
+	<strong>Deserialización:</strong> bytes → objeto.</p></li>
+<li><p>Clases: ObjectOutputStream 
+	/ ObjectInputStream</p></li>
+<li><p>Métodos: writeObject(),
+	readObject()</p></li>
+<li><p>La clase debe implementar <strong>Serializable</strong></p></li>
+<li><p>Uso: envío de objetos por red o almacenamiento,
+	manejo de flujos y excepciones.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3641_397280232" lang="es">
+7. Gestión y cierre de sockets</h2>
+<ol>
+<li><p><strong>Cierre obligatorio</strong>  para liberar
+	recursos y evitar degradación de rendimiento.</p></li>
+<li><p>Método: close()</p></li>
+<li><p>Efectos: cierra InputStream 
+	y OutputStream, libera puerto, hace
+	socket indisponible</p></li>
+<li><p>Cierre durante E/S bloqueante → genera excepción
+	( SocketException )</p></li>
+<li><p>Buenas prácticas: try-with-resources, manejo de
+	flujos y excepciones</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3643_397280232" lang="es">
+8. Interfaz gráfica y notificación de cambios</h2>
+<ol>
+<li><p><strong>DefaultListModel</strong>: modelo de datos
+	para JList  en Swing</p></li>
+<li><p>Permite actualizar listas dinámicas de clientes o
+	mensajes conectados</p></li>
+<li><p>Notificación automática de cambios a la GUI</p></li>
+<li><p>Concurrencia: usar SwingUtilities.invokeLater() 
+	para actualizar desde hilos de sockets</p></li>
+</ol>
+<hr/>
+<h3 lang="es">🔹 Puntos críticos a recordar</h3>
+<ul>
+<li><p>TCP vs UDP: orientación a conexión, fiabilidad,
+	hilos</p></li>
+<li><p>Cliente vs Servidor: clases y lado de ejecución</p></li>
+<li><p>Serialización: clases, métodos, requisito
+	Serializable</p></li>
+<li><p>Cierre de sockets: close(),
+	flujos, excepciones</p></li>
+<li><p>Hilos y concurrencia: necesarios en TCP,
+	opcionales en UDP</p></li>
+<li><p>GUI con sockets: DefaultListModel para listas
+	dinámicas y concurrentes</p></li>
+</ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

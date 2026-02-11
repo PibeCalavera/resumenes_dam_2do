@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Desarrollo
+de Interfaces – Unidad 1 –
+Generación de interfaces de usuario</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Desarrollo
+de Interfaces – Unidad 1 –
+Generación de interfaces de usuario</h1>
+<p>
+
+</p>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1178_38383465">1. JavaFX como framework de GUI</a></p>
+<p><a href="#__RefHeading___Toc1180_38383465">1.1. Concepto y propósito</a></p>
+<p><a href="#__RefHeading___Toc1182_38383465">1.2. Componentes principales</a></p>
+<p><a href="#__RefHeading___Toc1184_38383465">1.3. Patrón de diseño MVC en JavaFX</a></p>
+<p><a href="#__RefHeading___Toc1186_38383465">1.4. Herramientas asociadas</a></p>
+<p><a href="#__RefHeading___Toc1188_38383465">2. Scene Builder y diseño visual de la interfaz</a></p>
+<p><a href="#__RefHeading___Toc1190_38383465">2.1. Concepto</a></p>
+<p><a href="#__RefHeading___Toc1192_38383465">2.2. Paneles y secciones principales</a></p>
+<p><a href="#__RefHeading___Toc1194_38383465">2.3. Ubicación de componentes</a></p>
+<p><a href="#__RefHeading___Toc1196_38383465">2.4. Propiedades y personalización</a></p>
+<p><a href="#__RefHeading___Toc1198_38383465">2.5. Ventajas</a></p>
+<p><a href="#__RefHeading___Toc1200_38383465">3. Conexión FXML ↔ Controlador y MVC</a></p>
+<p><a href="#__RefHeading___Toc1202_38383465">3.1. Concepto</a></p>
+<p><a href="#__RefHeading___Toc1204_38383465">3.2. Elementos clave de la conexión</a></p>
+<p><a href="#__RefHeading___Toc1206_38383465">3.3. MVC en JavaFX</a></p>
+<p><a href="#__RefHeading___Toc1208_38383465">3.4. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1210_38383465">4. Propiedades de componentes y contenedores</a></p>
+<p><a href="#__RefHeading___Toc1212_38383465">4.1. Concepto</a></p>
+<p><a href="#__RefHeading___Toc1214_38383465">4.2. Propiedades de los componentes más comunes</a></p>
+<p><a href="#__RefHeading___Toc1216_38383465">4.3. Propiedades de los contenedores (layouts)</a></p>
+<p><a href="#__RefHeading___Toc1218_38383465">4.4. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1220_38383465">4.5. Resumen</a></p>
+<p><a href="#__RefHeading___Toc1222_38383465">5. Eventos y listeners en JavaFX</a></p>
+<p><a href="#__RefHeading___Toc1224_38383465">5.1. Concepto</a></p>
+<p><a href="#__RefHeading___Toc1226_38383465">5.2. Tipos de eventos y listeners más importantes</a></p>
+<p><a href="#__RefHeading___Toc1228_38383465">5.3. Dónde implementar la lógica</a></p>
+<p><a href="#__RefHeading___Toc1230_38383465">5.4. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1232_38383465">5.5. Resumen</a></p>
+<p><a href="#__RefHeading___Toc1234_38383465">6. Ejecución de aplicaciones JavaFX y entorno de desarrollo</a></p>
+<p><a href="#__RefHeading___Toc1236_38383465">6.1. Concepto</a></p>
+<p><a href="#__RefHeading___Toc1238_38383465">6.2. Ejecución de aplicaciones JavaFX</a></p>
+<p><a href="#__RefHeading___Toc1240_38383465">6.3. Entorno de desarrollo integrado (IDE)</a></p>
+<p><a href="#__RefHeading___Toc1242_38383465">6.4. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1244_38383465">6.5. Resumen</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1178_38383465" lang="es">
+1. JavaFX como framework de GUI 
+</h1>
+<h2 id="__RefHeading___Toc1180_38383465" lang="es">
+<strong>1.1. </strong><strong>Concepto y propósito</strong></h2>
+<p>JavaFX es un <strong>framework de Java</strong> 
+diseñado para el desarrollo de <strong>interfaces gráficas de
+usuario (GUI)</strong>  modernas y ricas en funcionalidades. Permite
+crear aplicaciones de escritorio que van más allá de las simples
+ventanas y botones, incorporando:</p>
+<ul>
+<li><p>Controles visuales: botones, etiquetas (Label),
+	campos de texto (TextField), listas (ListView), tablas (TableView),
+	sliders, checkboxes, etc.</p></li>
+<li><p>Layouts o contenedores: organizan los componentes
+	de forma vertical, horizontal, en pestañas o libre.</p></li>
+<li><p>Multimedia y gráficos: imágenes, audio, video,
+	animaciones y efectos visuales.</p></li>
+<li><p>Integración con CSS y FXML: para definir estilos
+	y estructuras declarativas separadas del código Java.</p></li>
+</ul>
+<p><strong>Objetivo:</strong>
+Permitir al
+desarrollador separar <strong>la lógica de la aplicación
+(modelo/controlador)</strong>  de la <strong>presentación visual
+(vista)</strong>, facilitando mantenimiento, escalabilidad y diseño
+profesional.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1182_38383465" lang="es">
+<strong>1.2. </strong><strong>Componentes principales</strong></h2>
+<ol>
+<li><p><strong>Stage:</strong></p>
+<ul>
+<li><p>Representa la <strong>ventana principal</strong> 
+		de la aplicación.</p></li>
+<li><p>Equivalente a un “frame” en Swing.</p></li>
+<li><p>Contiene la Scene, donde se colocan los nodos.</p></li>
+</ul>
+<li><p><strong>Scene:</strong></p>
+<ul>
+<li><p>Contenedor de todos los <strong>nodos de la
+		interfaz</strong>.</p></li>
+<li><p>Un Stage puede tener una o varias Scene.</p></li>
+<li><p>Define el tamaño visible y el fondo de la
+		ventana.</p></li>
+</ul>
+<li><p><strong>Node:</strong></p>
+<ul>
+<li><p>Clase base para todos los elementos visuales.</p></li>
+<li><p>Incluye <strong>controles</strong>  (Button,
+		Label), <strong>contenedores</strong>  (VBox, HBox, AnchorPane) y
+		<strong>gráficos</strong>  (Circle, Rectangle, ImageView).</p></li>
+</ul>
+<li><p><strong>FXML:</strong></p>
+<ul>
+<li><p>Lenguaje declarativo XML que define la estructura
+		de la interfaz.</p></li>
+<li><p>Permite separar <strong>diseño</strong>  y
+		<strong>lógica</strong>, facilitando la integración con Scene
+		Builder y el patrón MVC.</p></li>
+</ul>
+</li></li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1184_38383465" lang="es">
+<strong>1.3. </strong><strong>Patrón de diseño MVC en JavaFX</strong></h2>
+<ul>
+<li><p><strong>Modelo:</strong> datos de la aplicación,
+	internos o externos.</p></li>
+<li><p><strong>Vista:</strong> definida en FXML o Scene
+	Builder, representa la interfaz.</p></li>
+<li><p><strong>Controlador:</strong> implementa la lógica
+	de interacción, enlaza los componentes de la vista con los datos y
+	eventos.</p></li>
+</ul>
+<p><strong>Ventaja:</strong>
+Separar
+responsabilidades permite <strong>modificar la interfaz sin tocar la
+lógica</strong>  y viceversa.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1186_38383465" lang="es">
+<strong>1.4. </strong><strong>Herramientas asociadas</strong></h2>
+<ol>
+<li><p><strong>Scene Builder:</strong></p>
+<ul>
+<li><p>Herramienta visual para diseñar interfaces
+		JavaFX con <strong>drag &amp; drop</strong>.</p></li>
+<li><p>Genera archivos FXML listos para usar en el
+		proyecto.</p></li>
+<li><p>Paneles clave:</p>
+<ul>
+<li><p><strong>Inspector:</strong> modifica
+			propiedades, IDs y eventos.</p></li>
+<li><p><strong>Hierarchy:</strong> muestra la jerarquía
+			de nodos.</p></li>
+<li><p><strong>Code:</strong> asigna fx:id y
+			manejadores de eventos.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>IDE compatibles:</strong></p>
+<ul>
+<li><p>Eclipse, NetBeans, IntelliJ IDEA (propietario),
+		MonoDevelop.</p></li>
+<li><p>Facilitan la integración con Scene Builder y
+		depuración del código.</p></li>
+</ul>
+</li></li></ol>
+<hr/>
+<h1 id="__RefHeading___Toc1188_38383465" lang="es">
+<strong>2. </strong><strong>Scene Builder y diseño visual de la
+interfaz</strong></h1>
+<h2 id="__RefHeading___Toc1190_38383465" lang="es">
+<strong>2.1. </strong><strong>Concepto</strong></h2>
+<p><strong>Scene Builder</strong>  es una herramienta
+visual que permite <strong>diseñar interfaces JavaFX</strong> 
+mediante <strong>arrastrar y soltar (drag &amp; drop)</strong> 
+componentes en una vista. Genera archivos <strong>FXML</strong>, que
+definen la estructura de la interfaz de forma declarativa y separada
+del código Java.</p>
+<p><strong>Objetivo:</strong>
+Facilitar el diseño de
+GUIs sin necesidad de escribir manualmente código repetitivo,
+permitiendo centrarse en la lógica de la aplicación.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1192_38383465" lang="es">
+<strong>2.2. </strong><strong>Paneles y secciones principales</strong></h2>
+<ol>
+<li><p><strong>Inspector</strong></p>
+<ul>
+<li><p>Permite modificar las <strong>propiedades de cada
+		nodo</strong>  o componente.</p></li>
+<li><p>Se divide en subpaneles:</p>
+<ul>
+<li><p><strong>Properties:</strong> cambia atributos
+			como text, prefWidth,
+			prefHeight, style.</p></li>
+<li><p><strong>Layout:</strong> define la posición y
+			dimensiones en contenedores.</p></li>
+<li><p><strong>Code:</strong> asigna <strong>fx:id</strong> 
+			y métodos manejadores de eventos ( onAction ).</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Hierarchy (Jerarquía)</strong></p>
+<ul>
+<li><p>Muestra la estructura <strong>padre-hijo</strong> 
+		de todos los nodos de la vista.</p></li>
+<li><p>Permite <strong>seleccionar y reorganizar
+		componentes</strong>.</p></li>
+<li><p>Facilita identificar contenedores anidados y su
+		contenido.</p></li>
+</ul>
+<li><p><strong>Library (Biblioteca de controles y
+	contenedores)</strong></p>
+<ul>
+<li><p>Panel donde se seleccionan <strong>controles</strong> 
+		(Button, Label, TextField) y <strong>contenedores</strong>  (VBox,
+		HBox, AnchorPane, TabPane).</p></li>
+<li><p>Se arrastran a la <strong>vista central</strong> 
+		para ubicarlos.</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1194_38383465" lang="es">
+<strong>2.3. </strong><strong>Ubicación de componentes</strong></h2>
+<ul>
+<li><p>Los componentes se colocan en la <strong>vista
+	principal</strong>  mediante <strong>drag &amp; drop</strong>.</p></li>
+<li><p>Se pueden organizar con contenedores:</p>
+<ul>
+<li><p><strong>VBox:</strong> disposición vertical
+		(columnas).</p></li>
+<li><p><strong>HBox:</strong> disposición horizontal
+		(filas).</p></li>
+<li><p><strong>TabPane:</strong> pestañas estilo
+		archivador.</p></li>
+<li><p><strong>AnchorPane:</strong> posición libre y
+		anclajes a los bordes.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1196_38383465" lang="es">
+<strong>2.4. </strong><strong>Propiedades y personalización</strong></h2>
+<ul>
+<li><p><strong>Control básico:</strong></p>
+<ul>
+<li><p>text  → texto
+		visible en botones y etiquetas.</p></li>
+<li><p>prefWidth,
+		prefHeight  → dimensiones preferidas.</p></li>
+</ul>
+<li><p><strong>Contenedor:</strong></p>
+<ul>
+<li><p>prefWidth,
+		prefHeight  → tamaño del layout.</p></li>
+</ul>
+<li><p><strong>ID y eventos:</strong></p>
+<ul>
+<li><p>fx:id  → identifica
+		el componente en el controlador.</p></li>
+<li><p>onAction  → define
+		el método a ejecutar al interactuar con el componente.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1198_38383465" lang="es">
+<strong>2.5. </strong><strong>Ventajas</strong></h2>
+<ul>
+<li><p>Diseño rápido y visual, sin escribir XML a mano.</p></li>
+<li><p>Facilita mantener la separación <strong>vista-lógica</strong>.</p></li>
+<li><p>Compatible con IDEs como NetBeans y Eclipse.</p></li>
+<li><p>Permite ver la <strong>jerarquía completa de los
+	nodos</strong>, facilitando la depuración visual.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1200_38383465" lang="es">
+<strong>3. </strong><strong>Conexión FXML ↔ Controlador y MVC</strong></h1>
+<h2 id="__RefHeading___Toc1202_38383465" lang="es">
+<strong>3.1. </strong><strong>Concepto</strong></h2>
+<p>En JavaFX, para mantener la separación entre <strong>diseño
+visual</strong>  y <strong>lógica de la aplicación</strong>, se
+utiliza:</p>
+<ol>
+<li><p><strong>FXML:</strong> define la interfaz de
+	manera declarativa (vista).</p></li>
+<li><p><strong>Controlador:</strong> clase Java que
+	implementa la <strong>lógica de interacción</strong>.</p></li>
+<li><p><strong>Modelo:</strong> contiene los <strong>datos</strong> 
+	de la aplicación (internos o externos).</p></li>
+</ol>
+<p>Esta separación sigue el patrón <strong>MVC
+(Modelo-Vista-Controlador)</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1204_38383465" lang="es">
+<strong>3.2. </strong><strong>Elementos clave de la conexión</strong></h2>
+<ol>
+<li><p><strong>fx:id</strong></p>
+<ul>
+<li><p>Atributo en el FXML que <strong>identifica un
+		componente</strong>.</p></li>
+<li><p>Se utiliza en el controlador para referirse al
+		componente mediante una variable anotada con @FXML.</p></li>
+</ul>
+<pre><code>@FXML</code>
+<code>private Button miBoton;</code></pre></li>
+<li><p><strong>@FXML</strong></p>
+<ul>
+<li><p>Anotación que enlaza <strong>atributos o métodos
+		del controlador</strong>  con los nodos definidos en FXML.</p></li>
+<li><p>Sin @FXML, los nodos
+		declarados en FXML no serían accesibles desde el controlador.</p></li>
+</ul>
+<li><p><strong>Métodos manejadores (event handlers)</strong></p>
+<ul>
+<li><p>Se definen en el controlador para responder a
+		eventos de la vista ( onAction,
+		ChangeListener, etc.).</p></li>
+<li><p>Se enlazan desde FXML o Scene Builder.</p></li>
+</ul>
+<pre><code>@FXML</code>
+<code>private void handleClick(ActionEvent event) {</code>
+<code>    </code><code>System.out.println("Botón pulsado");</code>
+<code>}</code></pre></li>
+</li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1206_38383465" lang="es">
+<strong>3.3. </strong><strong>MVC en JavaFX</strong></h2>
+<table>
+<col/>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>Componente
+</th>
+<th>Función
+</th>
+<th>Ejemplo
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modelo
+</td>
+<td>Gestiona
+				los datos
+</td>
+<td>Clases
+				con atributos y métodos de negocio
+</td>
+</tr>
+<tr>
+<td>Vista
+</td>
+<td>Representa
+				la UI
+</td>
+<td>FXML
+				+ Scene Builder
+</td>
+</tr>
+<tr>
+<td>Controlador
+</td>
+<td>Lógica
+				de interacción
+</td>
+<td>Métodos
+				@FXML, manejo de eventos
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ventajas del patrón MVC:</strong></p>
+<ul>
+<li><p>Separación clara de responsabilidades.</p></li>
+<li><p>Facilita mantenimiento y escalabilidad.</p></li>
+<li><p>Permite modificar la interfaz sin tocar la lógica
+	y viceversa.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1208_38383465" lang="es">
+<strong>3.4. </strong><strong>Buenas prácticas</strong></h2>
+<ul>
+<li><p>Cada FXML debe tener un <strong>Controlador
+	asociado</strong>.</p></li>
+<li><p>Los eventos de los componentes deben manejarse <strong>en
+	el controlador</strong>, nunca en la clase principal ( main ).</p></li>
+<li><p>Utilizar fx:id  y
+	@FXML  correctamente para evitar errores
+	de enlace.</p></li>
+<li><p>Mantener la lógica de negocio fuera del
+	controlador siempre que sea posible (en el modelo).</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1210_38383465" lang="es">
+<strong>4. </strong><strong>Propiedades de componentes y contenedores</strong></h1>
+<h2 id="__RefHeading___Toc1212_38383465" lang="es">
+<strong>4.1. </strong><strong>Concepto</strong></h2>
+<p>Cada <strong>componente visual (Node)</strong>  en
+JavaFX posee un conjunto de <strong>propiedades</strong>  que
+determinan su <strong>apariencia, tamaño y comportamiento</strong>.
+Los <strong>contenedores</strong>  (layouts) también tienen
+propiedades que controlan la <strong>disposición de sus elementos
+hijos</strong>.</p>
+<p>Dominar estas propiedades es esencial para diseñar
+interfaces funcionales y estéticamente correctas.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1214_38383465" lang="es">
+<strong>4.2. </strong><strong>Propiedades de los componentes más
+comunes</strong></h2>
+<ol>
+<li><p><strong>Text</strong></p>
+<ul>
+<li><p>text  → texto
+		visible en <strong>Label</strong>, <strong>Button</strong>,
+		<strong>CheckBox</strong>, etc.</p></li>
+</ul>
+<li><p><strong>Tamaño</strong></p>
+<ul>
+<li><p>prefWidth  /
+		prefHeight  → ancho y alto
+		preferidos.</p></li>
+<li><p>minWidth  / minHeight 
+		→ mínimo permitido.</p></li>
+<li><p>maxWidth  / maxHeight 
+		→ máximo permitido.</p></li>
+</ul>
+<li><p><strong>Identificación</strong></p>
+<ul>
+<li><p>fx:id  → nombre
+		único para enlazar con el controlador.</p></li>
+</ul>
+<li><p><strong>Estilo</strong></p>
+<ul>
+<li><p>style  → permite
+		aplicar CSS para cambiar colores, bordes, fuentes, etc.</p></li>
+</ul>
+<li><p><strong>Eventos</strong></p>
+<ul>
+<li><p>onAction  → define
+		la acción a ejecutar al interactuar con el componente.</p></li>
+<li><p>Asociable también a <strong>ChangeListener</strong>,
+		<strong>KeyListener</strong>, <strong>WindowListener</strong>,
+		según el tipo de nodo.</p></li>
+</ul>
+</li></li></li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1216_38383465" lang="es">
+<strong>4.3. </strong><strong>Propiedades de los contenedores
+(layouts)</strong></h2>
+<ol>
+<li><p><strong>VBox</strong></p>
+<ul>
+<li><p>Disposición <strong>vertical</strong>  de los
+		nodos hijos.</p></li>
+<li><p>Propiedades útiles: spacing 
+		(espacio entre elementos), alignment.</p></li>
+</ul>
+<li><p><strong>HBox</strong></p>
+<ul>
+<li><p>Disposición <strong>horizontal</strong>.</p></li>
+<li><p>Igual que VBox, permite spacing 
+		y alignment.</p></li>
+</ul>
+<li><p><strong>AnchorPane</strong></p>
+<ul>
+<li><p>Posicionamiento <strong>libre</strong>  de los
+		elementos mediante anclajes ( topAnchor,
+		leftAnchor, etc.).</p></li>
+<li><p>Útil para interfaces que requieren posiciones
+		absolutas.</p></li>
+</ul>
+<li><p><strong>TabPane</strong></p>
+<ul>
+<li><p>Contenedor tipo <strong>pestañas</strong> 
+		(archivador).</p></li>
+<li><p>Cada Tab contiene su propio contenido.</p></li>
+</ul>
+</li></li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1218_38383465" lang="es">
+<strong>4.4. </strong><strong>Buenas prácticas</strong></h2>
+<ul>
+<li><p>Usar <strong>prefWidth/prefHeight</strong>  para
+	dimensionar componentes de manera consistente.</p></li>
+<li><p>Mantener contenedores bien organizados para evitar
+	superposición de nodos.</p></li>
+<li><p>Asignar fx:id  a todos
+	los componentes que se manipularán desde el controlador.</p></li>
+<li><p>Utilizar contenedores adecuados según la
+	disposición deseada: VBox para vertical, HBox para horizontal,
+	TabPane para pestañas, etc.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1220_38383465" lang="es">
+<strong>4.5. </strong><strong>Resumen</strong></h2>
+<p>Las <strong>propiedades de los componentes y
+contenedores</strong>  son la base para <strong>diseñar la interfaz</strong> 
+y preparar los nodos para <strong>interacción con el controlador</strong>.
+Sin dominar estas propiedades, no es posible implementar
+correctamente la lógica ni los eventos.</p>
+<hr/>
+<h1 id="__RefHeading___Toc1222_38383465" lang="es">
+<strong>5.</strong><strong> Eventos y listeners en JavaFX</strong></h1>
+<h2 id="__RefHeading___Toc1224_38383465" lang="es">
+<strong>5.1. </strong><strong>Concepto</strong></h2>
+<p>En JavaFX, los <strong>eventos</strong>  permiten que
+los componentes respondan a <strong>interacciones del usuario</strong> 
+o <strong>cambios en la aplicación</strong>. Los <strong>listeners</strong> 
+son objetos que detectan estas acciones y ejecutan código en
+respuesta.</p>
+<p><strong>Objetivo:</strong>
+Permitir que la
+interfaz sea <strong>interactiva</strong>  y que la lógica de la
+aplicación reaccione a entradas del usuario o cambios en los
+componentes.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1226_38383465" lang="es">
+<strong>5.2. </strong><strong>Tipos de eventos y listeners más
+importantes</strong></h2>
+<ol>
+<li><p><strong>onAction</strong></p>
+<ul>
+<li><p>Asociado a botones y otros controles que generan
+		<strong>acciones discretas</strong>  (Button, MenuItem).</p></li>
+<li><p>Se define en FXML o Scene Builder y se implementa
+		en el controlador.</p></li>
+</ul>
+<li><p><strong>ChangeListener</strong></p>
+<ul>
+<li><p>Detecta cambios en <strong>propiedades
+		observables</strong>, como el valor de un <strong>Slider</strong>,
+		el estado de un <strong>CheckBox</strong>  o selección en un
+		<strong>ComboBox</strong>.</p></li>
+<li><p>Se utiliza con .valueProperty().addListener(...) 
+		o .selectedProperty().addListener(...).</p></li>
+</ul>
+<li><p><strong>KeyListener (KeyEvent)</strong></p>
+<ul>
+<li><p>Detecta eventos del teclado:</p>
+<ul>
+<li><p>keyPressed  →
+			tecla presionada.</p></li>
+<li><p>keyReleased  →
+			tecla liberada.</p></li>
+<li><p>keyTyped  →
+			caracter generado por la tecla.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>WindowListener</strong></p>
+<ul>
+<li><p>Asociado a la ventana (<strong>Stage</strong> )
+		para detectar eventos como: abrir, cerrar, minimizar o cambiar
+		tamaño.</p></li>
+</ul>
+</li></li></li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1228_38383465" lang="es">
+<strong>5.3. </strong><strong>Dónde implementar la lógica</strong></h2>
+<ul>
+<li><p>Toda la <strong>lógica de los eventos</strong>  se
+	implementa en el <strong>controlador</strong>.</p></li>
+<li><p>Cada evento tiene un <strong>método manejador</strong>:</p></li>
+</ul>
+<pre><code>@FXML</code>
+<code>private void handleButtonClick(ActionEvent event) {</code>
+<code>    </code><code>System.out.println("Botón pulsado");</code>
+<code>}</code></pre>
+<ul>
+<li><p>Se evita implementar eventos en la clase principal
+	( main ) para mantener el patrón MVC.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1230_38383465" lang="es">
+<strong>5.4. </strong><strong>Buenas prácticas</strong></h2>
+<ul>
+<li><p>Nombrar los métodos manejadores de manera
+	<strong>descriptiva</strong>  ( handleSliderChange,
+	handleCheckBoxToggle ).</p></li>
+<li><p>Usar @FXML  para
+	enlazar los métodos con los componentes FXML.</p></li>
+<li><p>Para eventos complejos, usar <strong>listeners
+	anónimos</strong>  o <strong>expresiones lambda</strong>:</p></li>
+</ul>
+<pre><code>slider.valueProperty().addListener((obs, oldVal, newVal) -&gt; {</code>
+<code>    </code><code>System.out.println("Valor del slider: " + newVal);</code>
+<code>});</code></pre>
+<ul>
+<li><p>Mantener la <strong>separación de
+	responsabilidades</strong>: la vista define los eventos, el
+	controlador los implementa.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1232_38383465" lang="es">
+<strong>5.5. </strong><strong>Resumen</strong></h2>
+<p>Los <strong>eventos y listeners</strong>  son el
+mecanismo que permite la <strong>interactividad</strong>  en JavaFX.
+Dominar los tipos de eventos y la forma de implementarlos en el
+controlador es esencial, y es uno de los temas más repetidos en las
+preguntas del examen.</p>
+<hr/>
+<h1 id="__RefHeading___Toc1234_38383465" lang="es">
+<strong>6. </strong><strong>Ejecución de aplicaciones JavaFX y
+entorno de desarrollo</strong></h1>
+<h2 id="__RefHeading___Toc1236_38383465" lang="es">
+<strong>6.1. </strong><strong>Concepto</strong></h2>
+<p>Para que una aplicación JavaFX funcione correctamente,
+es necesario comprender <strong>cómo se ejecuta</strong>, qué
+<strong>herramientas</strong>  se usan para desarrollarla y cómo se
+diferencian de otras tecnologías o librerías.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1238_38383465" lang="es">
+<strong>6.2. </strong><strong>Ejecución de aplicaciones JavaFX</strong></h2>
+<ol>
+<li><p><strong>Archivo JAR</strong></p>
+<ul>
+<li><p>Una vez compilada la aplicación, se genera un
+		<strong>archivo ejecutable </strong><strong>.jar</strong> 
+		que contiene todos los recursos y clases Java.</p></li>
+<li><p>Se ejecuta desde la línea de comandos con:</p></li>
+</ul>
+</li></ol>
+<pre><code>java -jar nombreArchivo.jar</code></pre>
+<ul>
+<li><p>java  → ejecuta la
+	máquina virtual (JVM).</p></li>
+<li><p>-jar  → indica que
+	se va a ejecutar un archivo JAR específico.</p></li>
+</ul>
+<ol start="2">
+<li><p><strong>Diferencia entre librerías y frameworks</strong></p>
+<ul>
+<li><p><strong>JavaFX</strong>  → framework de GUI,
+		permite diseñar interfaces de escritorio.</p></li>
+<li><p><strong>Jasper Report / JasperViewerFX</strong>  →
+		reportes, no GUI genérica.</p></li>
+<li><p><strong>JavaHelp</strong>  → documentación.</p></li>
+</ul>
+</li></ol>
+<p>Esto es importante para <strong>identificar
+correctamente qué librería usar según el objetivo</strong>.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1240_38383465" lang="es">
+<strong>6.3. </strong><strong>Entorno de desarrollo integrado (IDE)</strong></h2>
+<ol>
+<li><p><strong>IDE compatibles con JavaFX</strong></p>
+<ul>
+<li><p><strong>Eclipse</strong>, <strong>NetBeans</strong>,
+		<strong>IntelliJ IDEA (propietario)</strong>, <strong>MonoDevelop</strong>.</p></li>
+<li><p>Facilitan:</p>
+<ul>
+<li><p>Creación de proyectos JavaFX.</p></li>
+<li><p>Integración con <strong>Scene Builder</strong>.</p></li>
+<li><p>Compilación y ejecución.</p></li>
+<li><p>Depuración y gestión de dependencias.</p></li>
+</ul>
+</li></ul>
+<li><p><strong>Software no IDE</strong></p>
+<ul>
+<li><p>Photoshop, Gimp, Dreamweaver → no permiten
+		desarrollar aplicaciones JavaFX, son herramientas de diseño
+		gráfico o web.</p></li>
+</ul>
+</li></li></ol>
+<hr/>
+<h2 id="__RefHeading___Toc1242_38383465" lang="es">
+<strong>6.4. </strong><strong>Buenas prácticas</strong></h2>
+<ul>
+<li><p>Mantener un <strong>IDE actualizado</strong>  y con
+	soporte para JavaFX y Scene Builder.</p></li>
+<li><p>Separar los archivos FXML, controladores y
+	recursos en <strong>directorios organizados</strong>.</p></li>
+<li><p>Probar la ejecución del .jar 
+	antes de distribuir la aplicación.</p></li>
+<li><p>Conocer la diferencia entre librerías auxiliares
+	y el framework principal para evitar errores conceptuales en
+	exámenes.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1244_38383465" lang="es">
+<strong>6.5. </strong><strong>Resumen</strong></h2>
+<p>Este tema cierra la unidad mostrando <strong>cómo
+ejecutar aplicaciones</strong>, qué herramientas son necesarias para
+desarrollarlas y cómo identificar correctamente los frameworks y
+librerías asociados. Aunque se repite menos en las preguntas, es
+útil para <strong>preguntas de entorno y ejecución</strong>, así
+como para la práctica real.</p>
+<hr/>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

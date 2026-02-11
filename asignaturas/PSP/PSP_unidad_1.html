@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Programación
+de Servicios y Procesos – Unidad 1
+– Programación multiproceso</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Programación
+de Servicios y Procesos – Unidad 1
+– Programación multiproceso</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc3494_460581833">1. Conceptos generales de procesos y sistemas operativos</a></p>
+<p><a href="#__RefHeading___Toc3496_460581833">1.1 Definición de proceso</a></p>
+<p><a href="#__RefHeading___Toc3498_460581833">1.2 Modelo de estados de un proceso</a></p>
+<p><a href="#__RefHeading___Toc3500_460581833">1.3 Sistemas de tiempo compartido</a></p>
+<p><a href="#__RefHeading___Toc3502_460581833">1.4 Sistemas operativos multiusuario y distribuidos</a></p>
+<p><a href="#__RefHeading___Toc3504_460581833">1.5 Sistemas operativos embebidos</a></p>
+<p><a href="#__RefHeading___Toc3506_460581833">2. Concurrencia y paralelismo</a></p>
+<p><a href="#__RefHeading___Toc3508_460581833">2.1 Conceptos básicos</a></p>
+<p><a href="#__RefHeading___Toc3510_460581833">2.2 Hilos vs Procesos</a></p>
+<p><a href="#__RefHeading___Toc3512_460581833">2.3 Variables atómicas</a></p>
+<p><a href="#__RefHeading___Toc3514_460581833">2.4 Secciones críticas y exclusión mutua</a></p>
+<p><a href="#__RefHeading___Toc3516_460581833">3. Comunicación entre procesos</a></p>
+<p><a href="#__RefHeading___Toc3518_460581833">3.1 Objetivos de la comunicación</a></p>
+<p><a href="#__RefHeading___Toc3520_460581833">3.2 Mecanismos de comunicación</a></p>
+<p><a href="#__RefHeading___Toc3522_460581833">4. Creación y manejo de procesos</a></p>
+<p><a href="#__RefHeading___Toc3524_460581833">4.1 Creación de procesos en Java</a></p>
+<p><a href="#__RefHeading___Toc3526_460581833">4.2 Streams de E/S en procesos Java</a></p>
+<p><a href="#__RefHeading___Toc3528_460581833">4.3 Creación de procesos a nivel de sistema operativo</a></p>
+<p><a href="#__RefHeading___Toc3530_460581833">4.4 Hilos</a></p>
+<p><a href="#__RefHeading___Toc3532_460581833">5. Sincronización y control de recursos</a></p>
+<p><a href="#__RefHeading___Toc3534_460581833">5.1 Semáforos</a></p>
+<p><a href="#__RefHeading___Toc3536_460581833">5.2 Locks, Monitores y variables atómicas</a></p>
+<p><a href="#__RefHeading___Toc3538_460581833">5.3 Documentación de secciones críticas</a></p>
+<p><a href="#__RefHeading___Toc3540_460581833">6. Depuración y documentación</a></p>
+<p><a href="#__RefHeading___Toc3542_460581833">6.1 Depuración en entornos de desarrollo</a></p>
+<p><a href="#__RefHeading___Toc3544_460581833">6.2 Documentación</a></p>
+<p><a href="#__RefHeading___Toc3546_460581833">Resumen compacto – Unidad 1 : Programación multiproceso</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc3494_460581833" lang="es">
+<strong>1.</strong><strong> Conceptos generales de procesos y
+sistemas operativos</strong></h1>
+<h2 id="__RefHeading___Toc3496_460581833" lang="es">
+<strong>1.1 Definición de proceso</strong></h2>
+<ul>
+<li><p>Un proceso es un programa en ejecución.</p></li>
+<li><p>Contiene:</p>
+<ul>
+<li><p>Código ejecutable</p></li>
+<li><p>Datos y variables</p></li>
+<li><p>Pila de ejecución (stack)</p></li>
+<li><p>Contador de programa</p></li>
+<li><p>Recursos asociados (ficheros, memoria,
+		descriptores)</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3498_460581833" lang="es">
+<strong>1.2 Modelo de estados de un proceso</strong></h2>
+<ul>
+<li><p><strong>Modelo de 2 estados:</strong></p>
+<ul>
+<li><p>Ejecución</p></li>
+<li><p>No ejecución (agrupa listo, bloqueado, etc.)</p></li>
+</ul>
+<li><p><strong>Modelo de 5 estados:</strong></p>
+<ul>
+<li><p>Nuevo: proceso creado</p></li>
+<li><p>Listo: preparado para usar la CPU</p></li>
+<li><p>Ejecución: proceso usando la CPU</p></li>
+<li><p>Bloqueado / En espera: espera por E/S o evento
+		externo</p></li>
+<li><p>Terminado: proceso finalizado y recursos
+		liberados</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3500_460581833" lang="es">
+<strong>1.3 Sistemas de tiempo compartido</strong></h2>
+<ul>
+<li><p>La CPU se divide en cuantos de tiempo, permitiendo
+	la ejecución intercalada de los procesos.</p></li>
+<li><p>Permite simular ejecución simultánea aunque
+	exista un solo núcleo.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3502_460581833" lang="es">
+<strong>1.4 Sistemas operativos multiusuario y distribuidos</strong></h2>
+<ul>
+<li><p><strong>Multiusuario:</strong> varios usuarios
+	utilizan el sistema al mismo tiempo, con aislamiento de procesos y
+	control de recursos.</p></li>
+<li><p><strong>Distribuidos:</strong> coordinan múltiples
+	nodos independientes y presentan una vista unificada al usuario.</p>
+<ul>
+<li><p>Ejemplos: clusters de computación, aplicaciones
+		de red</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3504_460581833" lang="es">
+<strong>1.5 Sistemas operativos embebidos</strong></h2>
+<ul>
+<li><p>Diseñados para operar con recursos limitados.</p></li>
+<li><p>Características: compactos, eficientes y
+	confiables.</p></li>
+<li><p>Suelen ejecutarse en máquinas pequeñas o
+	dedicadas a tareas específicas.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3506_460581833" lang="es">
+<strong>2. </strong><strong>Concurrencia y paralelismo</strong></h1>
+<h2 id="__RefHeading___Toc3508_460581833" lang="es">
+<strong>2.1 Conceptos básicos</strong></h2>
+<ul>
+<li><p><strong>Concurrencia:</strong> varios procesos o
+	hilos progresan de manera <strong>solapada</strong>, no
+	necesariamente al mismo tiempo, compartiendo recursos y CPU.</p></li>
+<li><p><strong>Paralelismo:</strong> ejecución
+	<strong>simultánea</strong>  de procesos o hilos en varios núcleos
+	o procesadores.</p></li>
+<li><p>Diferencia clave: toda programación paralela es
+	concurrente, pero no toda programación concurrente es paralela.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3510_460581833" lang="es">
+<strong>2.2 Hilos vs Procesos</strong></h2>
+<ul>
+<li><p><strong>Hilos:</strong></p>
+<ul>
+<li><p>Son unidades de ejecución dentro de un proceso.</p></li>
+<li><p>Comparten recursos del proceso padre (memoria,
+		archivos).</p></li>
+<li><p>Creación y finalización más rápida que un
+		proceso completo.</p></li>
+<li><p>Conmutación de contexto más eficiente.</p></li>
+</ul>
+<li><p><strong>Procesos:</strong></p>
+<ul>
+<li><p>Independientes entre sí.</p></li>
+<li><p>Cada uno tiene su propio espacio de memoria y
+		recursos.</p></li>
+<li><p>Mayor coste de creación y conmutación de
+		contexto.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3512_460581833" lang="es">
+<strong>2.3 Variables atómicas</strong></h2>
+<ul>
+<li><p>Permiten operaciones <strong>seguras sin usar
+	locks explícitos</strong>.</p></li>
+<li><p>Garantizan que las operaciones sobre una variable
+	sean <strong>indivisibles</strong>  y visibles por todos los hilos.</p></li>
+<li><p>Facilitan la sincronización en entornos
+	concurrentes sin interbloqueos innecesarios.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3514_460581833" lang="es">
+<strong>2.4 Secciones críticas y exclusión mutua</strong></h2>
+<ul>
+<li><p><strong>Sección crítica:</strong> parte del
+	código donde se accede a recursos compartidos.</p></li>
+<li><p><strong>Exclusión mutua:</strong> garantiza que
+	<strong>solo un proceso o hilo a la vez</strong>  pueda ejecutar su
+	sección crítica.</p></li>
+<li><p>Previene <strong>condiciones de carrera</strong>  y
+	errores de sincronización.</p></li>
+<li><p><strong>Inanición (starvation):</strong> ocurre
+	cuando un proceso nunca accede a un recurso porque otros lo
+	acaparan.</p></li>
+<li><p><strong>Interbloqueo (deadlock):</strong> dos o
+	más procesos esperan indefinidamente recursos que poseen otros,
+	creando un ciclo de dependencia.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3516_460581833" lang="es">
+<strong>3.</strong><strong> Comunicación entre procesos</strong></h1>
+<h2 id="__RefHeading___Toc3518_460581833" lang="es">
+<strong>3.1 Objetivos de la comunicación</strong></h2>
+<ul>
+<li><p>Permitir el <strong>intercambio de datos</strong> 
+	entre procesos o hilos concurrentes.</p></li>
+<li><p>Facilitar el <strong>control de acceso a recursos
+	compartidos</strong>.</p></li>
+<li><p>Mejorar el rendimiento mediante coordinación de
+	tareas.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3520_460581833" lang="es">
+<strong>3.2 Mecanismos de comunicación</strong></h2>
+<ul>
+<li><p><strong>Colas seguras ante hilos (thread-safe
+	queues):</strong></p>
+<ul>
+<li><p>Permiten el paso seguro de datos entre tareas
+		concurrentes.</p></li>
+<li><p>Ejemplo: patrón productor-consumidor.</p></li>
+</ul>
+<li><p><strong>Paso de mensajes:</strong></p>
+<ul>
+<li><p>Comunicación explícita mediante envío y
+		recepción de mensajes.</p></li>
+<li><p>Puede ser <strong>síncrono (bloqueante)</strong> 
+		o <strong>asíncrono (no bloqueante)</strong>.</p></li>
+</ul>
+<li><p><strong>RPC (Remote Procedure Call):</strong></p>
+<ul>
+<li><p>Permite llamar a procedimientos en procesos
+		remotos como si fueran locales.</p></li>
+<li><p>Abstrae la complejidad de la comunicación en
+		red.</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc3522_460581833" lang="es">
+<strong>4.</strong><strong> Creación y manejo de procesos</strong></h1>
+<h2 id="__RefHeading___Toc3524_460581833" lang="es">
+<strong>4.1 Creación de procesos en Java</strong></h2>
+<ul>
+<li><p><strong>Runtime.exec("comando")</strong>:
+	crea un proceso hijo desde el proceso actual.</p>
+<ul>
+<li><p>Se utiliza a través de
+		Runtime.getRuntime().exec("comando").</p></li>
+</ul>
+<li><p><strong>ProcessBuilder</strong>: forma más
+	flexible de crear procesos, permite:</p>
+<ul>
+<li><p>Configurar entorno y directorio de trabajo.</p></li>
+<li><p>Redirigir entrada/salida del proceso hijo.</p></li>
+<li><p>Iniciar el proceso mediante start().</p></li>
+</ul>
+<li><p><strong>Process.destroy()</strong>: termina un
+	proceso hijo y libera sus recursos.</p></li>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3526_460581833" lang="es">
+<strong>4.2 Streams de E/S en procesos Java</strong></h2>
+<ul>
+<li><p><strong>getInputStream()</strong>: leer la salida
+	estándar (stdout) del proceso hijo.</p></li>
+<li><p><strong>getOutputStream()</strong>: enviar datos a
+	la entrada estándar (stdin) del proceso hijo.</p></li>
+<li><p><strong>getErrorStream()</strong>: leer la salida
+	de error (stderr) del proceso hijo.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3528_460581833" lang="es">
+<strong>4.3 Creación de procesos a nivel de sistema operativo</strong></h2>
+<ul>
+<li><p><strong>Fork/Clone/Exec</strong>: mecanismos de
+	bajo nivel para crear procesos.</p>
+<ul>
+<li><p>fork(): crea un
+		proceso hijo duplicando el padre.</p></li>
+<li><p>clone(): permite
+		compartir recursos específicos entre padre e hijo.</p></li>
+<li><p>exec(): reemplaza el
+		código del proceso actual por un nuevo programa.</p></li>
+</ul>
+<li><p>Los procesos hijos <strong>heredan descriptores de
+	fichero</strong>  abiertos por el padre.</p></li>
+<li><p>Cada hilo mantiene:</p>
+<ul>
+<li><p>Su propia pila (stack).</p></li>
+<li><p>Contador de programa.</p></li>
+<li><p>Estado de CPU independiente.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3530_460581833" lang="es">
+<strong>4.4 Hilos</strong></h2>
+<ul>
+<li><p>Unidad mínima de ejecución dentro de un proceso.</p></li>
+<li><p>Comparten recursos del proceso padre pero tienen
+	<strong>estado independiente</strong>.</p></li>
+<li><p>Ventajas frente a procesos completos: menor coste
+	de creación y conmutación, fácil comunicación.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3532_460581833" lang="es">
+<strong>5.</strong><strong> Sincronización y control de recursos</strong></h1>
+<h2 id="__RefHeading___Toc3534_460581833" lang="es">
+<strong>5.1 Semáforos</strong></h2>
+<ul>
+<li><p>Estructuras que permiten <strong>controlar el
+	acceso a recursos compartidos</strong>.</p></li>
+<li><p>Evitan condiciones de carrera y facilitan la
+	exclusión mutua.</p></li>
+<li><p>Pueden ser:</p>
+<ul>
+<li><p><strong>Contadores</strong>: permiten acceso a
+		múltiples instancias de un recurso.</p></li>
+<li><p><strong>Binarios</strong>: solo permiten acceso a
+		un proceso/hilo a la vez (similar a un lock).</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3536_460581833" lang="es">
+<strong>5.2 Locks, Monitores y variables atómicas</strong></h2>
+<ul>
+<li><p><strong>Locks (candados):</strong> controlan el
+	acceso exclusivo a secciones críticas.</p></li>
+<li><p><strong>Monitores:</strong> estructuras que
+	combinan <strong>exclusión mutua y espera condicional</strong>  para
+	hilos.</p></li>
+<li><p><strong>Variables atómicas:</strong> garantizan
+	operaciones indivisibles sobre variables compartidas, evitando
+	bloqueos explícitos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3538_460581833" lang="es">
+<strong>5.3 Documentación de secciones críticas</strong></h2>
+<ul>
+<li><p>Permite <strong>comprender y mantener el código
+	concurrente</strong>.</p></li>
+<li><p>Facilita:</p>
+<ul>
+<li><p>Optimización de rendimiento.</p></li>
+<li><p>Detección y resolución de problemas pasados.</p></li>
+<li><p>Prevención de errores de sincronización,
+		interbloqueos e inanición.</p></li>
+</ul>
+<li><p>Se documentan principalmente las <strong>zonas
+	donde se producen sincronizaciones entre procesos/hilos</strong>.</p></li>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc3540_460581833" lang="es">
+<strong>6.</strong><strong> Depuración y documentación</strong></h1>
+<h2 id="__RefHeading___Toc3542_460581833" lang="es">
+<strong>6.1 Depuración en entornos de desarrollo</strong></h2>
+<ul>
+<li><p>Los <strong>IDE modernos</strong>  incluyen
+	herramientas de depuración integradas:</p>
+<ul>
+<li><p>Breakpoints para detener la ejecución en puntos
+		específicos.</p></li>
+<li><p>Inspección de variables y memoria durante la
+		ejecución.</p></li>
+<li><p>Seguimiento paso a paso de la ejecución,
+		incluyendo aplicaciones multiproceso.</p></li>
+</ul>
+<li><p>Ejemplos de IDE con depuradores:</p>
+<ul>
+<li><p>Visual Studio .Net</p></li>
+<li><p>Eclipse</p></li>
+<li><p>NetBeans</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3544_460581833" lang="es">
+<strong>6.2 Documentación</strong></h2>
+<ul>
+<li><p>Permite <strong>control de cambios</strong>,
+	<strong>mantenimiento</strong>  y <strong>optimización de procesos</strong>.</p></li>
+<li><p>En aplicaciones multiproceso, es crucial
+	documentar:</p>
+<ul>
+<li><p><strong>Secciones críticas</strong>  y zonas de
+		sincronización.</p></li>
+<li><p>Procedimientos de comunicación entre procesos.</p></li>
+<li><p>Casos de manejo de errores y cierre de recursos.</p></li>
+</ul>
+<li><p>Facilita la <strong>comprensión de problemas
+	pasados</strong>, optimización y prevención de errores futuros.</p></li>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc3546_460581833" lang="es">
+Resumen compacto – Unidad 1 : Programación multiproceso</h1>
+<p><strong>Procesos</strong></p>
+<ul>
+<li><p>Programa en ejecución</p></li>
+<li><p>Contiene: código, datos, pila, contador de
+	programa, recursos</p></li>
+<li><p><strong>Estados:</strong> Nuevo → Listo →
+	Ejecución → Bloqueado → Terminado</p></li>
+<li><p>Tipos:</p>
+<ul>
+<li><p><strong>Independientes</strong>  (procesos
+		completos)</p></li>
+<li><p><strong>Multiusuario / Distribuidos / Embebidos</strong></p></li>
+</ul>
+</li></ul>
+<p><strong>Hilos</strong></p>
+<ul>
+<li><p>Unidad mínima dentro de un proceso</p></li>
+<li><p>Comparten recursos del proceso padre</p></li>
+<li><p>Cada hilo tiene: stack, contador de programa,
+	estado CPU</p></li>
+<li><p>Ventajas: creación y finalización rápida,
+	conmutación eficiente</p></li>
+</ul>
+<p><strong>Concurrencia y Paralelismo</strong></p>
+<ul>
+<li><p><strong>Concurrencia:</strong> ejecución
+	solapada, CPU compartida</p></li>
+<li><p><strong>Paralelismo:</strong> ejecución
+	simultánea en varios núcleos</p></li>
+<li><p>Problemas típicos:</p>
+<ul>
+<li><p>Condición de carrera</p></li>
+<li><p>Inanición (starvation)</p></li>
+<li><p>Interbloqueo (deadlock)</p></li>
+</ul>
+</li></ul>
+<p><strong>Secciones críticas y Exclusión mutua</strong></p>
+<ul>
+<li><p>Sección crítica = acceso a recurso compartido</p></li>
+<li><p>Exclusión mutua = un hilo/proceso a la vez</p></li>
+<li><p>Herramientas de control:</p>
+<ul>
+<li><p>Semáforos (binarios y contadores)</p></li>
+<li><p>Locks / Monitores</p></li>
+<li><p>Variables atómicas</p></li>
+</ul>
+</li></ul>
+<p><strong>Comunicación entre procesos</strong></p>
+<ul>
+<li><p><strong>Colas seguras (thread-safe queues)</strong> 
+	→ paso seguro de datos</p></li>
+<li><p><strong>Paso de mensajes:</strong> síncrono /
+	asíncrono</p></li>
+<li><p><strong>RPC:</strong> llamadas a procedimientos
+	remotos como locales</p></li>
+</ul>
+<p><strong>Creación y manejo de procesos</strong></p>
+<ul>
+<li><p>Java: Runtime.exec(),
+	ProcessBuilder.start(), destroy()</p></li>
+<li><p>Streams: getInputStream(),
+	getOutputStream(), getErrorStream()</p></li>
+<li><p>SO: fork / clone / exec</p></li>
+<li><p>Hijo hereda descriptores abiertos por el padre</p></li>
+</ul>
+<p><strong>Documentación y Depuración</strong></p>
+<ul>
+<li><p><strong>Depuración:</strong> breakpoints,
+	inspección variables, paso a paso (IDE: Visual Studio, Eclipse,
+	NetBeans)</p></li>
+<li><p><strong>Documentación:</strong> secciones
+	críticas, sincronización, comunicación, manejo de errores,
+	control de cambios</p></li>
+</ul>
+<p><strong>Relaciones clave</strong></p>
+<ul>
+<li><p>Hilos → procesos → CPU →
+	concurrencia/paralelismo</p></li>
+<li><p>Recursos compartidos → secciones críticas →
+	exclusión mutua → semáforos/locks/variables atómicas</p></li>
+<li><p>Procesos/hilos → comunicación → colas /
+	mensajes / RPC</p></li>
+<li><p>Depuración y documentación → mantenimiento +
+	prevención errores</p></li>
+</ul>
+<hr/>
+<p>💡 <strong>Tip de repaso rápido:</strong></p>
+<ul>
+<li><p>Si recuerdas: <strong>Procesos ↔ Hilos ↔
+	Concurrencia ↔ Comunicación ↔ Sincronización ↔ Depuración</strong>,
+	puedes reconstruir casi todo el temario en minutos.</p></li>
+</ul>
+<hr/>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

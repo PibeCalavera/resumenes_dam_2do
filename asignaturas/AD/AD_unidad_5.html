@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Acceso
+a Datos – Unidad 5 – Bases de
+Datos Documentales</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Acceso
+a Datos – Unidad 5 – Bases de
+Datos Documentales</h1>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc3215_2319238702">1. Modelo documental</a></p>
+<p><a href="#__RefHeading___Toc3217_2319238702">1.1 Concepto</a></p>
+<p><a href="#__RefHeading___Toc3219_2319238702">1.2 Elementos clave</a></p>
+<p><a href="#__RefHeading___Toc3221_2319238702">1.3 Ventajas</a></p>
+<p><a href="#__RefHeading___Toc3223_2319238702">1.4 Desventajas</a></p>
+<p><a href="#__RefHeading___Toc3225_2319238702">1.5 Comparación con bases de datos relacionales</a></p>
+<p><a href="#__RefHeading___Toc3273_2319238702">2. SGBD documental</a></p>
+<p><a href="#__RefHeading___Toc3275_2319238702">2.1 Concepto</a></p>
+<p><a href="#__RefHeading___Toc3277_2319238702">2.2 Tipos de SGBD documental</a></p>
+<p><a href="#__RefHeading___Toc3279_2319238702">2.3 Drivers y conexión desde Java</a></p>
+<p><a href="#__RefHeading___Toc3281_2319238702">2.4 Funciones y operaciones</a></p>
+<p><a href="#__RefHeading___Toc3283_2319238702">2.5 Ventajas</a></p>
+<p><a href="#__RefHeading___Toc3285_2319238702">2.6 Desventajas</a></p>
+<p><a href="#__RefHeading___Toc3227_2319238702">3. XML:DB</a></p>
+<p><a href="#__RefHeading___Toc3229_2319238702">3.1 Concepto</a></p>
+<p><a href="#__RefHeading___Toc3231_2319238702">3.2 Elementos clave</a></p>
+<p><a href="#__RefHeading___Toc3233_2319238702">3.3 Operaciones básicas</a></p>
+<p><a href="#__RefHeading___Toc3235_2319238702">3.4 Funciones avanzadas</a></p>
+<p><a href="#__RefHeading___Toc3237_2319238702">3.5 Identificación de errores</a></p>
+<p><a href="#__RefHeading___Toc3239_2319238702">4. XQJ (Java API for XQuery)</a></p>
+<p><a href="#__RefHeading___Toc3241_2319238702">4.1 Concepto</a></p>
+<p><a href="#__RefHeading___Toc3243_2319238702">4.2 Clases y objetos clave</a></p>
+<p><a href="#__RefHeading___Toc3245_2319238702">4.3 Flujo de ejecución típico</a></p>
+<p><a href="#__RefHeading___Toc3247_2319238702">4.4 Manejo de excepciones</a></p>
+<p><a href="#__RefHeading___Toc3249_2319238702">4.5 Relación con XML:DB</a></p>
+<p><a href="#__RefHeading___Toc3251_2319238702">5. XPath</a></p>
+<p><a href="#__RefHeading___Toc3253_2319238702">5.1 Concepto</a></p>
+<p><a href="#__RefHeading___Toc3255_2319238702">5.2 Tipos de nodos</a></p>
+<p><a href="#__RefHeading___Toc3257_2319238702">5.3 Funciones básicas</a></p>
+<p><a href="#__RefHeading___Toc3259_2319238702">5.4 Operadores de navegación</a></p>
+<p><a href="#__RefHeading___Toc3261_2319238702">5.5 Uso práctico</a></p>
+<p><a href="#__RefHeading___Toc3263_2319238702">6. XQuery y XQuery Update</a></p>
+<p><a href="#__RefHeading___Toc3265_2319238702">6.1 Concepto</a></p>
+<p><a href="#__RefHeading___Toc3267_2319238702">6.2 Operaciones básicas en XQuery Update</a></p>
+<p><a href="#__RefHeading___Toc3269_2319238702">6.3 Relación con XPath</a></p>
+<p><a href="#__RefHeading___Toc3271_2319238702">6.4 Uso práctico</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc3215_2319238702" lang="es">
+<strong>1. Modelo documental</strong></h1>
+<h2 id="__RefHeading___Toc3217_2319238702" lang="es">
+<strong>1.1 Concepto</strong></h2>
+<p>Una base de datos documental almacena información en
+<strong>documentos completos</strong>  (JSON, XML, BSON), con las
+siguientes características:</p>
+<ul>
+<li><p>Unidad de almacenamiento: documento en lugar de
+	tabla o fila.</p></li>
+<li><p>Datos semiestructurados o estructurados.</p></li>
+<li><p>Esquema flexible o incluso inexistente.</p></li>
+</ul>
+<p>
+
+</p>
+<p><strong>Ejemplo de documento JSON:</strong></p>
+<pre><code>{</code>
+<code>  </code><code>"empleado": {</code>
+<code>    </code><code>"id": 101,</code>
+<code>    </code><code>"nombre": "Ana Pérez",</code>
+<code>    </code><code>"departamento": "Ventas",</code>
+<code>    </code><code>"salario": 3500</code>
+<code>  </code><code>}</code>
+<code>}</code></pre><p>
+<strong>Ejemplo de documento XML:</strong></p>
+<pre><code>&lt;empleado&gt;</code>
+<code>  </code><code>&lt;id&gt;101&lt;/id&gt;</code>
+<code>  </code><code>&lt;nombre&gt;Ana Pérez&lt;/nombre&gt;</code>
+<code>  </code><code>&lt;departamento&gt;Ventas&lt;/departamento&gt;</code>
+<code>  </code><code>&lt;salario&gt;3500&lt;/salario&gt;</code>
+<code>&lt;/empleado&gt;</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc3219_2319238702" lang="es">
+<strong>1.2 Elementos clave</strong></h2>
+<h3 lang="es"><strong>Documentos</strong></h3>
+<ul>
+<li><p>Unidad mínima de almacenamiento.</p></li>
+<li><p>Puede incluir datos jerárquicos, anidados o
+	complejos.</p></li>
+<li><p>Identificados por una clave única.</p></li>
+<li><p>Permite heterogeneidad entre documentos de la
+	misma colección.</p></li>
+</ul>
+<h3 lang="es"><strong>Colecciones</strong></h3>
+<ul>
+<li><p>Contenedor lógico de documentos, equivalente a
+	una tabla en bases relacionales.</p></li>
+<li><p>Permite agrupar documentos relacionados y facilita
+	consultas y administración.</p></li>
+<li><p>Puede incluir subcolecciones según la
+	implementación.</p></li>
+</ul>
+<h3 lang="es"><strong>Esquema</strong></h3>
+<ul>
+<li><p>Flexible o dinámico: los documentos no requieren
+	la misma estructura.</p></li>
+<li><p>Opcional: algunos motores permiten validar
+	documentos contra un esquema (XML Schema, JSON Schema).</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3221_2319238702" lang="es">
+<strong>1.3 Ventajas</strong></h2>
+<ul>
+<li><p>Flexibilidad de esquema: permite documentos
+	heterogéneos y cambios sin alterar la estructura global.</p></li>
+<li><p>Almacenamiento de datos complejos y jerárquicos.</p></li>
+<li><p>Fácil adición de documentos sin afectar los
+	existentes.</p></li>
+<li><p>Escalabilidad horizontal y vertical.</p></li>
+<li><p>Acceso rápido a documentos individuales mediante
+	clave única o índices secundarios.</p></li>
+<li><p>Compatibilidad con formatos estándar (XML, JSON,
+	BSON).</p></li>
+<li><p>Soporte parcial de agregación y transformación
+	según motor.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3223_2319238702" lang="es">
+<strong>1.4 Desventajas</strong></h2>
+<ul>
+<li><p>Indexación compleja en documentos grandes o
+	anidados.</p></li>
+<li><p>Operaciones de agregación más costosas que en
+	bases relacionales.</p></li>
+<li><p>Falta de estandarización completa entre
+	diferentes motores.</p></li>
+<li><p>Posible redundancia de datos por ausencia de
+	normalización.</p></li>
+<li><p>Gestión de transacciones limitada en algunos
+	motores.</p></li>
+<li><p>Mayor consumo de almacenamiento por etiquetas y
+	estructuras jerárquicas.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3225_2319238702" lang="es">
+<strong>1.5 Comparación con bases de datos relacionales</strong></h2>
+<table>
+<col/>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>Característica
+</th>
+<th>Bases
+				relacionales
+</th>
+<th>Bases
+				documentales
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unidad
+				de almacenamiento
+</td>
+<td>Fila
+</td>
+<td>Documento
+</td>
+</tr>
+<tr>
+<td>Esquema
+</td>
+<td>Rígido
+</td>
+<td>Flexible
+				/ opcional
+</td>
+</tr>
+<tr>
+<td>Estructura
+				de datos
+</td>
+<td>Tablas
+				y columnas
+</td>
+<td>Árbol
+				/ JSON / XML
+</td>
+</tr>
+<tr>
+<td>Operaciones
+				típicas
+</td>
+<td>SELECT,
+				JOIN
+</td>
+<td>XPath,
+				XQuery, consultas por documento
+</td>
+</tr>
+<tr>
+<td>Flexibilidad
+</td>
+<td>Baja
+</td>
+<td>Alta
+</td>
+</tr>
+<tr>
+<td>Indexación
+</td>
+<td>Columnas
+</td>
+<td>Compleja
+				en jerarquías
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h1 id="__RefHeading___Toc3273_2319238702" lang="es">
+<strong>2</strong><strong>. SGBD documental</strong></h1>
+<h2 id="__RefHeading___Toc3275_2319238702" lang="es">
+<strong>2.</strong><strong>1 Concepto</strong></h2>
+<p>Un <strong>SGBD documental</strong>  es un sistema de
+gestión de bases de datos diseñado para <strong>almacenar,
+consultar y gestionar documentos completos</strong>  (principalmente
+XML o JSON):</p>
+<ul>
+<li><p>Optimizado para <strong>documentos jerárquicos o
+	semiestructurados</strong>.</p></li>
+<li><p>Permite consultas y actualizaciones mediante
+	<strong>XPath, XQuery o APIs específicas</strong>.</p></li>
+<li><p>Se diferencia de un SGBD relacional en que no
+	requiere esquemas rígidos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3277_2319238702" lang="es">
+<strong>2.</strong><strong>2 Tipos de SGBD documental</strong></h2>
+<ul>
+<li><p><strong>Nativo XML/Documental:</strong></p>
+<ul>
+<li><p>Ejemplo: eXist-db.</p></li>
+<li><p>Diseñado específicamente para almacenar
+		documentos XML.</p></li>
+<li><p>Soporta XQuery, XPath, XQuery Update y gestión
+		de colecciones.</p></li>
+</ul>
+<li><p><strong>SGBD relacional con soporte XML parcial:</strong></p>
+<ul>
+<li><p>Ejemplos: SQL Server, SQLite, H2.</p></li>
+<li><p>Almacenan XML dentro de campos o tipos
+		especiales, pero <strong>no son nativos documentales</strong>.</p></li>
+</ul>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc3279_2319238702" lang="es">
+<strong>2.</strong><strong>3 Drivers y conexión desde Java</strong></h2>
+<ul>
+<li><p>Para conectarse a un SGBD documental desde Java se
+	requieren <strong>drivers específicos</strong>:</p>
+<ul>
+<li><p><strong>eXist-db:</strong>
+org.exist.xmldb.DatabaseImpl  (driver
+		XML:DB)</p></li>
+</ul>
+<li><p>La conexión se realiza mediante <strong>XQJ</strong> 
+	o <strong>XML:DB API</strong>.</p></li>
+</li></ul>
+<p>
+
+</p>
+<p><strong>Ejemplo de conexión con XML:DB:</strong></p>
+<pre><code>Collection colec = DatabaseManager.getCollection("xmldb:exist://localhost:8080/exist/xmlrpc/db/EMPLEADOS", "admin", "password");</code></pre><p>
+<strong>Ejemplo de conexión con XQJ:</strong></p>
+<pre><code>XQDataSource servidor = new ExistXQDataSource();</code>
+<code>servidor.setProperty("serverName", "localhost");</code>
+<code>servidor.setProperty("port", "8080");</code>
+<code>XQConnection conexion = servidor.getConnection("admin","password");</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc3281_2319238702" lang="es">
+<strong>2.</strong><strong>4 Funciones y operaciones</strong></h2>
+<ul>
+<li><p>Creación y eliminación de colecciones
+	( createCollection(),
+	removeCollection() ).</p></li>
+<li><p>Apertura y cierre de colecciones ( getCollection(),
+	colec.close() ).</p></li>
+<li><p>Ejecución de consultas XPath/XQuery.</p></li>
+<li><p>Inserción, modificación y eliminación de
+	documentos mediante XQuery Update o servicios del motor.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3283_2319238702" lang="es">
+<strong>2.</strong><strong>5 Ventajas</strong></h2>
+<ul>
+<li><p>Optimizado para <strong>datos semiestructurados y
+	jerárquicos</strong>.</p></li>
+<li><p>Flexibilidad de esquema y rápida integración con
+	aplicaciones que consumen XML o JSON.</p></li>
+<li><p>Compatible con estándares como XQuery, XPath y
+	XML:DB.</p></li>
+</ul>
+<h2 id="__RefHeading___Toc3285_2319238702" lang="es">
+<strong>2.</strong><strong>6 Desventajas</strong></h2>
+<ul>
+<li><p>Rendimiento en operaciones de agregación
+	complejas o joins puede ser menor que en relacionales.</p></li>
+<li><p>Algunos motores no implementan transacciones ACID
+	completas.</p></li>
+<li><p>Diferencias entre implementaciones pueden afectar
+	portabilidad y estandarización de consultas.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3227_2319238702" lang="es">
+<strong>3</strong><strong>. XML:DB</strong></h1>
+<h2 id="__RefHeading___Toc3229_2319238702" lang="es">
+<strong>3</strong><strong>.1 Concepto</strong></h2>
+<p>XML:DB es una <strong>API estándar</strong>  que
+permite acceder y manipular bases de datos XML de forma uniforme:</p>
+<ul>
+<li><p>Permite la <strong>gestión de colecciones y
+	documentos</strong>.</p></li>
+<li><p>Facilita la <strong>ejecución de consultas</strong> 
+	(XPath y XQuery).</p></li>
+<li><p>Funciona como interfaz entre la aplicación y el
+	motor documental XML.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3231_2319238702" lang="es">
+<strong>3</strong><strong>.2 Elementos clave</strong></h2>
+<h3 lang="es"><strong>Colecciones</strong></h3>
+<ul>
+<li><p>Contenedores lógicos de documentos XML.</p></li>
+<li><p>Equivalente a una tabla en bases relacionales,
+	pero con documentos flexibles.</p></li>
+<li><p>Permite <strong>subcolecciones</strong>  según la
+	implementación.</p></li>
+<li><p>Se identifican mediante <strong>URL o URI</strong> 
+	dentro del motor documental.</p></li>
+</ul>
+<h3 lang="es"><strong>Documentos</strong></h3>
+<ul>
+<li><p>Unidad mínima de almacenamiento dentro de una
+	colección.</p></li>
+<li><p>Cada documento tiene una <strong>clave única</strong> 
+	y puede tener estructura jerárquica.</p></li>
+</ul>
+<h3 lang="es"><strong>Servicios</strong></h3>
+<p>XML:DB expone servicios que permiten interactuar con
+las colecciones y documentos:</p>
+<ul>
+<li><p><strong>XPathQueryService</strong>: ejecución de
+	consultas XPath sobre los documentos de la colección.</p></li>
+<li><p><strong>XQueryService</strong>: ejecución de
+	consultas XQuery sobre los documentos de la colección.</p></li>
+<li><p><strong>CollectionManagementService</strong>:
+	gestión de colecciones, incluyendo creación, eliminación y
+	modificación.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3233_2319238702" lang="es">
+<strong>3</strong><strong>.3 Operaciones básicas</strong></h2>
+<h3 lang="es"><strong>Abrir
+una colección</strong></h3>
+<ul>
+<li><p>Método: DatabaseManager.getCollection(URL,
+	user, pass)</p></li>
+<li><p>Permite acceder a una colección existente para
+	consultar o modificar documentos.</p></li>
+</ul>
+<h3 lang="es"><strong>Crear
+un servicio</strong></h3>
+<ul>
+<li><p>Método: colec.getService("ServiceName",
+	"Version")</p></li>
+<li><p>Permite abrir un servicio sobre la colección,
+	como XQueryService o CollectionManagementService.</p></li>
+</ul>
+<h3 lang="es"><strong>Crear
+y eliminar colecciones</strong></h3>
+<ul>
+<li><p><strong>Crear</strong>:
+	CollectionManagementService.createCollection("nombre")</p></li>
+<li><p><strong>Eliminar</strong>:
+	CollectionManagementService.removeCollection("nombre")</p></li>
+</ul>
+<h3 lang="es"><strong>Cerrar
+la colección</strong></h3>
+<ul>
+<li><p>Método: colec.close()</p></li>
+<li><p>Libera recursos y finaliza la conexión con la
+	colección.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3235_2319238702" lang="es">
+<strong>3</strong><strong>.4 Funciones avanzadas</strong></h2>
+<ul>
+<li><p>Gestión de <strong>subcolecciones</strong>  para
+	organizar documentos.</p></li>
+<li><p>Ejecución de <strong>consultas XPath/XQuery</strong> 
+	sobre documentos específicos.</p></li>
+<li><p>Soporte de <strong>transacciones básicas</strong> 
+	según motor.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3237_2319238702" lang="es">
+<strong>3</strong><strong>.5 Identificación de errores</strong></h2>
+<ul>
+<li><p>Las operaciones pueden lanzar excepciones
+	específicas según el motor.</p></li>
+<li><p>Es importante capturar y manejar errores al abrir
+	colecciones o ejecutar servicios.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3239_2319238702" lang="es">
+<strong>4</strong><strong>. XQJ (Java API for XQuery)</strong></h1>
+<h2 id="__RefHeading___Toc3241_2319238702" lang="es">
+<strong>4</strong><strong>.1 Concepto</strong></h2>
+<p>XQJ es una <strong>API de Java</strong>  que permite
+ejecutar consultas <strong>XQuery</strong>  sobre bases de datos XML
+compatibles:</p>
+<ul>
+<li><p>Facilita la integración de <strong>consultas XML</strong> 
+	en aplicaciones Java.</p></li>
+<li><p>Permite <strong>preparar, ejecutar y obtener
+	resultados</strong>  de expresiones XQuery.</p></li>
+<li><p>Gestiona la conexión con el motor documental y el
+	manejo de excepciones.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3243_2319238702" lang="es">
+<strong>4</strong><strong>.2 Clases y objetos clave</strong></h2>
+<h3 lang="es"><strong>XQDataSource</strong></h3>
+<ul>
+<li><p>Representa la <strong>fuente de datos</strong>  de
+	la que se obtienen conexiones XQuery.</p></li>
+<li><p>Ejemplo: ExistXQDataSource
+	servidor = new ExistXQDataSource();</p></li>
+</ul>
+<h3 lang="es"><strong>XQConnection</strong></h3>
+<ul>
+<li><p>Representa la <strong>conexión activa</strong> 
+	con la base de datos XML.</p></li>
+<li><p>Se obtiene mediante servidor.getConnection().</p></li>
+</ul>
+<h3 lang="es"><strong>XQPreparedExpression</strong></h3>
+<ul>
+<li><p>Consulta <strong>preparada</strong>  que se puede
+	ejecutar sobre la conexión.</p></li>
+<li><p>Se crea con: conexion.prepareExpression("consulta
+	XQuery");</p></li>
+</ul>
+<h3 lang="es"><strong>XQResultItem</strong></h3>
+<ul>
+<li><p>Representa un <strong>nodo o valor individual</strong> 
+	del resultado de la consulta.</p></li>
+<li><p>Permite acceder al contenido textual o atributos
+	de un nodo.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3245_2319238702" lang="es">
+<strong>4</strong><strong>.3 Flujo de ejecución típico</strong></h2>
+<ol>
+<li><p>Crear un <strong>XQDataSource</strong>.</p></li>
+<li><p>Obtener un <strong>XQConnection</strong>.</p></li>
+<li><p>Preparar una <strong>XQPreparedExpression</strong> 
+	con la consulta XQuery deseada.</p></li>
+<li><p>Ejecutar la expresión y recuperar los resultados
+	(<strong>XQResultItem</strong> ).</p></li>
+<li><p>Cerrar la conexión para liberar recursos.</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3247_2319238702" lang="es">
+<strong>4</strong><strong>.4 Manejo de excepciones</strong></h2>
+<ul>
+<li><p>Todas las operaciones pueden lanzar XQException.</p></li>
+<li><p>Se deben capturar errores de:</p></li>
+</ul>
+<ol>
+<ul>
+<li><p>Conexión con el motor.</p></li>
+<li><p>Preparación de expresiones.</p></li>
+<li><p>Ejecución de consultas.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3249_2319238702" lang="es">
+<strong>4</strong><strong>.5 Relación con XML:DB</strong></h2>
+<ul>
+<li><p>XQJ se puede usar sobre motores que implementen
+	XML:DB.</p></li>
+<li><p>Permite ejecutar <strong>XQuery directamente desde
+	Java</strong>, complementando los servicios de XML:DB.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc3251_2319238702" lang="es">
+<strong>5</strong><strong>. XPath</strong></h1>
+<h2 id="__RefHeading___Toc3253_2319238702" lang="es">
+<strong>5</strong><strong>.1 Concepto</strong></h2>
+<p>XPath es un <strong>lenguaje de consulta</strong> 
+utilizado para seleccionar <strong>nodos específicos</strong>  dentro
+de un documento XML:</p>
+<ul>
+<li><p>Permite navegar por la estructura jerárquica del
+	documento.</p></li>
+<li><p>Se utiliza como base para XQuery y XQuery Update.</p></li>
+<li><p>Puede ser implementado a través de <strong>servicios
+	XML:DB</strong>  o dentro de aplicaciones Java con XQJ.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3255_2319238702" lang="es">
+<strong>5</strong><strong>.2 Tipos de nodos</strong></h2>
+<ul>
+<li><p><strong>Elementos</strong>: etiquetas XML que
+	contienen datos o subelementos.</p></li>
+<li><p><strong>Atributos</strong>: propiedades de los
+	elementos ( &lt;etiqueta atributo="valor"&gt; ).</p></li>
+<li><p><strong>Texto</strong>: contenido textual dentro
+	de un nodo.</p></li>
+<li><p><strong>Comentarios y espacios de nombres</strong>:
+	nodos especiales que pueden ser filtrados o ignorados.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3257_2319238702" lang="es">
+<strong>5</strong><strong>.3 Funciones básicas</strong></h2>
+<h3 lang="es"><strong>text()</strong></h3>
+<ul>
+<li><p>Devuelve el <strong>contenido textual</strong>  de
+	un elemento, excluyendo etiquetas.</p></li>
+<li><p>Ejemplo: /productos/producto/nombre/text()</p></li>
+</ul>
+<h3 lang="es"><strong>position()</strong></h3>
+<ul>
+<li><p>Devuelve la <strong>posición ordinal</strong>  del
+	nodo dentro del conjunto seleccionado.</p></li>
+<li><p>Útil para filtrar nodos por índice, por ejemplo:
+	/productos/producto[position()=1]</p></li>
+</ul>
+<h3 lang="es"><strong>round()</strong></h3>
+<ul>
+<li><p>Redondea un <strong>valor numérico</strong>  al
+	entero más cercano.</p></li>
+<li><p>Ejemplo: round(3.7) → 4</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3259_2319238702" lang="es">
+<strong>5</strong><strong>.4 Operadores de navegación</strong></h2>
+<ul>
+<li><p>/  → ruta absoluta
+	desde la raíz.</p></li>
+<li><p>//  → selecciona
+	nodos en <strong>cualquier nivel</strong>  dentro del documento.</p></li>
+<li><p>@  → selecciona
+	<strong>atributos</strong>  de un nodo.</p></li>
+<li><p>[condición]  →
+	filtra nodos según expresión booleana.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3261_2319238702" lang="es">
+<strong>5</strong><strong>.5 Uso práctico</strong></h2>
+<ul>
+<li><p>XPath se utiliza para:</p>
+<ul>
+<li><p>Seleccionar nodos específicos para <strong>consultas</strong>.</p></li>
+<li><p>Localizar nodos que serán modificados por XQuery
+		Update.</p></li>
+<li><p>Extraer datos para procesarlos en aplicaciones
+		externas o informes.</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc3263_2319238702" lang="es">
+<strong>6</strong><strong>. XQuery y XQuery Update</strong></h1>
+<h2 id="__RefHeading___Toc3265_2319238702" lang="es">
+<strong>6</strong><strong>.1 Concepto</strong></h2>
+<p>XQuery es un <strong>lenguaje de consulta</strong>  para
+documentos XML que permite:</p>
+<ul>
+<li><p>Seleccionar, filtrar y ordenar nodos XML.</p></li>
+<li><p>Transformar datos XML.</p></li>
+<li><p>Integrarse con aplicaciones mediante XQJ o
+	servicios XML:DB.</p></li>
+</ul>
+<p>XQuery Update es una <strong>extensión de XQuery</strong> 
+que permite <strong>modificar documentos XML</strong>, incluyendo
+inserción, eliminación y reemplazo de nodos.</p>
+<hr/>
+<h2 id="__RefHeading___Toc3267_2319238702" lang="es">
+<strong>6</strong><strong>.2 Operaciones básicas en XQuery Update</strong></h2>
+<h3 lang="es"><strong>Insertar
+nodos</strong></h3>
+<ul>
+<li><p><strong>Después de un nodo:</strong></p>
+<ul>
+<li><p>Sintaxis: update insert
+		ELEMENTO following EXPRESION</p></li>
+</ul>
+<li><p><strong>Antes de un nodo:</strong></p>
+<ul>
+<li><p>Sintaxis: update insert
+		ELEMENTO preceding EXPRESION</p></li>
+</ul>
+<li><p><strong>Dentro de un nodo:</strong></p>
+<ul>
+<li><p>Sintaxis: update insert
+		ELEMENTO into EXPRESION</p></li>
+</ul>
+</li></li></li></ul>
+<h3 lang="es"><strong>Modificar
+nodos existentes</strong></h3>
+<ul>
+<li><p>Sintaxis: update replace
+	NODO with NUEVO</p></li>
+<li><p>Reemplaza un nodo completo o su contenido por otro
+	nodo o valor.</p></li>
+</ul>
+<h3 lang="es"><strong>Eliminar
+nodos</strong></h3>
+<ul>
+<li><p>Sintaxis: update delete NODO</p></li>
+<li><p>Elimina un nodo o conjunto de nodos seleccionado
+	por XPath.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3269_2319238702" lang="es">
+<strong>6</strong><strong>.3 Relación con XPath</strong></h2>
+<ul>
+<li><p>XQuery Update utiliza <strong>rutas XPath</strong> 
+	para localizar los nodos sobre los que se realizarán las
+	modificaciones.</p></li>
+<li><p>Permite combinar <strong>filtrado y navegación
+	jerárquica</strong>  con operaciones de actualización.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc3271_2319238702" lang="es">
+<strong>6</strong><strong>.4 Uso práctico</strong></h2>
+<ul>
+<li><p>Modificación de inventarios, registros o
+	cualquier documento XML dinámico.</p></li>
+<li><p>Integración con aplicaciones Java mediante XQJ.</p></li>
+<li><p>Gestión de colecciones XML en motores que
+	soporten XML:DB y XQuery Update.</p></li>
+</ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

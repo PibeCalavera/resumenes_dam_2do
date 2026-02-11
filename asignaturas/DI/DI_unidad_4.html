@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Desarrollo
+de Interfaces – Unidad 4 –
+Creación  de Informes</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Desarrollo
+de Interfaces – Unidad 4 –
+Creación  de Informes</h1>
+<p>
+
+</p>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1563_690360383">1. Introducción a JasperReports</a></p>
+<p><a href="#__RefHeading___Toc1565_690360383">1.1. Componentes clave:</a></p>
+<p><a href="#__RefHeading___Toc1567_690360383">1.2. Conceptos importantes:</a></p>
+<p><a href="#__RefHeading___Toc1569_690360383">2. Arquitectura de un informe y bandas (secciones)</a></p>
+<p><a href="#__RefHeading___Toc1571_690360383">2.1. Bandas principales de un informe</a></p>
+<p><a href="#__RefHeading___Toc1573_690360383">2.2. Flujo de ejecución de bandas</a></p>
+<p><a href="#__RefHeading___Toc1575_690360383">2.3. Observaciones prácticas</a></p>
+<p><a href="#__RefHeading___Toc1577_690360383">3. Fields, Variables y Parameters</a></p>
+<p><a href="#__RefHeading___Toc1579_690360383">3.1. Fields (Campos)</a></p>
+<p><a href="#__RefHeading___Toc1581_690360383">3.2. Variables</a></p>
+<p><a href="#__RefHeading___Toc1583_690360383">3.3. Parameters (Parámetros)</a></p>
+<p><a href="#__RefHeading___Toc1585_690360383">3.4. Distinciones clave</a></p>
+<p><a href="#__RefHeading___Toc1587_690360383">3.5. Observaciones prácticas</a></p>
+<p><a href="#__RefHeading___Toc1948_690360383">4. Tipos de fuentes de datos</a></p>
+<p><a href="#__RefHeading___Toc1950_690360383">4.1. Fuentes relacionales (SQL/JDBC)</a></p>
+<p><a href="#__RefHeading___Toc1952_690360383">4.2. Fuentes no relacionales (en memoria)</a></p>
+<p><a href="#__RefHeading___Toc1954_690360383">4.3. Fuentes estructuradas (XML/JSON)</a></p>
+<p><a href="#__RefHeading___Toc1956_690360383">4.4. Concepto clave</a></p>
+<p><a href="#__RefHeading___Toc1958_690360383">5. Filtrado de datos</a></p>
+<p><a href="#__RefHeading___Toc1960_690360383">5.1. Formas de aplicar filtros</a></p>
+<p><a href="#__RefHeading___Toc1962_690360383">5.2. Repercusiones del filtrado</a></p>
+<p><a href="#__RefHeading___Toc1964_690360383">5.3. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc1966_690360383">6. Gráficos y visualización de datos</a></p>
+<p><a href="#__RefHeading___Toc1968_690360383">6.1. Tipos de gráficos comunes</a></p>
+<p><a href="#__RefHeading___Toc1970_690360383">6.2. Alimentación de datos en gráficos</a></p>
+<p><a href="#__RefHeading___Toc1972_690360383">6.3. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc2610_690360383">7. Exportación de informes</a></p>
+<p><a href="#__RefHeading___Toc2612_690360383">7.1. Formatos soportados</a></p>
+<p><a href="#__RefHeading___Toc2614_690360383">7.2. Consideraciones prácticas</a></p>
+<p><a href="#__RefHeading___Toc2616_690360383">7.2. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc3001_690360383">8. Organización de proyectos y buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc3003_690360383">8.1. Estructura típica de un proyecto que usa JasperReports:</a></p>
+<p><a href="#__RefHeading___Toc3005_690360383">8.2. Librerías necesarias</a></p>
+<p><a href="#__RefHeading___Toc3007_690360383">8.3. Buenas prácticas de desarrollo</a></p>
+<p><a href="#__RefHeading___Toc3009_690360383">8.4. Consejo de integración</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1563_690360383" lang="es">
+<strong>1. </strong><strong>Introducción a JasperReports</strong></h1>
+<p>JasperReports es una <strong>biblioteca Java</strong> 
+diseñada para <strong>generar informes</strong>  de manera dinámica
+dentro de aplicaciones. Permite crear informes a partir de distintas
+fuentes de datos y exportarlos en múltiples formatos.</p>
+<hr/>
+<h2 id="__RefHeading___Toc1565_690360383" lang="es">
+<strong>1.1. </strong><strong>Componentes clave:</strong></h2>
+<p><strong>	Archivos de informe</strong></p>
+<ol>
+<ul>
+<li><p>.jrxml 
+		→ <strong>código fuente XML del informe</strong>. Editable en
+		JasperSoft Studio o iReport.</p></li>
+<li><p>.jasper 
+		→ <strong>archivo compilado</strong>  listo para ejecución; no se
+		puede editar directamente.</p></li>
+</ul>
+</ol>
+<p><strong>	Herramientas de diseño</strong></p>
+<ol>
+<ul>
+<li><p><strong>JasperSoft
+		Studio</strong>  (actual y soportado) → permite diseño
+		gráfico y edición de código fuente.</p></li>
+<li><p><strong>iReport</strong> 
+		(antigua) → versión clásica, todavía útil para aprender
+		conceptos.</p></li>
+<li><p><strong>JasperViewer</strong> 
+		→ clase Java que permite <strong>visualizar informes</strong> 
+		generados dentro de una aplicación.</p></li>
+</ul>
+</ol>
+<p><strong>	Integración en proyectos</strong></p>
+<ol>
+<ul>
+<li><p>Se incluye la <strong>librería principal</strong>:
+		jasperreports-x.x.x.jar.</p></li>
+<li><p>Si se usan bases de datos, se requiere el <strong>driver
+		JDBC correspondiente</strong>.</p></li>
+<li><p>Carpeta típica: Reports/ 
+		para guardar .jrxml  y .jasper.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1567_690360383" lang="es">
+<strong>1.2. </strong><strong>Conceptos importantes:</strong></h2>
+<ul>
+<li><p>JasperReports <strong>no es un IDE</strong>  ni un
+	servidor; es una biblioteca que genera informes.</p></li>
+<li><p>Permite <strong>exportar informes</strong>  a
+	formatos como PDF, XLS, CSV, HTML, RTF, XML, PNG.</p></li>
+<li><p>El flujo típico es: <strong>diseñar el informe →
+	compilar a </strong><strong>.jasper</strong><strong>
+	→ generar el informe usando datos → exportar o mostrar</strong>.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1569_690360383" lang="es">
+<strong>2. </strong><strong>Arquitectura de un informe y bandas
+(secciones)</strong></h1>
+<ul>
+<li><p>Un informe en JasperReports está compuesto por
+	<strong>bandas</strong>  (secciones) que organizan la información
+	visual y los datos extraídos de la fuente de datos.</p></li>
+<li><p>Cada banda tiene <strong>propósito específico</strong> 
+	y puede repetirse o aparecer solo una vez según su tipo.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1571_690360383" lang="es">
+<strong>2.1. </strong><strong>Bandas principales de un informe</strong></h2>
+<p><strong>	Title</strong></p>
+<ol>
+<ul>
+<li><p>Aparece <strong>solo al inicio del informe</strong>,
+		generalmente en la primera página.</p></li>
+<li><p>Uso típico: título principal, logo, fecha,
+		subtítulo.</p></li>
+</ul>
+</ol>
+<p><strong>	Page Header</strong></p>
+<ol>
+<ul>
+<li><p>Aparece <strong>en la parte superior de cada
+		página</strong>  (excepto si el Title ocupa la primera página).</p></li>
+<li><p>Uso típico: encabezados de columna, logotipos
+		pequeños, información de página.</p></li>
+</ul>
+</ol>
+<p><strong>	Column Header</strong></p>
+<ol>
+<ul>
+<li><p>Se coloca <strong>encima de cada grupo de
+		columnas</strong>  de datos.</p></li>
+<li><p>Uso: etiquetas de columnas en tablas o grids de
+		datos.</p></li>
+</ul>
+</ol>
+<p><strong>	Detail</strong></p>
+<ol>
+<ul>
+<li><p>Se <strong>repite por cada registro</strong>  de
+		la fuente de datos.</p></li>
+<li><p>Contiene los <strong>fields</strong>  que muestran
+		los datos extraídos.</p></li>
+<li><p>Es la banda más importante para mostrar
+		información de filas individuales.</p></li>
+</ul>
+</ol>
+<p><strong>	Summary</strong></p>
+<ol>
+<ul>
+<li><p>Aparece <strong>una sola vez al final del
+		informe</strong>.</p></li>
+<li><p>Ideal para <strong>totales, gráficos o
+		conclusiones</strong>.</p></li>
+</ul>
+</ol>
+<p><strong>	Page Footer</strong></p>
+<ol>
+<ul>
+<li><p>Se muestra <strong>al final de cada página</strong>.</p></li>
+<li><p>Uso típico: número de página, fecha de
+		impresión, notas de pie de página.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1573_690360383" lang="es">
+<strong>2.2. </strong><strong>Flujo de ejecución de bandas</strong></h2>
+<ol>
+<ul>
+<li><p>JasperReports 
+		procesa las bandas <strong>en orden secuencial</strong>: Title →
+		Page Header → Column Header → Detail → Summary → Page
+		Footer.</p></li>
+<li><p>Las bandas <strong>Detail</strong>  y algunas
+		<strong>variables</strong>  se ejecutan por cada registro de datos,
+		mientras que Title y Summary solo una vez.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1575_690360383" lang="es">
+<strong>2.3. </strong><strong>Observaciones prácticas</strong></h2>
+<ol>
+<ul>
+<li><p>Las bandas <strong>Summary</strong>  y <strong>Title</strong> 
+		pueden contener gráficos, totales o cálculos agregados.</p></li>
+<li><p>Las secciones de <strong>Header y Footer</strong> 
+		facilitan la uniformidad de cada página.</p></li>
+</ul>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc1577_690360383" lang="es">
+<strong>3. </strong><strong>Fields, Variables y Parameters</strong></h1>
+<ol>
+<ul>
+<li><p>JasperReports distingue entre <strong>datos
+		directos de la fuente</strong>, <strong>valores calculados</strong> 
+		y <strong>valores de entrada externos</strong>.</p></li>
+<li><p>Cada tipo cumple un propósito específico dentro
+		del informe y su flujo de ejecución.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1579_690360383" lang="es">
+<strong> </strong><strong>3.1. </strong><strong>Fields (Campos)</strong></h2>
+<ol>
+<ul>
+<li><p>Representan <strong>datos extraídos directamente
+		de la fuente de datos</strong>  (columna de base de datos o
+		propiedad de un JavaBean).</p></li>
+</ul>
+</ol>
+<h3 lang="es"><b>	Características</b></h3>
+<ol>
+<ul>
+<li><p>Se definen por nombre y tipo.</p></li>
+<li><p>Se accede a ellos mediante <strong>getters</strong> 
+		en JavaBeans o claves en Map/JSON/XML.</p></li>
+<li><p>Se muestran en la banda <strong>Detail</strong> 
+		para cada registro.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><b>	Ejemplo práctico</b></h3>
+<pre><code>	&lt;field name="nombre" class="java.lang.String"/&gt;</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc1581_690360383" lang="es">
+<strong>	3.2. </strong><strong>Variables</strong></h2>
+<ol>
+<ul>
+<li><p>Valores <strong>calculados a partir de Fields o
+		de otras Variables</strong>.</p></li>
+<li><p>Se utilizan para <strong>totales, promedios,
+		conteos, máximos o mínimos</strong>.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><b>	Tipos de cálculo (Calculation
+Type)</b></h3>
+<ol>
+<ul>
+<li><p>SUM  → suma valores
+		numéricos.</p></li>
+<li><p>COUNT  → cuenta
+		registros.</p></li>
+<li><p>MAX  / MIN 
+		→ obtiene valores máximo o mínimo.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><b>	Características</b></h3>
+<ol>
+<ul>
+<li><p>Se actualizan según la banda de ejecución y el
+		scope (grupo o informe completo).</p></li>
+<li><p>Se muestran generalmente en <strong>Summary</strong> 
+		o en <strong>grupos</strong>.</p></li>
+</ul>
+</ol>
+<h3 lang="es"><b>	Ejemplo práctico</b></h3>
+<pre><code>	&lt;variable name="totalPrecio" class="java.lang.Double" calculation="Sum"&gt;</code>
+<code>		&lt;variableExpression&gt;&lt;![CDATA[$F{precio}]]&gt;&lt;/variableExpression&gt;</code>
+<code>	&lt;/variable&gt;</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc1583_690360383" lang="es">
+<strong>	3.3. </strong><strong>Parameters (Parámetros)</strong></h2>
+<ol>
+<ul>
+<li><p>Valores <strong>externos al informe</strong>  que
+		se proporcionan en tiempo de ejecución.</p></li>
+<li><p>Se usan para <strong>filtrar datos</strong>,
+		cambiar títulos, seleccionar rangos de fechas, etc.</p></li>
+</ul>
+</ol>
+<h3 lang="es"> <b>Características</b></h3>
+<ol>
+<ul>
+<li><p>Se definen por nombre, tipo y opcionalmente un
+		valor por defecto.</p></li>
+<li><p>Pueden ser <strong>referenciados en queries,
+		expressions de fields o variables</strong>.</p></li>
+</ul>
+</ol>
+<h3 lang="es"> <b>Ejemplo práctico</b></h3>
+<pre><code>	&lt;parameter name="minPrecio" class="java.lang.Double"/&gt;</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc1585_690360383" lang="es">
+<strong>	3.4. </strong><strong>Distinciones clave</strong></h2>
+<ol>
+<ul>
+<li><p><strong>Field:</strong>
+dato de la fuente de datos.</p></li>
+<li><p><strong>Variable:</strong>
+		valor calculado dentro del informe.</p></li>
+<li><p><strong>Parameter:</strong>
+		valor suministrado externamente al informe.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1587_690360383" lang="es">
+<strong>	3.5. </strong><strong>Observaciones prácticas</strong></h2>
+<ol>
+<ul>
+<li><p>Variables y parámetros pueden <strong>intervenir
+		en filtros y cálculos</strong>.</p></li>
+<li><p>El uso correcto de Fields, Variables y Parameters
+		es <strong>crucial para totales, gráficos y filtros dinámicos</strong>.</p></li>
+</ul>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc1948_690360383" lang="es">
+<strong>4. Tipos de fuentes de datos</strong></h1>
+<h2 id="__RefHeading___Toc1950_690360383" lang="es">
+<strong>4.1. </strong><strong>Fuentes relacionales (SQL/JDBC)</strong></h2>
+<ol>
+<ul>
+<li><p>Origen: bases
+		de datos relacionales como MySQL, PostgreSQL, Oracle.</p></li>
+<li><p>Consulta: <strong>SQL</strong> 
+		definida explícitamente en el &lt;queryString&gt; 
+		del informe.</p></li>
+<li><p>Conexión:
+		requiere <strong>driver JDBC</strong>, URL, usuario y
+		contraseña.</p></li>
+<li><p>Flujo:
+		JasperReports envía la consulta a la base de datos, recibe
+		filas y las itera en la banda <strong>Detail</strong>.</p></li>
+<li><p>Ejemplo de
+		query en .jrxml:</p></li>
+</ul>
+</ol>
+<pre><code>	&lt;queryString language="SQL"&gt;</code>
+<code>		&lt;![CDATA[SELECT nombre, precio FROM productos WHERE precio &gt; $P{minPrecio}]]&gt;</code>
+<code>	&lt;/queryString&gt;</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc1952_690360383" lang="es">
+<strong>4.2. </strong><strong>Fuentes no relacionales (en memoria)</strong></h2>
+<ol>
+<ul>
+<li><p>Origen: datos
+		generados dentro de la aplicación, como colecciones de <strong>JavaBeans</strong>,
+		listas de <strong>Map</strong>, o estructuras JSON/XML.</p></li>
+<li><p>Acceso:
+		JasperReports <strong>itera la colección</strong>  y obtiene
+		datos mediante <strong>getters o keys</strong>.</p></li>
+<li><p>Ejemplo con JavaBeans:</p>
+<pre><code>JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(listaProductos);</code></pre></li>
+<li><p>Ejemplo con Map:</p>
+<pre><code>JRMapCollectionDataSource ds = new JRMapCollectionDataSource(listaMapas);</code></pre></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1954_690360383" lang="es">
+<strong>4.3. </strong><strong>Fuentes estructuradas (XML/JSON)</strong></h2>
+<ol>
+<ul>
+<li><p>XML  →
+		se consulta mediante <strong>XPath</strong>.</p></li>
+<li><p>JSON  →
+		se consulta mediante <strong>JSONPath</strong>.</p></li>
+<li><p>JasperReports 
+		recorre la estructura y extrae los datos según las expresiones
+		definidas.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1956_690360383" lang="es">
+<strong>4.4. </strong><strong>Concepto clave</strong></h2>
+<ol>
+<ul>
+<li><p>JasperReports <strong>no adivina el lenguaje de
+		consulta</strong>; depende del tipo de datasource:</p>
+<ul>
+<li><p>SQL  →
+			consultas explícitas.</p></li>
+<li><p>JavaBeans/Map
+			→ iteración implícita  con Fields.</p></li>
+<li><p>XML/JSON →
+			XPath o JSONPath.</p></li>
+</ul>
+</li></ul>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc1958_690360383" lang="es">
+<strong>5. Filtrado de datos</strong></h1>
+<ol>
+<ul>
+<li><p>El filtrado permite <strong>restringir los
+		registros</strong>  que se muestran en un informe según condiciones
+		específicas, mejorando la relevancia y el rendimiento.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1960_690360383" lang="es">
+<strong>5.1. </strong><strong>Formas de aplicar filtros</strong></h2>
+<h3 lang="es"> <strong>Filter Expression</strong></h3>
+<ol>
+<ul>
+<li><p>Expresión definida en JasperReports que devuelve
+		true  o false 
+		para cada registro.</p></li>
+<li><p>Solo se incluyen los registros que cumplan la
+		condición.</p></li>
+<li><p>Ejemplo:</p>
+<pre><code>$F{precio} &gt; $P{minPrecio}</code></pre></li>
+</ul>
+</ol>
+<h3 lang="es"><strong>	Parámetros</strong></h3>
+<ol>
+<ul>
+<li><p>Los parámetros externos pueden modificar
+		dinámicamente los filtros del informe (fechas, categorías,
+		valores mínimos).</p></li>
+</ul>
+</ol>
+<h3 lang="es"> <strong>Consulta del dataset</strong></h3>
+<ol>
+<ul>
+<li><p>Si la fuente es relacional, los filtros también
+		se pueden aplicar <strong>en la cláusula WHERE de la consulta SQL</strong>.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1962_690360383" lang="es">
+<strong>5.2. </strong><strong>Repercusiones del filtrado</strong></h2>
+<ol>
+<ul>
+<li><p>Reduce la cantidad de datos procesados y
+		visualizados.</p></li>
+<li><p>Afecta totales, subtotales y variables
+		calculadas.</p></li>
+<li><p>Mejora la velocidad de generación del informe,
+		especialmente en grandes volúmenes de datos.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1964_690360383" lang="es">
+<strong>5.3. </strong><strong>Buenas prácticas</strong></h2>
+<ol>
+<ul>
+<li><p>Combinar filtros en <strong>query, Filter
+		Expression y parámetros</strong>  según la necesidad.</p></li>
+<li><p>Evitar filtrar grandes volúmenes de datos
+		únicamente en JasperReports; es mejor hacerlo en la base de datos
+		cuando sea posible.</p></li>
+</ul>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc1966_690360383" lang="es">
+<strong>6. Gráficos y visualización de datos</strong></h1>
+<ol>
+<ul>
+<li><p>JasperReports permite <strong>incluir elementos
+		gráficos</strong>  en los informes para representar visualmente los
+		datos.</p></li>
+<li><p>Se pueden usar gráficos para <strong>comparar,
+		resumir o mostrar tendencias</strong>  de los datos.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1968_690360383" lang="es">
+<strong>6.</strong><strong>1. </strong><strong>Tipos de gráficos
+comunes</strong></h2>
+<p> <strong>Barras (Bar Chart)</strong></p>
+<ol>
+<ul>
+<li><p>Compara valores numéricos entre categorías
+		discretas.</p></li>
+<li><p>Ejemplo: ventas por producto o localidad.</p></li>
+</ul>
+<p><strong>Sectores / Pie Chart</strong></p>
+<ul>
+<li><p>Representa la proporción de cada parte respecto
+		a un todo.</p></li>
+<li><p>Ejemplo: porcentaje de ventas por categoría.</p></li>
+</ul>
+<p><strong>Gantt</strong></p>
+<ul>
+<li><p>Muestra duración de actividades o tareas a lo
+		largo de un tiempo total determinado.</p></li>
+<li><p>Ejemplo: planificación de proyecto.</p></li>
+</ul>
+<p><strong>Series temporales (Time Series Chart)</strong></p>
+<ul>
+<li><p>Representa datos medidos u observaciones
+		ordenadas cronológicamente.</p></li>
+<li><p>Ejemplo: evolución de ventas mes a mes.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1970_690360383" lang="es">
+<strong>6.</strong><strong>2. </strong><strong>Alimentación de datos
+en gráficos</strong></h2>
+<ol>
+<ul>
+<li><p>Se define un <strong>Dataset</strong>  interno o
+		series que proporcionan:</p>
+<ul>
+<li><p>Valores numéricos (Y-axis).</p></li>
+<li><p>Categorías o fechas (X-axis).</p></li>
+</ul>
+<li><p>Los campos y variables calculadas pueden formar
+		parte del dataset.</p></li>
+</li></ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc1972_690360383" lang="es">
+<strong>6.</strong><strong>3. </strong><strong>Buenas prácticas</strong></h2>
+<ol>
+<ul>
+<li><p>Elegir el tipo de gráfico según el objetivo:
+		comparación (barras), proporción (pie), evolución
+		temporal (series), planificación (Gantt).</p></li>
+<li><p>Mantener claridad visual y consistencia con los
+		datos mostrados en tablas.</p></li>
+</ul>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc2610_690360383" lang="es">
+<strong>7. Exportación de informes</strong></h1>
+<ol>
+<ul>
+<li><p>La exportación permite <strong>guardar o
+		compartir los informes generados</strong>  en distintos formatos,
+		facilitando su distribución y análisis.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc2612_690360383" lang="es">
+<strong>7.1. </strong><strong>Formatos soportados</strong></h2>
+<ol>
+<ul>
+<li><p><strong>PDF</strong>
+ → estándar para impresión y presentación.</p></li>
+<li><p><strong>XLS /
+		XLSX</strong>  →
+		hojas de cálculo para análisis.</p></li>
+<li><p><strong>CSV</strong> 
+		→ datos tabulares para procesamiento externo.</p></li>
+<li><p><strong>HTML</strong>
+ → visualización web.</p></li>
+<li><p><strong>RTF /
+		XML / PNG</strong>  →
+		otros formatos según necesidad.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc2614_690360383" lang="es">
+<strong>7.2. </strong><strong>Consideraciones prácticas</strong></h2>
+<ol>
+<ul>
+<li><p>La misma variable o campo puede aparecer en
+		múltiples formatos sin cambios.</p></li>
+<li><p>Algunos formatos requieren ajustes:</p>
+<ul>
+<li><p>PDF mantiene estilos y diseño exacto.</p></li>
+<li><p>XLS prioriza datos sobre formato visual.</p></li>
+<li><p>PNG y gráficos requieren que los elementos
+			estén correctamente dimensionados.</p></li>
+</ul>
+</li></ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc2616_690360383" lang="es">
+<strong>7.2. </strong><strong>Buenas prácticas</strong></h2>
+<ol>
+<ul>
+<li><p>Permitir generar <strong>informes y exportarlos
+		en diferentes formatos</strong>  desde la aplicación para máxima
+		flexibilidad.</p></li>
+<li><p>Evitar exportaciones excesivamente grandes sin
+		filtrado previo para optimizar rendimiento.</p></li>
+</ul>
+</ol>
+<hr/>
+<h1 id="__RefHeading___Toc3001_690360383" lang="es">
+8. Organización de proyectos y buenas prácticas</h1>
+<h2 id="__RefHeading___Toc3003_690360383" lang="es">
+<strong>8.1. </strong><strong>Estructura típica de un proyecto que
+usa JasperReports:</strong></h2>
+<h3 lang="es"> <strong>Reports/</strong></h3>
+<ol>
+<ul>
+<li><p>Carpeta destinada a almacenar los informes:
+		.jrxml  (código fuente) y .jasper 
+		(compilados).</p></li>
+</ul>
+</ol>
+<h3 lang="es"> <strong>Clases/</strong></h3>
+<ol>
+<ul>
+<li><p>Objetos Java  que se usarán como
+		datasource  (JavaBeans).</p></li>
+</ul>
+</ol>
+<h3 lang="es"> <strong>Controladores/</strong></h3>
+<ol>
+<ul>
+<li><p>Lógica de negocio  que llama a los
+		informes y gestiona parámetros y filtros.</p></li>
+</ul>
+</ol>
+<h3 lang="es"> <strong>Documentación/</strong></h3>
+<ol>
+<ul>
+<li><p>Manuales, ejemplos de uso y notas técnicas.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3005_690360383" lang="es">
+<strong>8.2. </strong><strong>Librerías necesarias</strong></h2>
+<ol>
+<ul>
+<li><p>jasperreports-x.x.x.jar
+ → biblioteca principal de JasperReports.</p></li>
+<li><p>Drivers JDBC →
+		necesarios para conexión a bases de datos relacionales.</p></li>
+<li><p>Dependencias
+		adicionales si se usan gráficos avanzados o exportación a
+		formatos especiales.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3007_690360383" lang="es">
+<strong>8.3. </strong><strong>Buenas prácticas de desarrollo</strong></h2>
+<ol>
+<ul>
+<li><p>Mantener <strong>separados los informes, la
+		lógica y los datos</strong>.</p></li>
+<li><p>Usar <strong>nombres claros y consistentes</strong> 
+		para campos, variables y parámetros.</p></li>
+<li><p>Editar <strong>.jrxml</strong>  para
+		modificaciones y compilar a .jasper 
+		antes de ejecutar.</p></li>
+<li><p>Aplicar <strong>filtros y parámetros</strong> 
+		para mejorar eficiencia y personalización de informes.</p></li>
+<li><p>Documentar  los informes y su uso dentro
+		del proyecto.</p></li>
+</ul>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc3009_690360383" lang="es">
+<strong>8.4. </strong><strong>Consejo de integración</strong></h2>
+<ol>
+<ul>
+<li><p>Diseñar informes <strong>modulares y
+		reutilizables</strong>.</p></li>
+<li><p>Incrustar gráficos y totales de manera que
+		puedan <strong>adaptarse a diferentes formatos de exportación</strong>.</p></li>
+</ul>
+</ol>
+<hr/>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>

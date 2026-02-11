@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Acceso
+a Datos – Unidad 1 – Manejo de
+Ficheros</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Acceso
+a Datos – Unidad 1 – Manejo de
+Ficheros</h1>
+<p>
+
+</p>
+<p>
+
+</p>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc3_1803553501">1. Ficheros en Java (Parte 1: Fundamentos y manejo básico)</a></p>
+<p><a href="#__RefHeading___Toc5_1803553501">1.1. Tipos de ficheros</a></p>
+<p><a href="#__RefHeading___Toc7_1803553501">1.2. Clase File (java.io)</a></p>
+<p><a href="#__RefHeading___Toc11_1803553501">1.3. Lectura y escritura de ficheros de texto</a></p>
+<p><a href="#__RefHeading___Toc17_1803553501">1.4. Lectura y escritura de ficheros binarios</a></p>
+<p><a href="#__RefHeading___Toc23_1803553501">1.5. Acceso aleatorio: RandomAccessFile</a></p>
+<p><a href="#__RefHeading___Toc27_1803553501">1.6. Excepciones y cierre de recursos</a></p>
+<p><a href="#__RefHeading___Toc29_1803553501">1.7. Conceptos clave a memorizar</a></p>
+<p><a href="#__RefHeading___Toc31_1803553501">2. Ficheros HTML, XML, JSON y datos web en Java</a></p>
+<p><a href="#__RefHeading___Toc33_1803553501">2.1. XML y DOM</a></p>
+<p><a href="#__RefHeading___Toc39_1803553501">2.2. Transformaciones XSL</a></p>
+<p><a href="#__RefHeading___Toc47_1803553501">2.3. JSON en Java (org.json)</a></p>
+<p><a href="#__RefHeading___Toc53_1803553501">2.4. Escritura y lectura de XML / JSON en ficheros</a></p>
+<p><a href="#__RefHeading___Toc59_1803553501">2.5. Conceptos clave para examen</a></p>
+<p><a href="#__RefHeading___Toc61_1803553501">3. Manejo de Excepciones en Java</a></p>
+<p><a href="#__RefHeading___Toc63_1803553501">3.1. Concepto de excepción</a></p>
+<p><a href="#__RefHeading___Toc65_1803553501">3.2. Jerarquía principal</a></p>
+<p><a href="#__RefHeading___Toc67_1803553501">3.3. Captura de excepciones</a></p>
+<p><a href="#__RefHeading___Toc73_1803553501">3.4. Propagación de excepciones</a></p>
+<p><a href="#__RefHeading___Toc75_1803553501">3.5. Métodos importantes de las excepciones</a></p>
+<p><a href="#__RefHeading___Toc77_1803553501">3.6. Excepciones comunes en ficheros y datos</a></p>
+<p><a href="#__RefHeading___Toc79_1803553501">3.7. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc81_1803553501">3.8. Ejemplo completo combinando conceptos</a></p>
+<p><a href="#__RefHeading___Toc83_1803553501">4. Documentación en Java (Javadoc)</a></p>
+<p><a href="#__RefHeading___Toc85_1803553501">4.1. Qué es Javadoc</a></p>
+<p><a href="#__RefHeading___Toc87_1803553501">4.2. Comentarios Javadoc</a></p>
+<p><a href="#__RefHeading___Toc89_1803553501">4.3. Etiquetas más importantes</a></p>
+<p><a href="#__RefHeading___Toc91_1803553501">4.4. Sintaxis y ejemplos</a></p>
+<p><a href="#__RefHeading___Toc101_1803553501">4.5. Símbolo común</a></p>
+<p><a href="#__RefHeading___Toc103_1803553501">4.6. Buenas prácticas</a></p>
+<p><a href="#__RefHeading___Toc105_1803553501">4.7. Ejemplo completo combinando etiquetas</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc3_1803553501" lang="es">
+<strong>1. </strong><strong>Ficheros en Java (Parte 1: Fundamentos y
+manejo básico)</strong></h1>
+<h2 id="__RefHeading___Toc5_1803553501" lang="es">
+<strong>1.</strong>1. Tipos de ficheros</h2>
+<p>Java distingue principalmente:</p>
+<table>
+<col/>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Tipo de fichero
+</th>
+<th>
+				Contenido
+</th>
+<th>
+				Clases típicas
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Texto</strong>
+</td>
+<td>Caracteres
+				(  char  )
+</td>
+<td>FileReader,
+				FileWriter, BufferedReader,
+				BufferedWriter
+</td>
+</tr>
+<tr>
+<td><strong>Binario</strong>
+</td>
+<td>Bytes
+				(  byte  )
+</td>
+<td>FileInputStream,
+				FileOutputStream, DataInputStream,
+				DataOutputStream
+</td>
+</tr>
+<tr>
+<td><strong>Acceso
+				aleatorio</strong>
+</td>
+<td>Binario
+				con puntero
+</td>
+<td>RandomAccessFile
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc7_1803553501" lang="es">
+<strong>1.</strong>2. Clase <code>File</code>
+(<code>java.io</code>)</h2>
+<ul>
+<li><p><strong>Representa</strong>  la ruta a un fichero o
+	directorio, <strong>no su contenido</strong>.</p></li>
+<li><p>Se usa para <strong>comprobar existencia, tipo,
+	tamaño, listar directorios, crear/eliminar ficheros</strong>.</p></li>
+</ul>
+<h3 id="__RefHeading___Toc9_1803553501" lang="es">
+Métodos clave:</h3>
+<pre><code>File f = new File("ruta/archivo.txt");</code>
+
+<code>f.exists();        // true si existe</code>
+<code>f.isFile();        // true si es fichero</code>
+<code>f.isDirectory();   // true si es directorio</code>
+<code>f.length();        // tamaño en bytes</code>
+<code>f.getName();       // nombre del fichero</code>
+<code>f.getPath();       // ruta</code></pre><p>
+⚠️ Recuerda: usar /  es más portable
+que \\.</p>
+<hr/>
+<h2 id="__RefHeading___Toc11_1803553501" lang="es">
+<strong>1.</strong>3. Lectura y escritura de ficheros de texto</h2>
+<h3 id="__RefHeading___Toc13_1803553501" lang="es">
+Lectura</h3>
+<table>
+<col/>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Método
+</th>
+<th>
+				Clase
+</th>
+<th>
+				Qué hace
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>read()
+</td>
+<td>FileReader
+</td>
+<td>Lee
+				<strong>un carácter</strong>. Devuelve int  
+				o -1   si EOF
+</td>
+</tr>
+<tr>
+<td>read(char[])
+</td>
+<td>FileReader
+</td>
+<td>Lee
+				varios caracteres en un array
+</td>
+</tr>
+<tr>
+<td>readLine()
+</td>
+<td>BufferedReader
+</td>
+<td>Lee
+				una línea completa (  null   = EOF)
+</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo:</p>
+<pre><code>BufferedReader br = new BufferedReader(new FileReader("archivo.txt"));</code>
+<code>String linea;</code>
+<code>while ((linea = br.readLine()) != null) {</code>
+<code>    </code><code>System.out.println(linea);</code>
+<code>}</code>
+<code>br.close();</code></pre><h3 id="__RefHeading___Toc15_1803553501" lang="es">
+Escritura</h3>
+<ul>
+<li><p>FileWriter  →
+	escritura básica</p></li>
+<li><p>BufferedWriter  →
+	más eficiente, permite newLine()</p></li>
+</ul>
+<pre><code>BufferedWriter bw = new BufferedWriter(new FileWriter("salida.txt"));</code>
+<code>bw.write("Hola mundo");</code>
+<code>bw.newLine();</code>
+<code>bw.close();</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc17_1803553501" lang="es">
+<strong>1.</strong>4. Lectura y escritura de ficheros binarios</h2>
+<h3 id="__RefHeading___Toc19_1803553501" lang="es">
+Clases básicas</h3>
+<ul>
+<li><p>Lectura: FileInputStream</p></li>
+<li><p>Escritura: FileOutputStream</p></li>
+<li><p>Tipos primitivos: DataInputStream,
+	DataOutputStream</p></li>
+</ul>
+<h3 id="__RefHeading___Toc21_1803553501" lang="es">
+Métodos importantes</h3>
+<table>
+<col/>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Clase
+</th>
+<th>
+				Método
+</th>
+<th>
+				Función
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DataOutputStream
+</td>
+<td>writeInt(),
+				writeBoolean(), writeUTF()
+</td>
+<td>Escribe
+				primitivos y cadenas UTF
+</td>
+</tr>
+<tr>
+<td>DataInputStream
+</td>
+<td>readInt(),
+				readBoolean(), readUTF()
+</td>
+<td>Lee
+				primitivos y cadenas UTF
+</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo:</p>
+<pre><code>DataOutputStream dos = new DataOutputStream(new FileOutputStream("datos.bin"));</code>
+<code>dos.writeInt(123);</code>
+<code>dos.writeUTF("Hola");</code>
+<code>dos.close();</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc23_1803553501" lang="es">
+<strong>1.</strong>5. Acceso aleatorio: <code>RandomAccessFile</code></h2>
+<p>Permite <strong>leer/escribir en cualquier posición</strong> 
+sin recorrer el fichero secuencialmente.</p>
+<h3 id="__RefHeading___Toc25_1803553501" lang="es">
+Métodos clave:</h3>
+<pre><code>RandomAccessFile raf = new RandomAccessFile("archivo.bin", "rw");</code>
+
+<code>raf.seek(10);             // mueve el puntero</code>
+<code>long pos = raf.getFilePointer(); // obtiene la posición actual</code>
+<code>raf.writeInt(50);         // escribe un int en la posición actual</code>
+<code>raf.readInt();            // lee un int desde la posición actual</code>
+<code>raf.length();             // tamaño del fichero</code>
+<code>raf.close();</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc27_1803553501" lang="es">
+<strong>1.</strong>6. Excepciones y cierre de recursos</h2>
+<ul>
+<li><p>Operaciones con ficheros lanzan:</p>
+<ul>
+<li><p>IOException</p></li>
+<li><p>FileNotFoundException</p></li>
+</ul>
+<li><p>Siempre cerrar ficheros:</p></li>
+</li></ul>
+<pre><code>try (FileReader fr = new FileReader("archivo.txt")) {</code>
+<code>    </code><code>// lectura</code>
+<code>} // se cierra automáticamente (try-with-resources)</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc29_1803553501" lang="es">
+<strong>1.</strong>7. Conceptos clave a memorizar</h2>
+<ul>
+<li><p><strong>EOF</strong>  → End Of File ( -1 
+	para read(), null 
+	para readLine() )</p></li>
+<li><p><strong>Primitivos vs Wrapper</strong>  → int 
+	vs Integer, boolean 
+	vs Boolean</p></li>
+<li><p><strong>Texto vs Binario</strong>  → tipo de dato
+	+ clase correcta</p></li>
+<li><p><strong>Acceso secuencial vs aleatorio</strong>  →
+	FileReader / DataInputStream 
+	vs RandomAccessFile</p></li>
+<li><p><strong>Flujos (</strong><strong>Stream</strong><strong>)</strong> 
+	→ InputStream  / OutputStream 
+	→ bytes, Reader  / Writer 
+	→ caracteres</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc31_1803553501" lang="es">
+<strong>2. </strong><strong>Ficheros HTML, XML, JSON y datos web en
+Java</strong></h1>
+<h2 id="__RefHeading___Toc33_1803553501" lang="es">
+<strong>2.</strong><strong>1. XML y DOM</strong></h2>
+<h3 id="__RefHeading___Toc35_1803553501" lang="es">
+Clases clave</h3>
+<table>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Clase
+</th>
+<th>
+				Función
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Document
+</td>
+<td>Representa
+				<strong>el documento XML completo en memoria</strong>
+</td>
+</tr>
+<tr>
+<td>Element
+</td>
+<td>Representa
+				un <strong>elemento XML</strong>   dentro del documento
+</td>
+</tr>
+<tr>
+<td>Attr
+</td>
+<td>Representa
+				un <strong>atributo de un elemento</strong>
+</td>
+</tr>
+<tr>
+<td>Node
+</td>
+<td>Representa
+				cualquier <strong>nodo del DOM</strong>   (elemento, texto,
+				comentario, etc.)
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="__RefHeading___Toc37_1803553501" lang="es">
+Ejemplo de uso básico</h3>
+<pre><code>DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</code>
+<code>DocumentBuilder db = dbf.newDocumentBuilder();</code>
+<code>Document doc = db.parse(new File("archivo.xml")); // carga XML</code>
+<code>Element root = doc.getDocumentElement();          // obtiene nodo raíz</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc39_1803553501" lang="es">
+<strong>2.</strong><strong>2. Transformaciones XSL</strong></h2>
+<h3 id="__RefHeading___Toc41_1803553501" lang="es">
+Clases clave</h3>
+<ul>
+<li><p>TransformerFactory  →
+	fabrica Transformer</p></li>
+<li><p>Transformer  →
+	aplica plantilla XSL</p></li>
+<li><p>Source  → origen de
+	los datos (archivo XML, DOM)</p></li>
+<li><p>Result  → destino de
+	la transformación (archivo, stream, DOM)</p></li>
+</ul>
+<h3 id="__RefHeading___Toc43_1803553501" lang="es">
+Método principal</h3>
+<pre><code>transformer.transform(Source xmlSource, Result outputTarget);</code></pre><h3 id="__RefHeading___Toc45_1803553501" lang="es">
+Ejemplo</h3>
+<pre><code>TransformerFactory tf = TransformerFactory.newInstance();</code>
+<code>Transformer transformer = tf.newTransformer(new StreamSource("plantilla.xsl"));</code>
+<code>Source source = new StreamSource("entrada.xml");</code>
+<code>Result result = new StreamResult(new File("salida.xml"));</code>
+<code>transformer.transform(source, result);</code></pre>
+<ul>
+<li><p>Convierte un <strong>documento XML en otro XML</strong> 
+	(o HTML) según la plantilla XSL.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc47_1803553501" lang="es">
+<strong>2.</strong><strong>3. JSON en Java (</strong><strong><code>org.json</code></strong><strong>)</strong></h2>
+<h3 id="__RefHeading___Toc49_1803553501" lang="es">
+Clases clave</h3>
+<table>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Clase
+</th>
+<th>
+				Función
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSONObject
+</td>
+<td>Representa
+				un objeto JSON (clave-valor)
+</td>
+</tr>
+<tr>
+<td>JSONArray
+</td>
+<td>Representa
+				un array JSON
+</td>
+</tr>
+<tr>
+<td>HTTP
+</td>
+<td>Convierte
+				entre JSON ↔ <strong>texto de encabezado HTTP</strong>
+</td>
+</tr>
+<tr>
+<td>Cookies
+</td>
+<td>Convierte
+				entre JSON ↔ <strong>texto de cookies HTTP</strong>
+</td>
+</tr>
+<tr>
+<td>CDL
+</td>
+<td>Convierte
+				entre JSON ↔ <strong>texto delimitado por comas (CSV)</strong>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="__RefHeading___Toc51_1803553501" lang="es">
+Ejemplos</h3>
+<p><strong>JSON ↔ HTTP</strong></p>
+<pre><code>JSONObject json = new JSONObject();</code>
+<code>json.put("name", "Juan");</code>
+<code>String header = HTTP.toString(json);           // JSON → HTTP</code>
+<code>JSONObject obj = HTTP.toJSONObject(header);    // HTTP → JSON</code></pre><p>
+<strong>JSON ↔ Cookies</strong></p>
+<pre><code>String cookieText = Cookies.toString(json);           // JSON → cookie</code>
+<code>JSONObject obj2 = Cookies.toJSONObject(cookieText);  // cookie → JSON</code></pre><p>
+<strong>JSON ↔ CSV</strong></p>
+<pre><code>JSONArray ja = new JSONArray();</code>
+<code>ja.put(new JSONObject().put("name", "Ana").put("age", 25));</code>
+<code>String csv = CDL.toString(ja);                  // JSON → CSV</code>
+<code>JSONArray ja2 = CDL.rowToJSONArray(csv);       // CSV → JSON</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc53_1803553501" lang="es">
+<strong>2.</strong><strong>4. Escritura y lectura de XML / JSON en
+ficheros</strong></h2>
+<h3 id="__RefHeading___Toc55_1803553501" lang="es">
+XML</h3>
+<ul>
+<li><p>DOM para manipulación en memoria ( Document )</p></li>
+<li><p>Transformer  para
+	escritura de Document  a fichero XML</p></li>
+<li><p>DOMSource  → origen,
+	StreamResult  → destino</p></li>
+</ul>
+<h3 id="__RefHeading___Toc57_1803553501" lang="es">
+JSON</h3>
+<ul>
+<li><p>JSONObject  y
+	JSONArray  → datos en memoria</p></li>
+<li><p>FileWriter  /
+	BufferedWriter  para <strong>guardar
+	JSON en fichero</strong></p></li>
+</ul>
+<pre><code>try (FileWriter fw = new FileWriter("datos.json")) {</code>
+<code>    </code><code>fw.write(json.toString(4)); // 4 = indentación</code>
+<code>}</code></pre>
+<ul>
+<li><p>FileReader  /
+	BufferedReader  → lectura desde
+	fichero y luego new JSONObject(reader) 
+	o new JSONArray(reader)</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc59_1803553501" lang="es">
+<strong>2.</strong><strong>5. Conceptos clave para examen</strong></h2>
+<ol>
+<li><p><strong>DOM</strong>  → manipulación de XML en
+	memoria</p></li>
+<li><p><strong>Transformer + XSL</strong>  → transformar
+	XML a XML/HTML</p></li>
+<li><p><strong>JSONObject / JSONArray</strong>  →
+	representación de datos JSON</p></li>
+<li><p><strong>Clases auxiliares org.json</strong>:</p>
+<ul>
+<li><p>HTTP  → JSON ↔
+		headers HTTP</p></li>
+<li><p>Cookies  → JSON ↔
+		cookies HTTP</p></li>
+<li><p>CDL  → JSON ↔ CSV</p></li>
+</ul>
+<li><p><strong>Guardar en fichero</strong>:</p>
+<ul>
+<li><p>XML → Transformer.transform(DOMSource,
+		StreamResult)</p></li>
+<li><p>JSON → FileWriter.write(json.toString())</p></li>
+</ul>
+<li><p><strong>Leer desde fichero</strong>:</p>
+<ul>
+<li><p>XML → DocumentBuilder.parse(File)</p></li>
+<li><p>JSON → new
+		JSONObject(Reader)  o new
+		JSONArray(Reader)</p></li>
+</ul>
+</li></li></li></ol>
+<hr/>
+<h1 id="__RefHeading___Toc61_1803553501" lang="es">
+<strong>3. </strong><strong>Manejo de Excepciones en Java</strong></h1>
+<h2 id="__RefHeading___Toc63_1803553501" lang="es">
+<strong>3.</strong><strong>1. Concepto de excepción</strong></h2>
+<ul>
+<li><p>Una <strong>excepción</strong>  es un <strong>evento
+	anómalo</strong>  que ocurre durante la ejecución del programa y
+	<strong>interrumpe el flujo normal</strong>.</p></li>
+<li><p>En Java, las excepciones son <strong>objetos</strong> 
+	que heredan de <strong>Throwable</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc65_1803553501" lang="es">
+<strong>3.</strong><strong>2. Jerarquía principal</strong></h2>
+<pre><code>java.lang.Object</code>
+<code>   └── </code><code>java.lang.Throwable</code>
+<code>         ├── </code><code>java.lang.Error       // errores graves, no manejables normalmente</code>
+<code>         └── </code><code>java.lang.Exception   // excepciones que se pueden capturar</code>
+<code>               ├── </code><code>RuntimeException  // unchecked (no obligatorio capturar)</code>
+<code>               └── </code><code>Checked exceptions  // obligatorias de capturar o declarar</code></pre>
+<ul>
+<li><p><strong>Checked exceptions</strong>: deben ser
+	capturadas o declaradas con throws 
+Ej.:
+	IOException, FileNotFoundException</p></li>
+<li><p><strong>Unchecked exceptions</strong>: no
+	obligatorias de capturar ( RuntimeException 
+	y subclases) 
+Ej.: NullPointerException,
+	ArithmeticException</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc67_1803553501" lang="es">
+<strong>3.</strong><strong>3. Captura de excepciones</strong></h2>
+<h3 id="__RefHeading___Toc69_1803553501" lang="es">
+Sintaxis básica <code>try-catch</code>:</h3>
+<pre><code>try {</code>
+<code>    </code><code>// código que puede lanzar excepción</code>
+<code>} catch (TipoDeExcepcion e) {</code>
+<code>    </code><code>// manejo de la excepción</code>
+<code>} finally {</code>
+<code>    </code><code>// código que se ejecuta siempre (opcional)</code>
+<code>}</code></pre>
+<ul>
+<li><p>try  → bloque
+	protegido</p></li>
+<li><p>catch  → captura la
+	excepción específica</p></li>
+<li><p>finally  → se
+	ejecuta siempre, útil para liberar recursos (cerrar ficheros,
+	streams)</p></li>
+</ul>
+<h3 id="__RefHeading___Toc71_1803553501" lang="es">
+Ejemplo:</h3>
+<pre><code>try {</code>
+<code>    </code><code>FileReader fr = new FileReader("archivo.txt");</code>
+<code>} catch (FileNotFoundException e) {</code>
+<code>    </code><code>System.out.println("Archivo no encontrado: " + e.getMessage());</code>
+<code>} finally {</code>
+<code>    </code><code>System.out.println("Bloque finally ejecutado");</code>
+<code>}</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc73_1803553501" lang="es">
+<strong>3.</strong><strong>4. Propagación de excepciones</strong></h2>
+<ul>
+<li><p>Se utiliza la palabra clave <strong>throws</strong> 
+	en la firma de un método:</p></li>
+</ul>
+<pre><code>public void leerArchivo() throws IOException {</code>
+<code>    </code><code>FileReader fr = new FileReader("archivo.txt");</code>
+<code>}</code></pre>
+<ul>
+<li><p>Indica que el método puede lanzar una excepción
+	y <strong>el llamador debe manejarla</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc75_1803553501" lang="es">
+<strong>3.</strong><strong>5. Métodos importantes de las excepciones</strong></h2>
+<p>Todos los objetos que heredan de Throwable 
+tienen métodos útiles para obtener información:</p>
+<table>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Método
+</th>
+<th>
+				Función
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getMessage()
+</td>
+<td>Devuelve
+				mensaje descriptivo de la excepción
+</td>
+</tr>
+<tr>
+<td>printStackTrace()
+</td>
+<td>Imprime
+				traza completa de la excepción (dónde ocurrió)
+</td>
+</tr>
+<tr>
+<td>toString()
+</td>
+<td>Representación
+				breve de la excepción
+</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo:</p>
+<pre><code>try {</code>
+<code>    </code><code>int a = 10 / 0;</code>
+<code>} catch (ArithmeticException e) {</code>
+<code>    </code><code>System.out.println(e.getMessage());</code>
+<code>    </code><code>e.printStackTrace();</code>
+<code>}</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc77_1803553501" lang="es">
+<strong>3.</strong><strong>6. Excepciones comunes en ficheros y datos</strong></h2>
+<table>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Excepción
+</th>
+<th>
+				Cuándo ocurre
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IOException
+</td>
+<td>Error
+				de entrada/salida general
+</td>
+</tr>
+<tr>
+<td>FileNotFoundException
+</td>
+<td>Fichero
+				no encontrado
+</td>
+</tr>
+<tr>
+<td>EOFException
+</td>
+<td>Fin
+				de fichero alcanzado en binarios
+</td>
+</tr>
+<tr>
+<td>ParseException
+</td>
+<td>Error
+				al leer o parsear datos (por ejemplo XML o JSON)
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc79_1803553501" lang="es">
+<strong>3.</strong><strong>7. Buenas prácticas</strong></h2>
+<ol>
+<li><p><strong>Capturar solo lo necesario</strong>  → no
+	capturar Exception  genérico si puedes
+	usar una subclase específica</p></li>
+<li><p><strong>Usar finally o try-with-resources</strong> 
+	para cerrar ficheros y streams</p></li>
+<li><p><strong>Documentar las excepciones lanzadas</strong> 
+	con @throws  en Javadoc</p></li>
+<li><p><strong>Evitar excepciones silenciosas</strong>  →
+	siempre registrar o informar del error</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc81_1803553501" lang="es">
+<strong>3.</strong><strong>8. Ejemplo completo combinando conceptos</strong></h2>
+<pre><code>/**</code>
+<code> </code><code>* Lee el contenido de un fichero.</code>
+<code> </code><code>* @param nombreArchivo ruta del archivo</code>
+<code> </code><code>* @return contenido como String</code>
+<code> </code><code>* @throws IOException si ocurre un error de lectura</code>
+<code> </code><code>*/</code>
+<code>public String leerArchivo(String nombreArchivo) throws IOException {</code>
+<code>    </code><code>StringBuilder contenido = new StringBuilder();</code>
+<code>    </code><code>try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {</code>
+<code>        </code><code>String linea;</code>
+<code>        </code><code>while ((linea = br.readLine()) != null) {</code>
+<code>            </code><code>contenido.append(linea).append("\n");</code>
+<code>        </code><code>}</code>
+<code>    </code><code>}</code>
+<code>    </code><code>return contenido.toString();</code>
+<code>}</code></pre>
+<ul>
+<li><p>Combina <strong>try-with-resources</strong>,
+	<strong>captura de excepciones</strong>, y documentación Javadoc.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc83_1803553501" lang="es">
+<strong>4. </strong><strong>Documentación en Java (Javadoc)</strong></h1>
+<h2 id="__RefHeading___Toc85_1803553501" lang="es">
+<strong>4.</strong><strong>1. Qué es Javadoc</strong></h2>
+<ul>
+<li><p><strong>Javadoc</strong>  es la herramienta oficial
+	de Java para generar <strong>documentación HTML</strong>  a partir
+	de comentarios en el código fuente.</p></li>
+<li><p>Se basa en <strong>comentarios especiales</strong> 
+	que comienzan con /** ... */.</p></li>
+<li><p>Permite describir clases, métodos, parámetros,
+	excepciones y enlaces a otros recursos.</p></li>
+</ul>
+<pre><code>/**</code>
+<code> </code><code>* Esta clase representa un ejemplo de Javadoc.</code>
+<code> </code><code>*/</code>
+<code>public class Ejemplo { }</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc87_1803553501" lang="es">
+<strong>4.</strong><strong>2. Comentarios Javadoc</strong></h2>
+<ul>
+<li><p>Comienzan con /**  y
+	terminan con */.</p></li>
+<li><p>Pueden incluir <strong>texto descriptivo</strong> 
+	y <strong>etiquetas especiales</strong>  ( @ )
+	para estructurar la información.</p></li>
+</ul>
+<p>Ejemplo:</p>
+<pre><code>/**</code>
+<code> </code><code>* Calcula la suma de dos números.</code>
+<code> </code><code>*/</code>
+<code>public int sumar(int a, int b) { return a + b; }</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc89_1803553501" lang="es">
+<strong>4.</strong><strong>3. Etiquetas más importantes</strong></h2>
+<table>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>
+				Etiqueta
+</th>
+<th>
+				Uso
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@param
+</td>
+<td>Describe
+				cada <strong>parámetro</strong>   de un método
+</td>
+</tr>
+<tr>
+<td>@return
+</td>
+<td>Describe
+				el <strong>valor de retorno</strong>   de un método
+</td>
+</tr>
+<tr>
+<td>@throws
+</td>
+<td>Describe
+				<strong>excepciones</strong>   que el método puede lanzar
+</td>
+</tr>
+<tr>
+<td>@see
+</td>
+<td>Referencia
+				a otra clase, método o recurso relacionado
+</td>
+</tr>
+<tr>
+<td>@deprecated
+</td>
+<td>Indica
+				que el <strong>método o clase está obsoleto</strong>
+</td>
+</tr>
+<tr>
+<td>@author
+</td>
+<td>Autor
+				del código
+</td>
+</tr>
+<tr>
+<td>@version
+</td>
+<td>Versión
+				de la clase
+</td>
+</tr>
+<tr>
+<td>@since
+</td>
+<td>Versión
+				de Java o del proyecto desde la cual existe el elemento
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc91_1803553501" lang="es">
+<strong>4.</strong><strong>4. Sintaxis y ejemplos</strong></h2>
+<h3 id="__RefHeading___Toc93_1803553501" lang="es">
+Documentar parámetros y retorno</h3>
+<pre><code>/**</code>
+<code> </code><code>* Calcula la suma de dos números enteros.</code>
+<code> </code><code>* @param a primer número</code>
+<code> </code><code>* @param b segundo número</code>
+<code> </code><code>* @return la suma de a y b</code>
+<code> </code><code>*/</code>
+<code>public int sumar(int a, int b) { return a + b; }</code></pre><h3 id="__RefHeading___Toc95_1803553501" lang="es">
+Documentar excepciones</h3>
+<pre><code>/**</code>
+<code> </code><code>* Lee un archivo y devuelve su contenido.</code>
+<code> </code><code>* @param nombreArchivo ruta del archivo</code>
+<code> </code><code>* @return contenido del archivo</code>
+<code> </code><code>* @throws IOException si ocurre un error de lectura</code>
+<code> </code><code>*/</code>
+<code>public String leerArchivo(String nombreArchivo) throws IOException { ... }</code></pre><h3 id="__RefHeading___Toc97_1803553501" lang="es">
+Referencias a otros
+métodos o clases</h3>
+<pre><code>/**</code>
+<code> </code><code>* Calcula la suma de dos números.</code>
+<code> </code><code>* @see Math#addExact(int,int)</code>
+<code> </code><code>*/</code>
+<code>public int sumar(int a, int b) { return a + b; }</code></pre><h3 id="__RefHeading___Toc99_1803553501" lang="es">
+Marcar métodos
+obsoletos</h3>
+<pre><code>/**</code>
+<code> </code><code>* @deprecated usar sumarExacto(int,int) en su lugar</code>
+<code> </code><code>*/</code>
+<code>public int sumar(int a, int b) { return a + b; }</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc101_1803553501" lang="es">
+<strong>4.</strong><strong>5. Símbolo común</strong></h2>
+<ul>
+<li><p>Todas las <strong>etiquetas Javadoc comienzan con
+	</strong><strong>@</strong>.</p></li>
+<li><p>Ejemplos: @param,
+	@return, @throws,
+	@see, @deprecated</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc103_1803553501" lang="es">
+<strong>4.</strong><strong>6. Buenas prácticas</strong></h2>
+<ol>
+<li><p><strong>Documentar todos los métodos públicos y
+	sus parámetros</strong></p></li>
+<li><p><strong>Indicar claramente excepciones</strong> 
+	con @throws</p></li>
+<li><p><strong>Usar </strong><strong>@see</strong> 
+	para vincular métodos relacionados o clases útiles</p></li>
+<li><p><strong>Marcar como obsoletos</strong>  con
+	@deprecated  y sugerir alternativa</p></li>
+<li><p>Mantener <strong>consistencia y claridad</strong> 
+	en los comentarios</p></li>
+</ol>
+<hr/>
+<h2 id="__RefHeading___Toc105_1803553501" lang="es">
+<strong>4.</strong><strong>7. Ejemplo completo combinando etiquetas</strong></h2>
+<pre><code>/**</code>
+<code> </code><code>* Calcula la suma de dos enteros positivos.</code>
+<code> </code><code>* @param a primer número (debe ser positivo)</code>
+<code> </code><code>* @param b segundo número (debe ser positivo)</code>
+<code> </code><code>* @return la suma de a y b</code>
+<code> </code><code>* @throws IllegalArgumentException si a o b son negativos</code>
+<code> </code><code>* @see Math#addExact(int,int)</code>
+<code> </code><code>* @deprecated usar sumarExacto(int,int) en su lugar</code>
+<code> </code><code>*/</code>
+<code>public int sumar(int a, int b) throws IllegalArgumentException {</code>
+<code>    </code><code>if (a &lt; 0 || b &lt; 0) throw new IllegalArgumentException();</code>
+<code>    </code><code>return a + b;</code>
+<code>}</code></pre>
+<ul>
+<li><p>Incluye: descripción, parámetros, retorno,
+	excepción, referencia y obsolescencia.</p></li>
+<li><p>Perfecto como ejemplo de examen.</p></li>
+</ul>
+<hr/>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>
