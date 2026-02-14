@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Sistemas
+de Gestión Empresarial – Unidad 1
+– Identificación de sistemas ERP
+- CRM</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Sistemas
+de Gestión Empresarial – Unidad 1
+– Identificación de sistemas ERP
+- CRM</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc1533_2386803148">1. Conceptos básicos y definiciones</a></p>
+<p><a href="#__RefHeading___Toc1535_2386803148">1.1. ERP (Enterprise Resource Planning)</a></p>
+<p><a href="#__RefHeading___Toc1537_2386803148">1.2. CRM (Customer Relationship Management)</a></p>
+<p><a href="#__RefHeading___Toc1539_2386803148">1.3. Diferencias clave ERP vs CRM ⚠️</a></p>
+<p><a href="#__RefHeading___Toc1541_2386803148">1.4. Relación con preguntas tipo examen</a></p>
+<p><a href="#__RefHeading___Toc1543_2386803148">2. Tipos y ejemplos de sistemas ERP/CRM</a></p>
+<p><a href="#__RefHeading___Toc1545_2386803148">2.1. Principales sistemas ERP/CRM en el mercado</a></p>
+<p><a href="#__RefHeading___Toc1547_2386803148">2.2. Módulos principales y funciones</a></p>
+<p><a href="#__RefHeading___Toc1549_2386803148">2.3. Flujos de integración entre módulos</a></p>
+<p><a href="#__RefHeading___Toc1551_2386803148">2.4. Relación con preguntas tipo examen</a></p>
+<p><a href="#__RefHeading___Toc1553_2386803148">3. Arquitectura y capas de ERP/CRM</a></p>
+<p><a href="#__RefHeading___Toc1555_2386803148">3.1. Tipos de arquitectura histórica y moderna</a></p>
+<p><a href="#__RefHeading___Toc1557_2386803148">3.2. Arquitectura básica de un CRM</a></p>
+<p><a href="#__RefHeading___Toc1559_2386803148">3.3. Arquitectura básica de un ERP</a></p>
+<p><a href="#__RefHeading___Toc1561_2386803148">3.4. MVC aplicado a Odoo</a></p>
+<p><a href="#__RefHeading___Toc1563_2386803148">3.5. Relación con preguntas tipo examen</a></p>
+<p><a href="#__RefHeading___Toc1565_2386803148">4. Integración de módulos y flujos en ERP/CRM</a></p>
+<p><a href="#__RefHeading___Toc1567_2386803148">4.1. Principios de integración</a></p>
+<p><a href="#__RefHeading___Toc1569_2386803148">4.2. Flujos de información típicos en Odoo</a></p>
+<p><a href="#__RefHeading___Toc1571_2386803148">4.3. Flujos de integración en Dynamics 365</a></p>
+<p><a href="#__RefHeading___Toc1573_2386803148">4.4. Errores comunes en integración</a></p>
+<p><a href="#__RefHeading___Toc1575_2386803148">4.5. Relación con preguntas tipo examen</a></p>
+<p><a href="#__RefHeading___Toc1577_2386803148">5. Seguridad y permisos en ERP/CRM</a></p>
+<p><a href="#__RefHeading___Toc1579_2386803148">5.1. Principios de seguridad</a></p>
+<p><a href="#__RefHeading___Toc1581_2386803148">5.2. Seguridad en Dynamics 365 CRM</a></p>
+<p><a href="#__RefHeading___Toc1583_2386803148">5.3. Seguridad en Dynamics 365 Business Central</a></p>
+<p><a href="#__RefHeading___Toc1585_2386803148">5.4. Seguridad en Odoo</a></p>
+<p><a href="#__RefHeading___Toc1587_2386803148">5.5. Errores comunes en seguridad</a></p>
+<p><a href="#__RefHeading___Toc1589_2386803148">5.6. Relación con preguntas tipo examen</a></p>
+<p><a href="#__RefHeading___Toc1591_2386803148">6. Requisitos de instalación, licencias y compatibilidad de ERP/CRM</a></p>
+<p><a href="#__RefHeading___Toc1593_2386803148">6.1. Requisitos generales de instalación</a></p>
+<p><a href="#__RefHeading___Toc1595_2386803148">6.2. Licencias</a></p>
+<p><a href="#__RefHeading___Toc1597_2386803148">6.3. Compatibilidad y dependencias</a></p>
+<p><a href="#__RefHeading___Toc1599_2386803148">6.4. Errores comunes</a></p>
+<p><a href="#__RefHeading___Toc1601_2386803148">6.5. Relación con preguntas tipo examen</a></p>
+<p><a href="#__RefHeading___Toc1603_2386803148">7. Conceptos transversales y examen</a></p>
+<p><a href="#__RefHeading___Toc1605_2386803148">7.1. Visión 360° del cliente ⚠️</a></p>
+<p><a href="#__RefHeading___Toc1607_2386803148">7.2. Offshoring</a></p>
+<p><a href="#__RefHeading___Toc1609_2386803148">7.3. Scoreboards vs ERP</a></p>
+<p><a href="#__RefHeading___Toc1611_2386803148">7.4. Nivel de implantación CRM vs ERP ⚠️</a></p>
+<p><a href="#__RefHeading___Toc1613_2386803148">7.5. Ventajas de implantar ERP/CRM</a></p>
+<p><a href="#__RefHeading___Toc1615_2386803148">7.6. Errores comunes en conceptos transversales</a></p>
+<p><a href="#__RefHeading___Toc1617_2386803148">7.7. Relación con preguntas tipo examen</a></p>
+<p><a href="#__RefHeading___Toc1619_2386803148">Unidad 01 – ERP/CRM: Resumen rápido</a></p>
+<p><a href="#__RefHeading___Toc1621_2386803148">1. Conceptos básicos</a></p>
+<p><a href="#__RefHeading___Toc1623_2386803148">2. Tipos y ejemplos de sistemas</a></p>
+<p><a href="#__RefHeading___Toc1625_2386803148">3. Arquitectura</a></p>
+<p><a href="#__RefHeading___Toc1627_2386803148">4. Integración</a></p>
+<p><a href="#__RefHeading___Toc1629_2386803148">5. Seguridad y permisos</a></p>
+<p><a href="#__RefHeading___Toc1631_2386803148">6. Requisitos y licencias</a></p>
+<p><a href="#__RefHeading___Toc1633_2386803148">7. Conceptos transversales</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc1533_2386803148" lang="es">
+<strong>1. Conceptos básicos y definiciones</strong></h1>
+<h2 id="__RefHeading___Toc1535_2386803148" lang="es">
+<strong>1.1. ERP (Enterprise Resource Planning)</strong></h2>
+<ul>
+<li><p><strong>Definición</strong>: Paquetes de sistemas
+	de información configurables que integran <strong>información y
+	procesos de negocio</strong>  dentro y entre áreas funcionales de
+	una organización.</p></li>
+<li><p><strong>Función principal</strong>: Gestionar
+	procesos internos de la empresa (<strong>finanzas, contabilidad,
+	compras, ventas, inventario, producción, RRHH</strong> ) en un único
+	sistema.</p></li>
+<li><p><strong>Integralidad ⚠️</strong>: Un ERP es
+	<strong>integral</strong>  si centraliza todas las áreas
+	funcionales, evitando duplicidades y garantizando consistencia de
+	datos.</p></li>
+<li><p><strong>Configurabilidad ⚠️</strong>: Permite
+	adaptar módulos y procesos a la empresa sin programar desde cero,
+	reduciendo costes y tiempo de implementación.</p></li>
+<li><p><strong>Objetivos</strong>:</p>
+<ul>
+<li><p>Optimizar procesos empresariales</p></li>
+<li><p>Compartir información entre todas las áreas</p></li>
+<li><p>Mantener integridad de datos y trazabilidad</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1537_2386803148" lang="es">
+<strong>1.2. CRM (Customer Relationship Management)</strong></h2>
+<ul>
+<li><p><strong>Definición</strong>: Sistemas destinados
+	a <strong>gestionar relaciones y procesos comerciales con clientes</strong>,
+	incluyendo captación, seguimiento y fidelización.</p></li>
+<li><p><strong>Función principal</strong>: Gestionar
+	<strong>oportunidades, clientes, pipeline de ventas, segmentación y
+	comunicaciones</strong>.</p></li>
+<li><p><strong>Visión 360° del cliente ⚠️</strong>:
+	Acceso completo e integrado a toda la información del cliente
+	(historial de compras, interacciones, preferencias).</p></li>
+<li><p><strong>Objetivos</strong>:</p>
+<ul>
+<li><p>Incrementar ventas y fidelización</p></li>
+<li><p>Mejorar la satisfacción del cliente</p></li>
+<li><p>Integrar información para la toma de decisiones
+		estratégicas</p></li>
+</ul>
+<li><p><strong>Implantación ⚠️</strong>: Menor que
+	ERP debido a complejidad multidisciplinar y reticencias del equipo
+	comercial.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1539_2386803148" lang="es">
+<strong>1.3. Diferencias clave ERP vs CRM ⚠️</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Concepto
+</th>
+<th>ERP
+</th>
+<th>CRM
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Propósito</strong>
+</td>
+<td>Gestión
+				interna de procesos y recursos
+</td>
+<td>Gestión de
+				relaciones y oportunidades comerciales
+</td>
+</tr>
+<tr>
+<td><strong>Áreas
+				cubiertas</strong>
+</td>
+<td>Finanzas,
+				producción, inventario, RRHH, compras, ventas
+</td>
+<td>Ventas,
+				marketing, atención al cliente, soporte
+</td>
+</tr>
+<tr>
+<td><strong>Nivel
+				de implantación</strong>
+</td>
+<td>Mayor,
+				procesos internos más maduros
+</td>
+<td>Menor,
+				requiere cambios culturales y colaboración comercial
+</td>
+</tr>
+<tr>
+<td><strong>Usuarios
+				clave</strong>
+</td>
+<td>Gerencia,
+				operaciones, contabilidad
+</td>
+<td>Comerciales,
+				marketing, servicio al cliente
+</td>
+</tr>
+<tr>
+<td><strong>Datos
+				principales</strong>
+</td>
+<td>Inventario,
+				órdenes, contabilidad
+</td>
+<td>Clientes,
+				oportunidades, comunicaciones
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>⚠️ <strong>Nemotecnia sugerida</strong>:</p>
+<ul>
+<li><p><strong>ERP → Empresa Rige Procesos</strong></p></li>
+<li><p><strong>CRM → Clientes y Relaciones Mejoradas</strong></p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1541_2386803148" lang="es">
+<strong>1.4. Relación con preguntas tipo examen</strong></h2>
+<ul>
+<li><p>“El ___ integra todas las funcionalidades para
+	la gestión de procesos de negocio” → <strong>ERP</strong></p></li>
+<li><p>Funcionalidades de lead management → <strong>CRM</strong></p></li>
+<li><p>Implantación CRM menor que ERP → preguntas
+	sobre adopción y reticencias</p></li>
+<li><p>Visión 360° del cliente → concepto clave para
+	preguntas de CRM</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1543_2386803148" lang="es">
+<strong>2. Tipos y ejemplos de sistemas ERP/CRM</strong></h1>
+<h2 id="__RefHeading___Toc1545_2386803148" lang="es">
+<strong>2.1. Principales sistemas ERP/CRM en el mercado</strong></h2>
+<ul>
+<li><p><strong>⚠️ Odoo</strong></p>
+<ul>
+<li><p>Tipo: ERP-CRM completo, modular</p></li>
+<li><p>Arquitectura: MVC (Modelo-Vista-Controlador)</p></li>
+<li><p>Lenguaje: Python</p></li>
+<li><p>Base de datos: PostgreSQL</p></li>
+<li><p>Licencia: <strong>LGPL v3</strong>  (Community)</p></li>
+<li><p>Modularidad: Finanzas, compras, ventas,
+		inventario, proyectos, CRM</p></li>
+<li><p>⚠️ Flujo integración: ventas/presupuesto →
+		CRM, inventario → compras, contabilidad → registros financieros</p></li>
+</ul>
+<li><p><strong>Microsoft Dynamics 365</strong></p>
+<ul>
+<li><p>Componentes: Business Central (ERP) y Dynamics
+		365 CRM</p></li>
+<li><p>Lenguaje extensiones: AL (C/AL descontinuado)</p></li>
+<li><p>Base de datos: SQL Server ≥ 2008</p></li>
+<li><p>Arquitectura: cliente-servidor y web</p></li>
+</ul>
+<li><p><strong>SugarCRM</strong></p>
+<ul>
+<li><p>Tipo: CRM</p></li>
+<li><p>Base de datos: MySQL</p></li>
+<li><p>Servidor web: Apache</p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1547_2386803148" lang="es">
+<strong>2.2. Módulos principales y funciones</strong></h2>
+<h4 lang="es"><strong>ERP</strong></h4>
+<ul>
+<li><p><strong>⚠️ Finanzas / Contabilidad</strong>:
+	general, analítica, presupuestaria</p></li>
+<li><p>Compras y abastecimiento</p></li>
+<li><p>Inventario y almacenes: control multiubicación,
+	stock mínimo</p></li>
+<li><p>Producción: planificación de necesidades (MRP)</p></li>
+<li><p>RRHH y nóminas</p></li>
+</ul>
+<h4 lang="es"><strong>CRM</strong></h4>
+<ul>
+<li><p>Gestión de oportunidades (Lead Management) ⚠️</p>
+<ul>
+<li><p>Registro y seguimiento de prospectos hasta el
+		cierre</p></li>
+</ul>
+<li><p>Segmentación de clientes</p></li>
+<li><p>Gestión de campañas y comunicaciones</p></li>
+<li><p>Visión 360° del cliente ⚠️</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1549_2386803148" lang="es">
+<strong>2.3. Flujos de integración entre módulos</strong></h2>
+<ul>
+<li><p>Ventas / Presupuestos → CRM → Notificación a
+	contabilidad e inventario</p></li>
+<li><p>Compras → Inventario → Finanzas (contabilidad
+	de cuentas por pagar)</p></li>
+<li><p>Proyectos → Recursos asignados → CRM / ERP
+	(seguimiento financiero y productivo)</p></li>
+</ul>
+<p><strong>⚠️ Diagrama de flujo conceptual
+(simplificado):</strong></p>
+<pre><code>CRM (Clientes / Ventas / Oportunidades)</code>
+<code>       │</code>
+<code>       ▼</code>
+<code>ERP (Inventario / Compras / Contabilidad)</code>
+<code>       │</code>
+<code>       ▼</code>
+<code>Reportes / Dashboard / Scoreboards</code></pre>
+<ul>
+<li><p>Permite <strong>centralizar datos y procesos</strong> 
+	evitando duplicidades y errores.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1551_2386803148" lang="es">
+<strong>2.4. Relación con preguntas tipo examen</strong></h2>
+<ul>
+<li><p>“¿Cuál módulo se encuentra en ERP orientado a
+	fabricación?” → MRP / Producción</p></li>
+<li><p>“Funcionalidades de gestión de oportunidades”
+	→ CRM Lead Management</p></li>
+<li><p>“Integración ventas/presupuestos en Odoo” →
+	CRM ⚠️ (flujo principal)</p></li>
+<li><p>Licencias Odoo → LGPL v3</p></li>
+<li><p>Requisitos base de Dynamics 365 y SugarCRM →
+	base de datos y servidor web</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1553_2386803148" lang="es">
+<strong>3. Arquitectura y capas de ERP/CRM</strong></h1>
+<h2 id="__RefHeading___Toc1555_2386803148" lang="es">
+<strong>3.1. Tipos de arquitectura histórica y moderna</strong></h2>
+<ul>
+<li><p><strong>⚠️ Cliente/Servidor:</strong></p>
+<ul>
+<li><p>Servidor centralizado que gestiona lógica de
+		negocio y base de datos</p></li>
+<li><p>Clientes instalados en los equipos de usuarios</p></li>
+<li><p>Requiere <strong>conexión en red y
+		compatibilidad de sistema operativo</strong></p></li>
+<li><p>Preguntas tipo examen: “Arquitectura ERP-CRM:
+		Cliente/Servidor vs Monopuesto”</p></li>
+</ul>
+<li><p><strong>Monopuesto:</strong></p>
+<ul>
+<li><p>Aplicaciones instaladas en un único equipo, sin
+		acceso multiusuario</p></li>
+<li><p>Históricas, ya casi no se usan en ERP/CRM
+		modernos</p></li>
+</ul>
+<li><p><strong>⚠️ Nemotecnia:</strong></p>
+<ul>
+<li><p>Cliente/Servidor = <strong>centralización +
+		multiusuario</strong></p></li>
+<li><p>Monopuesto = <strong>uso único, local</strong></p></li>
+</ul>
+</li></li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1557_2386803148" lang="es">
+<strong>3.2. Arquitectura básica de un CRM</strong></h2>
+<ul>
+<li><p>Capas principales:</p>
+<ol>
+<li><p><strong>Aplicación Web:</strong> interfaz de
+		usuario, acceso remoto</p></li>
+<li><p><strong>Servidor de aplicaciones Web:</strong>
+		lógica de negocio, servicios</p></li>
+<li><p><strong>Base de datos:</strong> almacenamiento de
+		clientes, oportunidades, historiales</p></li>
+</ol>
+</li></ul>
+<p><strong>⚠️ Diagrama conceptual CRM:</strong></p>
+<pre><code>[Aplicación Web]</code>
+<code>        │</code>
+<code>        ▼</code>
+<code>[Servidor de Aplicaciones Web]</code>
+<code>        │</code>
+<code>        ▼</code>
+<code>[Base de Datos]</code></pre>
+<ul>
+<li><p>Preguntas examen: “Arquitectura básica de un
+	CRM” → todas las capas son correctas</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1559_2386803148" lang="es">
+<strong>3.3. Arquitectura básica de un ERP</strong></h2>
+<ul>
+<li><p>Capas principales:</p>
+<ol>
+<li><p><strong>Sistema Operativo</strong>: soporte de
+		ejecución del ERP</p></li>
+<li><p><strong>Modelo / Componentes / Lógica de
+		negocio</strong>: reglas y procesos internos</p></li>
+<li><p><strong>Base de datos</strong>: almacenamiento de
+		transacciones, inventario, contabilidad</p></li>
+</ol>
+</li></ul>
+<p><strong>⚠️ Diagrama conceptual ERP:</strong></p>
+<pre><code>[Sistema Operativo]</code>
+<code>        │</code>
+<code>        ▼</code>
+<code>[Modelo / Componentes / Lógica]</code>
+<code>        │</code>
+<code>        ▼</code>
+<code>[Base de Datos]</code></pre>
+<ul>
+<li><p>Preguntas examen: “Arquitectura básica de un
+	ERP” → todas las capas son correctas</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1561_2386803148" lang="es">
+<strong>3.4. MVC aplicado a Odoo</strong></h2>
+<ul>
+<li><p><strong>Modelo (model):</strong> objetos de Odoo →
+	tablas en PostgreSQL</p></li>
+<li><p><strong>Vista (view):</strong> listas,
+	formularios, calendarios, gráficos (XML)</p></li>
+<li><p><strong>Controlador (controller):</strong> lógica
+	de negocio en Python (validación, cálculos, workflows)</p></li>
+</ul>
+<p><strong>⚠️ Diagrama MVC Odoo:</strong></p>
+<pre><code>[Vista (XML)]</code>
+<code>     ▲</code>
+<code>     │</code>
+<code>[Controlador (Python)]</code>
+<code>     │</code>
+<code>     ▼</code>
+<code>[Modelo (PostgreSQL)]</code></pre>
+<ul>
+<li><p>Flujo de datos:</p>
+<ul>
+<li><p>Modelo notifica cambios a la Vista</p></li>
+<li><p>Vista envía eventos al Controlador</p></li>
+<li><p>Controlador aplica lógica y actualiza el Modelo</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1563_2386803148" lang="es">
+<strong>3.5. Relación con preguntas tipo examen</strong></h2>
+<ul>
+<li><p>Arquitectura ERP-CRM → Cliente/Servidor ⚠️</p></li>
+<li><p>Monopuesto → histórica, examen puede marcarla
+	como parte de la definición completa</p></li>
+<li><p>MVC → Odoo / ERP modernos basados en web</p></li>
+<li><p>Capas básicas → CRM y ERP, respuesta “Todas
+	son correctas”</p></li>
+<li><p>Flujo de integración entre módulos → MVC
+	facilita separación de lógica, interfaz y datos</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1565_2386803148" lang="es">
+<strong>4. Integración de módulos y flujos en ERP/CRM</strong></h1>
+<h2 id="__RefHeading___Toc1567_2386803148" lang="es">
+<strong>4.1. Principios de integración</strong></h2>
+<ul>
+<li><p><strong>⚠️ Integración:</strong> intercambio
+	de información entre módulos para <strong>evitar duplicidades y
+	errores</strong>, garantizando consistencia de datos.</p></li>
+<li><p>Los ERP/CRM modernos permiten <strong>automatizar
+	procesos interdepartamentales</strong>  (ventas, compras,
+	contabilidad, inventario, proyectos).</p></li>
+<li><p>Ejemplo clave: <strong>Odoo y Dynamics 365
+	Business Central</strong>, donde ventas, presupuesto e inventario se
+	sincronizan automáticamente con contabilidad y compras.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1569_2386803148" lang="es">
+<strong>4.2. Flujos de información típicos en Odoo</strong></h2>
+<ul>
+<li><p><strong>Ventas / Presupuestos → CRM</strong>:</p>
+<ul>
+<li><p>Seguimiento de oportunidades y clientes</p></li>
+<li><p>Generación automática de facturas y órdenes de
+		venta</p></li>
+</ul>
+<li><p><strong>Inventario → Compras</strong>:</p>
+<ul>
+<li><p>Stock mínimo genera órdenes automáticas a
+		proveedores</p></li>
+<li><p>Movimientos de productos registrados en
+		contabilidad</p></li>
+</ul>
+<li><p><strong>Contabilidad → Finanzas</strong>:</p>
+<ul>
+<li><p>Todos los movimientos de ventas, compras y
+		proyectos se reflejan automáticamente</p></li>
+</ul>
+<li><p><strong>Proyectos → Recursos / CRM</strong>:</p>
+<ul>
+<li><p>Asignación de tareas y seguimiento de costos</p></li>
+</ul>
+</li></li></li></li></ul>
+<p><strong>⚠️ Diagrama de flujo conceptual Odoo:</strong></p>
+<pre><code>[CRM: Clientes / Ventas]</code>
+<code>         │</code>
+<code>         ▼</code>
+<code>[ERP: Inventario / Compras / Contabilidad]</code>
+<code>         │</code>
+<code>         ▼</code>
+<code>[Proyectos / Finanzas / Reportes]</code></pre>
+<hr/>
+<h2 id="__RefHeading___Toc1571_2386803148" lang="es">
+<strong>4.3. Flujos de integración en Dynamics 365</strong></h2>
+<ul>
+<li><p><strong>Business Central (ERP)</strong>  →
+	Finanzas, inventario, compras, producción</p></li>
+<li><p><strong>Dynamics CRM</strong>  → clientes,
+	oportunidades, pipeline de ventas</p></li>
+<li><p><strong>Integración:</strong> los procesos de
+	venta y presupuesto se reflejan en ERP para facturación, inventario
+	y contabilidad</p></li>
+</ul>
+<p><strong>⚠️ Notas examen:</strong></p>
+<ul>
+<li><p>Preguntas sobre “con quién se integran los
+	procesos de venta y presupuesto en Odoo” → CRM</p></li>
+<li><p>Flujos de trabajo (workflow) permiten automatizar
+	notificaciones y registros contables</p></li>
+<li><p>Todas las integraciones deben garantizar
+	<strong>trazabilidad y visibilidad 360°</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1573_2386803148" lang="es">
+<strong>4.4. Errores comunes en integración</strong></h2>
+<ul>
+<li><p>No sincronizar correctamente ventas y contabilidad
+	→ duplicidad de datos</p></li>
+<li><p>No configurar stock mínimo → errores en órdenes
+	de compra automáticas</p></li>
+<li><p>Flujo de clientes incompleto → pérdida de
+	información de oportunidades</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1575_2386803148" lang="es">
+<strong>4.5. Relación con preguntas tipo examen</strong></h2>
+<ul>
+<li><p>“Integración ventas/presupuestos en Odoo” →
+	CRM</p></li>
+<li><p>“Ventajas de implantar ERP” → centralización
+	de información y automatización de flujos</p></li>
+<li><p>“Lead management” → seguimiento de
+	oportunidades en CRM integrado a ERP</p></li>
+<li><p>Preguntas sobre workflows → reflejan flujo de
+	procesos automáticos</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1577_2386803148" lang="es">
+<strong>5. Seguridad y permisos en ERP/CRM</strong></h1>
+<h2 id="__RefHeading___Toc1579_2386803148" lang="es">
+<strong>5.1. Principios de seguridad</strong></h2>
+<ul>
+<li><p><strong>⚠️ Seguridad:</strong> garantiza que
+	solo usuarios autorizados accedan a datos y procesos del ERP/CRM.</p></li>
+<li><p>Componentes principales:</p>
+<ul>
+<li><p><strong>Usuarios</strong>: cuentas individuales
+		del sistema</p></li>
+<li><p><strong>Roles / Perfiles de seguridad</strong>:
+		agrupan permisos y privilegios para asignación masiva</p></li>
+<li><p><strong>Políticas de sistema operativo / LDAP /
+		Active Directory</strong>: integran autenticación y control de
+		acceso externo</p></li>
+</ul>
+<li><p><strong>Objetivo:</strong> proteger información
+	sensible, garantizar integridad y trazabilidad.</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1581_2386803148" lang="es">
+<strong>5.2. Seguridad en Dynamics 365 CRM</strong></h2>
+<ul>
+<li><p><strong>Niveles de seguridad:</strong></p>
+<ol>
+<li><p><strong>Usuarios del sistema</strong>  ⚠️:
+		cuentas internas de CRM</p></li>
+<li><p><strong>Roles de seguridad</strong>: permisos
+		agrupados para usuarios</p></li>
+<li><p><strong>Política de seguridad de Windows /
+		Active Directory / LDAP</strong>: autenticación y control de
+		acceso externo</p></li>
+</ol>
+<li><p>Preguntas de examen:</p>
+<ol>
+<li><p>“Seguridad basada en…” → opción correcta
+		según temario: <strong>Todas las respuestas son correctas</strong></p></li>
+<li><p>Roles de seguridad permiten <strong>asignar
+		permisos de forma centralizada</strong></p></li>
+</ol>
+</li></li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1583_2386803148" lang="es">
+<strong>5.3. Seguridad en Dynamics 365 Business Central</strong></h2>
+<ul>
+<li><p><strong>⚠️ Rol de seguridad:</strong> agrupa
+	permisos individuales para asignarlos a usuarios</p></li>
+<li><p>Control de acceso sobre módulos ERP: finanzas,
+	inventario, compras, ventas</p></li>
+<li><p>Preinstalaciones y configuraciones previas
+	necesarias:</p>
+<ul>
+<li><p>Servidor SQL compatible</p></li>
+<li><p>Sistema operativo compatible (Windows Server /
+		Windows 7+)</p></li>
+<li><p>Requisitos previos instalados (IIS, .NET, SSRS
+		según versión)</p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1585_2386803148" lang="es">
+<strong>5.4. Seguridad en Odoo</strong></h2>
+<ul>
+<li><p>Usuarios con roles asignados a módulos (CRM,
+	ventas, contabilidad)</p></li>
+<li><p>Acceso a módulos según permisos definidos</p></li>
+<li><p>Integración con autenticación externa opcional
+	(LDAP/Active Directory)</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1587_2386803148" lang="es">
+<strong>5.5. Errores comunes en seguridad</strong></h2>
+<ul>
+<li><p>⚠️ Asignar permisos directamente a usuarios en
+	lugar de roles → difícil mantenimiento</p></li>
+<li><p>No configurar roles correctamente → exposición
+	de datos sensibles</p></li>
+<li><p>Ignorar autenticación externa → riesgo de
+	acceso no autorizado</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1589_2386803148" lang="es">
+<strong>5.6. Relación con preguntas tipo examen</strong></h2>
+<ul>
+<li><p>“Seguridad basada en…” → Dynamics 365 CRM
+	→ <strong>Todas las respuestas son correctas</strong></p></li>
+<li><p>“Elemento que agrupa permisos en Business
+	Central” → <strong>Rol de seguridad</strong></p></li>
+<li><p>Preguntas sobre preinstalaciones y compatibilidad
+	→ preparar lista de <strong>requisitos mínimos de instalación</strong></p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1591_2386803148" lang="es">
+<strong>6. Requisitos de instalación, licencias y compatibilidad de
+ERP/CRM</strong></h1>
+<h2 id="__RefHeading___Toc1593_2386803148" lang="es">
+<strong>6.1. Requisitos generales de instalación</strong></h2>
+<h4 lang="es"><strong>Dynamics
+365 Business Central (ERP)</strong></h4>
+<table>
+<thead>
+<tr>
+<th>⚠️
+				Componente
+</th>
+<th>Requisitos
+				mínimos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema
+				operativo
+</td>
+<td>Windows 7
+				Professional o superior / Windows Server 2008+
+</td>
+</tr>
+<tr>
+<td>Base de datos
+</td>
+<td>SQL Server ≥
+				2008
+</td>
+</tr>
+<tr>
+<td>Cliente de
+				escritorio
+</td>
+<td>Windows 7 o
+				superior
+</td>
+</tr>
+<tr>
+<td>Preinstalaciones
+</td>
+<td>IIS, .NET
+				Framework, Active Directory (según versión)
+</td>
+</tr>
+<tr>
+<td>⚠️
+				Observación
+</td>
+<td>Conexión
+				cliente-servidor; no requiere base local en cliente
+</td>
+</tr>
+</tbody>
+</table>
+<h4 lang="es"><strong>Dynamics
+365 CRM</strong></h4>
+<table>
+<thead>
+<tr>
+<th>⚠️
+				Componente
+</th>
+<th>Requisitos
+				mínimos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema
+				operativo
+</td>
+<td>Windows
+				Server compatible
+</td>
+</tr>
+<tr>
+<td>Servidor web
+</td>
+<td>IIS
+</td>
+</tr>
+<tr>
+<td>Base de datos
+</td>
+<td>SQL Server ≥
+				2008
+</td>
+</tr>
+<tr>
+<td>Preinstalaciones
+</td>
+<td>Librerías
+				.NET, SSRS (generador de informes), autenticación LDAP / AD
+</td>
+</tr>
+<tr>
+<td>⚠️
+				Observación
+</td>
+<td>Seguridad
+				basada en usuarios, roles y políticas Windows
+</td>
+</tr>
+</tbody>
+</table>
+<h4 lang="es"><strong>Odoo
+Community</strong></h4>
+<table>
+<thead>
+<tr>
+<th>⚠️
+				Componente
+</th>
+<th>Requisitos
+				mínimos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema
+				operativo
+</td>
+<td>Linux o
+				Windows
+</td>
+</tr>
+<tr>
+<td>Base de datos
+</td>
+<td>PostgreSQL
+</td>
+</tr>
+<tr>
+<td>Servidor web
+</td>
+<td>Integrado o
+				Nginx/Apache
+</td>
+</tr>
+<tr>
+<td>Lenguaje
+</td>
+<td>Python
+</td>
+</tr>
+<tr>
+<td>Licencia
+</td>
+<td><strong>LGPL
+				v3</strong>
+</td>
+</tr>
+<tr>
+<td>⚠️
+				Observación
+</td>
+<td>Modularidad
+				total, integración ERP-CRM, arquitectura MVC
+</td>
+</tr>
+</tbody>
+</table>
+<h4 lang="es"><strong>SugarCRM</strong></h4>
+<table>
+<thead>
+<tr>
+<th>⚠️
+				Componente
+</th>
+<th>Requisitos
+				mínimos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema
+				operativo
+</td>
+<td>Linux /
+				Windows
+</td>
+</tr>
+<tr>
+<td>Base de datos
+</td>
+<td>MySQL
+</td>
+</tr>
+<tr>
+<td>Servidor web
+</td>
+<td>Apache
+</td>
+</tr>
+<tr>
+<td>⚠️
+				Observación
+</td>
+<td>CRM puro,
+				enfoque ventas y relaciones con clientes
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="__RefHeading___Toc1595_2386803148" lang="es">
+<strong>6.2. Licencias</strong></h2>
+<ul>
+<li><p><strong>Dynamics 365 Business Central / CRM:</strong>
+	licencia comercial por usuario y tipo de módulo</p></li>
+<li><p><strong>Odoo Community:</strong> <strong>LGPL v3</strong> 
+	(Software Libre, sin coste de licencias)</p></li>
+<li><p><strong>SugarCRM:</strong> licencia comercial o
+	comunidad según versión</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1597_2386803148" lang="es">
+<strong>6.3. Compatibilidad y dependencias</strong></h2>
+<ul>
+<li><p>⚠️ Conexión de cliente a servidor obligatorio
+	para ERP/CRM modernos</p></li>
+<li><p>Integración con <strong>Active Directory</strong> 
+	para autenticación corporativa</p></li>
+<li><p>Flujo de datos entre módulos ERP/CRM depende de
+	la base de datos centralizada</p></li>
+<li><p>Configuración de roles y permisos debe hacerse
+	<strong>antes de habilitar usuarios</strong>  para evitar errores de
+	acceso</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1599_2386803148" lang="es">
+<strong>6.4. Errores comunes</strong></h2>
+<ul>
+<li><p>Instalar cliente sin verificar compatibilidad del
+	SO</p></li>
+<li><p>Base de datos incorrecta o versión inferior a la
+	requerida → fallos de instalación</p></li>
+<li><p>Ignorar preinstalaciones como IIS o .NET →
+	funcionalidad limitada</p></li>
+<li><p>Licencia incorrecta → restricciones de módulos
+	o número de usuarios</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1601_2386803148" lang="es">
+<strong>6.5. Relación con preguntas tipo examen</strong></h2>
+<ul>
+<li><p>“SQL Server a partir de…?” → Business
+	Central y Dynamics CRM ≥ 2008</p></li>
+<li><p>“Servidor web SugarCRM” → Apache</p></li>
+<li><p>“Licencia Odoo Community” → LGPL v3</p></li>
+<li><p>Preinstalaciones necesarias Dynamics CRM → IIS,
+	.NET, SSRS</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1603_2386803148" lang="es">
+<strong>7. Conceptos transversales y examen</strong></h1>
+<h2 id="__RefHeading___Toc1605_2386803148" lang="es">
+<strong>7.1. Visión 360° del cliente ⚠️</strong></h2>
+<ul>
+<li><p>Definición: Acceso completo e integrado a <strong>toda
+	la información del cliente</strong>, incluyendo historial de
+	compras, interacciones, preferencias y comunicaciones.</p></li>
+<li><p>Relacionado con CRM → permite <strong>mejorar la
+	fidelización y la toma de decisiones comerciales</strong>.</p></li>
+<li><p>Preguntas de examen típicas: “En un sistema
+	CRM, ¿qué significa visión 360° del cliente?” → respuesta:
+	<strong>acceso integral a toda la información del cliente</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1607_2386803148" lang="es">
+<strong>7.2. Offshoring</strong></h2>
+<ul>
+<li><p>Definición: Externalización de procesos o
+	servicios a otro país para <strong>reducir costes o acceder a
+	talento especializado</strong>.</p></li>
+<li><p>Ejemplo: desarrollo de módulos ERP o soporte de
+	CRM desde otro país.</p></li>
+<li><p>Pregunta examen: “Término que describe
+	externalización internacional” → <strong>Offshoring</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1609_2386803148" lang="es">
+<strong>7.3. Scoreboards vs ERP</strong></h2>
+<ul>
+<li><p>⚠️ Diferencia clave:</p>
+<ul>
+<li><p><strong>Scoreboard:</strong> herramienta de
+		control y visualización de indicadores</p></li>
+<li><p><strong>ERP:</strong> gestión integral de
+		procesos y datos de negocio</p></li>
+</ul>
+<li><p>Pregunta examen: “Diferencia entre ERP y
+	Scoreboard” → <strong>ERP gestiona procesos, Scoreboard solo
+	indicadores</strong></p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc1611_2386803148" lang="es">
+<strong>7.4. Nivel de implantación CRM vs ERP ⚠️</strong></h2>
+<ul>
+<li><p>CRM: menor implantación que ERP → depende de
+	colaboración comercial y enfoque multidisciplinar</p></li>
+<li><p>ERP: mayor implantación → procesos internos
+	maduros y centralizados</p></li>
+<li><p>Preguntas examen: “Nivel de implantación de CRM
+	respecto a ERP” → <strong>CRM más reducido</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1613_2386803148" lang="es">
+<strong>7.5. Ventajas de implantar ERP/CRM</strong></h2>
+<ul>
+<li><p>Centralización de información</p></li>
+<li><p>Eliminación de duplicidades</p></li>
+<li><p>Automatización de flujos de trabajo</p></li>
+<li><p>Trazabilidad completa de procesos</p></li>
+<li><p>Mejor toma de decisiones estratégicas y
+	operativas</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1615_2386803148" lang="es">
+<strong>7.6. Errores comunes en conceptos transversales</strong></h2>
+<ul>
+<li><p>⚠️ Confundir ERP con CRM → recordar
+	nemotecnia: <strong>ERP = Empresa Rige Procesos</strong>, <strong>CRM
+	= Clientes y Relaciones Mejoradas</strong></p></li>
+<li><p>Confundir Scoreboard con ERP → Scoreboard solo
+	indicadores</p></li>
+<li><p>Ignorar offshoring como concepto de reducción de
+	costes → pregunta frecuente de examen</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1617_2386803148" lang="es">
+<strong>7.7. Relación con preguntas tipo examen</strong></h2>
+<ul>
+<li><p>“Visión 360° del cliente” → CRM</p></li>
+<li><p>“Offshoring” → externalización
+	internacional</p></li>
+<li><p>“Nivel de implantación CRM vs ERP” → menor
+	implantación CRM</p></li>
+<li><p>“Diferencia ERP vs Scoreboard” → ERP
+	gestiona procesos completos</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc1619_2386803148" lang="es">
+<strong>Unidad 01 – ERP/CRM: Resumen rápido</strong></h1>
+<h2 id="__RefHeading___Toc1621_2386803148" lang="es">
+<strong>1. Conceptos básicos</strong></h2>
+<ul>
+<li><p><strong>⚠️ ERP:</strong> integra procesos
+	internos: finanzas, compras, inventario, producción, RRHH.</p></li>
+<li><p><strong>⚠️ CRM:</strong> gestiona clientes,
+	oportunidades, ventas, marketing.</p></li>
+<li><p><strong>Visión 360° cliente ⚠️:</strong>
+	acceso completo a historial e interacciones.</p></li>
+<li><p><strong>ERP integral ⚠️:</strong> centraliza
+	todas las áreas, evita duplicidades.</p></li>
+<li><p><strong>Configurabilidad ⚠️:</strong> adapta
+	módulos sin programar desde cero.</p></li>
+<li><p><strong>Nemotecnia:</strong> ERP = Empresa Rige
+	Procesos, CRM = Clientes y Relaciones Mejoradas.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1623_2386803148" lang="es">
+<strong>2. Tipos y ejemplos de sistemas</strong></h2>
+<ul>
+<li><p><strong>Odoo:</strong> ERP-CRM, modular, MVC,
+	Python, PostgreSQL, LGPL v3.</p></li>
+<li><p><strong>Dynamics 365:</strong> ERP (Business
+	Central) y CRM; SQL Server ≥2008; AL; cliente-servidor/web.</p></li>
+<li><p><strong>SugarCRM:</strong> CRM puro, MySQL,
+	Apache.</p></li>
+</ul>
+<h3 lang="es"><strong>Módulos</strong></h3>
+<ul>
+<li><p><strong>ERP:</strong> Finanzas, Compras,
+	Inventario, Producción, RRHH.</p></li>
+<li><p><strong>CRM:</strong> Lead Management,
+	Segmentación, Pipeline, Visión 360° cliente.</p></li>
+</ul>
+<h3 lang="es"><strong>Flujos</strong></h3>
+<ul>
+<li><p>Ventas/Presupuesto → CRM → ERP →
+	Contabilidad/Inventario.</p></li>
+<li><p>Inventario mínimo → Compras automáticas →
+	Finanzas.</p></li>
+<li><p>Proyectos → Recursos → CRM/ERP.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1625_2386803148" lang="es">
+<strong>3. Arquitectura</strong></h2>
+<ul>
+<li><p><strong>Cliente/Servidor ⚠️:</strong> servidor
+	central + clientes; multiusuario.</p></li>
+<li><p><strong>Monopuesto:</strong> un solo equipo,
+	histórico.</p></li>
+<li><p><strong>CRM:</strong> Capas → Aplicación Web →
+	Servidor apps → Base de datos.</p></li>
+<li><p><strong>ERP:</strong> Capas → Sistema operativo
+	→ Modelo/Componentes → Base de datos.</p></li>
+<li><p><strong>Odoo MVC ⚠️:</strong>
+	Modelo(PostgreSQL) → Controlador(Python) → Vista(XML).</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1627_2386803148" lang="es">
+<strong>4. Integración</strong></h2>
+<ul>
+<li><p>Automatiza flujos entre módulos.</p></li>
+<li><p>Evita duplicidad y errores.</p></li>
+<li><p>⚠️ Odoo: ventas/presupuesto → CRM;
+	inventario → compras → contabilidad.</p></li>
+<li><p>⚠️ Dynamics 365: ventas → ERP →
+	facturación, inventario, contabilidad.</p></li>
+<li><p>Workflow = notificaciones y registros automáticos.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1629_2386803148" lang="es">
+<strong>5. Seguridad y permisos</strong></h2>
+<ul>
+<li><p><strong>Dinámica 365 CRM:</strong> usuarios,
+	roles, políticas Windows/LDAP/AD.</p></li>
+<li><p><strong>Business Central:</strong> roles de
+	seguridad agrupan permisos.</p></li>
+<li><p><strong>Odoo:</strong> roles de módulo +
+	autenticación opcional LDAP/AD.</p></li>
+<li><p>⚠️ Errores comunes: permisos directos a
+	usuarios, roles mal configurados, ignorar autenticación externa.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1631_2386803148" lang="es">
+<strong>6. Requisitos y licencias</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Sistema
+</th>
+<th>OS
+</th>
+<th>BD
+</th>
+<th>Servidor
+</th>
+<th>Lenguaje
+</th>
+<th>Licencia
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Odoo
+				Community
+</td>
+<td>Linux/Windows
+</td>
+<td>PostgreSQL
+</td>
+<td>Apache/Nginx
+</td>
+<td>Python
+</td>
+<td>LGPL v3
+</td>
+</tr>
+<tr>
+<td>Dynamics 365
+				BC
+</td>
+<td>Windows
+				7+/Server 2008+
+</td>
+<td>SQL ≥2008
+</td>
+<td>IIS
+</td>
+<td>AL
+</td>
+<td>Comercial
+</td>
+</tr>
+<tr>
+<td>Dynamics 365
+				CRM
+</td>
+<td>Windows
+				Server
+</td>
+<td>SQL ≥2008
+</td>
+<td>IIS
+</td>
+<td>-
+</td>
+<td>Comercial
+</td>
+</tr>
+<tr>
+<td>SugarCRM
+</td>
+<td>Linux/Windows
+</td>
+<td>MySQL
+</td>
+<td>Apache
+</td>
+<td>PHP
+</td>
+<td>Comercial/Community
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>⚠️ Preinstalaciones Dynamics: IIS, .NET, SSRS,
+	AD/LDAP según versión.</p></li>
+<li><p>Cliente Business Central → solo conecta al
+	servidor.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc1633_2386803148" lang="es">
+<strong>7. Conceptos transversales</strong></h2>
+<ul>
+<li><p><strong>Offshoring ⚠️:</strong>
+	externalización internacional para reducir costes o acceder
+	talento.</p></li>
+<li><p><strong>Scoreboard vs ERP ⚠️:</strong>
+	Scoreboard = indicadores, ERP = procesos completos.</p></li>
+<li><p><strong>Nivel de implantación ⚠️:</strong>
+	CRM &lt; ERP (menor por complejidad y reticencias).</p></li>
+<li><p>Ventajas ERP/CRM: centralización, automatización,
+	trazabilidad, decisiones estratégicas.</p></li>
+</ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>
