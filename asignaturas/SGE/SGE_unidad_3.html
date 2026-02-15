@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+<html lang="es" xml:lang="es">
+<head><meta charset="utf-8"/><title>Sistemas
+de Gestión Empresarial – Unidad 3
+– Organización y consulta de la
+información</title><link href="../../css/styles.css" rel="stylesheet"/></head>
+<body lang="es" link="#000080" vlink="#800000"><h1 id="titulo-unidad">Sistemas
+de Gestión Empresarial – Unidad 3
+– Organización y consulta de la
+información</h1>
+<div id="Sumario1">
+<div id="Sumario1_Head"><p>
+Sumario</p>
+</div>
+<p><a href="#__RefHeading___Toc5648_158367611">1. Definición de campos</a></p>
+<p><a href="#__RefHeading___Toc5650_158367611">1.1 Concepto general (común ERP–CRM)</a></p>
+<p><a href="#__RefHeading___Toc5652_158367611">1.2 Microsoft Dynamics Nav (Navision)</a></p>
+<p><a href="#__RefHeading___Toc5654_158367611">2. Tablas y vistas del sistema</a></p>
+<p><a href="#__RefHeading___Toc5656_158367611">2.1 Concepto de tabla</a></p>
+<p><a href="#__RefHeading___Toc5658_158367611">2.2 Tablas en Microsoft Dynamics Nav / Business Central</a></p>
+<p><a href="#__RefHeading___Toc5660_158367611">2.3 Entidades en Microsoft Dynamics 365 CRM</a></p>
+<p><a href="#__RefHeading___Toc5662_158367611">2.4 Vistas del sistema</a></p>
+<p><a href="#__RefHeading___Toc5664_158367611">2.5 Importancia dentro del sistema</a></p>
+<p><a href="#__RefHeading___Toc5666_158367611">3. Consultas de acceso a datos</a></p>
+<p><a href="#__RefHeading___Toc5668_158367611">3.1 Concepto de consulta (Query)</a></p>
+<p><a href="#__RefHeading___Toc5670_158367611">3.2 Tipos de objetos en Business Central / Dynamics 365 CRM</a></p>
+<p><a href="#__RefHeading___Toc5672_158367611">4. Interfaces de entrada de datos y formularios</a></p>
+<p><a href="#__RefHeading___Toc5674_158367611">4.1 Interfaz de entrada de datos</a></p>
+<p><a href="#__RefHeading___Toc5676_158367611">4.2 Formularios</a></p>
+<p><a href="#__RefHeading___Toc5678_158367611">4.3 Secciones</a></p>
+<p><a href="#__RefHeading___Toc5680_158367611">4.4 Relación con otros objetos</a></p>
+<p><a href="#__RefHeading___Toc5682_158367611">5. Informes y listados de la aplicación</a></p>
+<p><a href="#__RefHeading___Toc5684_158367611">5.1 Tipos de informes</a></p>
+<p><a href="#__RefHeading___Toc5686_158367611">5.2 Esquemas de cuentas</a></p>
+<p><a href="#__RefHeading___Toc5688_158367611">5.3 Plantillas de columnas</a></p>
+<p><a href="#__RefHeading___Toc5690_158367611">5.4 Comparación de esquemas</a></p>
+<p><a href="#__RefHeading___Toc5692_158367611">5.5 Conclusión</a></p>
+<p><a href="#__RefHeading___Toc5694_158367611">6. Gestión operativa</a></p>
+<p><a href="#__RefHeading___Toc5696_158367611">7. Gráficos</a></p>
+<p><a href="#__RefHeading___Toc5698_158367611">7.1 Tipos de gráficos</a></p>
+<p><a href="#__RefHeading___Toc5700_158367611">7.2 Características principales</a></p>
+<p><a href="#__RefHeading___Toc5702_158367611">8. Herramientas de monitorización y auditoría</a></p>
+<p><a href="#__RefHeading___Toc5704_158367611">8.1 Auditoría en Dynamics 365 CRM (actualizado)</a></p>
+<p><a href="#__RefHeading___Toc5706_158367611">8.2 Funcionalidades de auditoría</a></p>
+<p><a href="#__RefHeading___Toc5708_158367611">8.3 Confusiones frecuentes en examen</a></p>
+<p><a href="#__RefHeading___Toc5710_158367611">9. Incidencias, identificación y resolución</a></p>
+<p><a href="#__RefHeading___Toc5712_158367611">9.1 Identificación</a></p>
+<p><a href="#__RefHeading___Toc5714_158367611">9.2 Resolución</a></p>
+<p><a href="#__RefHeading___Toc5716_158367611">10. Procesos de extracción de datos en sistemas ERP/CRM y automatización</a></p>
+<p><a href="#__RefHeading___Toc5718_158367611">10.1 Plantilla de columnas</a></p>
+<p><a href="#__RefHeading___Toc5720_158367611">10.2 Configuración de un esquema de cuentas</a></p>
+<p><a href="#__RefHeading___Toc5722_158367611">10.3 Extracción y automatización</a></p>
+<p><a href="#__RefHeading___Toc5724_158367611">10.4 Confusiones frecuentes</a></p>
+<p><a href="#__RefHeading___Toc5726_158367611">11. Inteligencia de Negocio (Business Intelligence – BI)</a></p>
+<p><a href="#__RefHeading___Toc5728_158367611">11.1 Funcionalidad principal</a></p>
+<p><a href="#__RefHeading___Toc5730_158367611">11.2 Relación con otros bloques</a></p>
+<p><a href="#__RefHeading___Toc5732_158367611">Unidad 03 – Organización y consulta de la información (Resumen compacto)</a></p>
+<p><a href="#__RefHeading___Toc5734_158367611">1. Campos</a></p>
+<p><a href="#__RefHeading___Toc5736_158367611">2. Tablas y vistas</a></p>
+<p><a href="#__RefHeading___Toc5738_158367611">3. Consultas de acceso a datos</a></p>
+<p><a href="#__RefHeading___Toc5740_158367611">4. Interfaces y formularios</a></p>
+<p><a href="#__RefHeading___Toc5742_158367611">5. Informes y esquemas de cuentas</a></p>
+<p><a href="#__RefHeading___Toc5744_158367611">6. Gestión operativa</a></p>
+<p><a href="#__RefHeading___Toc5746_158367611">7. Gráficos</a></p>
+<p><a href="#__RefHeading___Toc5748_158367611">8. Auditoría</a></p>
+<p><a href="#__RefHeading___Toc5750_158367611">9. Incidencias</a></p>
+<p><a href="#__RefHeading___Toc5752_158367611">10. Extracción de datos y automatización</a></p>
+<p><a href="#__RefHeading___Toc5754_158367611">11. Business Intelligence (BI)</a></p>
+</div>
+<p>
+
+</p>
+<h1 id="__RefHeading___Toc5648_158367611" lang="es">
+<strong><br/>
+</strong><strong>1</strong><strong>. Definición de
+campos</strong></h1>
+<h2 id="__RefHeading___Toc5650_158367611" lang="es">
+1.1 Concepto general (común ERP–CRM)</h2>
+<p>Clasificación general:</p>
+<ul>
+<li><p><strong>Texto</strong>  → almacenamiento de
+	caracteres.</p></li>
+<li><p><strong>Numéricos</strong>  → cantidades,
+	importes, valores contables.</p></li>
+<li><p><strong>Fecha / Fecha y hora</strong>  → gestión
+	temporal de operaciones.</p></li>
+</ul>
+<p>Esto es base conceptual para:</p>
+<ul>
+<li><p>Formularios (6)</p></li>
+<li><p>Tablas (4)</p></li>
+<li><p>Auditoría a nivel de campo (10.1)</p></li>
+<li><p>Trazabilidad y movimientos (8)</p></li>
+</ul>
+<p>Es un bloque fundacional, aunque no tenga muchas
+preguntas directas.</p>
+<hr/>
+<h2 id="__RefHeading___Toc5652_158367611" lang="es">
+1.2 Microsoft Dynamics Nav (Navision)</h2>
+<p>Aquí sí hay contenido técnico concreto evaluable.</p>
+<h3 lang="es">Tipos de datos relevantes del
+profesor:</h3>
+<table>
+<col/>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>Tipo
+</th>
+<th>Naturaleza
+				técnica
+</th>
+<th>Posible
+				foco de examen
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BigInteger
+</td>
+<td>Entero
+				64 bits
+</td>
+<td>Diferenciar
+				de Integer
+</td>
+</tr>
+<tr>
+<td>Integer
+</td>
+<td>Entero
+				32 bits
+</td>
+<td>Rango
+				limitado
+</td>
+</tr>
+<tr>
+<td>Decimal
+</td>
+<td>Numérico
+				con decimales
+</td>
+<td>Valores
+				monetarios
+</td>
+</tr>
+<tr>
+<td>Boolean
+</td>
+<td>True/False
+</td>
+<td>Configuraciones
+</td>
+</tr>
+<tr>
+<td>Text
+</td>
+<td>Alfanumérico
+				(1–250)
+</td>
+<td>Campos
+				descriptivos
+</td>
+</tr>
+<tr>
+<td>Option
+</td>
+<td>Lista
+				cerrada de valores
+</td>
+<td>Desplegables
+</td>
+</tr>
+<tr>
+<td>Date
+</td>
+<td>Solo
+				fecha
+</td>
+<td>Registro
+				simple
+</td>
+</tr>
+<tr>
+<td>DateTime
+</td>
+<td>Fecha
+				+ hora
+</td>
+<td>Trazabilidad
+</td>
+</tr>
+<tr>
+<td>DateFormula
+</td>
+<td>Cálculo
+				temporal (30D)
+</td>
+<td>⚠️
+				Muy importante
+</td>
+</tr>
+<tr>
+<td>BLOB
+</td>
+<td>Imágenes
+</td>
+<td>Multimedia
+</td>
+</tr>
+<tr>
+<td>Datos
+				binarios
+</td>
+<td>Archivos
+</td>
+<td>Adjuntos
+</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h1 id="__RefHeading___Toc5654_158367611" lang="es">
+<strong>2. Tablas y vistas del sistema</strong></h1>
+<h2 id="__RefHeading___Toc5656_158367611" lang="es">
+2.1 Concepto de tabla</h2>
+<p>Una <strong>tabla</strong>  es la estructura básica de
+almacenamiento de información en un sistema ERP o CRM.</p>
+<p>En ella se organizan los datos en:</p>
+<ul>
+<li><p><strong>Campos (columnas)</strong>  → Definen el
+	tipo de información que se almacena.</p></li>
+<li><p><strong>Registros (filas)</strong>  → Representan
+	cada instancia concreta de información.</p></li>
+</ul>
+<p>Ejemplo:
+Una tabla de Clientes  puede
+contener campos como:</p>
+<ul>
+<li><p>Código</p></li>
+<li><p>Nombre</p></li>
+<li><p>Dirección</p></li>
+<li><p>Teléfono</p></li>
+<li><p>Fecha de alta</p></li>
+</ul>
+<p>Cada cliente concreto será un registro dentro de esa
+tabla.</p>
+<p>Las tablas constituyen la <strong>capa de persistencia
+de datos del sistema</strong>, es decir, el lugar donde la
+información queda almacenada de forma estructurada.</p>
+<hr/>
+<h2 id="__RefHeading___Toc5658_158367611" lang="es">
+2.2 Tablas en Microsoft Dynamics Nav / Business Central</h2>
+<p>En entornos como <strong>Microsoft Dynamics Nav</strong> 
+y <strong>Microsoft 365 Business Central</strong>, los datos se
+organizan mediante:</p>
+<ul>
+<li><p>Tablas definidas técnicamente en el sistema.</p></li>
+<li><p>Campos asociados a cada tabla.</p></li>
+<li><p>Relaciones entre tablas mediante claves.</p></li>
+</ul>
+<p>Las tablas permiten:</p>
+<ul>
+<li><p>Almacenar datos empresariales (clientes,
+	proveedores, productos, asientos contables…).</p></li>
+<li><p>Servir de base para consultas (Queries).</p></li>
+<li><p>Alimentar formularios e informes.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5660_158367611" lang="es">
+2.3 Entidades en Microsoft Dynamics 365 CRM</h2>
+<p>En <strong>Microsoft Dynamics 365 CRM</strong>, el
+concepto equivalente a tabla es la <strong>Entidad</strong>.</p>
+<p>Una entidad:</p>
+<ul>
+<li><p>Contiene campos.</p></li>
+<li><p>Almacena registros.</p></li>
+<li><p>Representa un objeto de negocio (Cuenta, Contacto,
+	Caso, Oportunidad, etc.).</p></li>
+</ul>
+<p>Por tanto:</p>
+<blockquote><b>Tabla
+(Nav/Business Central) ≈ Entidad (Dynamics 365 CRM)</b></blockquote>
+<p>La diferencia es principalmente terminológica y de
+entorno de configuración, pero conceptualmente cumplen la misma
+función: estructurar y almacenar datos.</p>
+<hr/>
+<h2 id="__RefHeading___Toc5662_158367611" lang="es">
+2.4 Vistas del sistema</h2>
+<p>Una <strong>vista</strong>  es una forma de mostrar un
+subconjunto de registros de una tabla o entidad según determinados
+criterios.</p>
+<p>Características:</p>
+<ul>
+<li><p>No modifica la estructura de la tabla.</p></li>
+<li><p>No altera los datos almacenados.</p></li>
+<li><p>Permite filtrar y organizar la visualización.</p></li>
+</ul>
+<p>Ejemplo:</p>
+<ul>
+<li><p>Vista “Clientes activos”.</p></li>
+<li><p>Vista “Facturas pendientes”.</p></li>
+<li><p>Vista “Casos abiertos”.</p></li>
+</ul>
+<p>Las vistas facilitan la consulta operativa de la
+información sin afectar a la base de datos.</p>
+<hr/>
+<h2 id="__RefHeading___Toc5664_158367611" lang="es">
+2.5 Importancia dentro del sistema</h2>
+<p>Las tablas o entidades son la base sobre la que se
+construyen:</p>
+<ul>
+<li><p>Las consultas  de acceso a datos.</p></li>
+<li><p>Los formularios  de entrada y visualización.</p></li>
+<li><p>Los informes.</p></li>
+<li><p>Los procesos de auditoría.</p></li>
+<li><p>Los análisis  y cuadros de mando.</p></li>
+</ul>
+<p>Sin tablas correctamente definidas, no es posible
+organizar ni consultar la información de forma estructurada.</p>
+<hr/>
+<h1 id="__RefHeading___Toc5666_158367611" lang="es">
+<strong>3. Consultas de acceso a datos</strong></h1>
+<h2 id="__RefHeading___Toc5668_158367611" lang="es">
+3.1 Concepto de consulta (Query)</h2>
+<p>Una <strong>consulta</strong>  es un objeto que permite
+<strong>acceder y recuperar información almacenada en las tablas o
+entidades</strong>  del sistema ERP/CRM.</p>
+<p>Permite:</p>
+<ul>
+<li><p>Filtrar registros según criterios específicos.</p></li>
+<li><p>Ordenar los datos de manera útil para el
+	análisis.</p></li>
+<li><p>Relacionar información de diferentes tablas o
+	entidades.</p></li>
+</ul>
+<p><strong>Importante:</strong> Una consulta <strong>no es
+una interfaz visual</strong>  ni un informe imprimible; su función
+principal es <strong>proporcionar conjuntos de datos precisos</strong> 
+para posteriores procesos o análisis.</p>
+<hr/>
+<h2 id="__RefHeading___Toc5670_158367611" lang="es">
+3.2 Tipos de objetos en Business Central / Dynamics 365 CRM</h2>
+<p>Para evitar confusiones comunes en examen, conviene
+diferenciar tres objetos clave:</p>
+<table>
+<col/>
+<col/>
+<thead>
+<tr>
+<th>Objeto
+</th>
+<th>Función
+				principal
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Query</strong>
+</td>
+<td>Acceso
+				y recuperación de datos de tablas o entidades
+</td>
+</tr>
+<tr>
+<td><strong>Page</strong>
+</td>
+<td>Visualización
+				de datos al usuario, interfaz de entrada y consulta
+</td>
+</tr>
+<tr>
+<td><strong>Report</strong>
+</td>
+<td>Generación
+				de informes imprimibles o exportables (PDF, Excel)
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>⚠️ Esta
+distinción es un punto frecuente de examen.</blockquote>
+<hr/>
+<h1 id="__RefHeading___Toc5672_158367611" lang="es">
+<strong>4. Interfaces de entrada de datos y formularios</strong></h1>
+<h2 id="__RefHeading___Toc5674_158367611" lang="es">
+4.1 Interfaz de entrada de datos</h2>
+<p>La <strong>interfaz de entrada de datos</strong>  es la
+capa que permite a los usuarios <strong>introducir y consultar
+información</strong>  en el sistema ERP o CRM.</p>
+<p><strong>Características principales:</strong></p>
+<ul>
+<li><p>Muestra de listados de registros para facilitar la
+	visualización.</p></li>
+<li><p>Permite navegar y seleccionar registros sin
+	alterar la estructura de las tablas.</p></li>
+<li><p>Su aspecto puede variar según el sistema
+	(Business Central o Dynamics 365 CRM).</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5676_158367611" lang="es">
+4.2 Formularios</h2>
+<p>Los <strong>formularios</strong>  son la representación
+visual de los datos contenidos en tablas o entidades.</p>
+<p><strong>Componentes estándar de todos los formularios:</strong></p>
+<ul>
+<li><p><strong>Encabezado (Header):</strong> Información
+	clave del registro.</p></li>
+<li><p><strong>Cuerpo (Body):</strong> Campos detallados
+	organizados en secciones.</p></li>
+<li><p><strong>Pie (Footer):</strong> Resumen de
+	información o botones de acción.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5678_158367611" lang="es">
+4.3 Secciones</h2>
+<p>Las <strong>secciones</strong>  dentro de un formulario
+permiten:</p>
+<ul>
+<li><p>Agrupar campos relacionados para una organización
+	lógica.</p></li>
+<li><p>Mejorar la usabilidad y la navegación del
+	usuario.</p></li>
+</ul>
+<p><strong>Ejemplo:</strong>
+En un formulario de
+Cliente:</p>
+<ul>
+<li><p>Sección 1 → Datos de contacto</p></li>
+<li><p>Sección 2 → Información fiscal</p></li>
+<li><p>Sección 3 → Dirección</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5680_158367611" lang="es">
+4.4 Relación con otros objetos</h2>
+<ul>
+<li><p><strong>Page:</strong> Objeto de la interfaz que
+	permite mostrar formularios y listados.</p></li>
+<li><p><strong>Campos:</strong> Son los elementos que se
+	muestran y editan en los formularios.</p></li>
+<li><p><strong>Tablas/Entidades:</strong> Almacenan los
+	datos que se consultan y modifican desde los formularios.</p></li>
+</ul>
+<blockquote>⚠️ Punto
+frecuente de examen: No confundir <strong>Page</strong> (interfaz)
+con <strong>Query</strong> (acceso a datos) ni <strong>Report</strong>
+(informes).</blockquote>
+<hr/>
+<h1 id="__RefHeading___Toc5682_158367611" lang="es">
+<strong>5. Informes y listados de la aplicación</strong></h1>
+<h2 id="__RefHeading___Toc5684_158367611" lang="es">
+5.1 Tipos de informes</h2>
+<p>En un sistema ERP/CRM, los <strong>informes y listados</strong> 
+permiten consultar, presentar y analizar los datos almacenados.</p>
+<ul>
+<li><p><strong>Report</strong>: Objeto que genera
+	informes imprimibles o exportables (PDF, Excel).</p></li>
+<li><p><strong>Listados</strong>: Visualización rápida
+	de datos dentro del sistema para consultas operativas.</p></li>
+</ul>
+<blockquote>⚠️ Punto
+frecuente de examen: <strong>Report</strong> es para
+imprimir/exportar; no confundir con <strong>Query</strong> (acceso a
+datos) ni con <strong>Page</strong> (interfaz visual).</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc5686_158367611" lang="es">
+5.2 Esquemas de cuentas</h2>
+<p>Definición: Un esquema de cuentas es un
+conjunto de reglas que automatiza la creación de registros contables
+con estructura fija, como nóminas o impuestos.</p>
+<p>Un <strong>esquema de cuentas</strong>  sirve para:</p>
+<ol>
+<li><p><strong>Organizar las cuentas del plan de cuentas</strong></p></li>
+<li><p><strong>Generar informes financieros</strong></p></li>
+<li><p><strong>Comparar diferentes esquemas mediante
+	fórmulas</strong></p></li>
+<li><p><strong>Crear informes personalizados</strong></p></li>
+</ol>
+<p><strong>Componentes de un esquema de cuentas:</strong></p>
+<ul>
+<li><p><strong>Nombre del esquema</strong></p></li>
+<li><p><strong>Líneas del esquema</strong></p></li>
+<li><p><strong>Plantilla de columnas</strong></p></li>
+</ul>
+<blockquote>Varias preguntas
+de examen confirman que <strong>todas estas opciones son correctas</strong>.</blockquote>
+<hr/>
+<h2 id="__RefHeading___Toc5688_158367611" lang="es">
+5.3 Plantillas de columnas</h2>
+<ul>
+<li><p>Definen la estructura de los informes.</p></li>
+<li><p>Permiten uniformidad en la comparación de
+	esquemas.</p></li>
+<li><p>No son informes en sí, sino un <strong>formato
+	para generar informes</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5690_158367611" lang="es">
+5.4 Comparación de esquemas</h2>
+<ul>
+<li><p>Las fórmulas permiten comparar dos o más
+	esquemas de cuentas.</p></li>
+<li><p>Esto posibilita <strong>crear informes financieros
+	personalizados</strong>.</p></li>
+<li><p>Importante para detectar diferencias en
+	configuraciones o resultados contables.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5692_158367611" lang="es">
+5.5 Conclusión</h2>
+<p>Este bloque es <strong>el núcleo central de la unidad</strong>,
+ya que combina:</p>
+<ul>
+<li><p>Organización de cuentas mediante esquemas.</p></li>
+<li><p>Extracción y presentación de datos con <strong>Reports</strong>.</p></li>
+<li><p>Uso de plantillas y fórmulas para comparaciones y
+	análisis financiero.</p></li>
+</ul>
+<blockquote>⚠️ Puntos
+críticos de examen: diferencia <strong>Report vs plantilla</strong>,
+finalidad de los esquemas de cuentas, y capacidad de comparación
+mediante fórmulas.</blockquote>
+<hr/>
+<h1 id="__RefHeading___Toc5694_158367611" lang="es">
+<strong>6. Gestión operativa</strong></h1>
+<p>La <strong>gestión operativa</strong>  se encarga de
+los procesos diarios de la empresa dentro del ERP/CRM, incluyendo
+productos, compras, ajustes contables, movimientos de transacciones y
+ventas/clientes.</p>
+<p><strong>Punto clave de examen:</strong></p>
+<ul>
+<li><p>La ficha de cliente se actualiza mediante
+	<strong>transacciones o actualización de datos</strong>  en el
+	sistema.</p></li>
+</ul>
+<p><strong>Otros procesos</strong>  (productos, compras,
+ajustes contables, movimientos) se mencionan para contextualizar la
+operativa, aunque no suelen preguntarse en examen.</p>
+<blockquote>⚠️ Resumen
+rápido: comprender que todas estas operaciones se registran en
+tablas y se reflejan en formularios, informes y auditorías.</blockquote>
+<hr/>
+<h1 id="__RefHeading___Toc5696_158367611" lang="es">
+<strong>7. Gráficos</strong></h1>
+<p>Los <strong>gráficos</strong>  son herramientas
+visuales que permiten representar de manera rápida y comprensible la
+información almacenada en el ERP/CRM.</p>
+<p>Son útiles para:</p>
+<ul>
+<li><p>Analizar tendencias y patrones de negocio.</p></li>
+<li><p>Presentar información de manera clara y
+	personalizada.</p></li>
+<li><p>Apoyar la toma de decisiones a partir de datos
+	consolidados.</p></li>
+</ul>
+<h2 id="__RefHeading___Toc5698_158367611" lang="es">
+7.1 Tipos de gráficos</h2>
+<ul>
+<li><p><strong>Gráficos del sistema:</strong>
+	Predefinidos por el ERP/CRM, muestran información estándar como
+	ventas, stock o facturación.</p></li>
+<li><p><strong>Gráficos personales:</strong>
+	Configurados por el usuario según consultas o necesidades
+	específicas.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5700_158367611" lang="es">
+7.2 Características principales</h2>
+<ul>
+<li><p>Reflejan datos provenientes de <strong>tablas /
+	entidades</strong>.</p></li>
+<li><p>Se apoyan en <strong>queries o informes</strong> 
+	como fuente de datos.</p></li>
+<li><p>Facilitan la interpretación de grandes volúmenes
+	de información.</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc5702_158367611" lang="es">
+<strong>8. Herramientas de monitorización y auditoría</strong></h1>
+<h2 id="__RefHeading___Toc5704_158367611" lang="es">
+8.1 Auditoría en Dynamics 365 CRM (actualizado)</h2>
+<p>La <strong>auditoría</strong>  permite rastrear los
+cambios realizados en los datos y la configuración del sistema.</p>
+<h3 lang="es">Niveles de auditoría:</h3>
+<ol>
+<li><p><strong>Nivel de organización</strong></p>
+<ul>
+<li><p>Debe estar <strong>habilitado primero</strong> 
+		para que cualquier otra auditoría funcione.</p></li>
+<li><p>Audita cambios a nivel del <strong>sistema
+		completo</strong>, incluyendo configuraciones globales y acceso a
+		datos.</p></li>
+</ul>
+<li><p><strong>Nivel de entidad</strong></p>
+<ul>
+<li><p>Se activa <strong>por entidad específica</strong>.</p></li>
+<li><p>Necesario para auditar cualquier registro de esa
+		entidad.</p></li>
+<li><p>Requiere que la auditoría de organización esté
+		activada.</p></li>
+</ul>
+<li><p><strong>Nivel de campo</strong></p>
+<ul>
+<li><p>Solo puede
+		auditar campos si <strong>la
+		auditoría de la </strong><strong>organización</strong><strong>
+		y de la </strong><strong>entidad</strong><strong>
+		está activada</strong>.</p></li>
+<li><p>Permite rastrear cambios a nivel de valores
+		individuales de campos concretos.</p></li>
+</ul>
+</li></li></li></ol>
+<blockquote>⚠️ En
+<strong>Dynamics 365 CRM</strong>, la auditoría funciona de forma
+jerárquica:  
+</blockquote>
+<blockquote>⚠️ Sin
+habilitar los niveles superiores, la auditoría de campos <strong>no
+funcionará</strong>, aunque se configure.</blockquote>
+<p>
+
+</p>
+<hr/>
+<h2 id="__RefHeading___Toc5706_158367611" lang="es">
+8.2 Funcionalidades de auditoría</h2>
+<ul>
+<li><p>Registro de <strong>actividades de usuarios</strong>:
+	quién modificó qué y cuándo.</p></li>
+<li><p>Seguimiento de <strong>transacciones y cambios
+	críticos</strong>.</p></li>
+<li><p>Base para <strong>control interno y cumplimiento
+	de normativas</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5708_158367611" lang="es">
+8.3 Confusiones frecuentes en examen</h2>
+<ul>
+<li><p>Diferenciar los <strong>tres niveles de auditoría</strong>:
+	organización vs entidad vs campo.</p></li>
+<li><p>Comprender que <strong>auditoría de nivel de
+	organización</strong>  cubre <strong>configuración y sistema</strong>,
+	no solo datos de registros.</p></li>
+<li><p>Distinguir <strong>auditoría de entidad</strong> 
+	(registros completos) de <strong>auditoría de campo</strong> 
+	(valores individuales).</p></li>
+</ul>
+<hr/>
+<h1 id="__RefHeading___Toc5710_158367611" lang="es">
+<strong>9. Incidencias, identificación y resolución</strong></h1>
+<p>Las <strong>incidencias</strong>  son problemas, errores
+o anomalías detectadas en el sistema ERP/CRM que pueden afectar la
+operación normal de la empresa.</p>
+<h2 id="__RefHeading___Toc5712_158367611" lang="es">
+9.1 Identificación</h2>
+<ul>
+<li><p>Detectar y registrar la incidencia.</p></li>
+<li><p>Puede ser manual o mediante alertas automáticas
+	del sistema.</p></li>
+</ul>
+<h2 id="__RefHeading___Toc5714_158367611" lang="es">
+9.2 Resolución</h2>
+<ul>
+<li><p>Aplicar acciones correctivas o ajustes necesarios.</p></li>
+<li><p>Garantizar que la operación del sistema vuelva a
+	la normalidad.</p></li>
+<li><p>Mantener la integridad de los datos y la
+	continuidad operativa.</p></li>
+</ul>
+<blockquote>Nota: Este tema
+tiene <strong>peso bajo en examen</strong>, por lo que basta con
+comprender los conceptos generales de incidencia, identificación y
+resolución.</blockquote>
+<hr/>
+<h1 id="__RefHeading___Toc5716_158367611" lang="es">
+<strong>10. Procesos de extracción de datos en sistemas ERP/CRM y
+automatización</strong></h1>
+<p>Este bloque aborda cómo se preparan, organizan y
+automatizan los datos para su análisis y generación de informes
+financieros.</p>
+<h2 id="__RefHeading___Toc5718_158367611" lang="es">
+10.1 Plantilla de columnas</h2>
+<ul>
+<li><p>Define la <strong>estructura de los datos</strong> 
+	que se van a extraer.</p></li>
+<li><p>Facilita la <strong>comparación de esquemas de
+	cuentas</strong>.</p></li>
+<li><p>No genera el informe directamente, solo sirve como
+	<strong>formato o guía</strong>.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5720_158367611" lang="es">
+10.2 Configuración de un esquema de cuentas</h2>
+<ul>
+<li><p>Organiza el <strong>plan de cuentas</strong>  y
+	permite generar <strong>informes financieros</strong>.</p></li>
+<li><p>Componentes principales:</p>
+<ul>
+<li><p><strong>Nombre del esquema</strong></p></li>
+<li><p><strong>Líneas del esquema</strong></p></li>
+<li><p><strong>Plantilla de columnas</strong></p></li>
+</ul>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc5722_158367611" lang="es">
+10.3 Extracción y automatización</h2>
+<ul>
+<li><p>Los datos se extraen de <strong>tablas y entidades</strong> 
+	del sistema.</p></li>
+<li><p>Plantillas y esquemas permiten <strong>automatizar
+	la preparación de informes</strong>, evitando la extracción manual
+	repetitiva.</p></li>
+<li><p>Se pueden generar <strong>informes repetitivos o
+	personalizados</strong>  de manera más eficiente.</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5724_158367611" lang="es">
+10.4 Confusiones frecuentes</h2>
+<ul>
+<li><p><strong>Plantilla de columnas ≠ Report</strong>:</p>
+<ul>
+<li><p>Plantilla → estructura para organizar y extraer
+		datos</p></li>
+<li><p>Report → resultado final imprimible/exportable</p></li>
+</ul>
+<li><p>Comparación de esquemas → <strong>informa
+	financieramente</strong>, no solo organiza cuentas.</p></li>
+<li><p>Diferenciar extracción manual de datos de
+	automatización mediante plantillas y esquemas.</p></li>
+</li></ul>
+<hr/>
+<h1 id="__RefHeading___Toc5726_158367611" lang="es">
+<strong>11. Inteligencia de Negocio (Business Intelligence – BI)</strong></h1>
+<p>La <strong>Inteligencia de Negocio (BI)</strong>  es el
+conjunto de procesos, herramientas y metodologías que permiten
+<strong>transformar datos en información útil</strong>  para la toma
+de decisiones empresariales.</p>
+<h2 id="__RefHeading___Toc5728_158367611" lang="es">
+11.1 Funcionalidad principal</h2>
+<ul>
+<li><p>Consolidar información de distintas fuentes (ERP,
+	CRM, bases de datos).</p></li>
+<li><p>Analizar patrones, tendencias y resultados
+	históricos.</p></li>
+<li><p>Visualizar la información mediante <strong>informes,
+	gráficos y dashboards</strong>.</p></li>
+<li><p>Facilitar la toma de decisiones basada en datos
+	reales.</p></li>
+</ul>
+<h2 id="__RefHeading___Toc5730_158367611" lang="es">
+11.2 Relación con otros bloques</h2>
+<ul>
+<li><p>Se alimenta de <strong>esquemas de cuentas,
+	informes y consultas</strong><strong>.</strong></p></li>
+<li><p>Utiliza datos ya organizados y auditados.</p></li>
+<li><p>Complementa la visualización de <strong>gráficos
+	y dashboards</strong><strong>.</strong></p></li>
+</ul>
+<blockquote>Nota: Tema de
+contexto estratégico; no hay preguntas directas en los exámenes
+revisados, pero es importante comprender su propósito y función
+dentro del sistema.</blockquote>
+<hr/>
+<h1 id="__RefHeading___Toc5732_158367611" lang="es">
+<strong>Unidad 03 – Organización y consulta de la información
+(Resumen </strong><strong>compacto</strong><strong>)</strong></h1>
+<h2 id="__RefHeading___Toc5734_158367611" lang="es">
+<strong>1. Campos</strong></h2>
+<ul>
+<li><p>Tipos: <strong>Texto, Numérico, Fecha/DateTime</strong></p></li>
+<li><p>Campos en Nav: BigInteger, BLOB, Boolean, Date,
+	DateFormula, DateTime, Integer, Option, Text, Decimal</p></li>
+<li><p><strong>DateFormula</strong>  → validación de
+	fechas</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5736_158367611" lang="es">
+<strong>2. Tablas y vistas</strong></h2>
+<ul>
+<li><p>Almacenan datos de <strong>clientes, productos,
+	transacciones</strong></p></li>
+<li><p>Base de <strong>formularios, consultas e informes</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5738_158367611" lang="es">
+<strong>3. Consultas de acceso a datos</strong></h2>
+<ul>
+<li><p>Objetos: <strong>Queries/Consultas</strong></p></li>
+<li><p>Permiten extraer información de tablas</p></li>
+<li><p>Base para <strong>informes, gráficos y BI</strong></p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5740_158367611" lang="es">
+<strong>4. Interfaces y formularios</strong></h2>
+<ul>
+<li><p>Visualizan y permiten editar datos:
+	<strong>Pages/Formularios</strong></p></li>
+<li><p>Componentes: <strong>Encabezado, Cuerpo, Pie</strong></p></li>
+<li><p>Campos organizados en <strong>Secciones</strong></p></li>
+<li><p>Listados → característica principal de la
+	interfaz</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5742_158367611" lang="es">
+<strong>5. Informes y esquemas de cuentas</strong></h2>
+<ul>
+<li><p><strong>Report</strong>  → generar PDF/Excel</p></li>
+<li><p><strong>Esquema de cuentas</strong>: organiza
+	cuentas + genera informes</p></li>
+<li><p>Componentes: <strong>Nombre, Líneas, Plantilla de
+	columnas</strong></p></li>
+<li><p><strong>Comparación de esquemas</strong>  →
+	informes financieros personalizados</p></li>
+<li><p>Plantilla ≠ Report → solo estructura</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5744_158367611" lang="es">
+<strong>6. Gestión operativa</strong></h2>
+<ul>
+<li><p>Procesos diarios: <strong>Productos, Compras,
+	Ajustes contables, Movimientos, Ventas/Clientes</strong></p></li>
+<li><p><strong>Ficha de cliente</strong>  → actualizada
+	mediante transacción</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5746_158367611" lang="es">
+<strong>7. Gráficos</strong></h2>
+<ul>
+<li><p>Tipos: <strong>Sistema</strong>  (predefinidos),
+	<strong>Personales</strong>  (usuario)</p></li>
+<li><p>Reflejan datos de <strong>consultas e informes</strong></p></li>
+<li><p>Facilitan interpretación rápida y visual</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5748_158367611" lang="es">
+<strong>8. Auditoría</strong></h2>
+<ul>
+<li><p>Niveles:</p>
+<ul>
+<li><p><strong>Organización</strong>  → sistema
+		completo, debe activarse primero</p></li>
+<li><p><strong>Entidad</strong>  → registros
+		específicos, requiere organización activada</p></li>
+<li><p><strong>Campo</strong>  → valores individuales,
+		requiere organización + entidad activadas</p></li>
+</ul>
+<li><p>Función: rastrear <strong>quién, qué y cuándo</strong>,
+	control interno</p></li>
+<li><p>Confusiones: diferenciar <strong>nivel y alcance</strong> 
+	de cada auditoría</p></li>
+</li></ul>
+<hr/>
+<h2 id="__RefHeading___Toc5750_158367611" lang="es">
+<strong>9. Incidencias</strong></h2>
+<ul>
+<li><p>Problemas o errores detectados en el sistema</p></li>
+<li><p><strong>Identificación</strong>  → registro
+	manual o automático</p></li>
+<li><p><strong>Resolución</strong>  → acciones
+	correctivas para restaurar operación</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5752_158367611" lang="es">
+<strong>10. Extracción de datos y automatización</strong></h2>
+<ul>
+<li><p><strong>Plantilla de columnas</strong>  → define
+	estructura de datos</p></li>
+<li><p><strong>Esquemas de cuentas</strong>  → organizan
+	cuentas + generan informes</p></li>
+<li><p>Automatiza informes repetitivos y personalizados</p></li>
+<li><p>Confusión frecuente: plantilla ≠ Report</p></li>
+</ul>
+<hr/>
+<h2 id="__RefHeading___Toc5754_158367611" lang="es">
+<strong>11. Business Intelligence (BI)</strong></h2>
+<ul>
+<li><p>Consolida y analiza datos para <strong>tomar
+	decisiones</strong></p></li>
+<li><p>Fuentes: <strong>ERP, CRM, tablas, consultas,
+	informes</strong></p></li>
+<li><p>Salidas: <strong>informes, dashboards, gráficos</strong></p></li>
+<li><p>Concepto clave: <strong>analizar información
+	histórica y tendencias</strong></p></li>
+</ul>
+<hr/>
+<p>
+
+</p>
+<p><a href="../../index.html">Volver al índice</a></p></body>
+</html>
