@@ -1,7 +1,7 @@
 /* ── BODY Y ESTILO GENERAL ── */
 body {
   font-family: Arial, sans-serif;
-  max-width: 900px;
+  max-width: max-content;
   margin: auto;
   padding: 20px;
   line-height: 1.6;
@@ -176,33 +176,6 @@ pre code span.number {
   color: #a71d5d; /* rosa oscuro */
 }
 
-/* ── RESPONSIVE GENERAL ── */
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  table th,
-  table td {
-    padding: 6px 8px;
-  }
-
-  input,
-  select,
-  textarea {
-    font-size: 0.9rem;
-  }
-
-  button {
-    font-size: 0.9rem;
-    padding: 6px 12px;
-  }
-
-  pre {
-    padding: 8px 10px;
-  }
-}
-
 /* ── SUMARIO EN PARRILLA ── */
 .sumario {
   display: grid;
@@ -254,9 +227,34 @@ pre code span.number {
   text-decoration: underline;
 }
 
-/* ── RESPONSIVE: UNA COLUMNA EN PANTALLAS PEQUEÑAS ── */
+/* ── RESPONSIVE ── */
 @media (max-width: 600px) {
+  body {
+    max-width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+
   .sumario {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  p,
+  li {
+    font-size: 1.1rem;
+  }
+
+  pre,
+  code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 1rem;
   }
 }
