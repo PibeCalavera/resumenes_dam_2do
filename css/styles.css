@@ -1,7 +1,7 @@
 /* ── BODY Y ESTILO GENERAL ── */
 body {
   font-family: Arial, sans-serif;
-  max-width: max-content;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
   line-height: 1.6;
@@ -259,4 +259,3 @@ pre code span.number {
     font-size: 1.1rem;
   }
 }
-
